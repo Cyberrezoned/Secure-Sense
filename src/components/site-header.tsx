@@ -15,6 +15,7 @@ const mainNav = [
   { href: '/', label: 'Home' },
   { href: '/community', label: 'Community Hub' },
   { href: '/integrations', label: 'Integrations' },
+  { href: '/itskillcenter', label: 'IT Skill Center' },
 ];
 
 export function SiteHeader() {
