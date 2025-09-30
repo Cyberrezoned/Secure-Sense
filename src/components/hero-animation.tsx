@@ -73,7 +73,7 @@ export function HeroAnimation() {
     const arcsGroup = new THREE.Group();
     scene.add(arcsGroup);
 
-    function createArc(start: THREE.Vector3, end: THREE.Vector3, color: string | number | THREE.Color) {
+    function createArc(start: THREE.Vector3, end: THREE.Vector3, color: THREE.Color) {
       const v = new THREE.Vector3().subVectors(end, start);
       const mid = new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5);
       const midLength = mid.length();
@@ -83,9 +83,21 @@ export function HeroAnimation() {
       const curve = new THREE.QuadraticBezierCurve3(start, mid, end);
       const points = curve.getPoints(50);
       const geometry = new THREE.BufferGeometry().setFromPoints(points);
+      
+      const colors = new Float32Array(points.length * 3);
+      const blueColor = new THREE.Color('hsl(210, 90%, 60%)');
+      const redColor = new THREE.Color('hsl(0, 72%, 51%)');
+
+      for (let i = 0; i < points.length; i++) {
+        const t = i / (points.length -1);
+        const interpolatedColor = blueColor.clone().lerp(redColor, t);
+        interpolatedColor.toArray(colors, i * 3);
+      }
+      geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
 
       const material = new THREE.LineBasicMaterial({
-        color: color,
+        vertexColors: true,
         transparent: true,
         opacity: 0.6,
         blending: THREE.AdditiveBlending,
@@ -100,8 +112,8 @@ export function HeroAnimation() {
       const startPoint = new THREE.Vector3().setFromSphericalCoords(GLOBE_RADIUS, Math.acos(1 - 2 * Math.random()), 2 * Math.PI * Math.random());
       const endPoint = new THREE.Vector3().setFromSphericalCoords(GLOBE_RADIUS, Math.acos(1 - 2 * Math.random()), 2 * Math.PI * Math.random());
       
-      const isRedArc = Math.random() > 0.7; // 30% chance of being a red "attack" arc
-      const color = isRedArc ? 'hsl(var(--destructive))' : 'hsl(var(--primary))';
+      const color = new THREE.Color();
+      color.setHSL(Math.random(), 0.7, 0.6);
 
       const arc = createArc(startPoint, endPoint, color);
       arcsGroup.add(arc);

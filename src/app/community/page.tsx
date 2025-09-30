@@ -54,42 +54,38 @@ export default function CommunityPage() {
         </p>
       </div>
 
-      <div className="mt-12 grid gap-12 lg:grid-cols-2">
-        <div>
+      <div className="mt-12 grid gap-12 lg:grid-cols-3">
+        <div className="lg:col-span-1">
           <h2 className="text-2xl font-bold tracking-tight font-headline mb-4">AI Content Analysis Tool</h2>
           <ContentAnalysis />
         </div>
-        <div className="space-y-6">
+        <div className="lg:col-span-2 space-y-6">
           <h2 className="text-2xl font-bold tracking-tight font-headline">Recent Posts</h2>
-          <div className="grid gap-6">
+          <div className="grid gap-6 md:grid-cols-2">
             {recentPosts.map(post => {
               const image = PlaceHolderImages.find(p => p.id === post.imageId)
               return (
-                <Card key={post.id} className="bg-secondary/50 border-border/50">
-                  <div className="grid md:grid-cols-3">
-                    <div className="md:col-span-1">
-                      {image && (
-                        <Image
-                          src={image.imageUrl}
-                          alt={image.description}
-                          data-ai-hint={image.imageHint}
-                          width={400}
-                          height={250}
-                          className="object-cover h-full w-full rounded-l-lg"
-                        />
-                      )}
-                    </div>
-                    <div className="md:col-span-2">
-                      <CardHeader>
-                        <CardTitle>{post.title}</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm text-muted-foreground">By {post.author} on {post.date}</p>
-                      </CardContent>
-                      <CardFooter>
-                        <Button variant="link" asChild><Link href={`/community/blog/${post.id}`}>Read More</Link></Button>
-                      </CardFooter>
-                    </div>
+                <Card key={post.id} className="bg-secondary/50 border-border/50 flex flex-col">
+                  {image && (
+                    <Image
+                      src={image.imageUrl}
+                      alt={image.description}
+                      data-ai-hint={image.imageHint}
+                      width={400}
+                      height={250}
+                      className="object-cover w-full rounded-t-lg aspect-video"
+                    />
+                  )}
+                  <div className="flex flex-col flex-grow">
+                    <CardHeader>
+                      <CardTitle>{post.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex-grow">
+                      <p className="text-sm text-muted-foreground">By {post.author} on {post.date}</p>
+                    </CardContent>
+                    <CardFooter>
+                      <Button variant="link" asChild className="p-0"><Link href={`/community/blog/${post.id}`}>Read More</Link></Button>
+                    </CardFooter>
                   </div>
                 </Card>
               )
