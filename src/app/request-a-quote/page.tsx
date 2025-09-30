@@ -1,6 +1,7 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { requestPricing } from '@/lib/actions';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -39,7 +40,7 @@ function SubmitButton() {
 
 
 export default function RequestQuotePage() {
-  const [state, formAction] = useFormState(requestPricing, {});
+  const [state, formAction] = useActionState(requestPricing, {});
 
   return (
     <div className="container py-12 px-4 md:px-6">

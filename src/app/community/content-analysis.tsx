@@ -1,6 +1,7 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { analyzeContent, type AnalysisResult } from '@/lib/actions';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -29,7 +30,7 @@ function SubmitButton() {
 }
 
 export function ContentAnalysis() {
-  const [state, formAction] = useFormState(analyzeContent, {});
+  const [state, formAction] = useActionState(analyzeContent, {});
 
   return (
     <Card className="bg-secondary/50 border-border/50">
