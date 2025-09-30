@@ -26,7 +26,7 @@ export function HeroAnimation() {
     // --- Globe ---
     const globeGeometry = new THREE.SphereGeometry(GLOBE_RADIUS, 64, 64);
     const globeMaterial = new THREE.MeshPhongMaterial({
-      color: 0x00aaff,
+      color: 'hsl(221, 83%, 53%)',
       transparent: true,
       opacity: 0.1,
       shininess: 50
@@ -37,7 +37,7 @@ export function HeroAnimation() {
     // --- Wireframe ---
     const wireframeGeometry = new THREE.SphereGeometry(GLOBE_RADIUS + 0.01, 32, 32);
     const wireframeMaterial = new THREE.MeshBasicMaterial({
-      color: 'hsl(183, 100%, 50%)',
+      color: 'hsl(221, 83%, 53%)',
       wireframe: true,
       transparent: true,
       opacity: 0.15
@@ -62,7 +62,7 @@ export function HeroAnimation() {
     pointsGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
     const pointsMaterial = new THREE.PointsMaterial({
       size: 0.02,
-      color: 'hsl(183, 100%, 70%)',
+      color: 'hsl(221, 83%, 70%)',
       transparent: true,
       blending: THREE.AdditiveBlending
     });
@@ -73,7 +73,7 @@ export function HeroAnimation() {
     const arcsGroup = new THREE.Group();
     scene.add(arcsGroup);
 
-    function createArc(start: THREE.Vector3, end: THREE.Vector3) {
+    function createArc(start: THREE.Vector3, end: THREE.Vector3, color: string | number | THREE.Color) {
       const v = new THREE.Vector3().subVectors(end, start);
       const mid = new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5);
       const midLength = mid.length();
@@ -85,9 +85,9 @@ export function HeroAnimation() {
       const geometry = new THREE.BufferGeometry().setFromPoints(points);
 
       const material = new THREE.LineBasicMaterial({
-        color: 'hsl(183, 100%, 80%)',
+        color: color,
         transparent: true,
-        opacity: 0.5,
+        opacity: 0.7,
         blending: THREE.AdditiveBlending
       });
 
@@ -99,7 +99,10 @@ export function HeroAnimation() {
       const startPoint = new THREE.Vector3().setFromSphericalCoords(GLOBE_RADIUS, Math.acos(1 - 2 * Math.random()), 2 * Math.PI * Math.random());
       const endPoint = new THREE.Vector3().setFromSphericalCoords(GLOBE_RADIUS, Math.acos(1 - 2 * Math.random()), 2 * Math.PI * Math.random());
       
-      const arc = createArc(startPoint, endPoint);
+      const isRedArc = Math.random() > 0.7; // 30% chance of being a red "attack" arc
+      const color = isRedArc ? 'hsl(0, 72%, 51%)' : 'hsl(221, 83%, 80%)';
+
+      const arc = createArc(startPoint, endPoint, color);
       arcsGroup.add(arc);
 
       setTimeout(() => {
@@ -113,7 +116,7 @@ export function HeroAnimation() {
     // --- Lights ---
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
     scene.add(ambientLight);
-    const directionalLight = new THREE.DirectionalLight(0x00aaff, 1);
+    const directionalLight = new THREE.DirectionalLight('hsl(221, 83%, 53%)', 1);
     directionalLight.position.set(5, 3, 5);
     scene.add(directionalLight);
     
@@ -137,7 +140,7 @@ export function HeroAnimation() {
     };
     animate();
 
-    const arcInterval = setInterval(addRandomArc, 500);
+    const arcInterval = setInterval(addRandomArc, 400);
 
     // --- Resize Handler ---
     const handleResize = () => {

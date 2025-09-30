@@ -9,13 +9,13 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Loader2, CheckCircle, XCircle, Sparkles } from 'lucide-react';
+import { Loader2, CheckCircle, XCircle } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const services = [
-  { id: 'soc', label: 'Managed SOC & MDR' },
+  { id: 'pentesting', label: 'Penetration Testing (Red Team)' },
+  { id: 'soc', label: 'Managed SOC & MDR (Blue Team)' },
   { id: 'vulnerability', label: 'Vulnerability Management' },
-  { id: 'pentesting', label: 'Penetration Testing' },
   { id: 'consulting', label: 'Security Consulting' },
   { id: 'training', label: 'Team Training & Awareness' },
   { id: 'compliance', label: 'Compliance & Auditing' },
@@ -28,7 +28,7 @@ function SubmitButton() {
       {pending ? (
         <>
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-          Submitting...
+          Submitting Request...
         </>
       ) : (
         'Request a Quote'
@@ -38,17 +38,17 @@ function SubmitButton() {
 }
 
 
-export default function PricingPage() {
+export default function RequestQuotePage() {
   const [state, formAction] = useFormState(requestPricing, {});
 
   return (
     <div className="container py-12 px-4 md:px-6">
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">
-          Tailored Security Pricing
+          Request Cybersecurity Services
         </h1>
         <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-          Every organization is unique. We provide custom pricing based on your specific needs. Fill out the form below to get a personalized quote.
+          Partner with us to strengthen your security posture. Fill out the form below to get a personalized quote for our expert-led services.
         </p>
       </div>
 
@@ -107,7 +107,7 @@ export default function PricingPage() {
 
                 <div className="space-y-2">
                   <Label htmlFor="message">Additional Information</Label>
-                  <Textarea id="message" name="message" placeholder="Tell us about any specific challenges or requirements..." rows={4} className="bg-background"/>
+                  <Textarea id="message" name="message" placeholder="Tell us about any specific challenges, compliance needs, or your current security stack..." rows={4} className="bg-background"/>
                 </div>
                 
                 {state.error && (

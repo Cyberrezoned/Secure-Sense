@@ -11,16 +11,16 @@ export function Hero() {
       <div className="container relative z-10 px-4 md:px-6">
         <div className="mx-auto max-w-3xl space-y-6">
           <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline">
-            The Future of Cybersecurity,
-            <span className="block text-primary glow-md">Today.</span>
+            Elite Cybersecurity,
+            <span className="block text-primary glow-md">Engineered for Resilience.</span>
           </h1>
           <p className="text-lg text-muted-foreground md:text-xl">
-            Secure Sense provides cutting-edge solutions to protect your digital assets. From real-time threat monitoring to AI-powered analysis, we are your trusted partner in security.
+            Secure Sense delivers offensive and defensive solutions to protect your critical assets. From preemptive penetration testing to 24/7 managed detection and response, we are your trusted security partner.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" asChild className="glow-sm">
-              <Link href="/signup">
-                Get Started Free
+              <Link href="/request-a-quote">
+                Request a Quote
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>

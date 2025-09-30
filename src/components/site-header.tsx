@@ -9,12 +9,12 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
+import { ArrowRight } from 'lucide-react';
 
 const mainNav = [
   { href: '/', label: 'Home' },
   { href: '/community', label: 'Community Hub' },
   { href: '/integrations', label: 'Integrations' },
-  { href: '/pricing', label: 'Pricing' },
 ];
 
 export function SiteHeader() {
@@ -45,18 +45,13 @@ export function SiteHeader() {
           </nav>
         </div>
 
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <div className="w-full flex-1 md:w-auto md:flex-none">
-            {/* Search can go here */}
-          </div>
-          <nav className="hidden md:flex items-center space-x-2">
-            <Button variant="ghost" asChild>
-              <Link href="/login">Log In</Link>
-            </Button>
-            <Button asChild className="glow-sm">
-              <Link href="/signup">Sign Up</Link>
-            </Button>
-          </nav>
+        <div className="flex flex-1 items-center justify-end space-x-2 md:justify-end">
+          <Button asChild className="glow-sm">
+            <Link href="/request-a-quote">
+              Request a Quote
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
         </div>
 
         {/* Mobile Menu */}
@@ -92,11 +87,11 @@ export function SiteHeader() {
               ))}
             </div>
             <div className="mt-auto flex flex-col space-y-2 pt-4">
-              <Button variant="ghost" asChild>
-                <Link href="/login" onClick={() => setOpen(false)}>Log In</Link>
-              </Button>
-              <Button asChild className="glow-sm">
-                <Link href="/signup" onClick={() => setOpen(false)}>Sign Up</Link>
+               <Button asChild className="glow-sm">
+                <Link href="/request-a-quote" onClick={() => setOpen(false)}>
+                  Request a Quote
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
               </Button>
             </div>
           </SheetContent>

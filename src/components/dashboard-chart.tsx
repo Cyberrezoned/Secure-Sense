@@ -12,20 +12,20 @@ const generateData = () => {
     const time = new Date(now.getTime() - i * 1000);
     data.push({
       time: time.toLocaleTimeString([], { second: '2-digit' }),
-      threats: Math.floor(Math.random() * (80 - 20 + 1) + 20),
-      anomalies: Math.floor(Math.random() * (50 - 10 + 1) + 10),
+      attacks: Math.floor(Math.random() * (40 - 10 + 1) + 10),
+      defenses: Math.floor(Math.random() * (80 - 20 + 1) + 20),
     });
   }
   return data;
 };
 
 const chartConfig = {
-  threats: {
-    label: 'Threats',
-    color: 'hsl(var(--primary))',
+  attacks: {
+    label: 'Simulated Attacks',
+    color: 'hsl(var(--chart-1))',
   },
-  anomalies: {
-    label: 'Anomalies',
+  defenses: {
+    label: 'Threats Neutralized',
     color: 'hsl(var(--chart-2))',
   },
 };
@@ -38,8 +38,8 @@ export function DashboardChart() {
       setData(currentData => {
         const newDataPoint = {
           time: new Date().toLocaleTimeString([], { second: '2-digit' }),
-          threats: Math.floor(Math.random() * (80 - 20 + 1) + 20),
-          anomalies: Math.floor(Math.random() * (50 - 10 + 1) + 10),
+          attacks: Math.floor(Math.random() * (40 - 5 + 1) + 5),
+          defenses: Math.floor(Math.random() * (80 - 20 + 1) + 20),
         };
         return [...currentData.slice(1), newDataPoint];
       });
@@ -51,8 +51,8 @@ export function DashboardChart() {
   return (
     <Card className="bg-secondary/50 border-border/50">
       <CardHeader>
-        <CardTitle>Live Threat Feed</CardTitle>
-        <CardDescription>Real-time analysis of network activity.</CardDescription>
+        <CardTitle>Live Operations Feed</CardTitle>
+        <CardDescription>Real-time Red Team vs. Blue Team activity.</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="h-[300px] w-full">
@@ -63,11 +63,11 @@ export function DashboardChart() {
               accessibilityLayer
             >
               <defs>
-                <linearGradient id="colorThreats" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0} />
+                <linearGradient id="colorAttacks" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="hsl(var(--chart-1))" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="hsl(var(--chart-1))" stopOpacity={0} />
                 </linearGradient>
-                <linearGradient id="colorAnomalies" x1="0" y1="0" x2="0" y2="1">
+                <linearGradient id="colorDefenses" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="hsl(var(--chart-2))" stopOpacity={0.7} />
                   <stop offset="95%" stopColor="hsl(var(--chart-2))" stopOpacity={0} />
                 </linearGradient>
@@ -81,19 +81,19 @@ export function DashboardChart() {
               />
               <Area
                 type="monotone"
-                dataKey="threats"
-                stroke="hsl(var(--primary))"
+                dataKey="attacks"
+                stroke="hsl(var(--chart-1))"
                 fillOpacity={1}
-                fill="url(#colorThreats)"
+                fill="url(#colorAttacks)"
                 strokeWidth={2}
                 dot={false}
               />
               <Area
                 type="monotone"
-                dataKey="anomalies"
+                dataKey="defenses"
                 stroke="hsl(var(--chart-2))"
                 fillOpacity={1}
-                fill="url(#colorAnomalies)"
+                fill="url(#colorDefenses)"
                 strokeWidth={2}
                 dot={false}
               />
