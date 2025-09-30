@@ -1,24 +1,12 @@
 'use server';
 
 import {
-  moderateContent,
-  type ModerateContentOutput,
-} from '@/ai/flows/content-moderation';
-import {
-  tagRelevantArticles,
-  type TagRelevantArticlesOutput,
-} from '@/ai/flows/tag-relevant-articles';
-import {
-  summarizeSecurityArticle,
-  type SummarizeSecurityArticleOutput,
-} from '@/ai/flows/summarize-security-articles';
+  analyzeArticle,
+  type AnalyzeArticleOutput,
+} from '@/ai/flows/analyze-article-flow';
 import { z } from 'zod';
 
-export interface AnalysisResult {
-  moderation: ModerateContentOutput;
-  tags: TagRelevantArticlesOutput;
-  summary: SummarizeSecurityArticleOutput;
-}
+export type AnalysisResult = AnalyzeArticleOutput;
 
 export async function analyzeContent(
   _prevState: unknown,
@@ -31,18 +19,13 @@ export async function analyzeContent(
   }
 
   try {
-    const [moderationResult, tagsResult, summaryResult] = await Promise.all([
-      moderateContent({ content, contentType: 'blog' }),
-      tagRelevantArticles({ articleText: content }),
-      summarizeSecurityArticle({ articleContent: content }),
-    ]);
+    const result = await analyzeArticle({
+      content: content,
+      contentType: 'blog',
+    });
 
     return {
-      result: {
-        moderation: moderationResult,
-        tags: tagsResult,
-        summary: summaryResult,
-      },
+      result,
     };
   } catch (error) {
     console.error('Error during content analysis:', error);
