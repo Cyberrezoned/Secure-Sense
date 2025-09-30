@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <section className="relative w-full h-[80vh] min-h-[500px] flex items-center justify-center text-center overflow-hidden">
       <HeroAnimation />
-      <div className="absolute inset-0 bg-background/80" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
       <div className="container relative z-10 px-4 md:px-6">
         <div className="mx-auto max-w-3xl space-y-6">
           <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline">

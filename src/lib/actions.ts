@@ -62,6 +62,7 @@ export async function loginUser(_prevState: unknown, formData: FormData) {
       error: 'Invalid email or password.',
     };
   }
+  // In a real app, you would authenticate the user here
   console.log('Login attempt:', validatedFields.data);
   return { success: 'Login successful! Redirecting...' };
 }
@@ -75,10 +76,12 @@ export async function signupUser(_prevState: unknown, formData: FormData) {
   const validatedFields = signupSchema.safeParse(Object.fromEntries(formData));
 
   if (!validatedFields.success) {
+    // You can be more specific with errors if you want
     return {
       error: 'Please check your information and try again.',
     };
   }
+  // In a real app, you would create the user here
   console.log('New user signup:', validatedFields.data);
   return { success: 'Account created! Please login.' };
 }
@@ -93,6 +96,7 @@ const pricingRequestSchema = z.object({
 });
 
 export async function requestPricing(_prevState: unknown, formData: FormData) {
+  // Use .getAll to handle multiple checkboxes with the same name
   const services = formData.getAll('services');
   const data = {
     companyName: formData.get('companyName'),
@@ -110,6 +114,8 @@ export async function requestPricing(_prevState: unknown, formData: FormData) {
       error: 'Please fill out all required fields.',
     };
   }
+
+  // In a real app, you would send this data to your CRM or email service
   console.log('New pricing request:', validatedFields.data);
   return { success: 'Thank you for your request! We will be in touch shortly.' };
 }

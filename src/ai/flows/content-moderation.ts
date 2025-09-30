@@ -34,12 +34,19 @@ const moderateContentPrompt = ai.definePrompt({
   name: 'moderateContentPrompt',
   input: {schema: ModerateContentInputSchema},
   output: {schema: ModerateContentOutputSchema},
-  prompt: `You are a content moderation expert. You will determine if the provided content is safe for the community learning hub. Safe content is appropriate, respectful, and does not violate any community guidelines.
+  prompt: `You are a content moderation expert for a cybersecurity community learning hub. Your task is to determine if the provided content is safe and appropriate for all audiences.
+
+Review the content for any of the following violations:
+- Hate speech, harassment, or threats
+- Sexually explicit material
+- Promotion of illegal acts or dangerous content
+- Spam or excessive advertising
+- Misinformation, especially related to cybersecurity topics
 
 Content type: {{{contentType}}}
 Content: {{{content}}}
 
-Respond with whether the content is safe and the reason for your decision.`,
+Based on your analysis, set 'isSafe' to false if any violations are found, and true otherwise. Provide a concise, clear 'reason' for your decision, especially if the content is deemed unsafe.`,
   config: {
     safetySettings: [
       {
