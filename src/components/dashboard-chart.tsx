@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import { ChartTooltipContent } from '@/components/ui/chart';
+import { ChartTooltipContent, ChartContainer } from '@/components/ui/chart';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 
 const generateData = () => {
@@ -17,6 +17,17 @@ const generateData = () => {
     });
   }
   return data;
+};
+
+const chartConfig = {
+  threats: {
+    label: 'Threats',
+    color: 'hsl(var(--primary))',
+  },
+  anomalies: {
+    label: 'Anomalies',
+    color: 'hsl(var(--chart-2))',
+  },
 };
 
 export function DashboardChart() {
@@ -45,8 +56,12 @@ export function DashboardChart() {
       </CardHeader>
       <CardContent>
         <div className="h-[300px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={data} margin={{ top: 5, right: 20, left: -10, bottom: 0 }}>
+          <ChartContainer config={chartConfig} className="h-full w-full">
+            <AreaChart
+              data={data}
+              margin={{ top: 5, right: 20, left: -10, bottom: 0 }}
+              accessibilityLayer
+            >
               <defs>
                 <linearGradient id="colorThreats" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.8} />
@@ -83,7 +98,7 @@ export function DashboardChart() {
                 dot={false}
               />
             </AreaChart>
-          </ResponsiveContainer>
+          </ChartContainer>
         </div>
       </CardContent>
     </Card>
