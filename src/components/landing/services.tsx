@@ -1,21 +1,21 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ShieldCheck, Siren, Activity } from "lucide-react";
+import { ShieldCheck, ShieldAlert, Target, HeartPulse } from "lucide-react";
 
 const services = [
   {
-    icon: Activity,
-    title: "Threat Monitoring",
-    description: "24/7 real-time monitoring of your infrastructure to detect and neutralize threats before they impact your business.",
+    icon: ShieldAlert,
+    title: "Managed SOC & MDR",
+    description: "Our 24/7 Security Operations Center provides Managed Detection and Response to neutralize threats in real-time.",
   },
   {
-    icon: Siren,
-    title: "Incident Response",
-    description: "Rapid response and remediation services to contain security incidents and minimize damage.",
+    icon: HeartPulse,
+    title: "Vulnerability Management",
+    description: "Continuous scanning and proactive remediation of vulnerabilities across your digital infrastructure.",
   },
   {
-    icon: ShieldCheck,
-    title: "Vulnerability Assessment",
-    description: "Proactive identification and analysis of security vulnerabilities in your systems and applications.",
+    icon: Target,
+    title: "Penetration Testing",
+    description: "Simulate real-world attacks to identify and fix critical security weaknesses before attackers can exploit them.",
   },
 ];
 
