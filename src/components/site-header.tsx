@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Shield } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
 
@@ -14,6 +14,7 @@ const mainNav = [
   { href: '/', label: 'Home' },
   { href: '/community', label: 'Community Hub' },
   { href: '/integrations', label: 'Integrations' },
+  { href: '/pricing', label: 'Pricing' },
 ];
 
 export function SiteHeader() {

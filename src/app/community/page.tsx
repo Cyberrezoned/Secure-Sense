@@ -67,7 +67,7 @@ export default function CommunityPage() {
                         <p className="text-sm text-muted-foreground">By {post.author} on {post.date}</p>
                       </CardContent>
                       <CardFooter>
-                        <Button variant="link" asChild><Link href="#">Read More</Link></Button>
+                        <Button variant="link" asChild><Link href={`/community/blog/${post.id}`}>Read More</Link></Button>
                       </CardFooter>
                     </div>
                   </div>
