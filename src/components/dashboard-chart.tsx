@@ -5,15 +5,15 @@ import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YA
 import { ChartTooltipContent, ChartContainer } from '@/components/ui/chart';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 
-const generateData = () => {
+const generateInitialData = () => {
   const data = [];
   const now = new Date();
-  for (let i = 10; i >= 0; i--) {
-    const time = new Date(now.getTime() - i * 1000);
+  for (let i = 11; i >= 0; i--) {
+    const time = new Date(now.getTime() - i * 2000);
     data.push({
-      time: time.toLocaleTimeString([], { second: '2-digit' }),
-      attacks: Math.floor(Math.random() * (40 - 10 + 1) + 10),
-      defenses: Math.floor(Math.random() * (80 - 20 + 1) + 20),
+      time: time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+      attacks: Math.floor(Math.random() * 20),
+      defenses: Math.floor(Math.random() * 5),
     });
   }
   return data;
@@ -22,24 +22,34 @@ const generateData = () => {
 const chartConfig = {
   attacks: {
     label: 'Simulated Attacks',
-    color: 'hsl(var(--chart-1))',
+    color: 'hsl(var(--destructive))',
   },
   defenses: {
     label: 'Threats Neutralized',
-    color: 'hsl(var(--chart-2))',
+    color: 'hsl(var(--primary))',
   },
 };
 
 export function DashboardChart() {
-  const [data, setData] = useState(generateData());
+  const [data, setData] = useState(generateInitialData());
 
   useEffect(() => {
     const interval = setInterval(() => {
       setData(currentData => {
+        const now = new Date();
+        const attackSpike = Math.random() > 0.9; // 10% chance of a spike
+        const newAttacks = attackSpike 
+          ? Math.floor(Math.random() * 30 + 70) // 70-100
+          : Math.floor(Math.random() * 30); // 0-30
+
+        const defenseResponse = newAttacks > 40
+          ? Math.floor(Math.random() * 20 + newAttacks * 0.8) // Respond to high attacks
+          : Math.floor(Math.random() * 20); // Normal defense
+
         const newDataPoint = {
-          time: new Date().toLocaleTimeString([], { second: '2-digit' }),
-          attacks: Math.floor(Math.random() * (40 - 5 + 1) + 5),
-          defenses: Math.floor(Math.random() * (80 - 20 + 1) + 20),
+          time: now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+          attacks: newAttacks,
+          defenses: Math.min(newAttacks, defenseResponse), // Can't neutralize more than what attacked
         };
         return [...currentData.slice(1), newDataPoint];
       });
@@ -64,17 +74,17 @@ export function DashboardChart() {
             >
               <defs>
                 <linearGradient id="colorAttacks" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="hsl(var(--chart-1))" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="hsl(var(--chart-1))" stopOpacity={0} />
+                  <stop offset="5%" stopColor="hsl(var(--destructive))" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="hsl(var(--destructive))" stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="colorDefenses" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="hsl(var(--chart-2))" stopOpacity={0.7} />
-                  <stop offset="95%" stopColor="hsl(var(--chart-2))" stopOpacity={0} />
+                  <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.7} />
+                  <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border) / 0.5)" />
-              <XAxis dataKey="time" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-              <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+              <XAxis dataKey="time" stroke="hsl(var(--muted-foreground))" fontSize={12} tick={{ fill: 'hsl(var(--muted-foreground))' }} />
+              <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tick={{ fill: 'hsl(var(--muted-foreground))' }} domain={[0, 'dataMax + 20']} />
               <Tooltip
                 cursor={{ fill: 'hsl(var(--background) / 0.5)' }}
                 content={<ChartTooltipContent indicator="dot" />}
@@ -82,7 +92,7 @@ export function DashboardChart() {
               <Area
                 type="monotone"
                 dataKey="attacks"
-                stroke="hsl(var(--chart-1))"
+                stroke="hsl(var(--destructive))"
                 fillOpacity={1}
                 fill="url(#colorAttacks)"
                 strokeWidth={2}
@@ -91,7 +101,7 @@ export function DashboardChart() {
               <Area
                 type="monotone"
                 dataKey="defenses"
-                stroke="hsl(var(--chart-2))"
+                stroke="hsl(var(--primary))"
                 fillOpacity={1}
                 fill="url(#colorDefenses)"
                 strokeWidth={2}

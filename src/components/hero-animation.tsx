@@ -100,7 +100,7 @@ export function HeroAnimation() {
       const endPoint = new THREE.Vector3().setFromSphericalCoords(GLOBE_RADIUS, Math.acos(1 - 2 * Math.random()), 2 * Math.PI * Math.random());
       
       const isRedArc = Math.random() > 0.7; // 30% chance of being a red "attack" arc
-      const color = isRedArc ? 'hsl(0, 72%, 51%)' : 'hsl(221, 83%, 80%)';
+      const color = isRedArc ? 'hsl(var(--destructive))' : 'hsl(var(--primary))';
 
       const arc = createArc(startPoint, endPoint, color);
       arcsGroup.add(arc);
@@ -116,7 +116,7 @@ export function HeroAnimation() {
     // --- Lights ---
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
     scene.add(ambientLight);
-    const directionalLight = new THREE.DirectionalLight('hsl(221, 83%, 53%)', 1);
+    const directionalLight = new THREE.DirectionalLight('hsl(var(--primary))', 1);
     directionalLight.position.set(5, 3, 5);
     scene.add(directionalLight);
     
@@ -144,9 +144,11 @@ export function HeroAnimation() {
 
     // --- Resize Handler ---
     const handleResize = () => {
-      camera.aspect = currentMount.clientWidth / currentMount.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
+      if (currentMount) {
+        camera.aspect = currentMount.clientWidth / currentMount.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
+      }
     };
     window.addEventListener('resize', handleResize);
 
@@ -155,7 +157,7 @@ export function HeroAnimation() {
     return () => {
       window.removeEventListener('resize', handleResize);
       clearInterval(arcInterval);
-      if (currentMount) {
+      if (currentMount && renderer.domElement.parentElement === currentMount) {
         currentMount.removeChild(renderer.domElement);
       }
     };
