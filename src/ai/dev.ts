@@ -1,1 +1,6 @@
-// Flows will be imported for their side effects in this file.
+import { config } from 'dotenv';
+config();
+
+import '@/ai/flows/content-moderation.ts';
+import '@/ai/flows/tag-relevant-articles.ts';
+import '@/ai/flows/summarize-security-articles.ts';
