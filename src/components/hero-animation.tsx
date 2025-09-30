@@ -23,13 +23,16 @@ export function HeroAnimation() {
     renderer.setPixelRatio(window.devicePixelRatio);
     currentMount.appendChild(renderer.domElement);
 
+    const blueColor = new THREE.Color('hsl(210, 90%, 60%)');
+    const redColor = new THREE.Color('hsl(0, 72%, 51%)');
+
     // --- Globe ---
     const globeGeometry = new THREE.SphereGeometry(GLOBE_RADIUS, 64, 64);
     const globeMaterial = new THREE.MeshPhongMaterial({
-      color: 'hsl(210, 90%, 60%)',
+      color: blueColor,
       transparent: true,
       opacity: 0.1,
-      shininess: 50
+      shininess: 50,
     });
     const globe = new THREE.Mesh(globeGeometry, globeMaterial);
     scene.add(globe);
@@ -37,7 +40,7 @@ export function HeroAnimation() {
     // --- Wireframe ---
     const wireframeGeometry = new THREE.SphereGeometry(GLOBE_RADIUS + 0.01, 32, 32);
     const wireframeMaterial = new THREE.MeshBasicMaterial({
-      color: 'hsl(210, 90%, 60%)',
+      color: blueColor,
       wireframe: true,
       transparent: true,
       opacity: 0.1
@@ -72,8 +75,9 @@ export function HeroAnimation() {
     // --- Arcs ---
     const arcsGroup = new THREE.Group();
     scene.add(arcsGroup);
+    const arcs: { line: THREE.Line, birth: number, lifespan: number }[] = [];
 
-    function createArc(start: THREE.Vector3, end: THREE.Vector3, color: THREE.Color) {
+    function createArc(start: THREE.Vector3, end: THREE.Vector3) {
       const v = new THREE.Vector3().subVectors(end, start);
       const mid = new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5);
       const midLength = mid.length();
@@ -85,11 +89,8 @@ export function HeroAnimation() {
       const geometry = new THREE.BufferGeometry().setFromPoints(points);
       
       const colors = new Float32Array(points.length * 3);
-      const blueColor = new THREE.Color('hsl(210, 90%, 60%)');
-      const redColor = new THREE.Color('hsl(0, 72%, 51%)');
-
       for (let i = 0; i < points.length; i++) {
-        const t = i / (points.length -1);
+        const t = i / (points.length - 1);
         const interpolatedColor = blueColor.clone().lerp(redColor, t);
         interpolatedColor.toArray(colors, i * 3);
       }
@@ -99,7 +100,7 @@ export function HeroAnimation() {
       const material = new THREE.LineBasicMaterial({
         vertexColors: true,
         transparent: true,
-        opacity: 0.6,
+        opacity: 0,
         blending: THREE.AdditiveBlending,
         linewidth: 1.5,
       });
@@ -112,17 +113,9 @@ export function HeroAnimation() {
       const startPoint = new THREE.Vector3().setFromSphericalCoords(GLOBE_RADIUS, Math.acos(1 - 2 * Math.random()), 2 * Math.PI * Math.random());
       const endPoint = new THREE.Vector3().setFromSphericalCoords(GLOBE_RADIUS, Math.acos(1 - 2 * Math.random()), 2 * Math.PI * Math.random());
       
-      const color = new THREE.Color();
-      color.setHSL(Math.random(), 0.7, 0.6);
-
-      const arc = createArc(startPoint, endPoint, color);
+      const arc = createArc(startPoint, endPoint);
       arcsGroup.add(arc);
-
-      setTimeout(() => {
-        arc.geometry.dispose();
-        (arc.material as THREE.Material).dispose();
-        arcsGroup.remove(arc);
-      }, Math.random() * 3000 + 2000);
+      arcs.push({ line: arc, birth: Date.now(), lifespan: Math.random() * 4000 + 2000 });
     }
 
 
@@ -140,7 +133,7 @@ export function HeroAnimation() {
     controls.enablePan = false;
     controls.enableZoom = false;
     controls.autoRotate = true;
-    controls.autoRotateSpeed = 0.4;
+    controls.autoRotateSpeed = 0.3;
     controls.minDistance = 10;
     controls.maxDistance = 20;
 
@@ -157,10 +150,38 @@ export function HeroAnimation() {
     const animate = () => {
       const elapsedTime = clock.getElapsedTime();
 
+      // Smooth color transition for globe and wireframe
+      const colorFactor = (Math.sin(elapsedTime * 0.5) + 1) / 2; // oscillates between 0 and 1
+      const currentColor = blueColor.clone().lerp(redColor, colorFactor);
+      (globe.material as THREE.MeshPhongMaterial).color.copy(currentColor);
+      (wireframe.material as THREE.MeshBasicMaterial).color.copy(currentColor);
+      (points.material as THREE.PointsMaterial).color.copy(currentColor.clone().offsetHSL(0,0,0.1));
+
+      // Animate arcs opacity
+      const now = Date.now();
+      for (let i = arcs.length - 1; i >= 0; i--) {
+          const arcData = arcs[i];
+          const age = now - arcData.birth;
+          const lifespan = arcData.lifespan;
+          const material = arcData.line.material as THREE.LineBasicMaterial;
+          
+          if (age > lifespan) {
+              // Fade out
+              material.opacity -= 0.02;
+              if (material.opacity <= 0) {
+                  arcsGroup.remove(arcData.line);
+                  arcData.line.geometry.dispose();
+                  material.dispose();
+                  arcs.splice(i, 1);
+              }
+          } else if (age < 1000) {
+              // Fade in
+              material.opacity = Math.min(material.opacity + 0.03, 0.7);
+          }
+      }
+
       controls.update();
       points.rotation.y += 0.0005;
-      wireframe.rotation.y += 0.0003;
-      globe.rotation.y += 0.0003;
 
       // Subtle mouse following effect
       camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
@@ -172,7 +193,7 @@ export function HeroAnimation() {
     };
     animate();
 
-    const arcInterval = setInterval(addRandomArc, 300);
+    const arcInterval = setInterval(addRandomArc, 250);
 
     // --- Resize Handler ---
     const handleResize = () => {
