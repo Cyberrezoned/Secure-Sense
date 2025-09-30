@@ -5,16 +5,16 @@ import Link from 'next/link';
 
 export function Hero() {
   return (
-    <section className="relative w-full h-[80vh] min-h-[500px] flex items-center justify-center text-center overflow-hidden">
+    <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center text-center overflow-hidden">
       <HeroAnimation />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
       <div className="container relative z-10 px-4 md:px-6">
-        <div className="mx-auto max-w-3xl space-y-6">
-          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline">
+        <div className="mx-auto max-w-4xl space-y-6">
+          <h1 className="text-5xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl font-headline">
             Elite Cybersecurity,
             <span className="block text-primary glow-md">Engineered for Resilience.</span>
           </h1>
-          <p className="text-lg text-muted-foreground md:text-xl">
+          <p className="text-lg text-muted-foreground md:text-xl max-w-3xl mx-auto">
             Secure Sense delivers offensive and defensive solutions to protect your critical assets. From preemptive penetration testing to 24/7 managed detection and response, we are your trusted security partner.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

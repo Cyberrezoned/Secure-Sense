@@ -26,7 +26,7 @@ export function HeroAnimation() {
     // --- Globe ---
     const globeGeometry = new THREE.SphereGeometry(GLOBE_RADIUS, 64, 64);
     const globeMaterial = new THREE.MeshPhongMaterial({
-      color: 'hsl(221, 83%, 53%)',
+      color: 'hsl(210, 90%, 60%)',
       transparent: true,
       opacity: 0.1,
       shininess: 50
@@ -37,32 +37,32 @@ export function HeroAnimation() {
     // --- Wireframe ---
     const wireframeGeometry = new THREE.SphereGeometry(GLOBE_RADIUS + 0.01, 32, 32);
     const wireframeMaterial = new THREE.MeshBasicMaterial({
-      color: 'hsl(221, 83%, 53%)',
+      color: 'hsl(210, 90%, 60%)',
       wireframe: true,
       transparent: true,
-      opacity: 0.15
+      opacity: 0.1
     });
     const wireframe = new THREE.Mesh(wireframeGeometry, wireframeMaterial);
     scene.add(wireframe);
 
     // --- Points ---
     const pointsGeometry = new THREE.BufferGeometry();
-    const pointsCount = 3000;
+    const pointsCount = 5000;
     const posArray = new Float32Array(pointsCount * 3);
     for (let i = 0; i < pointsCount * 3; i++) {
       const u = Math.random();
       const v = Math.random();
       const theta = 2 * Math.PI * u;
       const phi = Math.acos(2 * v - 1);
-      const r = GLOBE_RADIUS + Math.random() * 0.2;
+      const r = GLOBE_RADIUS + Math.random() * 0.3;
       posArray[i * 3] = r * Math.sin(phi) * Math.cos(theta);
       posArray[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
       posArray[i * 3 + 2] = r * Math.cos(phi);
     }
     pointsGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
     const pointsMaterial = new THREE.PointsMaterial({
-      size: 0.02,
-      color: 'hsl(221, 83%, 70%)',
+      size: 0.015,
+      color: 'hsl(210, 90%, 70%)',
       transparent: true,
       blending: THREE.AdditiveBlending
     });
@@ -87,8 +87,9 @@ export function HeroAnimation() {
       const material = new THREE.LineBasicMaterial({
         color: color,
         transparent: true,
-        opacity: 0.7,
-        blending: THREE.AdditiveBlending
+        opacity: 0.6,
+        blending: THREE.AdditiveBlending,
+        linewidth: 1.5,
       });
 
       const arc = new THREE.Line(geometry, material);
@@ -109,38 +110,57 @@ export function HeroAnimation() {
         arc.geometry.dispose();
         (arc.material as THREE.Material).dispose();
         arcsGroup.remove(arc);
-      }, Math.random() * 4000 + 2000);
+      }, Math.random() * 3000 + 2000);
     }
 
 
     // --- Lights ---
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
     scene.add(ambientLight);
-    const directionalLight = new THREE.DirectionalLight('hsl(var(--primary))', 1);
+    const directionalLight = new THREE.DirectionalLight('hsl(var(--primary))', 1.5);
     directionalLight.position.set(5, 3, 5);
     scene.add(directionalLight);
     
     // --- Controls ---
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
     controls.enablePan = false;
     controls.enableZoom = false;
     controls.autoRotate = true;
-    controls.autoRotateSpeed = 0.5;
+    controls.autoRotateSpeed = 0.4;
+    controls.minDistance = 10;
+    controls.maxDistance = 20;
 
     // --- Animation Loop ---
+    let mouseX = 0;
+    let mouseY = 0;
+    const handleMouseMove = (event: MouseEvent) => {
+        mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+    }
+    document.addEventListener('mousemove', handleMouseMove);
+
+    const clock = new THREE.Clock();
     const animate = () => {
+      const elapsedTime = clock.getElapsedTime();
+
       controls.update();
-      points.rotation.y += 0.001;
-      wireframe.rotation.y += 0.0005;
-      globe.rotation.y += 0.0005;
+      points.rotation.y += 0.0005;
+      wireframe.rotation.y += 0.0003;
+      globe.rotation.y += 0.0003;
+
+      // Subtle mouse following effect
+      camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
+      camera.position.y += (mouseY * 0.5 - camera.position.y) * 0.05;
+      camera.lookAt(scene.position);
 
       renderer.render(scene, camera);
       requestAnimationFrame(animate);
     };
     animate();
 
-    const arcInterval = setInterval(addRandomArc, 400);
+    const arcInterval = setInterval(addRandomArc, 300);
 
     // --- Resize Handler ---
     const handleResize = () => {
@@ -156,6 +176,7 @@ export function HeroAnimation() {
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      document.removeEventListener('mousemove', handleMouseMove);
       clearInterval(arcInterval);
       if (currentMount && renderer.domElement.parentElement === currentMount) {
         currentMount.removeChild(renderer.domElement);

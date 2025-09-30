@@ -38,21 +38,21 @@
     --card-foreground: 210 40% 98%;
     --popover: 224 71% 4%;
     --popover-foreground: 210 40% 98%;
-    --primary: 221 83% 53%;
+    --primary: 210 90% 60%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 217 33% 17%;
+    --secondary: 217 33% 10%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217 33% 17%;
     --muted-foreground: 215 20% 65%;
     --accent: 0 72% 51%;
     --accent-foreground: 210 40% 98%;
-    --destructive: 0 72% 51%;
+    --destructive: 0 63% 51%;
     --destructive-foreground: 210 40% 98%;
     --border: 217 33% 17%;
     --input: 217 33% 17%;
-    --ring: 221 83% 53%;
+    --ring: 210 90% 60%;
     --chart-1: 0 72% 51%;
-    --chart-2: 221 83% 53%;
+    --chart-2: 210 90% 60%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
@@ -70,12 +70,12 @@
   }
 
   .glow-sm {
-    @apply drop-shadow-[0_0_4px_hsl(var(--primary)/0.8)];
+    @apply drop-shadow-[0_0_4px_hsl(var(--primary)/0.6)];
   }
   .glow-md {
-    @apply drop-shadow-[0_0_8px_hsl(var(--primary)/0.8)];
+    @apply drop-shadow-[0_0_8px_hsl(var(--primary)/0.6)];
   }
   .glow-lg {
-    @apply drop-shadow-[0_0_12px_hsl(var(--primary)/0.8)];
+    @apply drop-shadow-[0_0_12px_hsl(var(--primary)/0.6)];
   }
 }

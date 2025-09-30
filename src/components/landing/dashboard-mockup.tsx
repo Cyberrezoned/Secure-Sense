@@ -39,11 +39,11 @@ export function DashboardMockup() {
         </p>
       </div>
 
-      <div className="mt-12 grid gap-6 lg:grid-cols-5">
+      <div className="mt-12 grid gap-8 lg:grid-cols-5">
         <div className="lg:col-span-3">
           <DashboardChart />
         </div>
-        <Card className="lg:col-span-2 bg-secondary/50 border-border/50">
+        <Card className="lg:col-span-2 bg-secondary border-border/50">
           <CardHeader>
             <CardTitle>Global Threat Map</CardTitle>
           </CardHeader>
@@ -62,15 +62,15 @@ export function DashboardMockup() {
         </Card>
       </div>
 
-      <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {stats.map((stat) => (
-          <Card key={stat.label} className="bg-secondary/50 border-border/50">
+          <Card key={stat.label} className="bg-secondary border-border/50">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">{stat.label}</CardTitle>
-              <stat.icon className="h-4 w-4 text-muted-foreground" />
+              <stat.icon className="h-5 w-5 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
+              <div className="text-3xl font-bold">{stat.value}</div>
               <p className="text-xs text-muted-foreground">{stat.change} from last period</p>
             </CardContent>
           </Card>

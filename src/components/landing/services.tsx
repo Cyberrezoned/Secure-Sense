@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ShieldCheck, ShieldAlert, Target, HeartPulse, Swords } from "lucide-react";
+import { ShieldCheck, Swords, HeartPulse } from "lucide-react";
 
 const services = [
   {
@@ -30,15 +30,15 @@ export function Services() {
           A comprehensive suite of security solutions tailored to your needs.
         </p>
       </div>
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service, index) => (
-          <Card key={service.title} className="group relative overflow-hidden bg-secondary/50 border-border/50 transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-2">
-             <div className={`absolute -top-1 -left-1 w-20 h-20 blur-3xl group-hover:w-40 group-hover:h-40 transition-all duration-500 ${index === 0 ? 'bg-accent/20' : 'bg-primary/20'}`} />
+          <Card key={service.title} className="group relative overflow-hidden bg-secondary border-border/50 transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-2">
+             <div className={`absolute -top-1 -left-1 w-24 h-24 blur-3xl group-hover:w-48 group-hover:h-48 transition-all duration-500 ${index === 0 ? 'bg-destructive/20' : 'bg-primary/20'}`} />
             <CardHeader>
-              <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-lg border ${index === 0 ? 'bg-accent/10 border-accent/20' : 'bg-primary/10 border-primary/20'}`}>
-                <service.icon className={`h-6 w-6 glow-sm ${index === 0 ? 'text-accent' : 'text-primary'}`} />
+              <div className={`mb-4 flex h-14 w-14 items-center justify-center rounded-lg border ${index === 0 ? 'bg-destructive/10 border-destructive/20' : 'bg-primary/10 border-primary/20'}`}>
+                <service.icon className={`h-7 w-7 glow-sm ${index === 0 ? 'text-destructive' : 'text-primary'}`} />
               </div>
-              <CardTitle className="font-headline">{service.title}</CardTitle>
+              <CardTitle className="font-headline text-xl">{service.title}</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">{service.description}</p>

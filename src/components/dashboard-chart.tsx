@@ -59,7 +59,7 @@ export function DashboardChart() {
   }, []);
 
   return (
-    <Card className="bg-secondary/50 border-border/50">
+    <Card className="bg-secondary border-border/50">
       <CardHeader>
         <CardTitle>Live Operations Feed</CardTitle>
         <CardDescription>Real-time Red Team vs. Blue Team activity.</CardDescription>
@@ -75,16 +75,16 @@ export function DashboardChart() {
               <defs>
                 <linearGradient id="colorAttacks" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="hsl(var(--destructive))" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="hsl(var(--destructive))" stopOpacity={0} />
+                  <stop offset="95%" stopColor="hsl(var(--destructive))" stopOpacity={0.1} />
                 </linearGradient>
                 <linearGradient id="colorDefenses" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.7} />
-                  <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0} />
+                  <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0.1} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border) / 0.5)" />
-              <XAxis dataKey="time" stroke="hsl(var(--muted-foreground))" fontSize={12} tick={{ fill: 'hsl(var(--muted-foreground))' }} />
-              <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tick={{ fill: 'hsl(var(--muted-foreground))' }} domain={[0, 'dataMax + 20']} />
+              <XAxis dataKey="time" stroke="hsl(var(--muted-foreground))" fontSize={12} tick={{ fill: 'hsl(var(--muted-foreground))' }} tickLine={false} axisLine={false} />
+              <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tick={{ fill: 'hsl(var(--muted-foreground))' }} domain={[0, 'dataMax + 20']} tickLine={false} axisLine={false} />
               <Tooltip
                 cursor={{ fill: 'hsl(var(--background) / 0.5)' }}
                 content={<ChartTooltipContent indicator="dot" />}
