@@ -30,7 +30,7 @@ function SubmitButton() {
 }
 
 export function ContentAnalysis() {
-  const [state, formAction] = useActionState(analyzeContent, {});
+  const [state, formAction] = useActionState(analyzeContent, {} as any);
 
   return (
     <Card className="bg-secondary border-border/50">
@@ -67,7 +67,7 @@ function AnalysisResults({ result }: { result: AnalysisResult }) {
     <div className="mt-6 space-y-6">
       <Card className="bg-background">
         <CardHeader className="flex flex-row items-center gap-2 space-y-0">
-          {result.moderation.isSafe ? (
+          {result.isSafe ? (
             <CheckCircle className="h-5 w-5 text-green-500" />
           ) : (
             <XCircle className="h-5 w-5 text-red-500" />
@@ -75,10 +75,10 @@ function AnalysisResults({ result }: { result: AnalysisResult }) {
           <CardTitle>Content Moderation</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className={result.moderation.isSafe ? 'text-green-400' : 'text-red-400'}>
-            Status: {result.moderation.isSafe ? 'Safe for community' : 'Not safe'}
+          <p className={result.isSafe ? 'text-green-400' : 'text-red-400'}>
+            Status: {result.isSafe ? 'Safe for community' : 'Not safe'}
           </p>
-          <p className="text-sm text-muted-foreground mt-1">Reason: {result.moderation.reason}</p>
+          <p className="text-sm text-muted-foreground mt-1">Reason: {result.reason}</p>
         </CardContent>
       </Card>
 
@@ -88,7 +88,7 @@ function AnalysisResults({ result }: { result: AnalysisResult }) {
           <CardTitle>AI Summary</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground">{result.summary.summary}</p>
+          <p className="text-sm text-muted-foreground">{result.summary}</p>
         </CardContent>
       </Card>
 
@@ -102,7 +102,7 @@ function AnalysisResults({ result }: { result: AnalysisResult }) {
             <div>
               <h4 className="font-semibold text-sm mb-2">Tags:</h4>
               <div className="flex flex-wrap gap-2">
-                {result.tags.tags.map(tag => (
+                {result.tags.map((tag: string) => (
                   <Badge key={tag} variant="secondary">{tag}</Badge>
                 ))}
               </div>
@@ -110,7 +110,7 @@ function AnalysisResults({ result }: { result: AnalysisResult }) {
             <div>
               <h4 className="font-semibold text-sm mb-2">Categories:</h4>
               <div className="flex flex-wrap gap-2">
-                {result.tags.categories.map(cat => (
+                {result.categories.map((cat: string) => (
                   <Badge key={cat} variant="outline">{cat}</Badge>
                 ))}
               </div>

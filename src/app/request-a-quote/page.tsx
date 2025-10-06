@@ -40,7 +40,7 @@ function SubmitButton() {
 
 
 export default function RequestQuotePage() {
-  const [state, formAction] = useActionState(requestPricing, {});
+  const [state, formAction] = useActionState(requestPricing, {} as any);
 
   return (
     <div className="container py-12 px-4 md:px-6">

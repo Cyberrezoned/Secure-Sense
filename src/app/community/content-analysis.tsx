@@ -30,7 +30,7 @@ function SubmitButton() {
 }
 
 export function ContentAnalysis() {
-  const [state, formAction] = useActionState(analyzeContent, {});
+  const [state, formAction] = useActionState(analyzeContent, {} as any);
 
   return (
     <Card className="bg-secondary/50 border-border/50">

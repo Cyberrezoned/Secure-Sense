@@ -27,7 +27,7 @@ The project also integrates AI functionalities using **Google's Genkit**, showca
 - **Modern Frontend**: Built with **Next.js 15** and the App Router for a fast, server-rendered React experience.
 - **Sleek UI/UX**: Styled with **Tailwind CSS** and a component library from **shadcn/ui**, ensuring a consistent and visually appealing design.
 - **User Authentication**: Secure user sign-up and login functionality powered by **Firebase Authentication**.
-- **Quote Request System**: Customers can request quotes, and administrators receive instant email notifications via **Nodemailer**.
+- **Quote Request System**: Customers can request quotes, and administrators receive instant email notifications. The app now prefers the Resend service (if configured) with an SMTP/Nodemailer fallback.
 - **Data Visualization**: Interactive charts and graphs implemented with **Recharts**.
 - **3D Graphics**: Integration of **Three.js** for potential interactive 3D elements.
 - **AI Integration**: Utilizes **Google's Genkit** for building and managing AI-powered features.
@@ -103,12 +103,25 @@ NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET="your-storage-bucket"
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID="your-messaging-sender-id"
 NEXT_PUBLIC_FIREBASE_APP_ID="your-app-id"
 
-# Nodemailer (SMTP) Configuration for Quote Emails
-# Example for Gmail. Use your email provider's details.
-SMTP_HOST="smtp.gmail.com"
+## Email / Resend configuration
+
+The project supports Resend as the primary mailer. If you configure `RESEND_API_KEY`, the app will use Resend; otherwise it falls back to Nodemailer SMTP.
+
+Add these to `.env.local`:
+
+```env
+# Resend (preferred)
+RESEND_API_KEY=your_resend_api_key
+RESEND_FROM=no-reply@yourdomain.com   # verified sender
+ADMIN_EMAIL=team@yourdomain.com       # recipient for quote requests
+RESEND_WEBHOOK_SECRET=your_webhook_secret # optional, for verifying webhooks
+
+# Optional SMTP fallback (Nodemailer)
+SMTP_HOST=smtp.example.com
 SMTP_PORT=465
-SMTP_USER="your-email@example.com"
-SMTP_PASS="your-app-password" # For Gmail, use an App Password
+SMTP_USER=your-email@example.com
+SMTP_PASS=your-smtp-password
+```
 
 # Upstash Redis for Rate Limiting
 UPSTASH_REDIS_REST_URL="your-upstash-redis-rest-url"

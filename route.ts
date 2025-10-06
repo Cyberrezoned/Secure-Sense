@@ -1,5 +1,9 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+import React from 'react';
+import PricingRequestEmail from './src/emails/PricingRequestEmail';
+import sendResendEmail from './src/lib/resend';
 
 export async function POST(request: NextRequest) {
   // 1. Get the form data from the request
@@ -47,21 +51,53 @@ export async function POST(request: NextRequest) {
 
   // 3. Define the email options
   const mailOptions = {
-    from: `"Your Website" <${process.env.SMTP_USER}>`, // sender address
-    to: 'rythecyber@proton.me', // your email address
+    from: process.env.RESEND_FROM || `"Your Website" <${process.env.SMTP_USER}>`, // sender address (prefer RESEND_FROM)
+    to: process.env.ADMIN_EMAIL || 'rythecyber@proton.me', // recipient (ADMIN_EMAIL recommended)
     subject: 'Quote Request Received', // Subject line
     text: text,
     html: html,
   };
 
-  // 4. Send the email
-  try {
-    await transporter.sendMail(mailOptions);
-    console.log('Quote request email sent successfully.');
-  } catch (error) {
-    console.error('Error sending email:', error);
-    // Decide if you want to return an error to the user if the email fails
-    // For now, we'll just log it and continue.
+  // 4. Send the email — prefer Resend if API key is available, otherwise fall back to SMTP
+  if (process.env.RESEND_API_KEY) {
+    try {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      const from = process.env.RESEND_FROM || `"Your Website" <${process.env.SMTP_USER}>`;
+      await sendResendEmail({
+        from,
+        to: mailOptions.to,
+        subject: mailOptions.subject,
+        html: mailOptions.html,
+        component: PricingRequestEmail,
+        props: {
+          companyName: String(quoteData.companyName || ''),
+          contactEmail: String(quoteData.email || ''),
+          employees: String(quoteData.employees || ''),
+          services: String(quoteData.services || ''),
+          message: String(quoteData.message || ''),
+        },
+      });
+      console.log('Quote request email sent successfully via Resend.');
+    } catch (error) {
+      console.error('Error sending email via Resend:', error);
+      // If Resend fails, attempt SMTP as a fallback
+      try {
+        await transporter.sendMail(mailOptions);
+        console.log('Quote request email sent successfully via SMTP fallback.');
+      } catch (smtpError) {
+        console.error('SMTP fallback also failed:', smtpError);
+      }
+    }
+  } else {
+    // No Resend key configured — use existing SMTP
+    try {
+      await transporter.sendMail(mailOptions);
+      console.log('Quote request email sent successfully.');
+    } catch (error) {
+      console.error('Error sending email:', error);
+      // Decide if you want to return an error to the user if the email fails
+      // For now, we'll just log it and continue.
+    }
   }
 
   // 5. Return a success response to the client
