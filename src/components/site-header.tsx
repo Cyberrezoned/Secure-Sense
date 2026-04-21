@@ -6,21 +6,29 @@ import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu } from 'lucide-react';
+import { Menu, ArrowRight } from 'lucide-react';
 import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
-import { ArrowRight } from 'lucide-react';
 
-const mainNav = [
+const defaultNav = [
   { href: '/', label: 'Home' },
   { href: '/community', label: 'Community Hub' },
   { href: '/integrations', label: 'Integrations' },
   { href: '/itskillcenter', label: 'IT Skill Center' },
 ];
 
+const homeNav = [
+  { href: '#about', label: './about' },
+  { href: '#skills', label: './skills' },
+  { href: '#experience', label: './experience' },
+  { href: '#projects', label: './projects' },
+  { href: '#contact', label: './contact' },
+];
+
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const navItems = pathname === '/' ? homeNav : defaultNav;
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -31,7 +39,7 @@ export function SiteHeader() {
             <span className="hidden font-bold sm:inline-block">Secure Sense</span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
-            {mainNav.map((item) => (
+            {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -55,7 +63,6 @@ export function SiteHeader() {
           </Button>
         </div>
 
-        {/* Mobile Menu */}
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <Button
@@ -73,7 +80,7 @@ export function SiteHeader() {
             </Link>
             <div className="my-4 h-px w-full bg-border" />
             <div className="flex flex-col space-y-4">
-              {mainNav.map((item) => (
+              {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -88,11 +95,11 @@ export function SiteHeader() {
               ))}
             </div>
             <div className="mt-auto flex flex-col space-y-2 pt-4">
-               <Button asChild className="glow-sm">
+              <Button asChild className="glow-sm">
                 <Link href="/request-a-quote" onClick={() => setOpen(false)}>
                   Request a Quote
                   <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
+                </Link>
               </Button>
             </div>
           </SheetContent>

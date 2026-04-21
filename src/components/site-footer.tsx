@@ -13,7 +13,7 @@ export function SiteFooter() {
               <span className="font-bold">Secure Sense</span>
             </Link>
             <p className="text-center text-sm text-muted-foreground sm:text-left">
-              The future of cybersecurity, today.
+              Built with <span className="text-primary">security-first</span> principles.
             </p>
           </div>
           <div className="flex items-center space-x-4">
@@ -32,7 +32,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="mt-8 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Secure Sense. All rights reserved.
+          © {new Date().getFullYear()} Victor Arinze Chidiebere. All rights reserved.
         </div>
       </div>
     </footer>
