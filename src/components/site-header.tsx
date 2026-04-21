@@ -19,6 +19,7 @@ const defaultNav = [
 
 const homeNav = [
   { href: '#about', label: './about' },
+  { href: '#chatbot', label: './chatbot' },
   { href: '#skills', label: './skills' },
   { href: '#experience', label: './experience' },
   { href: '#projects', label: './projects' },

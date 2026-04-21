@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { ComplianceChatbot } from '@/components/compliance-chatbot';
 
 export default function Home() {
   useEffect(() => {
@@ -147,9 +148,11 @@ export default function Home() {
         </div>
       </section>
 
+      <ComplianceChatbot />
+
       <section id="skills">
         <div className="section-header">
-          <span className="section-num">03</span>
+          <span className="section-num">04</span>
           <h2 className="section-title">Skills</h2>
           <div className="section-line"></div>
         </div>
@@ -213,7 +216,7 @@ export default function Home() {
 
       <section id="experience">
         <div className="section-header">
-          <span className="section-num">04</span>
+          <span className="section-num">05</span>
           <h2 className="section-title">Experience</h2>
           <div className="section-line"></div>
         </div>
@@ -254,7 +257,7 @@ export default function Home() {
 
       <section id="projects">
         <div className="section-header">
-          <span className="section-num">05</span>
+          <span className="section-num">06</span>
           <h2 className="section-title">Projects</h2>
           <div className="section-line"></div>
         </div>
@@ -312,7 +315,7 @@ export default function Home() {
 
       <section id="contact">
         <div className="section-header">
-          <span className="section-num">06</span>
+          <span className="section-num">07</span>
           <h2 className="section-title">Contact</h2>
           <div className="section-line"></div>
         </div>
