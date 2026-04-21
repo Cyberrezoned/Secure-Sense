@@ -32,7 +32,7 @@ export default function Home() {
     <main>
       <section className="hero">
         <div className="hero-content">
-          <div className="hero-tag fade-up">// Cyber Lead · Red Team · Full-Stack Engineer</div>
+          <div className="hero-tag fade-up">// Cyber Lead · Red Team · Full-Stack Engineer · Certified Audit Network</div>
           <h1 className="fade-up delay-1">
             Victor<br />
             <span className="accent">Arinze</span><br />
@@ -43,7 +43,7 @@ export default function Home() {
             Based in <span className="highlight">Lagos, Nigeria</span> &mdash; Breaking systems, then building them better.
           </p>
           <p className="hero-subtitle fade-up delay-2">
-            Purpose-built to close the systemic compliance gap with a scalable platform that automates mapping, risk, and controls for ISO 27001, NDPR, PCI-DSS, SOC 2, and critical sector mandates.
+            Purpose-built to close the systemic compliance gap with a scalable platform that automates mapping, risk, and controls for ISO 27001, NDPR, PCI-DSS, SOC 2, and critical sector mandates — backed by professional body certified auditors: <strong>CISA</strong>, <strong>CEH</strong>, and <strong>CompTIA+</strong>.
           </p>
           <div className="hero-cta fade-up delay-3">
             <a href="#projects" className="btn filled">View Work</a>
@@ -54,6 +54,9 @@ export default function Home() {
             <span className="cert-badge">ISC2 CC</span>
             <span className="cert-badge">CNSP</span>
             <span className="cert-badge">CCEP</span>
+            <span className="cert-badge">CISA</span>
+            <span className="cert-badge">CEH</span>
+            <span className="cert-badge">CompTIA+</span>
             <span className="cert-badge">Cyber Lead @ ITSkillsCenter</span>
           </div>
         </div>
@@ -73,6 +76,9 @@ export default function Home() {
             </p>
             <p>
               My work spans the full attack surface: web applications, APIs, cloud infrastructure (AWS, Azure, GCP), and internal network security. I map findings to <strong>CVSS v3.1</strong>, PCI-DSS v4.0, CBN Cybersecurity Framework, and NDPR 2019.
+            </p>
+            <p>
+              I also lead a professional audit team with certified bodies in <strong>CISA</strong>, <strong>CEH</strong>, and <strong>CompTIA+</strong>, delivering assurance that combines technical red teaming with formal compliance auditing.
             </p>
             <p>
               On the engineering side, I build with Python/Django, React, and Next.js — and I bring a security-first mindset into every line of code. I'm also developing <strong>ForexEdge</strong>, an AI-powered forex trading platform.

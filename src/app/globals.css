@@ -141,10 +141,27 @@
   padding: 6rem 3rem 3rem;
   overflow: hidden;
   z-index: 1;
+  perspective: 1400px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(0,255,136,0.12), transparent 28%),
+              radial-gradient(circle at 80% 30%, rgba(0,200,255,0.08), transparent 25%),
+              linear-gradient(125deg, rgba(0,255,136,0.04) 0%, transparent 42%, rgba(0,200,255,0.04) 100%);
+  pointer-events: none;
+  z-index: 0;
+  transform: translateZ(-1px);
+  animation: heroGlow 14s ease-in-out infinite;
 }
 
 .hero-content {
   max-width: 900px;
+  position: relative;
+  z-index: 1;
+  transform-style: preserve-3d;
 }
 
 .hero-tag {
@@ -174,6 +191,8 @@
   color: var(--text-bright);
   letter-spacing: -0.01em;
   margin-bottom: 0.5rem;
+  text-shadow: 0 0 40px rgba(0,255,136,0.08);
+  animation: textGlow 8s ease-in-out infinite;
 }
 
 .hero h1 .accent {
@@ -242,6 +261,34 @@
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(-50%) translateX(0);
+  }
+  50% {
+    transform: translateY(-54%) translateX(2px);
+  }
+}
+
+@keyframes heroGlow {
+  0%, 100% {
+    opacity: 0.95;
+  }
+  50% {
+    opacity: 1;
+    transform: translateZ(-1px) scale(1.01);
+  }
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 40px rgba(0,255,136,0.08);
+  }
+  50% {
+    text-shadow: 0 0 60px rgba(0,255,136,0.2);
+  }
+}
+
 .hero-accent {
   position: absolute;
   right: 3rem;
@@ -253,6 +300,7 @@
   writing-mode: vertical-rl;
   letter-spacing: 0.2em;
   opacity: 0.5;
+  animation: float 8s ease-in-out infinite;
 }
 
 section {
@@ -356,6 +404,12 @@ section {
   padding: 0.4rem 0.9rem;
   letter-spacing: 0.1em;
   background: rgba(255, 184, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cert-badge:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 18px 40px rgba(255, 184, 0, 0.12);
 }
 
 .skills-grid {
@@ -368,12 +422,16 @@ section {
   border: 1px solid var(--border-dim);
   background: var(--bg2);
   padding: 1.75rem;
-  transition: border-color 0.2s, background 0.2s;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.35s ease, box-shadow 0.35s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .skill-card:hover {
   border-color: var(--border);
   background: var(--bg3);
+  transform: translateY(-10px) rotateX(4deg) rotateY(3deg);
+  box-shadow: 0 35px 70px rgba(0, 255, 136, 0.12);
 }
 
 .skill-card-icon {
@@ -506,7 +564,9 @@ section {
   padding: 2rem;
   position: relative;
   overflow: hidden;
-  transition: border-color 0.2s;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.35s ease, box-shadow 0.35s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .project-card::before {
@@ -521,6 +581,9 @@ section {
 
 .project-card:hover {
   border-color: var(--border);
+  background: rgba(17, 26, 20, 0.95);
+  transform: translateY(-10px) rotateX(5deg) rotateY(-2deg);
+  box-shadow: 0 35px 70px rgba(0, 255, 136, 0.14);
 }
 
 .project-type {
