@@ -5,8 +5,6 @@ import {
   type AnalyzeArticleOutput,
 } from '@/ai/flows/analyze-article-flow';
 import { z } from 'zod';
-import { Resend } from 'resend';
-import React from 'react';
 import PricingRequestEmail from '@/emails/PricingRequestEmail';
 import sendResendEmail from '@/lib/resend';
 
@@ -39,8 +37,12 @@ export async function analyzeContent(
 
 const pricingRequestSchema = z.object({
   companyName: z.string().min(1, "Company name is required"),
+  contactName: z.string().optional(),
   email: z.string().email(),
+  phone: z.string().optional(),
+  industry: z.string().optional(),
   employees: z.string().min(1, "Number of employees is required"),
+  timeline: z.string().optional(),
   services: z.array(z.string()).min(1, "Please select at least one service"),
   message: z.string().optional(),
 });
@@ -50,8 +52,12 @@ export async function requestPricing(_prevState: unknown, formData: FormData) {
   const services = formData.getAll('services');
   const data = {
     companyName: formData.get('companyName'),
+    contactName: formData.get('contactName'),
     email: formData.get('email'),
+    phone: formData.get('phone'),
+    industry: formData.get('industry'),
     employees: formData.get('employees'),
+    timeline: formData.get('timeline'),
     services,
     message: formData.get('message'),
   };
@@ -77,8 +83,12 @@ export async function requestPricing(_prevState: unknown, formData: FormData) {
   const html = `
     <h2>New Pricing Request</h2>
     <p><strong>Company:</strong> ${String(requestData.companyName)}</p>
+    <p><strong>Contact Name:</strong> ${String(requestData.contactName || '')}</p>
     <p><strong>Contact Email:</strong> ${String(requestData.email)}</p>
+    <p><strong>Phone:</strong> ${String(requestData.phone || '')}</p>
+    <p><strong>Industry:</strong> ${String(requestData.industry || '')}</p>
     <p><strong>Employees:</strong> ${String(requestData.employees)}</p>
+    <p><strong>Timeline:</strong> ${String(requestData.timeline || '')}</p>
     <p><strong>Services:</strong> ${servicesList}</p>
     <p><strong>Message:</strong></p>
     <p>${String(requestData.message || '')}</p>
@@ -100,8 +110,12 @@ export async function requestPricing(_prevState: unknown, formData: FormData) {
         component: PricingRequestEmail,
         props: {
           companyName: String(requestData.companyName),
+          contactName: String(requestData.contactName || ''),
           contactEmail: String(requestData.email),
+          phone: String(requestData.phone || ''),
+          industry: String(requestData.industry || ''),
           employees: String(requestData.employees),
+          timeline: String(requestData.timeline || ''),
           services: servicesList,
           message: String(requestData.message || ''),
         },

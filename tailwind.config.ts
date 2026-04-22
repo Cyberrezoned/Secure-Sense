@@ -17,9 +17,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['"Space Grotesk"', 'sans-serif'],
-        headline: ['"Space Grotesk"', 'sans-serif'],
-        code: ['monospace'],
+        body: ['"IBM Plex Sans"', 'sans-serif'],
+        headline: ['"Sora"', 'sans-serif'],
+        code: ['"IBM Plex Mono"', 'monospace'],
       },
       colors: {
         background: 'hsl(var(--background))',

@@ -2,16 +2,24 @@ import React from 'react';
 
 type Props = {
   companyName?: string;
+  contactName?: string;
   contactEmail?: string;
+  phone?: string;
+  industry?: string;
   employees?: string;
+  timeline?: string;
   services?: string;
   message?: string;
 };
 
 export default function PricingRequestEmail({
   companyName = '',
+  contactName = '',
   contactEmail = '',
+  phone = '',
+  industry = '',
   employees = '',
+  timeline = '',
   services = '',
   message = '',
 }: Props) {
@@ -28,12 +36,28 @@ export default function PricingRequestEmail({
                 <td>{companyName}</td>
               </tr>
               <tr>
+                <td style={{ fontWeight: 700, background: '#f8fafc' }}>Contact Name</td>
+                <td>{contactName}</td>
+              </tr>
+              <tr>
                 <td style={{ fontWeight: 700, background: '#f8fafc' }}>Contact Email</td>
                 <td>{contactEmail}</td>
               </tr>
               <tr>
+                <td style={{ fontWeight: 700, background: '#f8fafc' }}>Phone</td>
+                <td>{phone}</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 700, background: '#f8fafc' }}>Industry</td>
+                <td>{industry}</td>
+              </tr>
+              <tr>
                 <td style={{ fontWeight: 700, background: '#f8fafc' }}>Employees</td>
                 <td>{employees}</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 700, background: '#f8fafc' }}>Timeline</td>
+                <td>{timeline}</td>
               </tr>
               <tr>
                 <td style={{ fontWeight: 700, background: '#f8fafc' }}>Services</td>

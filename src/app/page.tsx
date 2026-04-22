@@ -1,379 +1,348 @@
-'use client';
+import Link from 'next/link';
+import {
+  Activity,
+  ArrowRight,
+  Bot,
+  Building2,
+  ChevronRight,
+  FileCheck2,
+  Fingerprint,
+  Landmark,
+  Lock,
+  Radar,
+  ShieldCheck,
+  Workflow,
+} from 'lucide-react';
 
-import { useEffect } from 'react';
-import { ComplianceChatbot } from '@/components/compliance-chatbot';
+import { PageHero } from '@/components/company/page-hero';
+import { SectionHeading } from '@/components/company/section-heading';
+import { CtaBanner } from '@/components/company/cta-banner';
+import { DashboardChart } from '@/components/dashboard-chart';
+import { Button } from '@/components/ui/button';
+
+const servicePillars = [
+  {
+    title: 'Offensive Security',
+    description:
+      'Penetration testing, red teaming, API reviews, and validation across web, cloud, identity, and internal environments.',
+    href: '/services',
+    icon: Fingerprint,
+  },
+  {
+    title: 'Managed Defense',
+    description:
+      'Threat monitoring, detection engineering, incident readiness, and remediation programs that stay aligned with business risk.',
+    href: '/services',
+    icon: Radar,
+  },
+  {
+    title: 'AI Compliance Platform',
+    description:
+      'Framework mapping, evidence workflows, control tracking, and executive reporting inside one operational platform.',
+    href: '/platform',
+    icon: Bot,
+  },
+  {
+    title: 'Security Engineering',
+    description:
+      'Secure architecture reviews, AppSec, DevSecOps, cloud hardening, and implementation support for high-growth teams.',
+    href: '/services',
+    icon: Workflow,
+  },
+];
+
+const sectors = [
+  {
+    title: 'Financial Services',
+    description: 'Support for PCI DSS, NDPR, API risk, fraud-adjacent controls, and resilient customer-facing systems.',
+    icon: Landmark,
+  },
+  {
+    title: 'Healthcare',
+    description: 'Protection for patient data, vendor ecosystems, cloud workloads, and audit-heavy security operations.',
+    icon: Building2,
+  },
+  {
+    title: 'Critical Infrastructure',
+    description: 'Programs that bridge IT, OT, and operational resilience across high-consequence environments.',
+    icon: Activity,
+  },
+  {
+    title: 'SaaS and Product Teams',
+    description: 'Application security, secure release pipelines, customer assurance, and scalable governance foundations.',
+    icon: Lock,
+  },
+];
+
+const platformModules = [
+  {
+    title: 'Compliance Copilot',
+    copy: 'Guide teams through ISO 27001, PCI DSS, SOC 2, NDPR, and evidence planning with AI-assisted workflows.',
+  },
+  {
+    title: 'Telemetry and Reporting',
+    copy: 'Surface live operational context, remediation progress, and stakeholder-ready summaries in one view.',
+  },
+  {
+    title: 'Workflow Automation',
+    copy: 'Route findings into engineering, GRC, and operations processes without losing traceability.',
+  },
+];
+
+const researchHighlights = [
+  'AI-assisted article analysis for research teams and security communities',
+  'Threat briefings, playbooks, and curated learning paths',
+  'A dedicated resource hub instead of burying thought leadership on the homepage',
+];
 
 export default function Home() {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const elements = document.querySelectorAll<HTMLElement>('.skill-card, .project-card, .timeline-item');
-
-    elements.forEach((el) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <main>
-      <section className="hero">
-        <div className="hero-content">
-          <div className="hero-tag fade-up">// Cyber Lead · Red Team · Full-Stack Engineer · Certified Audit Network</div>
-          <h1 className="fade-up delay-1">
-            Victor<br />
-            <span className="accent">Arinze</span><br />
-            Chidiebere
-          </h1>
-          <p className="hero-subtitle fade-up delay-2">
-            Penetration Tester &amp; Red Team Lead&nbsp; <span className="highlight">×</span> &nbsp;Python/Django Engineer<br />
-            Based in <span className="highlight">Lagos, Nigeria</span> &mdash; Breaking systems, then building them better.
-          </p>
-          <p className="hero-subtitle fade-up delay-2">
-            Purpose-built to close the systemic compliance gap with a scalable platform that automates mapping, risk, and controls for ISO 27001, NDPR, PCI-DSS, SOC 2, and critical sector mandates — backed by professional body certified auditors: <strong>CISA</strong>, <strong>CEH</strong>, and <strong>CompTIA+</strong>.
-          </p>
-          <div className="hero-cta fade-up delay-3">
-            <a href="#projects" className="btn filled">View Work</a>
-            <a href="#contact" className="btn">Get in Touch</a>
-            <a href="https://github.com/Cyberrezoned" className="btn" target="_blank" rel="noreferrer">GitHub ↗</a>
-          </div>
-          <div className="cert-row fade-up delay-4">
-            <span className="cert-badge">ISC2 CC</span>
-            <span className="cert-badge">CNSP</span>
-            <span className="cert-badge">CCEP</span>
-            <span className="cert-badge">CISA</span>
-            <span className="cert-badge">CEH</span>
-            <span className="cert-badge">CompTIA+</span>
-            <span className="cert-badge">Cyber Lead @ ITSkillsCenter</span>
-          </div>
-        </div>
-        <div className="hero-accent">PENETRATION TESTING · RED TEAM · DEVSECOPS · API SECURITY</div>
-      </section>
-
-      <section id="about">
-        <div className="section-header">
-          <span className="section-num">01</span>
-          <h2 className="section-title">About</h2>
-          <div className="section-line"></div>
-        </div>
-        <div className="about-grid">
-          <div className="about-text">
-            <p>
-              I'm Victor — Cyber Lead and Red Team Lead at <strong>ITSkillsCenter Cyber Division</strong>, Lagos. I lead a penetration testing team with a mandate to find what defenders miss.
-            </p>
-            <p>
-              My work spans the full attack surface: web applications, APIs, cloud infrastructure (AWS, Azure, GCP), and internal network security. I map findings to <strong>CVSS v3.1</strong>, PCI-DSS v4.0, CBN Cybersecurity Framework, and NDPR 2019.
-            </p>
-            <p>
-              I also lead a professional audit team with certified bodies in <strong>CISA</strong>, <strong>CEH</strong>, and <strong>CompTIA+</strong>, delivering assurance that combines technical red teaming with formal compliance auditing.
-            </p>
-            <p>
-              On the engineering side, I build with Python/Django, React, and Next.js — and I bring a security-first mindset into every line of code. I'm also developing <strong>ForexEdge</strong>, an AI-powered forex trading platform.
-            </p>
-            <p>
-              B.Eng. Petroleum Engineering — FUPRE (2025). Currently enrolled at <strong>University of the People</strong>.
-            </p>
-          </div>
-          <div className="about-stats">
-            <div className="stat-block">
-              <span className="stat-num">3+</span>
-              <span className="stat-label">Certs Held</span>
-            </div>
-            <div className="stat-block">
-              <span className="stat-num">5+</span>
-              <span className="stat-label">Years Experience</span>
-            </div>
-            <div className="stat-block">
-              <span className="stat-num">OWASP</span>
-              <span className="stat-label">Top 10 Specialist</span>
-            </div>
-            <div className="stat-block">
-              <span className="stat-num">NG</span>
-              <span className="stat-label">Lagos, Nigeria</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="compliance">
-        <div className="section-header">
-          <span className="section-num">02</span>
-          <h2 className="section-title">Compliance Platform</h2>
-          <div className="section-line"></div>
-        </div>
-        <div className="about-grid">
-          <div className="about-text">
-            <p>
-              We are purpose-built to address the systemic compliance gap affecting organizations across multiple industry verticals.
-            </p>
-            <p>
-              Our platform provides a scalable compliance infrastructure that automates regulatory mapping, risk assessment, and control implementation — enabling businesses to maintain continuous compliance posture against frameworks such as <strong>ISO 27001</strong>, <strong>NDPR</strong>, <strong>PCI-DSS</strong>, <strong>SOC 2</strong>, and sector-specific mandates.
-            </p>
-            <p>
-              With increasing regulatory pressure across fintech, healthcare, and critical infrastructure, we built a unified, technology-driven compliance layer that reduces operational overhead while ensuring audit readiness at all times.
-            </p>
-          </div>
-          <div className="about-stats">
-            <div className="stat-block">
-              <span className="stat-num">Unified</span>
-              <span className="stat-label">Compliance Layer</span>
-            </div>
-            <div className="stat-block">
-              <span className="stat-num">Automated</span>
-              <span className="stat-label">Risk & Controls</span>
-            </div>
-            <div className="stat-block">
-              <span className="stat-num">Continuous</span>
-              <span className="stat-label">Audit Readiness</span>
-            </div>
-            <div className="stat-block">
-              <span className="stat-num">Sector</span>
-              <span className="stat-label">Fintech · Healthcare · Infrastructure</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <ComplianceChatbot />
-
-      <section id="skills">
-        <div className="section-header">
-          <span className="section-num">04</span>
-          <h2 className="section-title">Skills</h2>
-          <div className="section-line"></div>
-        </div>
-        <div className="skills-grid">
-          <div className="skill-card">
-            <div className="skill-card-icon">OFFENSIVE_SEC</div>
-            <h3>Penetration Testing</h3>
-            <div className="skill-tags">
-              <span className="tag">Burp Suite Pro</span>
-              <span className="tag">Nmap</span>
-              <span className="tag">Metasploit</span>
-              <span className="tag">BloodHound</span>
-              <span className="tag">CrackMapExec</span>
-              <span className="tag">OWASP Top 10</span>
-              <span className="tag">API Security</span>
-              <span className="tag">CVSS v3.1</span>
-            </div>
-          </div>
-          <div className="skill-card">
-            <div className="skill-card-icon">CLOUD_SEC</div>
-            <h3>Cloud & DevSecOps</h3>
-            <div className="skill-tags">
-              <span className="tag">AWS</span>
-              <span className="tag">Azure</span>
-              <span className="tag">GCP</span>
-              <span className="tag">ScoutSuite</span>
-              <span className="tag">Docker</span>
-              <span className="tag">CI/CD Security</span>
-              <span className="tag">IaC Auditing</span>
-            </div>
-          </div>
-          <div className="skill-card">
-            <div className="skill-card-icon">FULLSTACK</div>
-            <h3>Web Engineering</h3>
-            <div className="skill-tags">
-              <span className="tag">Python</span>
-              <span className="tag">Django</span>
-              <span className="tag">React</span>
-              <span className="tag">Next.js</span>
-              <span className="tag">REST APIs</span>
-              <span className="tag">GraphQL</span>
-              <span className="tag">Supabase</span>
-              <span className="tag">PostgreSQL</span>
-            </div>
-          </div>
-          <div className="skill-card">
-            <div className="skill-card-icon">COMPLIANCE</div>
-            <h3>Frameworks & Standards</h3>
-            <div className="skill-tags">
-              <span className="tag">PCI-DSS v4.0</span>
-              <span className="tag">CBN Framework</span>
-              <span className="tag">NDPR 2019</span>
-              <span className="tag">ISO 27001</span>
-              <span className="tag">NIST</span>
-              <span className="tag">Red Teaming</span>
-              <span className="tag">Threat Modeling</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="experience">
-        <div className="section-header">
-          <span className="section-num">05</span>
-          <h2 className="section-title">Experience</h2>
-          <div className="section-line"></div>
-        </div>
-        <div className="timeline">
-          <div className="timeline-item">
-            <div className="timeline-date">2024 — Present</div>
-            <div className="timeline-role">Cyber Lead / Red Team Lead</div>
-            <div className="timeline-org">ITSkillsCenter Cyber Division — Lagos, NG</div>
-            <ul className="timeline-desc">
-              <li>Lead penetration testing engagements across web, API, cloud, and internal network environments</li>
-              <li>Authored full pentest report suites: SoW, NDA, tax invoices, and post-remediation closure reports</li>
-              <li>Completed Treegarx Corporation engagement (ISC-PENTEST-SOW-2026-001) — critical TLS/cipher, API key exposure, and header misconfiguration findings mapped to PCI-DSS v4.0 &amp; NDPR</li>
-              <li>Manage and mentor a junior penetration testing team</li>
-            </ul>
-          </div>
-          <div className="timeline-item">
-            <div className="timeline-date">2023 — 2024</div>
-            <div className="timeline-role">Full-Stack Developer / Tech Lead</div>
-            <div className="timeline-org">SEQHER NGO — Nigeria &amp; Canada</div>
-            <ul className="timeline-desc">
-              <li>Built and deployed the SEQHER platform using Next.js and Supabase</li>
-              <li>Implemented role-based access, secure auth flows, and data integrity controls</li>
-              <li>Led digital transformation strategy across Nigeria and Canada operations</li>
-            </ul>
-          </div>
-          <div className="timeline-item">
-            <div className="timeline-date">2022 — 2023</div>
-            <div className="timeline-role">Security Trainer / Consultant</div>
-            <div className="timeline-org">Enugu State Tech Hub &amp; WIN-VIC International</div>
-            <ul className="timeline-desc">
-              <li>Delivered cybersecurity training programs to junior professionals</li>
-              <li>Conducted network security assessments and remediation consulting</li>
-              <li>Supported Tech4Dev network security curriculum delivery</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section id="projects">
-        <div className="section-header">
-          <span className="section-num">06</span>
-          <h2 className="section-title">Projects</h2>
-          <div className="section-line"></div>
-        </div>
-        <div className="projects-grid">
-          <div className="project-card">
-            <div className="project-type">// AI · Fintech</div>
-            <h3>ForexEdge</h3>
-            <p>AI-powered forex trading platform with real-time SMC/ICT methodology integration for XAUUSD analysis. Built with agent-based prompting via Google Agentic App Builder and Python/MT5 backend.</p>
-            <div className="project-stack">
-              <span className="stack-item">Python</span>
-              <span className="stack-item">MT5</span>
-              <span className="stack-item">Google Agentic</span>
-              <span className="stack-item">SMC/ICT</span>
-              <span className="stack-item">XAUUSD</span>
-            </div>
-          </div>
-          <div className="project-card">
-            <div className="project-type">// Pentest · Enterprise</div>
-            <h3>Treegarx Engagement</h3>
-            <p>End-to-end penetration test of Nexus platform and API infrastructure (IIS 10.0). Delivered critical findings on TLS configuration, API key exposure, and header misconfigurations with full remediation closure.</p>
-            <div className="project-stack">
-              <span className="stack-item">Burp Suite Pro</span>
-              <span className="stack-item">Nmap</span>
-              <span className="stack-item">PCI-DSS v4.0</span>
-              <span className="stack-item">NDPR</span>
-              <span className="stack-item">CVSS v3.1</span>
-            </div>
-          </div>
-          <div className="project-card">
-            <div className="project-type">// NGO · Full-Stack</div>
-            <h3>SEQHER Platform</h3>
-            <p>Full-stack web platform for an NGO operating across Nigeria and Canada. Features secure authentication, role-based access control, and real-time data management with Supabase.</p>
-            <div className="project-stack">
-              <span className="stack-item">Next.js</span>
-              <span className="stack-item">Supabase</span>
-              <span className="stack-item">PostgreSQL</span>
-              <span className="stack-item">TypeScript</span>
-              <span className="stack-item">RBAC</span>
-            </div>
-          </div>
-          <div className="project-card">
-            <div className="project-type">// Tool · Security</div>
-            <h3>XAU/USD Scalping Bot</h3>
-            <p>Python-based algorithmic trading bot with MT5 integration and SMC/ICT framework logic. Explores automated entry/exit based on market structure analysis and liquidity sweeps.</p>
-            <div className="project-stack">
-              <span className="stack-item">Python</span>
-              <span className="stack-item">MetaTrader 5</span>
-              <span className="stack-item">SMC</span>
-              <span className="stack-item">ICT</span>
-              <span className="stack-item">Algo Trading</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact">
-        <div className="section-header">
-          <span className="section-num">07</span>
-          <h2 className="section-title">Contact</h2>
-          <div className="section-line"></div>
-        </div>
-        <div className="contact-wrapper">
-          <div className="contact-info">
-            <h3>Let's Work Together</h3>
-            <p>Open to penetration testing engagements, red team contracts, full-stack projects, and security consulting. Based in Lagos — working globally.</p>
-            <div className="contact-links">
-              <a href="mailto:zenethecyber@icloud.com" className="contact-link">
-                <span className="link-label">Email</span>
-                zenethecyber@icloud.com
-              </a>
-              <a href="https://github.com/Cyberrezoned" className="contact-link" target="_blank" rel="noreferrer">
-                <span className="link-label">GitHub</span>
-                github.com/Cyberrezoned
-              </a>
-              <a href="#" className="contact-link">
-                <span className="link-label">Location</span>
-                Lagos, Nigeria
-              </a>
-            </div>
-          </div>
-          <div className="terminal">
-            <div className="terminal-bar">
-              <span className="dot dot-r"></span>
-              <span className="dot dot-a"></span>
-              <span className="dot dot-g"></span>
-            </div>
-            <div className="terminal-body">
-              <div className="terminal-line">
-                <span className="prompt">$</span>
-                <span className="cmd">whoami</span>
-                <span className="output ok">victor_arinze — cyber_lead, fullstack_engineer</span>
+    <>
+      <PageHero
+        eyebrow="Enterprise Cybersecurity, AI, and Compliance"
+        title="Cyber operations built like a platform, not a one-page brochure."
+        description="Secure Sense helps modern organizations reduce risk across applications, cloud, identities, users, and regulation. We combine offensive security, managed defense, AI-assisted compliance, and security engineering in a structure enterprise teams can actually use."
+        actions={
+          <>
+            <Button asChild size="lg" className="rounded-full px-6">
+              <Link href="/services">
+                Explore Services
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="rounded-full px-6">
+              <Link href="/platform">See the Platform</Link>
+            </Button>
+            <Button asChild variant="ghost" size="lg" className="rounded-full px-4">
+              <Link href="/contact">Request an Assessment</Link>
+            </Button>
+          </>
+        }
+        stats={[
+          { value: '4', label: 'Integrated service pillars' },
+          { value: 'Web to OT', label: 'Coverage across the attack surface' },
+          { value: 'Multi-framework', label: 'Compliance-ready workflows' },
+          { value: 'Lagos to global', label: 'Delivery for local and distributed teams' },
+        ]}
+        aside={
+          <div className="space-y-5">
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex h-16 w-16 items-center justify-center rounded-3xl border border-primary/30 bg-primary/10 text-primary shadow-[0_0_40px_rgba(31,227,179,0.18)]">
+                <ShieldCheck className="h-8 w-8" />
               </div>
-              <div className="terminal-line">
-                <span className="prompt">$</span>
-                <span className="cmd">cat certifications.txt</span>
-                <span className="output ok">ISC2 CC | CNSP | CCEP</span>
+              <div className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-emerald-200">
+                Mission Active
               </div>
-              <div className="terminal-line">
-                <span className="prompt">$</span>
-                <span className="cmd">nmap --status availability</span>
-                <span className="output ok">[OPEN] Available for engagements</span>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl border border-border/70 bg-background/70 p-4">
+                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Attack Surface</p>
+                <p className="mt-2 text-lg font-semibold text-foreground">Web, API, cloud, identity, endpoint, OT</p>
               </div>
-              <div className="terminal-line">
-                <span className="prompt">$</span>
-                <span className="cmd">ping zenethecyber@icloud.com</span>
-                <span className="output warn">PING ... 64 bytes: response_time=fast</span>
+              <div className="rounded-2xl border border-border/70 bg-background/70 p-4">
+                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Frameworks</p>
+                <p className="mt-2 text-lg font-semibold text-foreground">ISO 27001, PCI DSS, SOC 2, NDPR</p>
               </div>
-              <div className="terminal-line">
-                <span className="prompt">$</span>
-                <span className="cmd">_</span>
-                <span className="cursor"></span>
+            </div>
+
+            <div className="rounded-[1.75rem] border border-border/70 bg-background/75 p-5">
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-semibold text-foreground">Operating model</p>
+                <Activity className="h-4 w-4 text-primary" />
+              </div>
+              <div className="mt-4 space-y-3">
+                {[
+                  'Assess exposure and validate real attack paths',
+                  'Prioritize fixes by business impact and exploitability',
+                  'Track evidence, control maturity, and remediation momentum',
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <div className="mt-1 h-2.5 w-2.5 rounded-full bg-primary" />
+                    <p className="text-sm leading-6 text-muted-foreground">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        }
+      />
+
+      <section className="container py-20 md:py-24">
+        <SectionHeading
+          eyebrow="Service Architecture"
+          title="Structured into clear functions, not everything piled into one page."
+          description="Each core capability now has its own destination so buyers, technical teams, and executives can move through the site by intent instead of scrolling through unrelated sections."
+        />
+
+        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {servicePillars.map((pillar) => {
+            const Icon = pillar.icon;
+
+            return (
+              <article key={pillar.title} className="panel flex h-full flex-col p-6">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-6 font-headline text-2xl font-semibold text-foreground">{pillar.title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-7 text-muted-foreground">{pillar.description}</p>
+                <Button asChild variant="ghost" className="mt-6 justify-start px-0 text-sm text-primary hover:bg-transparent">
+                  <Link href={pillar.href}>
+                    Learn More
+                    <ChevronRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="container pb-20 md:pb-24">
+        <SectionHeading
+          eyebrow="Platform Preview"
+          title="The AI layer now looks operational instead of static."
+          description="The platform page pulls your AI assistant, telemetry view, integrations story, and workflow modules into a command-center experience. The homepage keeps a focused preview and routes deeper by function."
+        />
+
+        <div className="mt-10 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="panel p-3 sm:p-5">
+            <DashboardChart />
+          </div>
+          <div className="space-y-5">
+            {platformModules.map((module) => (
+              <div key={module.title} className="panel p-6">
+                <div className="flex items-center justify-between gap-4">
+                  <h3 className="font-headline text-xl font-semibold text-foreground">{module.title}</h3>
+                  <Bot className="h-5 w-5 text-primary" />
+                </div>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">{module.copy}</p>
+              </div>
+            ))}
+            <div className="panel p-6">
+              <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">Next Step</p>
+              <h3 className="mt-3 font-headline text-2xl font-semibold text-foreground">
+                Open the full command center.
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                Review the AI copilot, integration fabric, and live operational views in the dedicated platform route.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button asChild className="rounded-full">
+                  <Link href="/platform">
+                    Visit Platform
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" className="rounded-full">
+                  <Link href="/integrations">View Integrations</Link>
+                </Button>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </main>
+
+      <section className="container pb-20 md:pb-24">
+        <SectionHeading
+          eyebrow="Industry Solutions"
+          title="Different sectors, different security pressure."
+          description="Secure Sense is positioned around business context as well as technical depth, so regulated teams can land on solution pages that match their environment."
+        />
+
+        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {sectors.map((sector) => {
+            const Icon = sector.icon;
+
+            return (
+              <div key={sector.title} className="panel p-6">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-border/70 bg-background/70 text-primary">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="font-headline text-xl font-semibold text-foreground">{sector.title}</h3>
+                </div>
+                <p className="mt-4 text-sm leading-7 text-muted-foreground">{sector.description}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-8 flex justify-end">
+          <Button asChild variant="outline" className="rounded-full">
+            <Link href="/solutions">
+              Explore Solution Pages
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
+      </section>
+
+      <section className="container pb-20 md:pb-24">
+        <SectionHeading
+          eyebrow="Resources and Adoption"
+          title="Your research, training, and AI content tools now have a proper home."
+          description="Instead of crowding the main landing page, the resource hub keeps learning content, AI-assisted analysis, and thought leadership in a separate destination."
+        />
+
+        <div className="mt-10 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="panel p-6">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary">
+              <FileCheck2 className="h-5 w-5" />
+            </div>
+            <h3 className="mt-6 font-headline text-2xl font-semibold text-foreground">Research hub and AI analysis</h3>
+            <p className="mt-3 text-sm leading-7 text-muted-foreground">
+              Keep blog content, learning resources, and AI-assisted article analysis in a purpose-built research area for prospects, customers, and trainees.
+            </p>
+            <div className="mt-6 space-y-3">
+              {researchHighlights.map((item) => (
+                <div key={item} className="flex items-start gap-3">
+                  <div className="mt-1 h-2.5 w-2.5 rounded-full bg-primary" />
+                  <p className="text-sm leading-7 text-muted-foreground">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="panel p-6">
+            <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">What changed</p>
+            <div className="mt-5 grid gap-4 sm:grid-cols-2">
+              {[
+                'Homepage now sells the company and routes deeper by intent.',
+                'Dedicated pages for services, platform, solutions, company, and contact.',
+                'Hero now includes an icon-led executive panel instead of plain text only.',
+                'AI features now sit inside a platform story with workflow context.',
+              ].map((point) => (
+                <div key={point} className="rounded-2xl border border-border/70 bg-background/70 p-4">
+                  <p className="text-sm leading-7 text-muted-foreground">{point}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button asChild className="rounded-full">
+                <Link href="/community">
+                  Open Resource Hub
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="ghost" className="rounded-full">
+                <Link href="/company">Meet the Company</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="container pb-20 md:pb-24">
+        <CtaBanner
+          title="Ready to turn the site into a proper enterprise conversion funnel?"
+          description="Use the dedicated contact page to collect scoped cybersecurity opportunities, or move prospects directly into services and platform flows."
+          primaryHref="/contact"
+          primaryLabel="Talk to Secure Sense"
+          secondaryHref="/services"
+          secondaryLabel="Review Capabilities"
+        />
+      </div>
+    </>
   );
 }

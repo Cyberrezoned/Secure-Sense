@@ -6,8 +6,12 @@ import { cn } from '@/lib/utils';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Victor Arinze Chidiebere — Cyber Lead & Full-Stack Engineer',
-  description: 'Portfolio for Victor Arinze Chidiebere, Cyber Lead and Full-Stack Engineer.',
+  title: {
+    default: 'Secure Sense | Enterprise Cybersecurity and AI Compliance',
+    template: '%s | Secure Sense',
+  },
+  description:
+    'Secure Sense delivers offensive security, managed defense, AI-assisted compliance, and security engineering for modern organizations.',
 };
 
 export default function RootLayout({
@@ -21,11 +25,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className={cn('min-h-screen bg-background font-body antialiased')}>
+      <body className={cn('min-h-screen bg-background font-body text-foreground antialiased')}>
         <div className="relative flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex-1">{children}</main>

@@ -59,10 +59,10 @@ export function DashboardChart() {
   }, []);
 
   return (
-    <Card className="bg-secondary border-border/50">
+    <Card className="border-border/70 bg-background/65 shadow-none">
       <CardHeader>
         <CardTitle>Live Operations Feed</CardTitle>
-        <CardDescription>Real-time Red Team vs. Blue Team activity.</CardDescription>
+        <CardDescription>Executive-friendly telemetry for simulated attack and response activity.</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="h-[300px] w-full">

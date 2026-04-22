@@ -13,9 +13,14 @@ export function Logo(props: SVGProps<SVGSVGElement>) {
       {...props}
     >
       <title>Secure Sense Logo</title>
-      <path d="M12 2L2 7l10 5 10-5-10-5z" fill="hsl(var(--primary) / 0.2)" />
-      <path d="M2 17l10 5 10-5" />
-      <path d="M2 12l10 5 10-5" />
+      <path
+        d="M12 2 5 5.5v6.1c0 4.4 2.7 8.2 7 10.4 4.3-2.2 7-6 7-10.4V5.5L12 2Z"
+        fill="hsl(var(--primary) / 0.14)"
+      />
+      <path d="M12 2 5 5.5v6.1c0 4.4 2.7 8.2 7 10.4 4.3-2.2 7-6 7-10.4V5.5L12 2Z" />
+      <path d="M9 10.5h6" />
+      <path d="M9.5 14.5h5" />
+      <path d="M12 6.5v8" />
     </svg>
   );
 }

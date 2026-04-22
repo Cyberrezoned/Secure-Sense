@@ -1,130 +1,87 @@
-'use client';
+import { ArrowRight, ClipboardCheck, Shield } from 'lucide-react';
+import Link from 'next/link';
 
-import { useActionState } from 'react';
-import { useFormStatus } from 'react-dom';
-import { requestPricing } from '@/lib/actions';
+import { CtaBanner } from '@/components/company/cta-banner';
+import { PageHero } from '@/components/company/page-hero';
+import { SectionHeading } from '@/components/company/section-heading';
+import { RequestQuoteForm } from '@/components/request-a-quote/request-quote-form';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Loader2, CheckCircle, XCircle } from 'lucide-react';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-
-const services = [
-  { id: 'pentesting', label: 'Penetration Testing (Red Team)' },
-  { id: 'soc', label: 'Managed SOC & MDR (Blue Team)' },
-  { id: 'vulnerability', label: 'Vulnerability Management' },
-  { id: 'consulting', label: 'Security Consulting' },
-  { id: 'training', label: 'Team Training & Awareness' },
-  { id: 'compliance', label: 'Compliance & Auditing' },
-];
-
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <Button type="submit" disabled={pending} className="w-full glow-sm">
-      {pending ? (
-        <>
-          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-          Submitting Request...
-        </>
-      ) : (
-        'Request a Quote'
-      )}
-    </Button>
-  );
-}
-
 
 export default function RequestQuotePage() {
-  const [state, formAction] = useActionState(requestPricing, {} as any);
-
   return (
-    <div className="container py-12 px-4 md:px-6">
-      <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">
-          Request Cybersecurity Services
-        </h1>
-        <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-          Partner with us to strengthen your security posture. Fill out the form below to get a personalized quote for our expert-led services.
-        </p>
-      </div>
+    <>
+      <PageHero
+        eyebrow="Request a Quote"
+        title="Scope the right cybersecurity engagement from the start."
+        description="Use this route when you already know you need an assessment, compliance program, managed service, or architecture support. The form is structured so Secure Sense can respond with the right delivery path."
+        actions={
+          <>
+            <Button asChild size="lg" className="rounded-full px-6">
+              <Link href="/contact">
+                Go to Contact Hub
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </>
+        }
+        stats={[
+          { value: 'Native form flow', label: 'Submission now posts real values' },
+          { value: 'Multi-service', label: 'Scope multiple functions at once' },
+          { value: 'Lead ready', label: 'Structured for enterprise intake' },
+        ]}
+        aside={
+          <div className="space-y-4">
+            {[
+              {
+                title: 'Assessment requests',
+                description: 'Penetration tests, red teaming, architecture reviews, and security validation projects.',
+                icon: Shield,
+              },
+              {
+                title: 'Program engagements',
+                description: 'Compliance transformation, managed defense, and security operations maturity programs.',
+                icon: ClipboardCheck,
+              },
+            ].map((item) => {
+              const Icon = item.icon;
 
-      <div className="mt-12 max-w-2xl mx-auto">
-        <Card className="bg-secondary/50 border-border/50">
-          <CardHeader>
-            <CardTitle>Get Your Custom Quote</CardTitle>
-            <CardDescription>Tell us about your organization and security needs.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            {state.success ? (
-              <Alert variant="default" className="border-green-500/50 text-green-500">
-                <CheckCircle className="h-4 w-4 !text-green-500" />
-                <AlertTitle>Request Sent!</AlertTitle>
-                <AlertDescription>{state.success}</AlertDescription>
-              </Alert>
-            ) : (
-              <form action={formAction} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="companyName">Company Name</Label>
-                    <Input id="companyName" name="companyName" placeholder="Acme Inc." required className="bg-background"/>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Work Email</Label>
-                    <Input id="email" name="email" type="email" placeholder="you@acme.com" required className="bg-background"/>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="employees">Number of Employees</Label>
-                   <Select name="employees">
-                    <SelectTrigger id="employees" className="bg-background">
-                      <SelectValue placeholder="Select a range" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="1-50">1-50</SelectItem>
-                      <SelectItem value="51-200">51-200</SelectItem>
-                      <SelectItem value="201-1000">201-1000</SelectItem>
-                      <SelectItem value="1001+">1001+</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-3">
-                  <Label>Services of Interest</Label>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                  {services.map((service) => (
-                    <div key={service.id} className="flex items-center gap-2">
-                      <Checkbox id={service.id} name="services" value={service.id} />
-                      <Label htmlFor={service.id} className="font-normal">{service.label}</Label>
+              return (
+                <div key={item.title} className="rounded-[1.5rem] border border-border/70 bg-background/60 p-5">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary">
+                      <Icon className="h-4 w-4" />
                     </div>
-                  ))}
+                    <p className="font-medium text-foreground">{item.title}</p>
                   </div>
+                  <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.description}</p>
                 </div>
+              );
+            })}
+          </div>
+        }
+      />
 
-                <div className="space-y-2">
-                  <Label htmlFor="message">Additional Information</Label>
-                  <Textarea id="message" name="message" placeholder="Tell us about any specific challenges, compliance needs, or your current security stack..." rows={4} className="bg-background"/>
-                </div>
-                
-                {state.error && (
-                  <Alert variant="destructive">
-                    <XCircle className="h-4 w-4" />
-                    <AlertTitle>Error</AlertTitle>
-                    <AlertDescription>{state.error}</AlertDescription>
-                  </Alert>
-                )}
+      <section className="container py-20 md:py-24">
+        <SectionHeading
+          eyebrow="Engagement Intake"
+          title="Send the details once, then move into technical discovery."
+          description="The form below captures organization context, service mix, and timing so the response can be aligned to the real security problem."
+        />
+        <div className="mt-10 panel p-6 md:p-8">
+          <RequestQuoteForm />
+        </div>
+      </section>
 
-                <SubmitButton />
-              </form>
-            )}
-          </CardContent>
-        </Card>
+      <div className="container pb-20 md:pb-24">
+        <CtaBanner
+          title="Need a broader conversation before you request a quote?"
+          description="Use the contact hub if you want to discuss strategy, partnerships, or multi-phase programs first."
+          primaryHref="/contact"
+          primaryLabel="Open Contact Hub"
+          secondaryHref="/services"
+          secondaryLabel="Review Services"
+        />
       </div>
-    </div>
+    </>
   );
 }
