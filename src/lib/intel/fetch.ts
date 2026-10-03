@@ -44,7 +44,7 @@ export async function fetchJson<T>(
       signal: controller.signal,
       headers: {
         accept: 'application/json',
-        'user-agent': 'secure-sense-intel/1.0 (+https://zeenthecyber.online)',
+        'user-agent': 'secure-sense-intel/1.0 (+https://www.zeenthecyber.online)',
         ...headers,
       },
       // `next.revalidate` is a Next.js extension to RequestInit.

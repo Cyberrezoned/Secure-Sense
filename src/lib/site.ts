@@ -7,9 +7,14 @@
  *
  * Override per environment with NEXT_PUBLIC_SITE_URL (no trailing slash).
  */
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://zeenthecyber.online').replace(
-  /\/+$/,
-  ''
-);
+/*
+ * Must be the host that actually serves a 200. The apex
+ * (zeenthecyber.online) 307-redirects to www, so declaring the apex here
+ * would point every sitemap entry and og:url at a redirect. If the apex is
+ * ever made primary in Vercel, change this to match.
+ */
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.zeenthecyber.online'
+).replace(/\/+$/, '');
 
 export const SITE_NAME = 'Secure Sense';
