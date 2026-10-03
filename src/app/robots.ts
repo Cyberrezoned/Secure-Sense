@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://securesense.io';
+import { SITE_URL } from '@/lib/site';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,11 +8,11 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        // Internal surfaces. Also enforced in middleware, which is the control
-        // that actually matters; this only keeps well-behaved crawlers away.
+        // Internal surfaces. The real control is the gate in src/proxy.ts;
+        // this only keeps well-behaved crawlers away.
         disallow: ['/signal-desk', '/signal-desk/', '/api/'],
       },
     ],
-    sitemap: `${siteUrl}/sitemap.xml`,
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

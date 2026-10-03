@@ -4,6 +4,7 @@ import { IBM_Plex_Mono, Inter, Inter_Tight } from 'next/font/google';
 import { Toaster } from '@/components/ui/toaster';
 import { MotionOrchestrator } from '@/components/motion-orchestrator';
 import { ThemeProvider } from '@/components/theme-provider';
+import { SITE_NAME, SITE_URL } from '@/lib/site';
 import { cn } from '@/lib/utils';
 import './globals.css';
 
@@ -37,21 +38,19 @@ const mono = IBM_Plex_Mono({
   variable: '--font-mono',
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://securesense.io';
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Secure Sense | Cyber Defence, Offensive Security and Compliance',
     template: '%s | Secure Sense',
   },
   description:
     'Secure Sense delivers offensive security, managed detection and response, and audit-ready compliance on an open-source defensive stack.',
-  applicationName: 'Secure Sense',
+  applicationName: SITE_NAME,
   openGraph: {
     type: 'website',
-    siteName: 'Secure Sense',
-    url: siteUrl,
+    siteName: SITE_NAME,
+    url: SITE_URL,
     title: 'Secure Sense | Cyber Defence, Offensive Security and Compliance',
     description:
       'Offensive security, managed detection and response, and audit-ready compliance built on an open-source defensive stack.',

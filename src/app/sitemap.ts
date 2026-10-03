@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://securesense.io';
+import { SITE_URL } from '@/lib/site';
 
 /** Public routes only. The Signal Desk is deliberately absent. */
 const routes: Array<{ path: string; priority: number; changeFrequency: 'daily' | 'weekly' | 'monthly' }> = [
@@ -19,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
   return routes.map(({ path, priority, changeFrequency }) => ({
-    url: `${siteUrl}${path}`,
+    url: `${SITE_URL}${path}`,
     lastModified,
     changeFrequency,
     priority,
