@@ -27,31 +27,55 @@ export function PageHero({
   className,
 }: PageHeroProps) {
   return (
-    <section className={cn('relative overflow-hidden border-b border-border/40', className)}>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(31,227,179,0.16),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(70,138,255,0.15),transparent_26%),linear-gradient(180deg,rgba(8,13,26,0.1),rgba(8,13,26,0.85))]" />
-      <div className="container relative py-20 md:py-28">
-        <div className={cn('grid gap-10', aside ? 'lg:grid-cols-[1.1fr_0.9fr] lg:items-center' : 'max-w-4xl')}>
+    <section className={cn('relative overflow-hidden border-b border-hairline', className)}>
+      <div className="grid-backdrop" aria-hidden="true" />
+      <div className="shell relative py-20 lg:py-28">
+        <div className={cn('grid gap-12', aside ? 'lg:grid-cols-[1.15fr_0.85fr] lg:items-start' : 'max-w-3xl')}>
           <div>
-            <p className="eyebrow">{eyebrow}</p>
-            <h1 className="mt-6 max-w-4xl font-headline text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            <p className="eyebrow" data-reveal>
+              {eyebrow}
+            </p>
+            <h1 data-reveal data-reveal-delay="1" className="display-1 mt-5 max-w-3xl">
               {title}
             </h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">{description}</p>
-            {actions ? <div className="mt-8 flex flex-wrap gap-3">{actions}</div> : null}
-            {stats.length ? (
-              <dl className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="rounded-3xl border border-border/70 bg-card/70 p-5 backdrop-blur-xl">
-                    <dt className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{stat.label}</dt>
-                    <dd className="mt-3 font-headline text-2xl font-semibold text-foreground">{stat.value}</dd>
-                  </div>
-                ))}
-              </dl>
+            <p data-reveal data-reveal-delay="2" className="lede mt-6 max-w-2xl">
+              {description}
+            </p>
+            {actions ? (
+              <div data-reveal data-reveal-delay="3" className="mt-9 flex flex-wrap items-center gap-3">
+                {actions}
+              </div>
             ) : null}
           </div>
 
-          {aside ? <div className="panel p-6 md:p-8">{aside}</div> : null}
+          {aside ? (
+            <div data-reveal data-reveal-delay="2" className="surface p-6">
+              {aside}
+            </div>
+          ) : null}
         </div>
+
+        {stats.length ? (
+          <dl
+            data-stagger
+            className="mt-14 grid divide-y divide-hairline border-t border-hairline sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4"
+          >
+            {stats.map((stat, index) => (
+              <div
+                key={stat.label}
+                className={cn(
+                  'py-6 sm:px-6 sm:first:pl-0 lg:border-l lg:border-hairline lg:first:border-l-0',
+                  index % 2 === 1 && 'sm:border-l sm:border-hairline'
+                )}
+              >
+                <dd className="font-headline text-2xl font-semibold tabular text-foreground sm:text-3xl">
+                  {stat.value}
+                </dd>
+                <dt className="mt-2 text-sm leading-snug text-muted-foreground">{stat.label}</dt>
+              </div>
+            ))}
+          </dl>
+        ) : null}
       </div>
     </section>
   );

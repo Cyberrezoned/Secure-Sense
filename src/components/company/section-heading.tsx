@@ -7,19 +7,12 @@ type SectionHeadingProps = {
   align?: 'left' | 'center';
 };
 
-export function SectionHeading({
-  eyebrow,
-  title,
-  description,
-  align = 'left',
-}: SectionHeadingProps) {
+export function SectionHeading({ eyebrow, title, description, align = 'left' }: SectionHeadingProps) {
   return (
-    <div className={cn('max-w-3xl', align === 'center' && 'mx-auto text-center')}>
+    <div data-reveal className={cn('max-w-2xl', align === 'center' && 'mx-auto text-center')}>
       <p className="eyebrow">{eyebrow}</p>
-      <h2 className="mt-5 font-headline text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-        {title}
-      </h2>
-      <p className="mt-4 text-base leading-8 text-muted-foreground sm:text-lg">{description}</p>
+      <h2 className="display-2 mt-3">{title}</h2>
+      <p className="lede mt-4">{description}</p>
     </div>
   );
 }

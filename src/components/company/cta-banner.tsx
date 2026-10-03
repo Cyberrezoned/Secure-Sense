@@ -10,6 +10,7 @@ type CtaBannerProps = {
   primaryLabel: string;
   secondaryHref?: string;
   secondaryLabel?: string;
+  eyebrow?: string;
 };
 
 export function CtaBanner({
@@ -19,28 +20,26 @@ export function CtaBanner({
   primaryLabel,
   secondaryHref,
   secondaryLabel,
+  eyebrow = 'Start a conversation',
 }: CtaBannerProps) {
   return (
-    <section className="panel overflow-hidden p-8 md:p-10">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
-      <div className="relative flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-        <div className="max-w-3xl">
-          <p className="eyebrow">Next Engagement</p>
-          <h2 className="mt-5 font-headline text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            {title}
-          </h2>
-          <p className="mt-4 text-base leading-8 text-muted-foreground sm:text-lg">{description}</p>
+    <section data-reveal className="surface-raised overflow-hidden p-8 lg:p-10">
+      <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+        <div className="max-w-2xl">
+          <p className="eyebrow">{eyebrow}</p>
+          <h2 className="display-2 mt-3">{title}</h2>
+          <p className="lede mt-4">{description}</p>
         </div>
 
         <div className="flex flex-wrap gap-3">
-          <Button asChild size="lg" className="rounded-full px-6">
+          <Button asChild size="lg">
             <Link href={primaryHref}>
               {primaryLabel}
               <ArrowRight className="h-4 w-4" />
             </Link>
           </Button>
           {secondaryHref && secondaryLabel ? (
-            <Button asChild variant="outline" size="lg" className="rounded-full px-6">
+            <Button asChild variant="outline" size="lg">
               <Link href={secondaryHref}>{secondaryLabel}</Link>
             </Button>
           ) : null}

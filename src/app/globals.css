@@ -2,33 +2,108 @@
 @tailwind components;
 @tailwind utilities;
 
+/**
+ * Secure Sense design tokens.
+ *
+ * One neutral spine, one azure accent, and a fixed set of signal colours used
+ * only to encode severity in data. Light is the default; dark is a first-class
+ * peer rather than an inverted afterthought.
+ */
+
 @layer base {
   :root {
-    --background: 222 44% 8%;
-    --foreground: 210 24% 94%;
-    --card: 222 40% 10%;
-    --card-foreground: 210 24% 94%;
-    --popover: 222 40% 9%;
-    --popover-foreground: 210 24% 94%;
-    --primary: 164 78% 51%;
-    --primary-foreground: 220 45% 8%;
-    --secondary: 219 35% 16%;
-    --secondary-foreground: 210 24% 94%;
-    --muted: 219 24% 19%;
-    --muted-foreground: 215 18% 72%;
-    --accent: 164 78% 51%;
-    --accent-foreground: 220 45% 8%;
-    --destructive: 358 74% 58%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 218 23% 22%;
-    --input: 218 23% 18%;
-    --ring: 164 78% 51%;
-    --radius: 1rem;
-    --chart-1: 164 78% 51%;
-    --chart-2: 206 100% 67%;
-    --chart-3: 358 74% 58%;
-    --chart-4: 43 96% 58%;
-    --chart-5: 271 91% 65%;
+    --background: 0 0% 100%;
+    --surface: 220 24% 98%;
+    --surface-raised: 0 0% 100%;
+    --foreground: 222 28% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 28% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 28% 11%;
+
+    --primary: 214 88% 44%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 20% 96%;
+    --secondary-foreground: 222 24% 18%;
+    --muted: 220 20% 96%;
+    --muted-foreground: 219 12% 42%;
+    --accent: 214 88% 44%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 46%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 16% 88%;
+    --hairline: 220 16% 92%;
+    --input: 220 16% 86%;
+    --ring: 214 88% 44%;
+
+    /* Severity scale. Used for data encoding only, never for decoration. */
+    --signal-critical: 352 72% 44%;
+    --signal-high: 20 86% 46%;
+    --signal-moderate: 38 88% 42%;
+    --signal-low: 199 76% 36%;
+    --signal-ok: 158 68% 32%;
+
+    --chart-1: 214 88% 44%;
+    --chart-2: 199 76% 40%;
+    --chart-3: 352 68% 48%;
+    --chart-4: 38 88% 46%;
+    --chart-5: 262 62% 52%;
+
+    --radius: 0.5rem;
+    --shadow-xs: 0 1px 2px 0 hsl(222 28% 11% / 0.05);
+    --shadow-sm: 0 1px 3px 0 hsl(222 28% 11% / 0.07), 0 1px 2px -1px hsl(222 28% 11% / 0.05);
+    --shadow-md: 0 4px 12px -2px hsl(222 28% 11% / 0.08), 0 2px 4px -2px hsl(222 28% 11% / 0.05);
+    --shadow-lg: 0 12px 28px -8px hsl(222 28% 11% / 0.12), 0 4px 10px -4px hsl(222 28% 11% / 0.06);
+  }
+
+  .dark {
+    --background: 222 32% 7%;
+    --surface: 222 28% 9%;
+    --surface-raised: 221 26% 12%;
+    --foreground: 214 24% 96%;
+
+    --card: 222 28% 10%;
+    --card-foreground: 214 24% 96%;
+    --popover: 221 28% 11%;
+    --popover-foreground: 214 24% 96%;
+
+    --primary: 212 94% 62%;
+    --primary-foreground: 222 44% 8%;
+    --secondary: 221 22% 16%;
+    --secondary-foreground: 214 24% 94%;
+    --muted: 221 20% 15%;
+    --muted-foreground: 217 14% 66%;
+    --accent: 212 94% 62%;
+    --accent-foreground: 222 44% 8%;
+    --destructive: 0 68% 56%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 16% 20%;
+    --hairline: 220 16% 17%;
+    --input: 220 16% 22%;
+    --ring: 212 94% 62%;
+
+    --signal-critical: 352 78% 62%;
+    --signal-high: 20 88% 62%;
+    --signal-moderate: 38 92% 60%;
+    --signal-low: 199 84% 60%;
+    --signal-ok: 158 62% 50%;
+
+    /* Chart steps are selected against the dark surface, not flipped from the
+       light set: chart-1 sits at 58% so its OKLCH lightness stays inside the
+       dark band while holding ΔE > 20 from chart-3 under protanopia. */
+    --chart-1: 212 94% 58%;
+    --chart-2: 199 84% 58%;
+    --chart-3: 352 78% 64%;
+    --chart-4: 38 92% 62%;
+    --chart-5: 262 78% 70%;
+
+    --shadow-xs: 0 1px 2px 0 hsl(222 48% 3% / 0.4);
+    --shadow-sm: 0 1px 3px 0 hsl(222 48% 3% / 0.5), 0 1px 2px -1px hsl(222 48% 3% / 0.4);
+    --shadow-md: 0 4px 12px -2px hsl(222 48% 3% / 0.55), 0 2px 4px -2px hsl(222 48% 3% / 0.4);
+    --shadow-lg: 0 12px 28px -8px hsl(222 48% 3% / 0.65), 0 4px 10px -4px hsl(222 48% 3% / 0.45);
   }
 
   * {
@@ -37,73 +112,333 @@
 
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
     @apply min-h-screen bg-background font-body text-foreground antialiased;
-    background-image:
-      radial-gradient(circle at top left, rgba(31, 227, 179, 0.12), transparent 25%),
-      radial-gradient(circle at 85% 10%, rgba(75, 124, 255, 0.12), transparent 22%),
-      linear-gradient(180deg, #09101f 0%, #070c18 46%, #060914 100%);
-    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
   }
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 72px 72px;
-    mask-image: radial-gradient(circle at center, black, transparent 85%);
-    z-index: -1;
+  /* Numeric data must never reflow as it ticks. */
+  [data-metric],
+  .tabular {
+    font-variant-numeric: tabular-nums;
   }
 
-  a {
-    @apply transition-colors;
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-headline text-foreground;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  h1 {
+    letter-spacing: -0.035em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 
   ::selection {
-    background: rgba(31, 227, 179, 0.2);
-    color: #f8fffd;
+    background: hsl(var(--primary) / 0.18);
+    color: hsl(var(--foreground));
   }
 }
 
 @layer components {
+  /* ---- Structure ----------------------------------------------------- */
+
+  .shell {
+    @apply mx-auto w-full max-w-[82.5rem] px-5 sm:px-8 lg:px-10;
+  }
+
+  .rule {
+    @apply h-px w-full border-0;
+    background: hsl(var(--hairline));
+  }
+
+  /* Measured surface. One border, one shadow, no gradient wash. */
+  .surface {
+    @apply rounded-[var(--radius)] border bg-card;
+    border-color: hsl(var(--hairline));
+    box-shadow: var(--shadow-xs);
+  }
+
+  .surface-raised {
+    @apply rounded-[var(--radius)] border;
+    background: hsl(var(--surface-raised));
+    border-color: hsl(var(--hairline));
+    box-shadow: var(--shadow-sm);
+  }
+
+  .surface-interactive {
+    @apply rounded-[var(--radius)] border bg-card transition-[border-color,box-shadow] duration-200;
+    border-color: hsl(var(--hairline));
+    box-shadow: var(--shadow-xs);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .surface-interactive:hover {
+      border-color: hsl(var(--border));
+      box-shadow: var(--shadow-md);
+    }
+  }
+
+  /* ---- Typography ---------------------------------------------------- */
+
   .eyebrow {
-    @apply inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.28em] text-primary;
+    @apply inline-flex items-center gap-2 text-[0.6875rem] font-semibold uppercase text-muted-foreground;
+    letter-spacing: 0.12em;
   }
 
-  .eyebrow::before {
-    content: '';
-    @apply h-px w-10 bg-primary/70;
+  .display-1 {
+    @apply font-headline text-[2.25rem] font-semibold leading-[1.08] sm:text-[2.875rem] lg:text-[3.5rem];
   }
 
-  .panel {
-    @apply relative rounded-[1.75rem] border border-border/70 bg-card/75 shadow-[0_30px_80px_rgba(3,8,20,0.45)] backdrop-blur-xl;
+  .display-2 {
+    @apply font-headline text-[1.75rem] font-semibold leading-[1.15] sm:text-[2.125rem] lg:text-[2.5rem];
   }
 
-  .glow-sm {
-    box-shadow: 0 0 0 1px rgba(31, 227, 179, 0.12), 0 0 24px rgba(31, 227, 179, 0.15);
+  .lede {
+    @apply text-[1.0625rem] leading-[1.7] text-muted-foreground sm:text-[1.125rem];
+  }
+
+  .mono-label {
+    @apply font-code text-[0.6875rem] uppercase tracking-[0.08em] text-muted-foreground;
+  }
+
+  /* ---- Data display -------------------------------------------------- */
+
+  .metric-value {
+    @apply font-headline text-[2rem] font-semibold leading-none text-foreground sm:text-[2.5rem];
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.03em;
+  }
+
+  .metric-label {
+    @apply mt-2 text-[0.8125rem] leading-snug text-muted-foreground;
+  }
+
+  /* Status dot. The data-status attribute selects the severity channel. */
+  .status-dot {
+    @apply inline-block h-[0.4375rem] w-[0.4375rem] shrink-0 rounded-full;
+    background: hsl(var(--muted-foreground));
+  }
+
+  .status-dot[data-status="critical"] {
+    background: hsl(var(--signal-critical));
+  }
+
+  .status-dot[data-status="high"] {
+    background: hsl(var(--signal-high));
+  }
+
+  .status-dot[data-status="moderate"] {
+    background: hsl(var(--signal-moderate));
+  }
+
+  .status-dot[data-status="low"] {
+    background: hsl(var(--signal-low));
+  }
+
+  .status-dot[data-status="ok"] {
+    background: hsl(var(--signal-ok));
+  }
+
+  .status-dot[data-pulse="true"] {
+    animation: status-pulse 2.4s ease-in-out infinite;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[0.6875rem] font-medium;
+    border-color: hsl(var(--hairline));
+    background: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+  }
+
+  /* ---- Navigation ---------------------------------------------------- */
+
+  .nav-link {
+    @apply relative text-[0.875rem] font-medium text-muted-foreground transition-colors;
+  }
+
+  .nav-link:hover {
+    color: hsl(var(--foreground));
+  }
+
+  .nav-link[data-active="true"] {
+    color: hsl(var(--foreground));
+  }
+
+  .nav-link[data-active="true"]::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: -1.3125rem;
+    height: 2px;
+    background: hsl(var(--primary));
+  }
+
+  /* ---- Grid backdrop ------------------------------------------------- */
+
+  /* A single static hairline grid. No animation, no parallax, no glow. */
+  .grid-backdrop {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, hsl(var(--hairline)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--hairline)) 1px, transparent 1px);
+    background-size: 4rem 4rem;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent 72%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent 72%);
   }
 }
 
+@layer utilities {
+  .text-signal-critical {
+    color: hsl(var(--signal-critical));
+  }
+
+  .text-signal-high {
+    color: hsl(var(--signal-high));
+  }
+
+  .text-signal-moderate {
+    color: hsl(var(--signal-moderate));
+  }
+
+  .text-signal-low {
+    color: hsl(var(--signal-low));
+  }
+
+  .text-signal-ok {
+    color: hsl(var(--signal-ok));
+  }
+}
+
+@keyframes status-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+}
+
+/* ---- Scroll reveal --------------------------------------------------- */
+/* Short, single-axis, no blur. Motion confirms hierarchy; it is not the show. */
+
+html[data-motion="ready"] [data-reveal] {
+  opacity: 0;
+  transform: translateY(0.75rem);
+}
+
+html[data-motion="ready"] [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.45s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+html[data-motion="ready"] [data-reveal][data-reveal-delay="1"].is-visible {
+  transition-delay: 60ms;
+}
+
+html[data-motion="ready"] [data-reveal][data-reveal-delay="2"].is-visible {
+  transition-delay: 120ms;
+}
+
+html[data-motion="ready"] [data-reveal][data-reveal-delay="3"].is-visible {
+  transition-delay: 180ms;
+}
+
+html[data-motion="ready"] [data-stagger] > * {
+  opacity: 0;
+  transform: translateY(0.75rem);
+}
+
+html[data-motion="ready"] [data-stagger].is-visible > * {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.45s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+html[data-motion="ready"] [data-stagger].is-visible > :nth-child(2) {
+  transition-delay: 50ms;
+}
+
+html[data-motion="ready"] [data-stagger].is-visible > :nth-child(3) {
+  transition-delay: 100ms;
+}
+
+html[data-motion="ready"] [data-stagger].is-visible > :nth-child(4) {
+  transition-delay: 150ms;
+}
+
+html[data-motion="ready"] [data-stagger].is-visible > :nth-child(5) {
+  transition-delay: 200ms;
+}
+
+html[data-motion="ready"] [data-stagger].is-visible > :nth-child(6) {
+  transition-delay: 250ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-reveal],
+  [data-stagger] > *,
+  [data-development-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ---- Scrollbar ------------------------------------------------------- */
+
 ::-webkit-scrollbar {
-  width: 11px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(5, 10, 20, 0.9);
+  background: hsl(var(--surface));
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(114, 132, 168, 0.35);
+  background: hsl(var(--border));
+  border: 2px solid hsl(var(--surface));
   border-radius: 999px;
-  border: 2px solid rgba(5, 10, 20, 0.9);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(31, 227, 179, 0.35);
+  background: hsl(var(--muted-foreground));
 }

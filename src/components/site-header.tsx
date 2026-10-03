@@ -3,28 +3,25 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { ArrowRight, Menu } from 'lucide-react';
+import { Menu } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Logo } from '@/components/logo';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { BrandLockup } from '@/components/brand-lockup';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { href: '/', label: 'Overview' },
   { href: '/services', label: 'Services' },
   { href: '/platform', label: 'Platform' },
   { href: '/solutions', label: 'Solutions' },
-  { href: '/community', label: 'Resources' },
+  { href: '/integrations', label: 'Integrations' },
+  { href: '/community', label: 'Research' },
   { href: '/company', label: 'Company' },
-  { href: '/contact', label: 'Contact' },
 ];
 
 function isActive(pathname: string, href: string) {
-  if (href === '/') {
-    return pathname === '/';
-  }
-
+  if (href === '/') return pathname === '/';
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
@@ -33,30 +30,19 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
-      <div className="container flex h-20 items-center justify-between gap-6">
+    <header className="sticky top-0 z-50 border-b border-hairline bg-background/85 backdrop-blur-md supports-[backdrop-filter]:bg-surface">
+      <div className="shell flex h-16 items-center justify-between gap-8">
         <div className="flex items-center gap-10">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary">
-              <Logo className="h-6 w-6" />
-            </div>
-            <div>
-              <p className="font-headline text-lg font-semibold text-foreground">Secure Sense</p>
-              <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
-                Cyber Operations
-              </p>
-            </div>
-          </Link>
+          <BrandLockup />
 
-          <nav className="hidden items-center gap-6 lg:flex">
+          <nav aria-label="Main" className="hidden items-center gap-7 lg:flex">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={cn(
-                  'text-sm font-medium text-muted-foreground transition-colors hover:text-foreground',
-                  isActive(pathname, item.href) && 'text-foreground'
-                )}
+                className="nav-link"
+                data-active={isActive(pathname, item.href) || undefined}
+                aria-current={isActive(pathname, item.href) ? 'page' : undefined}
               >
                 {item.label}
               </Link>
@@ -65,73 +51,62 @@ export function SiteHeader() {
         </div>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <Button asChild variant="ghost" className="rounded-full">
-            <Link href="/platform">AI Command Center</Link>
+          <ThemeToggle />
+          <Button asChild variant="ghost" size="sm">
+            <Link href="/request-a-quote">Request a quote</Link>
           </Button>
-          <Button asChild className="rounded-full px-5">
-            <Link href="/contact">
-              Request Assessment
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+          <Button asChild size="sm">
+            <Link href="/contact">Book an assessment</Link>
           </Button>
         </div>
 
-        <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full border border-border/70 lg:hidden"
-            >
-              <Menu className="h-5 w-5" />
-              <span className="sr-only">Open navigation</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-[88vw] max-w-sm border-border/70 bg-background/95 p-0">
-            <div className="flex h-full flex-col p-6">
-              <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary">
-                  <Logo className="h-6 w-6" />
-                </div>
-                <div>
-                  <p className="font-headline text-lg font-semibold text-foreground">Secure Sense</p>
-                  <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
-                    Cyber Operations
-                  </p>
-                </div>
-              </Link>
+        <div className="flex items-center gap-2 lg:hidden">
+          <ThemeToggle />
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon" aria-label="Open navigation">
+                <Menu className="h-4 w-4" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[86vw] max-w-sm border-hairline p-0">
+              <div className="flex h-full flex-col p-6">
+                <SheetTitle className="sr-only">Navigation</SheetTitle>
+                <BrandLockup onNavigate={() => setOpen(false)} />
 
-              <div className="mt-8 flex flex-col gap-2">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className={cn(
-                      'rounded-2xl border border-transparent px-4 py-3 text-base font-medium text-muted-foreground transition-colors hover:border-border/70 hover:bg-card/70 hover:text-foreground',
-                      isActive(pathname, item.href) && 'border-border/70 bg-card/70 text-foreground'
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
+                <nav aria-label="Main" className="mt-8 flex flex-col">
+                  {navItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className={cn(
+                        'border-b border-hairline py-3 text-[0.9375rem] font-medium transition-colors',
+                        isActive(pathname, item.href)
+                          ? 'text-foreground'
+                          : 'text-muted-foreground hover:text-foreground'
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </nav>
 
-              <div className="mt-auto rounded-[1.5rem] border border-border/70 bg-card/70 p-5">
-                <p className="text-sm font-semibold text-foreground">Need a scoped engagement?</p>
-                <p className="mt-2 text-sm leading-7 text-muted-foreground">
-                  Move straight into the contact flow and collect program details from buyers and technical teams.
-                </p>
-                <Button asChild className="mt-5 w-full rounded-full">
-                  <Link href="/contact" onClick={() => setOpen(false)}>
-                    Talk to the Team
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </Button>
+                <div className="mt-auto flex flex-col gap-2 pt-8">
+                  <Button asChild>
+                    <Link href="/contact" onClick={() => setOpen(false)}>
+                      Book an assessment
+                    </Link>
+                  </Button>
+                  <Button asChild variant="outline">
+                    <Link href="/request-a-quote" onClick={() => setOpen(false)}>
+                      Request a quote
+                    </Link>
+                  </Button>
+                </div>
               </div>
-            </div>
-          </SheetContent>
-        </Sheet>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );

@@ -24,12 +24,14 @@ The project also integrates AI functionalities using **Google's Genkit**, showca
 
 ## ✨ Key Features
 
-- **Modern Frontend**: Built with **Next.js 15** and the App Router for a fast, server-rendered React experience.
+- **Modern Frontend**: Built with **Next.js 16** and the App Router for a fast, server-rendered React experience.
 - **Sleek UI/UX**: Styled with **Tailwind CSS** and a component library from **shadcn/ui**, ensuring a consistent and visually appealing design.
 - **User Authentication**: Secure user sign-up and login functionality powered by **Firebase Authentication**.
 - **Quote Request System**: Customers can request quotes, and administrators receive instant email notifications. The app now prefers the Resend service (if configured) with an SMTP/Nodemailer fallback.
-- **Data Visualization**: Interactive charts and graphs implemented with **Recharts**.
-- **3D Graphics**: Integration of **Three.js** for potential interactive 3D elements.
+- **Live Threat Intelligence**: Public-facing exposure metrics sourced at request time from the **CISA KEV** catalogue, **NIST NVD**, and **FIRST EPSS**. No figure on the site is illustrative; a failed feed renders an explicit unavailable state rather than a placeholder number.
+- **Open-Source Stack Telemetry**: Live GitHub metrics for the deployed defensive stack (Wazuh, Suricata, Zeek, OpenCTI, MISP, Falco, osquery, Trivy, Sigstore, Sigma, Velociraptor, DFIR-IRIS).
+- **Signal Desk**: An internal-only operations console at `/signal-desk`, gated by a kill switch, optional IP allowlist, and constant-time Basic auth.
+- **Data Visualization**: Interactive charts implemented with **Recharts**, using a palette validated for colour-vision deficiency in both light and dark themes.
 - **AI Integration**: Utilizes **Google's Genkit** for building and managing AI-powered features.
 - **Form Handling**: Robust and type-safe forms using **React Hook Form** and **Zod** for validation.
 
@@ -43,6 +45,7 @@ Security is a top priority for Secure-Sense. The application is built with a mul
 - **Secrets Management**: Follows the Twelve-Factor App methodology by storing all credentials (API keys, database secrets) in environment variables. The `.gitignore` file is configured to ensure these secrets are never committed to version control.
 - **Database Security**: Designed to use **Firebase Security Rules**, which provide granular, server-side access control to the Firestore database, ensuring users can only access the data they are permitted to.
 - **Authentication**: Implements secure user sign-up and login functionality using **Firebase Authentication**, a trusted and battle-tested identity platform.
+- **Internal Surface Isolation**: The Signal Desk lives under its own route group with separate chrome, is absent from the sitemap and all public navigation, and is enforced at the edge in `src/proxy.ts` before any page or loader runs. Access control is covered by `npm run test:access` (38 cases).
 - **Bot & Crawler Protection**: The `robots.txt` file is configured to disallow crawlers from indexing sensitive API routes, reducing the public-facing attack surface.
 - **Dependency Scanning**: The development workflow includes regular auditing of third-party packages to identify and patch known vulnerabilities.
 
@@ -56,7 +59,8 @@ Security is a top priority for Secure-Sense. The application is built with a mul
 | **Backend**   | Firebase (Authentication, Firestore), Nodemailer                                                                                                                                                                                          |
 | **AI**        | Google Genkit                                                                                                                                                                                                                                           |
 | **Forms**     | React Hook Form, Zod                                                                                                                                                                                                                               |
-| **Graphics**  | Three.js, Recharts                                                                                                                                                                                                                                 |
+| **Charts**    | Recharts                                                                                                                                                                                                                                           |
+| **Intel feeds** | CISA KEV, NIST NVD, FIRST EPSS, GitHub REST API                                                                                                                                                                                                  |
 | **Deployment**| Vercel (Recommended)                                                                                                                                                                                                                                                          |
 
 ## ⚙️ Getting Started

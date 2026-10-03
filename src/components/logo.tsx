@@ -1,26 +1,25 @@
 import type { SVGProps } from 'react';
 
+/**
+ * Monoline shield mark. Single-colour and token-driven, so it inherits the
+ * surrounding text colour and reads correctly in both themes and at favicon size.
+ */
 export function Logo(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
+      viewBox="0 0 32 32"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
       {...props}
     >
-      <title>Secure Sense Logo</title>
-      <path
-        d="M12 2 5 5.5v6.1c0 4.4 2.7 8.2 7 10.4 4.3-2.2 7-6 7-10.4V5.5L12 2Z"
-        fill="hsl(var(--primary) / 0.14)"
-      />
-      <path d="M12 2 5 5.5v6.1c0 4.4 2.7 8.2 7 10.4 4.3-2.2 7-6 7-10.4V5.5L12 2Z" />
-      <path d="M9 10.5h6" />
-      <path d="M9.5 14.5h5" />
-      <path d="M12 6.5v8" />
+      <path d="M16 2.75 27 8v9.4c0 5.3-4.4 9.9-11 12.1-6.6-2.2-11-6.8-11-12.1V8l11-5.25Z" />
+      <path d="M11.4 16.2 14.8 19.6 21 13.2" />
     </svg>
   );
 }

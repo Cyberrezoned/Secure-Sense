@@ -112,10 +112,10 @@ export function ComplianceChatbot({ className }: ComplianceChatbotProps) {
 
   return (
     <div className={cn('panel overflow-hidden', className)}>
-      <div className="border-b border-border/70 px-6 py-5">
+      <div className="border-b border-hairline px-6 py-5">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary">
+            <div className="flex h-11 w-11 items-center justify-center rounded-md border border-primary/20 bg-primary/10 text-primary">
               <Bot className="h-5 w-5" />
             </div>
             <div>
@@ -127,7 +127,7 @@ export function ComplianceChatbot({ className }: ComplianceChatbotProps) {
           <Button
             type="button"
             variant="outline"
-            className="rounded-full"
+           
             onClick={() => setMessages(initialMessages)}
           >
             <RotateCcw className="h-4 w-4" />
@@ -137,7 +137,7 @@ export function ComplianceChatbot({ className }: ComplianceChatbotProps) {
       </div>
 
       <div className="grid gap-0 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="border-b border-border/70 px-6 py-6 lg:border-b-0 lg:border-r">
+        <div className="border-b border-hairline px-6 py-6 lg:border-b-0 lg:border-r">
           <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Suggested Workflows</p>
           <div className="mt-5 grid gap-3">
             {starterPrompts.map((prompt) => (
@@ -145,14 +145,14 @@ export function ComplianceChatbot({ className }: ComplianceChatbotProps) {
                 key={prompt}
                 type="button"
                 onClick={() => submitPrompt(prompt)}
-                className="rounded-2xl border border-border/70 bg-background/70 px-4 py-4 text-left text-sm leading-7 text-muted-foreground transition-colors hover:border-primary/30 hover:text-foreground"
+                className="rounded-md border border-hairline bg-surface px-4 py-4 text-left text-sm leading-7 text-muted-foreground transition-colors hover:border-primary/30 hover:text-foreground"
               >
                 {prompt}
               </button>
             ))}
           </div>
 
-          <div className="mt-6 rounded-2xl border border-border/70 bg-background/70 p-4">
+          <div className="mt-6 rounded-md border border-hairline bg-surface p-4">
             <p className="flex items-center gap-2 text-sm font-medium text-foreground">
               <Sparkles className="h-4 w-4 text-primary" />
               What this widget is for
@@ -165,14 +165,14 @@ export function ComplianceChatbot({ className }: ComplianceChatbotProps) {
         </div>
 
         <div className="px-6 py-6">
-          <div className="h-[340px] space-y-4 overflow-y-auto rounded-3xl border border-border/70 bg-background/60 p-4">
+          <div className="h-[340px] space-y-4 overflow-y-auto rounded-lg border border-hairline bg-surface p-4">
             {messages.map((message, index) => (
               <div
                 key={`${message.role}-${index}`}
                 className={cn(
-                  'max-w-[90%] rounded-3xl px-4 py-3 text-sm leading-7',
+                  'max-w-[90%] rounded-lg px-4 py-3 text-sm leading-7',
                   message.role === 'assistant'
-                    ? 'border border-border/70 bg-card text-muted-foreground'
+                    ? 'border border-hairline bg-card text-muted-foreground'
                     : 'ml-auto bg-primary text-primary-foreground'
                 )}
               >
@@ -183,7 +183,7 @@ export function ComplianceChatbot({ className }: ComplianceChatbotProps) {
               </div>
             ))}
             {sending ? (
-              <div className="max-w-[90%] rounded-3xl border border-border/70 bg-card px-4 py-3 text-sm text-muted-foreground">
+              <div className="max-w-[90%] rounded-lg border border-hairline bg-card px-4 py-3 text-sm text-muted-foreground">
                 Preparing response...
               </div>
             ) : null}
@@ -202,7 +202,7 @@ export function ComplianceChatbot({ className }: ComplianceChatbotProps) {
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               disabled={sending}
-              className="h-12 rounded-full border-border/70 bg-background/70 px-5"
+              className="h-12 rounded-full border-hairline bg-surface px-5"
             />
             <Button type="submit" disabled={sending} className="h-12 rounded-full px-5">
               <SendHorizonal className="h-4 w-4" />

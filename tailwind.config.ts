@@ -1,4 +1,4 @@
-import type {Config} from 'tailwindcss';
+import type { Config } from 'tailwindcss';
 
 export default {
   darkMode: ['class'],
@@ -10,20 +10,25 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: '2rem',
       screens: {
-        "2xl": "1400px",
+        '2xl': '1320px',
       },
     },
     extend: {
       fontFamily: {
-        body: ['"IBM Plex Sans"', 'sans-serif'],
-        headline: ['"Sora"', 'sans-serif'],
-        code: ['"IBM Plex Mono"', 'monospace'],
+        // Wired to the next/font CSS variables declared in the root layout.
+        body: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        headline: ['var(--font-display)', 'var(--font-sans)', 'ui-sans-serif', 'sans-serif'],
+        code: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        surface: {
+          DEFAULT: 'hsl(var(--surface))',
+          raised: 'hsl(var(--surface-raised))',
+        },
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
@@ -53,8 +58,17 @@ export default {
           foreground: 'hsl(var(--destructive-foreground))',
         },
         border: 'hsl(var(--border))',
+        hairline: 'hsl(var(--hairline))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
+        // Severity channels. Encode data with these, never decoration.
+        signal: {
+          critical: 'hsl(var(--signal-critical))',
+          high: 'hsl(var(--signal-high))',
+          moderate: 'hsl(var(--signal-moderate))',
+          low: 'hsl(var(--signal-low))',
+          ok: 'hsl(var(--signal-ok))',
+        },
         chart: {
           '1': 'hsl(var(--chart-1))',
           '2': 'hsl(var(--chart-2))',
@@ -78,22 +92,20 @@ export default {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      boxShadow: {
+        xs: 'var(--shadow-xs)',
+        sm: 'var(--shadow-sm)',
+        md: 'var(--shadow-md)',
+        lg: 'var(--shadow-lg)',
+      },
       keyframes: {
         'accordion-down': {
-          from: {
-            height: '0',
-          },
-          to: {
-            height: 'var(--radix-accordion-content-height)',
-          },
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
         },
         'accordion-up': {
-          from: {
-            height: 'var(--radix-accordion-content-height)',
-          },
-          to: {
-            height: '0',
-          },
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
         },
       },
       animation: {

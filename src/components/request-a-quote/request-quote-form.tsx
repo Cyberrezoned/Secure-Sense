@@ -28,7 +28,7 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button type="submit" disabled={pending} className="h-12 rounded-full px-6">
+    <Button type="submit" disabled={pending} className="h-12">
       {pending ? (
         <>
           <Loader2 className="h-4 w-4 animate-spin" />
@@ -59,19 +59,19 @@ export function RequestQuoteForm() {
       <div className="grid gap-5 md:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="contactName">Contact Name</Label>
-          <Input id="contactName" name="contactName" placeholder="Your full name" className="h-12 rounded-2xl border-border/70 bg-background/70" />
+          <Input id="contactName" name="contactName" placeholder="Your full name" className="h-12 rounded-md border-hairline bg-surface" />
         </div>
         <div className="space-y-2">
           <Label htmlFor="companyName">Company Name</Label>
-          <Input id="companyName" name="companyName" placeholder="Company or organization" required className="h-12 rounded-2xl border-border/70 bg-background/70" />
+          <Input id="companyName" name="companyName" placeholder="Company or organization" required className="h-12 rounded-md border-hairline bg-surface" />
         </div>
         <div className="space-y-2">
           <Label htmlFor="email">Work Email</Label>
-          <Input id="email" name="email" type="email" placeholder="you@company.com" required className="h-12 rounded-2xl border-border/70 bg-background/70" />
+          <Input id="email" name="email" type="email" placeholder="you@company.com" required className="h-12 rounded-md border-hairline bg-surface" />
         </div>
         <div className="space-y-2">
           <Label htmlFor="phone">Phone Number</Label>
-          <Input id="phone" name="phone" type="tel" placeholder="+234..." className="h-12 rounded-2xl border-border/70 bg-background/70" />
+          <Input id="phone" name="phone" type="tel" placeholder="+234..." className="h-12 rounded-md border-hairline bg-surface" />
         </div>
         <div className="space-y-2">
           <Label htmlFor="employees">Organization Size</Label>
@@ -80,7 +80,7 @@ export function RequestQuoteForm() {
             name="employees"
             required
             defaultValue=""
-            className="h-12 w-full rounded-2xl border border-border/70 bg-background/70 px-4 text-sm text-foreground outline-none ring-offset-background transition focus-visible:ring-2 focus-visible:ring-ring"
+            className="h-12 w-full rounded-md border border-hairline bg-surface px-4 text-sm text-foreground outline-none ring-offset-background transition focus-visible:ring-2 focus-visible:ring-ring"
           >
             <option value="" disabled>
               Select employee range
@@ -98,7 +98,7 @@ export function RequestQuoteForm() {
             id="industry"
             name="industry"
             defaultValue=""
-            className="h-12 w-full rounded-2xl border border-border/70 bg-background/70 px-4 text-sm text-foreground outline-none ring-offset-background transition focus-visible:ring-2 focus-visible:ring-ring"
+            className="h-12 w-full rounded-md border border-hairline bg-surface px-4 text-sm text-foreground outline-none ring-offset-background transition focus-visible:ring-2 focus-visible:ring-ring"
           >
             <option value="">Select industry</option>
             {industries.map((industry) => (
@@ -117,7 +117,7 @@ export function RequestQuoteForm() {
             id="timeline"
             name="timeline"
             defaultValue=""
-            className="h-12 w-full rounded-2xl border border-border/70 bg-background/70 px-4 text-sm text-foreground outline-none ring-offset-background transition focus-visible:ring-2 focus-visible:ring-ring"
+            className="h-12 w-full rounded-md border border-hairline bg-surface px-4 text-sm text-foreground outline-none ring-offset-background transition focus-visible:ring-2 focus-visible:ring-ring"
           >
             <option value="">Select timeline</option>
             {timelines.map((timeline) => (
@@ -134,7 +134,7 @@ export function RequestQuoteForm() {
             name="message"
             rows={4}
             placeholder="Tell us about your current priorities, attack surface, compliance targets, or internal blockers."
-            className="min-h-[130px] rounded-2xl border-border/70 bg-background/70"
+            className="min-h-[130px] rounded-md border-hairline bg-surface"
           />
         </div>
       </div>
@@ -151,7 +151,7 @@ export function RequestQuoteForm() {
             <label
               key={service.id}
               htmlFor={service.id}
-              className="group block cursor-pointer rounded-3xl border border-border/70 bg-background/60 p-4 transition-colors has-[:checked]:border-primary/40 has-[:checked]:bg-primary/10"
+              className="group block cursor-pointer rounded-lg border border-hairline bg-surface p-4 transition-colors has-[:checked]:border-primary/40 has-[:checked]:bg-primary/10"
             >
               <input id={service.id} name="services" type="checkbox" value={service.id} className="sr-only" />
               <div className="flex items-start justify-between gap-3">
@@ -161,7 +161,7 @@ export function RequestQuoteForm() {
                     Add this scope to the engagement request.
                   </p>
                 </div>
-                <div className="mt-1 h-4 w-4 rounded-full border border-border/70 bg-background group-has-[:checked]:border-primary group-has-[:checked]:bg-primary" />
+                <div className="mt-1 h-4 w-4 rounded-full border border-hairline bg-background group-has-[:checked]:border-primary group-has-[:checked]:bg-primary" />
               </div>
             </label>
           ))}
@@ -176,7 +176,7 @@ export function RequestQuoteForm() {
         </Alert>
       ) : null}
 
-      <div className="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-border/70 bg-background/60 p-5">
+      <div className="flex flex-wrap items-center justify-between gap-4 rounded-lg border border-hairline bg-surface p-5">
         <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
           Requests route to your Secure Sense intake workflow. You can follow up by email, scope call,
           or technical discovery depending on the service mix selected.

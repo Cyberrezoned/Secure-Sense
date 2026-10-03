@@ -1,99 +1,131 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, BellRing, Bot, FileSearch, GitBranch, Radar, ShieldCheck, Workflow } from 'lucide-react';
+import { ArrowRight, BellRing, FileSearch, GitBranch, Workflow } from 'lucide-react';
 
 import { ComplianceChatbot } from '@/components/compliance-chatbot';
 import { ContentAnalysis } from '@/components/community/content-analysis';
-import { DashboardChart } from '@/components/dashboard-chart';
+import { KevTrendChart } from '@/components/intel/kev-trend-chart';
+import { FeedAttribution, FeedUnavailable } from '@/components/intel/primitives';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import type { FeedResult, KevSummary } from '@/lib/intel';
+import { formatCount, formatDate, formatPercent } from '@/lib/format';
 
 const integrationCards = [
   {
-    title: 'Slack and alerting',
-    description: 'Push detection summaries and triage updates into collaboration channels for faster alignment.',
+    title: 'Alerting and collaboration',
+    description: 'Detection summaries and triage state pushed into Slack or Teams with the evidence attached.',
     icon: BellRing,
   },
   {
-    title: 'Engineering workflows',
-    description: 'Route findings into ticketing and delivery systems without losing technical context or severity.',
+    title: 'Engineering workflow',
+    description: 'Findings routed into Jira or GitHub Issues carrying severity, reproduction steps, and retest status.',
     icon: GitBranch,
   },
   {
-    title: 'Evidence pipelines',
-    description: 'Keep assessment output, control evidence, and executive reporting linked to one source of truth.',
+    title: 'Evidence pipeline',
+    description: 'Assessment output and control evidence collected once, then reused across every framework in scope.',
     icon: Workflow,
   },
 ];
 
-export function PlatformConsole() {
+export function PlatformConsole({ kev }: { kev: FeedResult<KevSummary> }) {
   return (
-    <div className="panel p-4 md:p-6">
-      <Tabs defaultValue="telemetry" className="space-y-6">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+    <div className="surface p-5 md:p-6">
+      <Tabs defaultValue="exposure" className="space-y-6">
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <p className="eyebrow">Interactive Workspace</p>
-            <h3 className="mt-5 font-headline text-3xl font-semibold text-foreground">Command center by function</h3>
-            <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground">
-              Review telemetry, engage the compliance copilot, analyze content, and connect workflows from one route.
-            </p>
+            <p className="eyebrow">Operational workspace</p>
+            <h3 className="mt-3 text-xl font-semibold text-foreground">Exposure, guidance, and routing</h3>
           </div>
-          <TabsList className="h-auto flex-wrap justify-start gap-2 rounded-3xl bg-background/60 p-2">
-            <TabsTrigger value="telemetry" className="rounded-full px-4 py-2 data-[state=active]:bg-card">
-              Telemetry
+          <TabsList className="h-auto flex-wrap justify-start gap-1 rounded-full bg-secondary/60 p-1">
+            <TabsTrigger value="exposure" className="rounded-full px-3.5 py-1.5 text-xs data-[state=active]:bg-card">
+              Exposure
             </TabsTrigger>
-            <TabsTrigger value="copilot" className="rounded-full px-4 py-2 data-[state=active]:bg-card">
-              Copilot
+            <TabsTrigger value="copilot" className="rounded-full px-3.5 py-1.5 text-xs data-[state=active]:bg-card">
+              Compliance copilot
             </TabsTrigger>
-            <TabsTrigger value="analysis" className="rounded-full px-4 py-2 data-[state=active]:bg-card">
-              AI Analysis
+            <TabsTrigger value="analysis" className="rounded-full px-3.5 py-1.5 text-xs data-[state=active]:bg-card">
+              Content analysis
             </TabsTrigger>
-            <TabsTrigger value="workflow" className="rounded-full px-4 py-2 data-[state=active]:bg-card">
-              Workflows
+            <TabsTrigger value="workflow" className="rounded-full px-3.5 py-1.5 text-xs data-[state=active]:bg-card">
+              Workflow
             </TabsTrigger>
           </TabsList>
         </div>
 
-        <TabsContent value="telemetry" className="mt-0">
-          <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-            <div className="rounded-[1.5rem] border border-border/70 bg-background/50 p-2 md:p-4">
-              <DashboardChart />
-            </div>
-            <div className="space-y-4">
-              {[
-                {
-                  title: 'Live security posture view',
-                  description: 'Turn dashboards into an operational story for leadership, security, and engineering teams.',
-                  icon: Radar,
-                },
-                {
-                  title: 'Remediation visibility',
-                  description: 'Track what has been found, what has been fixed, and what still needs business decisions.',
-                  icon: ShieldCheck,
-                },
-                {
-                  title: 'Executive-ready reporting',
-                  description: 'Translate security work into risk, compliance status, and delivery progress without another toolchain.',
-                  icon: Bot,
-                },
-              ].map((item) => {
-                const Icon = item.icon;
+        <TabsContent value="exposure" className="mt-0">
+          {kev.ok ? (
+            <div className="grid gap-5 lg:grid-cols-[1.25fr_0.75fr]">
+              <div className="rounded-md border border-hairline p-5">
+                <KevTrendChart summary={kev.data} />
+                <FeedAttribution
+                  source={kev.source}
+                  fetchedAt={kev.fetchedAt}
+                  note={`Released ${formatDate(kev.data.releasedAt)}`}
+                  className="mt-5 border-t border-hairline pt-4"
+                />
+              </div>
 
-                return (
-                  <div key={item.title} className="rounded-[1.5rem] border border-border/70 bg-background/60 p-5">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary">
-                        <Icon className="h-4 w-4" />
-                      </div>
-                      <p className="font-medium text-foreground">{item.title}</p>
+              <div className="flex flex-col gap-4">
+                <div className="rounded-md border border-hairline p-5">
+                  <p className="eyebrow">Prioritisation inputs</p>
+                  <dl className="mt-4 space-y-3 text-sm">
+                    <div className="flex items-baseline justify-between gap-4">
+                      <dt className="text-muted-foreground">Actively exploited CVEs</dt>
+                      <dd className="font-semibold tabular text-foreground">{formatCount(kev.data.total)}</dd>
                     </div>
-                    <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.description}</p>
-                  </div>
-                );
-              })}
+                    <div className="flex items-baseline justify-between gap-4">
+                      <dt className="text-muted-foreground">Added in 30 days</dt>
+                      <dd className="font-semibold tabular text-foreground">
+                        {formatCount(kev.data.addedLast30Days)}
+                      </dd>
+                    </div>
+                    <div className="flex items-baseline justify-between gap-4">
+                      <dt className="text-muted-foreground">Ransomware-linked</dt>
+                      <dd className="font-semibold tabular text-foreground">
+                        {formatPercent(kev.data.ransomwareShare, 0)}
+                      </dd>
+                    </div>
+                    <div className="flex items-baseline justify-between gap-4">
+                      <dt className="text-muted-foreground">Deadlines inside 7 days</dt>
+                      <dd className="font-semibold tabular text-foreground">
+                        {formatCount(kev.data.dueWithin7Days)}
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+
+                <div className="rounded-md border border-hairline p-5">
+                  <p className="eyebrow">Most affected vendors</p>
+                  <ul className="mt-4 space-y-2.5">
+                    {kev.data.topVendors.slice(0, 5).map((vendor) => {
+                      const share = vendor.count / kev.data.topVendors[0].count;
+
+                      return (
+                        <li key={vendor.vendor} className="text-sm">
+                          <div className="flex items-baseline justify-between gap-4">
+                            <span className="text-foreground">{vendor.vendor}</span>
+                            <span className="tabular text-muted-foreground">{formatCount(vendor.count)}</span>
+                          </div>
+                          {/* Bar is a secondary encoding of the same number, not decoration. */}
+                          <div className="mt-1.5 h-1 w-full overflow-hidden rounded-full bg-secondary">
+                            <div
+                              className="h-full rounded-full bg-chart-1"
+                              style={{ width: `${Math.max(share * 100, 3)}%` }}
+                            />
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
+          ) : (
+            <FeedUnavailable source={kev.source} error={kev.error} />
+          )}
         </TabsContent>
 
         <TabsContent value="copilot" className="mt-0">
@@ -101,58 +133,58 @@ export function PlatformConsole() {
         </TabsContent>
 
         <TabsContent value="analysis" className="mt-0">
-          <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
-            <div className="rounded-[1.5rem] border border-border/70 bg-background/60 p-6">
-              <p className="eyebrow">AI Content Workflows</p>
-              <h3 className="mt-5 font-headline text-2xl font-semibold text-foreground">Analyze research before it hits your hub</h3>
-              <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                Moderate submissions, summarize long-form content, and generate tags and categories so your
-                research area feels alive and curated rather than manually maintained.
+          <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="rounded-md border border-hairline p-5">
+              <p className="eyebrow">Research workflow</p>
+              <h3 className="mt-3 text-lg font-semibold text-foreground">
+                Review advisories before they reach the hub
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Summarise long-form advisories, extract affected products, and generate tags so the research library
+                stays searchable as it grows.
               </p>
-              <div className="mt-6 space-y-3">
+              <ul className="mt-5 space-y-2.5">
                 {[
-                  'Content moderation for community safety and misinformation reduction',
-                  'AI summaries for faster knowledge transfer and browsing',
-                  'Automatic categories and tags for a cleaner publishing workflow',
+                  'Summarisation for faster analyst triage',
+                  'Automatic tagging and categorisation',
+                  'Moderation pass before publication',
                 ].map((item) => (
-                  <div key={item} className="flex items-start gap-3">
-                    <div className="mt-1 h-2.5 w-2.5 rounded-full bg-primary" />
-                    <p className="text-sm leading-7 text-muted-foreground">{item}</p>
-                  </div>
+                  <li key={item} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                    <span className="status-dot mt-1.5" data-status="low" aria-hidden="true" />
+                    {item}
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
             <ContentAnalysis />
           </div>
         </TabsContent>
 
         <TabsContent value="workflow" className="mt-0">
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-3">
             {integrationCards.map((card) => {
               const Icon = card.icon;
 
               return (
-                <div key={card.title} className="rounded-[1.5rem] border border-border/70 bg-background/60 p-6">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mt-5 font-headline text-xl font-semibold text-foreground">{card.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-muted-foreground">{card.description}</p>
+                <div key={card.title} className="rounded-md border border-hairline p-5">
+                  <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
+                  <h3 className="mt-4 text-base font-semibold text-foreground">{card.title}</h3>
+                  <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">{card.description}</p>
                 </div>
               );
             })}
           </div>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            <Button asChild className="rounded-full">
+            <Button asChild>
               <Link href="/integrations">
-                View Integrations
+                View integrations
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
-            <Button asChild variant="outline" className="rounded-full">
+            <Button asChild variant="outline">
               <Link href="/contact">
-                Scope a Workflow
+                Scope a workflow
                 <FileSearch className="h-4 w-4" />
               </Link>
             </Button>
