@@ -5,6 +5,13 @@ import { CtaBanner } from '@/components/company/cta-banner';
 import { PageHero } from '@/components/company/page-hero';
 import { SectionHeading } from '@/components/company/section-heading';
 import { Button } from '@/components/ui/button';
+import { pageMetadata } from '@/lib/page-metadata';
+
+export const metadata = pageMetadata(
+  'Integrations',
+  'Connect Sule Zeen detection, evidence, and reporting workflows to the collaboration, ticketing, and cloud systems your teams already run.',
+  '/integrations'
+);
 
 const integrations = [
   {

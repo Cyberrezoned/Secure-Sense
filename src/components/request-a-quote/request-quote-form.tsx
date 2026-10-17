@@ -49,8 +49,8 @@ export function RequestQuoteForm() {
 
   if (state.success) {
     return (
-      <Alert className="border-emerald-400/40 bg-emerald-500/10 text-emerald-100">
-        <CheckCircle2 className="h-4 w-4 !text-emerald-300" />
+      <Alert className="border-signal-ok/40 bg-signal-ok/10 text-foreground">
+        <CheckCircle2 className="h-4 w-4 !text-signal-ok" />
         <AlertTitle>Request received</AlertTitle>
         <AlertDescription>{state.success}</AlertDescription>
       </Alert>
@@ -62,19 +62,19 @@ export function RequestQuoteForm() {
       <div className="grid gap-5 md:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="contactName">Contact Name</Label>
-          <Input id="contactName" name="contactName" placeholder="Your full name" className="h-12 rounded-md border-hairline bg-surface" />
+          <Input id="contactName" name="contactName" placeholder="Your full name" className="h-12 rounded-md border-input bg-surface" />
         </div>
         <div className="space-y-2">
           <Label htmlFor="companyName">Company Name</Label>
-          <Input id="companyName" name="companyName" placeholder="Company or organization" required className="h-12 rounded-md border-hairline bg-surface" />
+          <Input id="companyName" name="companyName" placeholder="Company or organization" required className="h-12 rounded-md border-input bg-surface" />
         </div>
         <div className="space-y-2">
           <Label htmlFor="email">Work Email</Label>
-          <Input id="email" name="email" type="email" placeholder="you@company.com" required className="h-12 rounded-md border-hairline bg-surface" />
+          <Input id="email" name="email" type="email" placeholder="you@company.com" required className="h-12 rounded-md border-input bg-surface" />
         </div>
         <div className="space-y-2">
           <Label htmlFor="phone">Phone Number</Label>
-          <Input id="phone" name="phone" type="tel" placeholder="+234..." className="h-12 rounded-md border-hairline bg-surface" />
+          <Input id="phone" name="phone" type="tel" placeholder="+234..." className="h-12 rounded-md border-input bg-surface" />
         </div>
         <div className="space-y-2">
           <Label htmlFor="employees">Organization Size</Label>
@@ -83,7 +83,7 @@ export function RequestQuoteForm() {
             name="employees"
             required
             defaultValue=""
-            className="h-12 w-full rounded-md border border-hairline bg-surface px-4 text-sm text-foreground outline-none ring-offset-background transition focus-visible:ring-2 focus-visible:ring-ring"
+            className="h-12 w-full rounded-md border border-input bg-surface px-4 text-sm text-foreground outline-none ring-offset-background transition focus-visible:ring-2 focus-visible:ring-ring"
           >
             <option value="" disabled>
               Select employee range
@@ -101,7 +101,7 @@ export function RequestQuoteForm() {
             id="industry"
             name="industry"
             defaultValue=""
-            className="h-12 w-full rounded-md border border-hairline bg-surface px-4 text-sm text-foreground outline-none ring-offset-background transition focus-visible:ring-2 focus-visible:ring-ring"
+            className="h-12 w-full rounded-md border border-input bg-surface px-4 text-sm text-foreground outline-none ring-offset-background transition focus-visible:ring-2 focus-visible:ring-ring"
           >
             <option value="">Select industry</option>
             {industries.map((industry) => (
@@ -120,7 +120,7 @@ export function RequestQuoteForm() {
             id="timeline"
             name="timeline"
             defaultValue=""
-            className="h-12 w-full rounded-md border border-hairline bg-surface px-4 text-sm text-foreground outline-none ring-offset-background transition focus-visible:ring-2 focus-visible:ring-ring"
+            className="h-12 w-full rounded-md border border-input bg-surface px-4 text-sm text-foreground outline-none ring-offset-background transition focus-visible:ring-2 focus-visible:ring-ring"
           >
             <option value="">Select timeline</option>
             {timelines.map((timeline) => (
@@ -137,24 +137,22 @@ export function RequestQuoteForm() {
             name="message"
             rows={4}
             placeholder="Tell us about your content or learning idea, commodity workflow, security priorities, or partnership interests."
-            className="min-h-[130px] rounded-md border-hairline bg-surface"
+            className="min-h-[130px] rounded-md border-input bg-surface"
           />
         </div>
       </div>
 
-      <div className="space-y-4">
-        <div>
-          <Label className="text-base">Services of Interest</Label>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Select one or more functions so we can scope the right workflow.
-          </p>
-        </div>
+      <fieldset className="space-y-4">
+        <legend className="text-base font-medium text-foreground">Services of Interest</legend>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Select one or more functions so we can scope the right workflow.
+        </p>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {serviceOptions.map((service) => (
             <label
               key={service.id}
               htmlFor={service.id}
-              className="group block cursor-pointer rounded-lg border border-hairline bg-surface p-4 transition-colors has-[:checked]:border-primary/40 has-[:checked]:bg-primary/10"
+              className="group block cursor-pointer rounded-lg border border-input bg-surface p-4 transition-colors has-[:checked]:border-primary/40 has-[:checked]:bg-primary/10 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-ring"
             >
               <input id={service.id} name="services" type="checkbox" value={service.id} className="sr-only" />
               <div className="flex items-start justify-between gap-3">
@@ -164,12 +162,12 @@ export function RequestQuoteForm() {
                     Add this scope to the engagement request.
                   </p>
                 </div>
-                <div className="mt-1 h-4 w-4 rounded-full border border-hairline bg-background group-has-[:checked]:border-primary group-has-[:checked]:bg-primary" />
+                <div className="mt-1 h-4 w-4 rounded-full border border-input bg-background group-has-[:checked]:border-primary group-has-[:checked]:bg-primary" />
               </div>
             </label>
           ))}
         </div>
-      </div>
+      </fieldset>
 
       {state.error ? (
         <Alert variant="destructive">
@@ -179,7 +177,7 @@ export function RequestQuoteForm() {
         </Alert>
       ) : null}
 
-      <div className="flex flex-wrap items-center justify-between gap-4 rounded-lg border border-hairline bg-surface p-5">
+      <div className="flex flex-wrap items-center justify-between gap-4 rounded-lg border border-input bg-surface p-5">
         <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
           Share your requirements with Sule Zeen. We can follow up by email, scope call,
           or technical discovery depending on the service mix selected.

@@ -10,6 +10,13 @@ import sendResendEmail from '@/lib/resend';
 
 export type AnalysisResult = AnalyzeArticleOutput;
 
+/**
+ * Contact of record for enquiries that cannot be delivered automatically.
+ * Kept as a constant so no code path falls back to a domain we do not own.
+ */
+const CONTACT_EMAIL = process.env.ADMIN_EMAIL || 'zenethecyber@icloud.com';
+const SENDER_DOMAIN = process.env.RESEND_SENDER_DOMAIN || 'zeenthecyber.online';
+
 export async function analyzeContent(
   _prevState: unknown,
   formData: FormData
@@ -65,9 +72,14 @@ export async function requestPricing(_prevState: unknown, formData: FormData) {
   const validatedFields = pricingRequestSchema.safeParse(data);
 
   if (!validatedFields.success) {
-    console.log(validatedFields.error.flatten().fieldErrors);
+    const fieldErrors = validatedFields.error.flatten().fieldErrors;
+    const missing = Object.keys(fieldErrors);
     return {
-      error: 'Please fill out all required fields.',
+      error:
+        missing.length > 0
+          ? `Please check these fields: ${missing.join(', ')}.`
+          : 'Please fill out all required fields.',
+      fieldErrors,
     };
   }
 
@@ -97,8 +109,9 @@ export async function requestPricing(_prevState: unknown, formData: FormData) {
   // Send email using Resend if API key is available
   const resendApiKey = process.env.RESEND_API_KEY;
   // Prefer RESEND_FROM and ADMIN_EMAIL env names; fall back to older names for compatibility
-  const emailFrom = process.env.RESEND_FROM || process.env.EMAIL_FROM || 'no-reply@secure-sense.com';
-  const notifyTo = process.env.ADMIN_EMAIL || process.env.NOTIFY_TO || process.env.RESEND_FROM || process.env.EMAIL_FROM || 'hello@secure-sense.com';
+  const emailFrom = process.env.RESEND_FROM || process.env.EMAIL_FROM || `no-reply@${SENDER_DOMAIN}`;
+  const notifyTo =
+    process.env.ADMIN_EMAIL || process.env.NOTIFY_TO || process.env.RESEND_FROM || process.env.EMAIL_FROM || CONTACT_EMAIL;
 
   if (resendApiKey) {
     try {
@@ -129,7 +142,12 @@ export async function requestPricing(_prevState: unknown, formData: FormData) {
     }
   }
 
-  // Fallback when no Resend API key is configured
-  console.warn('RESEND_API_KEY not set — pricing request logged but not emailed.');
-  return { success: 'Thank you for your request! Our team will be in touch with you shortly.' };
+  // No delivery provider configured. Previously this returned success, which
+  // told the sender "we'll be in touch" while the enquiry existed only as a
+  // console line — the lead was silently lost. Fail visibly and give them a
+  // route that actually reaches us.
+  console.error('RESEND_API_KEY not set — pricing request could NOT be delivered.');
+  return {
+    error: `We could not submit your request automatically. Please email ${CONTACT_EMAIL} and we will respond directly.`,
+  };
 }

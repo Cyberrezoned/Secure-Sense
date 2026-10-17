@@ -11,6 +11,8 @@ const footerGroups = [
       { href: '/cybersecurity', label: 'Cybersecurity' },
       { href: '/products', label: 'ZeenTheCyber' },
       { href: '/studio', label: 'Sule Zeen Studio' },
+      // Linked here so the route is reachable rather than sitemap-only.
+      { href: '/solutions', label: 'Industry solutions' },
     ],
   },
   {

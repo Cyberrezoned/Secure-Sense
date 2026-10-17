@@ -6,6 +6,13 @@ import { PageHero } from '@/components/company/page-hero';
 import { SectionHeading } from '@/components/company/section-heading';
 import { RequestQuoteForm } from '@/components/request-a-quote/request-quote-form';
 import { Button } from '@/components/ui/button';
+import { pageMetadata } from '@/lib/page-metadata';
+
+export const metadata = pageMetadata(
+  'Contact',
+  'Speak with Sule Zeen about commodity supply-chain infrastructure, cybersecurity engagements, or ZeenTheCyber products.',
+  '/contact'
+);
 
 const contactCards = [
   {

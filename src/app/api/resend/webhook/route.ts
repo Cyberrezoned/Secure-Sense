@@ -19,25 +19,44 @@ function constantTimeCompare(a: string, b: string) {
   }
 }
 
+/** Reject oversized bodies before parsing; webhook events are small. */
+const MAX_BODY_BYTES = 64 * 1024;
+
 export async function POST(request: NextRequest) {
-  const body = await request.text();
-  const signatureHeader = request.headers.get('resend-signature') || request.headers.get('x-resend-signature') || '';
   const secret = process.env.RESEND_WEBHOOK_SECRET;
 
-  if (secret) {
-    try {
-      const expected = crypto.createHmac('sha256', secret).update(body).digest('hex');
-      if (!constantTimeCompare(expected, signatureHeader)) {
-        console.warn('Resend webhook signature mismatch', { expected, got: signatureHeader });
-        return NextResponse.json({ ok: false, message: 'invalid signature' }, { status: 401 });
-      }
-    } catch (err) {
-      console.error('Error verifying webhook signature', err);
-      return NextResponse.json({ ok: false }, { status: 401 });
+  // Fail closed. Previously an unset secret skipped verification entirely, so
+  // anyone could post arbitrary events to this endpoint and have them
+  // processed and written to disk.
+  if (!secret) {
+    console.error('RESEND_WEBHOOK_SECRET not configured — rejecting webhook.');
+    return NextResponse.json({ ok: false, message: 'webhook not configured' }, { status: 503 });
+  }
+
+  const declaredLength = Number(request.headers.get('content-length') ?? '0');
+  if (declaredLength > MAX_BODY_BYTES) {
+    return NextResponse.json({ ok: false, message: 'payload too large' }, { status: 413 });
+  }
+
+  const body = await request.text();
+  if (body.length > MAX_BODY_BYTES) {
+    return NextResponse.json({ ok: false, message: 'payload too large' }, { status: 413 });
+  }
+
+  const signatureHeader =
+    request.headers.get('resend-signature') || request.headers.get('x-resend-signature') || '';
+
+  try {
+    const expected = crypto.createHmac('sha256', secret).update(body).digest('hex');
+    if (!constantTimeCompare(expected, signatureHeader)) {
+      // Never log `expected` — that hands the correct signature to anyone who
+      // can read logs.
+      console.warn('Resend webhook signature mismatch');
+      return NextResponse.json({ ok: false, message: 'invalid signature' }, { status: 401 });
     }
-  } else {
-    // If no secret is configured, warn in logs but continue for development convenience
-    console.warn('RESEND_WEBHOOK_SECRET not configured — skipping signature verification');
+  } catch (err) {
+    console.error('Error verifying webhook signature', err);
+    return NextResponse.json({ ok: false }, { status: 401 });
   }
 
   let event: any = null;

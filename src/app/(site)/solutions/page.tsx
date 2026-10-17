@@ -5,6 +5,13 @@ import { CtaBanner } from '@/components/company/cta-banner';
 import { PageHero } from '@/components/company/page-hero';
 import { SectionHeading } from '@/components/company/section-heading';
 import { Button } from '@/components/ui/button';
+import { pageMetadata } from '@/lib/page-metadata';
+
+export const metadata = pageMetadata(
+  'Industry Solutions',
+  'Security and infrastructure programmes shaped to the obligations of financial services, healthcare, critical infrastructure, and product teams.',
+  '/solutions'
+);
 
 const sectors = [
   {

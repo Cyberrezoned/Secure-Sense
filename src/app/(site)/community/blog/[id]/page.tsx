@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
@@ -5,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { pageMetadata } from '@/lib/page-metadata';
 
 // In a real app, you would fetch this from a CMS or database
 const recentPosts = [
@@ -92,8 +94,34 @@ sudo setoolkit
   { id: 22, title: "Purple Teaming: Bridging the Gap Between Attack and Defense", author: "Sule Zeen Research", date: "July 17, 2024", imageId: "post-img-22", content: "<p>Purple teaming fosters collaboration between red and blue teams to improve an organization's overall security posture.</p>" }
 ]
 
-export default function BlogPostPage({ params }: { params: { id: string } }) {
-  const post = recentPosts.find(p => p.id === parseInt(params.id));
+type BlogPageProps = { params: Promise<{ id: string }> };
+
+function findPost(id: string) {
+  const parsed = Number.parseInt(id, 10);
+  return Number.isNaN(parsed) ? undefined : recentPosts.find((p) => p.id === parsed);
+}
+
+/** Prerender every article so the set is static and crawlable. */
+export function generateStaticParams() {
+  return recentPosts.map((post) => ({ id: String(post.id) }));
+}
+
+export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
+  const { id } = await params;
+  const post = findPost(id);
+  if (!post) return { title: 'Article not found', robots: { index: false, follow: false } };
+
+  // Strip the stored HTML down to a plain-text description.
+  const summary = post.content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 155);
+
+  return pageMetadata(post.title, summary, `/community/blog/${post.id}`);
+}
+
+// `params` is a Promise in Next 16; reading it synchronously yielded undefined,
+// so every id resolved to NaN and the route 404'd for all posts.
+export default async function BlogPostPage({ params }: BlogPageProps) {
+  const { id } = await params;
+  const post = findPost(id);
 
   if (!post) {
     notFound();

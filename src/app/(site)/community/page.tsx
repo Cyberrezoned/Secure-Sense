@@ -9,6 +9,13 @@ import { ContentAnalysis } from '@/components/community/content-analysis';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { pageMetadata } from '@/lib/page-metadata';
+
+export const metadata = pageMetadata(
+  'Research',
+  'Threat analysis, explainers, and security engineering write-ups from the Sule Zeen cybersecurity practice.',
+  '/community'
+);
 
 const recentPosts = [
   { id: 3, title: 'AI-Powered Phishing: The Next Frontier in Social Engineering', author: 'Sule Zeen Research', date: 'August 5, 2024', imageId: 'post-img-3' },
@@ -115,7 +122,7 @@ export default function CommunityPage() {
         <SectionHeading
           eyebrow="Recent Articles"
           title="Research, explainers, and strategic security reading."
-          description="Technical write-ups from live engagements, threat analysis, and the practices we apply in client environments."
+          description="Explainers, threat analysis, and security engineering write-ups from the Sule Zeen cybersecurity practice."
         />
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {recentPosts.map((post) => {

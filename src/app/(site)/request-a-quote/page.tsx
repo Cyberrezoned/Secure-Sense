@@ -6,6 +6,13 @@ import { PageHero } from '@/components/company/page-hero';
 import { SectionHeading } from '@/components/company/section-heading';
 import { RequestQuoteForm } from '@/components/request-a-quote/request-quote-form';
 import { Button } from '@/components/ui/button';
+import { pageMetadata } from '@/lib/page-metadata';
+
+export const metadata = pageMetadata(
+  'Request a Quote',
+  'Scope a cybersecurity assessment, compliance programme, or supply-chain engagement with Sule Zeen and receive a costed proposal.',
+  '/request-a-quote'
+);
 
 export default function RequestQuotePage() {
   return (
@@ -25,9 +32,9 @@ export default function RequestQuotePage() {
           </>
         }
         stats={[
-          { value: 'Native form flow', label: 'Submission now posts real values' },
-          { value: 'Multi-service', label: 'Scope multiple functions at once' },
-          { value: 'Lead ready', label: 'Structured for enterprise intake' },
+          { value: 'One form', label: 'Scope several services in a single request' },
+          { value: 'Costed reply', label: 'We respond with an approach and a price' },
+          { value: 'Direct to the team', label: 'Reviewed by the people who deliver the work' },
         ]}
         aside={
           <div className="space-y-4">

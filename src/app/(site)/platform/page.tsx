@@ -8,12 +8,13 @@ import { SectionHeading } from '@/components/company/section-heading';
 import { PlatformConsole } from '@/components/platform/platform-console';
 import { Button } from '@/components/ui/button';
 import { getKevSummary } from '@/lib/intel';
+import { pageMetadata } from '@/lib/page-metadata';
 
-export const metadata: Metadata = {
-  title: 'ZeenTheCyber Platform',
-  description:
-    'Control mapping, evidence pipelines, and exposure prioritisation in one operational workspace, fed by live vulnerability intelligence.',
-};
+export const metadata = pageMetadata(
+  'ZeenTheCyber Platform',
+  'Control mapping, evidence pipelines, and exposure prioritisation in one operational workspace, fed by live vulnerability intelligence.',
+  '/platform'
+);
 
 export const revalidate = 1800;
 

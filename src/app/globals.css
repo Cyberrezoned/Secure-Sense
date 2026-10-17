@@ -35,7 +35,7 @@
 
     --border: 220 16% 88%;
     --hairline: 220 16% 92%;
-    --input: 220 16% 86%;
+    --input: 220 16% 58%;
     --ring: 214 88% 44%;
 
     /* Severity scale. Used for data encoding only, never for decoration. */
@@ -77,12 +77,12 @@
     --muted-foreground: 217 14% 66%;
     --accent: 212 94% 62%;
     --accent-foreground: 222 44% 8%;
-    --destructive: 0 68% 56%;
+    --destructive: 0 68% 58%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 220 16% 20%;
     --hairline: 220 16% 17%;
-    --input: 220 16% 22%;
+    --input: 220 12% 46%;
     --ring: 212 94% 62%;
 
     --signal-critical: 352 78% 62%;

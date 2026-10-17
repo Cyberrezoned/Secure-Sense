@@ -48,3 +48,6 @@ firestore-debug.log
 
 # generated document packs (regenerable from docs/brand)
 /outputs/
+
+# local webhook event log
+/data/
