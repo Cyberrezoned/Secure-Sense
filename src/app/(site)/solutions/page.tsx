@@ -64,7 +64,7 @@ export default function SolutionsPage() {
       <PageHero
         eyebrow="Industry Solutions"
         title="Security posture looks different in every environment"
-        description="The solutions route gives Secure Sense a clear place to speak to regulated sectors, fast-growing product teams, and complex operational environments without forcing all audiences through the same homepage narrative."
+        description="Sule Zeen tailors cybersecurity services to regulated sectors, growing product teams, and complex operational environments."
         actions={
           <>
             <Button asChild size="lg">
@@ -74,7 +74,7 @@ export default function SolutionsPage() {
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link href="/services">Review Services</Link>
+              <Link href="/cybersecurity">Review Services</Link>
             </Button>
           </>
         }

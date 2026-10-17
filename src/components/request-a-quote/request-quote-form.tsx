@@ -12,6 +12,9 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 
 const serviceOptions = [
+  { id: 'studio', label: 'Studio Content and Learning Partnerships' },
+  { id: 'supply-chain', label: 'Commodity Supply-Chain Infrastructure' },
+  { id: 'zeenthecyber', label: 'ZeenTheCyber Products' },
   { id: 'pentesting', label: 'Penetration Testing and Red Teaming' },
   { id: 'soc', label: 'Managed Detection and Response' },
   { id: 'vulnerability', label: 'Vulnerability Management' },
@@ -22,7 +25,7 @@ const serviceOptions = [
 
 const employeeRanges = ['1-50', '51-200', '201-1000', '1001+'];
 const timelines = ['Immediate', 'This quarter', 'Next quarter', 'Planning stage'];
-const industries = ['Fintech', 'Healthcare', 'SaaS', 'Public Sector', 'Energy / OT', 'Education / NGO', 'Other'];
+const industries = ['Media / Creator Economy', 'Agriculture / Commodities', 'Warehousing / Logistics', 'Trade Finance', 'Fintech', 'Healthcare', 'SaaS', 'Public Sector', 'Energy / OT', 'Education / NGO', 'Other'];
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -133,7 +136,7 @@ export function RequestQuoteForm() {
             id="message"
             name="message"
             rows={4}
-            placeholder="Tell us about your current priorities, attack surface, compliance targets, or internal blockers."
+            placeholder="Tell us about your content or learning idea, commodity workflow, security priorities, or partnership interests."
             className="min-h-[130px] rounded-md border-hairline bg-surface"
           />
         </div>
@@ -178,7 +181,7 @@ export function RequestQuoteForm() {
 
       <div className="flex flex-wrap items-center justify-between gap-4 rounded-lg border border-hairline bg-surface p-5">
         <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
-          Requests route to your Secure Sense intake workflow. You can follow up by email, scope call,
+          Share your requirements with Sule Zeen. We can follow up by email, scope call,
           or technical discovery depending on the service mix selected.
         </p>
         <SubmitButton />

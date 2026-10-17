@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
 
 /**
@@ -17,15 +16,13 @@ export function BrandLockup({
     <Link
       href="/"
       onClick={onNavigate}
-      className={cn('group inline-flex items-center gap-2.5', className)}
-      aria-label="Secure Sense home"
+      className={cn('group inline-flex shrink-0 items-baseline gap-1', className)}
+      aria-label="Sule Zeen home"
     >
-      <span className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
-        <Logo className="h-[1.125rem] w-[1.125rem]" />
+      <span className="font-headline text-[1.45rem] font-semibold tracking-[-0.055em] text-foreground">
+        sule zeen
       </span>
-      <span className="font-headline text-[1.0625rem] font-semibold tracking-tight text-foreground">
-        Secure Sense
-      </span>
+      <span aria-hidden="true" className="text-[1.6rem] font-semibold leading-none text-primary">.</span>
     </Link>
   );
 }

@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { MotionOrchestrator } from '@/components/motion-orchestrator';
 import { ThemeProvider } from '@/components/theme-provider';
 import { SITE_NAME, SITE_URL } from '@/lib/site';
+import { COMPANY_DESCRIPTION, COMPANY_TITLE } from '@/lib/company';
 import { cn } from '@/lib/utils';
 import './globals.css';
 
@@ -41,21 +42,19 @@ const mono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Secure Sense | Cyber Defence, Offensive Security and Compliance',
-    template: '%s | Secure Sense',
+    default: COMPANY_TITLE,
+    template: '%s | Sule Zeen',
   },
-  description:
-    'Secure Sense delivers offensive security, managed detection and response, and audit-ready compliance on an open-source defensive stack.',
+  description: COMPANY_DESCRIPTION,
   applicationName: SITE_NAME,
   openGraph: {
     type: 'website',
     siteName: SITE_NAME,
     url: SITE_URL,
-    title: 'Secure Sense | Cyber Defence, Offensive Security and Compliance',
-    description:
-      'Offensive security, managed detection and response, and audit-ready compliance built on an open-source defensive stack.',
+    title: COMPANY_TITLE,
+    description: COMPANY_DESCRIPTION,
   },
-  twitter: { card: 'summary_large_image' },
+  twitter: { card: 'summary' },
   robots: { index: true, follow: true },
 };
 

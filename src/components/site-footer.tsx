@@ -5,12 +5,12 @@ import { BrandLockup } from '@/components/brand-lockup';
 
 const footerGroups = [
   {
-    title: 'Capabilities',
+    title: 'Explore Sule Zeen',
     links: [
-      { href: '/services', label: 'Security services' },
-      { href: '/platform', label: 'Compliance platform' },
-      { href: '/integrations', label: 'Integrations' },
-      { href: '/solutions', label: 'Industry solutions' },
+      { href: '/supply-chain', label: 'Supply Chain' },
+      { href: '/cybersecurity', label: 'Cybersecurity' },
+      { href: '/products', label: 'ZeenTheCyber' },
+      { href: '/studio', label: 'Sule Zeen Studio' },
     ],
   },
   {
@@ -41,8 +41,7 @@ export function SiteFooter() {
             <BrandLockup />
 
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-              Offensive security, managed detection and response, and audit-ready compliance, delivered on an
-              open-source defensive stack.
+              A Nigerian technology company working in commodity supply-chain infrastructure and cybersecurity.
             </p>
 
             <div className="mt-6 space-y-2.5 text-sm text-muted-foreground">
@@ -97,10 +96,9 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 flex flex-col gap-2 border-t border-hairline pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Secure Sense. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Sule Zeen. All rights reserved.</p>
           <p>
-            Vulnerability data courtesy of CISA, NIST, and FIRST. Figures are retrieved live and attributed at the
-            point of use.
+            Trade infrastructure. Cybersecurity. Built in Nigeria.
           </p>
         </div>
       </div>

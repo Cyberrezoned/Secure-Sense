@@ -33,7 +33,7 @@ export default function IntegrationsPage() {
       <PageHero
         eyebrow="Integrations"
         title="Connect cybersecurity workflows to the systems your team already uses."
-        description="The integrations route explains how Secure Sense fits into collaboration, engineering, and reporting workflows so the platform story feels connected to real operational work."
+        description="Connect ZeenTheCyber to the collaboration, engineering, and reporting tools your team uses to manage security work."
         actions={
           <>
             <Button asChild size="lg">
@@ -123,7 +123,7 @@ export default function IntegrationsPage() {
 
       <div className="shell pb-20 md:pb-24">
         <CtaBanner
-          title="Need Secure Sense to fit into your current stack?"
+          title="Connect ZeenTheCyber to your current stack."
           description="Use the contact flow to scope workflow automation, ticket routing, reporting, or advisory integrations."
           primaryHref="/contact"
           primaryLabel="Discuss Integrations"

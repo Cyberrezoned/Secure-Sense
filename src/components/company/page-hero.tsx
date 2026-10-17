@@ -28,7 +28,6 @@ export function PageHero({
 }: PageHeroProps) {
   return (
     <section className={cn('relative overflow-hidden border-b border-hairline', className)}>
-      <div className="grid-backdrop" aria-hidden="true" />
       <div className="shell relative py-20 lg:py-28">
         <div className={cn('grid gap-12', aside ? 'lg:grid-cols-[1.15fr_0.85fr] lg:items-start' : 'max-w-3xl')}>
           <div>
@@ -49,7 +48,7 @@ export function PageHero({
           </div>
 
           {aside ? (
-            <div data-reveal data-reveal-delay="2" className="surface p-6">
+            <div data-reveal data-reveal-delay="2" className="border-l-2 border-primary pl-6 lg:mt-10">
               {aside}
             </div>
           ) : null}

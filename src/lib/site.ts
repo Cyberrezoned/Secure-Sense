@@ -17,4 +17,4 @@ export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.zeenthecyber.online'
 ).replace(/\/+$/, '');
 
-export const SITE_NAME = 'Secure Sense';
+export const SITE_NAME = 'Sule Zeen';

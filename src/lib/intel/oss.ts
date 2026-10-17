@@ -1,5 +1,5 @@
 /**
- * Live telemetry for the open-source stack Secure Sense builds on.
+ * Live telemetry for the open-source stack Sule Zeen builds on.
  *
  * Each entry is a real project with a real repository; every number shown in
  * the UI comes from the GitHub REST API at request time. Set GITHUB_TOKEN to
@@ -20,7 +20,7 @@ export type OssProject = {
   repo: `${string}/${string}`;
   name: string;
   layer: OssLayer;
-  /** What this component does inside a deployed Secure Sense pipeline. */
+  /** What this component does inside a deployed Sule Zeen pipeline. */
   role: string;
 };
 

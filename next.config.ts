@@ -5,6 +5,18 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  async redirects() {
+    return [
+      {
+        // The services page became the Cybersecurity practice page in the
+        // Sule Zeen rebrand. Permanent so inbound links and any existing
+        // index entries consolidate on one URL instead of two identical ones.
+        source: '/services',
+        destination: '/cybersecurity',
+        statusCode: 301,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {

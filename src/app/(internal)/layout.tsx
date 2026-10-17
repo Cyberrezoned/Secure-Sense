@@ -47,7 +47,7 @@ export default function InternalLayout({ children }: { children: React.ReactNode
 
       <footer className="border-t border-hairline bg-surface">
         <div className="shell py-5 text-xs text-muted-foreground">
-          Internal tooling. Not for distribution outside Secure Sense.
+          Internal tooling. Not for distribution outside Sule Zeen.
         </div>
       </footer>
     </div>

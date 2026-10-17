@@ -12,8 +12,8 @@ export default function RequestQuotePage() {
     <>
       <PageHero
         eyebrow="Request a Quote"
-        title="Scope the right cybersecurity engagement from the start."
-        description="Use this route when you already know you need an assessment, compliance program, managed service, or architecture support. The form is structured so Secure Sense can respond with the right delivery path."
+        title="Scope the right engagement with Sule Zeen."
+        description="Discuss a Studio content or learning partnership, commodity supply-chain infrastructure, cybersecurity services, or ZeenTheCyber products. Share the scope and timing so Sule Zeen can respond with a suitable approach."
         actions={
           <>
             <Button asChild size="lg">
@@ -78,7 +78,7 @@ export default function RequestQuotePage() {
           description="Use the contact hub if you want to discuss strategy, partnerships, or multi-phase programs first."
           primaryHref="/contact"
           primaryLabel="Open Contact Hub"
-          secondaryHref="/services"
+          secondaryHref="/cybersecurity"
           secondaryLabel="Review Services"
         />
       </div>

@@ -5,7 +5,10 @@ import { SITE_URL } from '@/lib/site';
 /** Public routes only. The Signal Desk is deliberately absent. */
 const routes: Array<{ path: string; priority: number; changeFrequency: 'daily' | 'weekly' | 'monthly' }> = [
   { path: '/', priority: 1, changeFrequency: 'weekly' },
-  { path: '/services', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/studio', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/supply-chain', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/cybersecurity', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/products', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/platform', priority: 0.9, changeFrequency: 'weekly' },
   { path: '/solutions', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/integrations', priority: 0.7, changeFrequency: 'monthly' },

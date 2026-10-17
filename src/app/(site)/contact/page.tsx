@@ -9,8 +9,8 @@ import { Button } from '@/components/ui/button';
 
 const contactCards = [
   {
-    title: 'Assessment and advisory',
-    description: 'Use this path for scoped pentests, security reviews, architecture support, or program consulting.',
+    title: 'Practices and partnerships',
+    description: 'Discuss the planned Studio, content and learning partnerships, commodity infrastructure, cybersecurity services, or ZeenTheCyber products.',
     icon: MessageSquareShare,
   },
   {
@@ -32,8 +32,8 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        title="Tell us what you need to secure."
-        description="Share your environment, timeline, and obligations. We will come back with a scoped approach, the team who would deliver it, and what it costs."
+        title="Build trust. Create opportunity. Start a conversation."
+        description="Talk to Sule Zeen about the planned Studio, supply-chain infrastructure, cybersecurity, or ZeenTheCyber. Share your interests and timeline so we can scope the next step."
         actions={
           <>
             <Button asChild size="lg">
@@ -43,7 +43,7 @@ export default function ContactPage() {
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link href="/services">Review Services</Link>
+              <Link href="/cybersecurity">Review Services</Link>
             </Button>
           </>
         }
@@ -86,7 +86,7 @@ export default function ContactPage() {
         <SectionHeading
           eyebrow="Engagement Form"
           title="Capture the right details once."
-          description="The new intake form uses native form controls so values submit correctly and the request arrives with useful program context."
+          description="Tell us about your organisation, the practice or product you are interested in, and what you want to achieve."
         />
         <div className="mt-10 surface p-6 md:p-8">
           <RequestQuoteForm />

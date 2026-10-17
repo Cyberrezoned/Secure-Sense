@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /**
- * Secure Sense design tokens.
+ * Sule Zeen design tokens.
  *
  * One neutral spine, one azure accent, and a fixed set of signal colours used
  * only to encode severity in data. Light is the default; dark is a first-class
@@ -156,6 +156,57 @@
 }
 
 @layer components {
+  /* Public identity: large type, ruled sections, and workflow drawings. */
+  .editorial-title {
+    @apply font-headline font-medium;
+    font-size: clamp(2.75rem, 6.4vw, 5.75rem);
+    line-height: 1.02;
+    letter-spacing: -0.05em;
+  }
+
+  .home-title {
+    @apply font-headline font-medium;
+    font-size: clamp(3.5rem, 7.9vw, 7rem);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+  }
+
+  .editorial-section {
+    padding-block: clamp(3.5rem, 7vw, 7rem);
+  }
+
+  .section-index {
+    @apply font-code text-[0.6875rem] font-medium uppercase text-primary;
+    letter-spacing: 0.08em;
+    line-height: 1.7;
+  }
+
+  .text-link {
+    @apply inline-flex w-fit items-center gap-4 border-b border-primary/40 pb-2 text-sm font-medium text-primary;
+    transition: border-color 160ms ease;
+  }
+
+  .text-link:hover { border-color: hsl(var(--primary)); }
+
+  .blueprint-panel { background: #063b80; color: #ffffff; }
+  .blueprint-panel h2,
+  .blueprint-panel h3,
+  .blueprint-panel h4 { color: #ffffff; }
+
+  .workflow-step {
+    @apply relative flex h-full w-full flex-col items-start gap-4 border-t border-white/30 px-3 py-5 text-left text-white/70 sm:px-5;
+    transition: background-color 160ms ease, color 160ms ease;
+  }
+
+  .workflow-step:hover { @apply bg-white/10 text-white; }
+  .workflow-step[aria-pressed="true"] { @apply border-white bg-white text-[#063b80]; }
+  .workflow-step:focus-visible { outline: 2px solid white; outline-offset: 4px; }
+
+  .studio-sheet {
+    @apply relative border border-primary/30 bg-background p-7 sm:p-10;
+    box-shadow: 9px 9px 0 hsl(var(--primary) / 0.08);
+  }
+
   /* ---- Structure ----------------------------------------------------- */
 
   .shell {

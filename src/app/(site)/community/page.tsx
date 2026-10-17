@@ -11,12 +11,12 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const recentPosts = [
-  { id: 3, title: 'AI-Powered Phishing: The Next Frontier in Social Engineering', author: 'Secure Sense Research', date: 'August 5, 2024', imageId: 'post-img-3' },
-  { id: 4, title: "Deepfake Scams: When Seeing Isn't Believing", author: 'Secure Sense Research', date: 'August 4, 2024', imageId: 'post-img-4' },
-  { id: 6, title: 'Anatomy of a Supply Chain Attack: Lessons from Recent Breaches', author: 'Secure Sense Research', date: 'August 2, 2024', imageId: 'post-img-6' },
-  { id: 8, title: 'Cloud Security Posture Management (CSPM): Beyond Misconfigurations', author: 'Secure Sense Research', date: 'July 31, 2024', imageId: 'post-img-8' },
-  { id: 11, title: 'Implementing Zero Trust: A Practical Roadmap', author: 'Secure Sense Research', date: 'July 28, 2024', imageId: 'post-img-11' },
-  { id: 20, title: 'Securing Operational Technology (OT): From Factories to Power Grids', author: 'Secure Sense Research', date: 'July 19, 2024', imageId: 'post-img-20' },
+  { id: 3, title: 'AI-Powered Phishing: The Next Frontier in Social Engineering', author: 'Sule Zeen Research', date: 'August 5, 2024', imageId: 'post-img-3' },
+  { id: 4, title: "Deepfake Scams: When Seeing Isn't Believing", author: 'Sule Zeen Research', date: 'August 4, 2024', imageId: 'post-img-4' },
+  { id: 6, title: 'Anatomy of a Supply Chain Attack: Lessons from Recent Breaches', author: 'Sule Zeen Research', date: 'August 2, 2024', imageId: 'post-img-6' },
+  { id: 8, title: 'Cloud Security Posture Management (CSPM): Beyond Misconfigurations', author: 'Sule Zeen Research', date: 'July 31, 2024', imageId: 'post-img-8' },
+  { id: 11, title: 'Implementing Zero Trust: A Practical Roadmap', author: 'Sule Zeen Research', date: 'July 28, 2024', imageId: 'post-img-11' },
+  { id: 20, title: 'Securing Operational Technology (OT): From Factories to Power Grids', author: 'Sule Zeen Research', date: 'July 19, 2024', imageId: 'post-img-20' },
 ];
 
 const resourceTracks = [
@@ -43,7 +43,7 @@ export default function CommunityPage() {
       <PageHero
         eyebrow="Research and Resources"
         title="A proper home for learning, threat research, and AI-assisted content workflows."
-        description="This route separates thought leadership and community tooling from the main company pitch. It gives Secure Sense a cleaner research surface for articles, knowledge sharing, and AI-assisted publishing."
+        description="Explore cybersecurity research, practical guidance, and analysis from Sule Zeen through the ZeenTheCyber product community."
         actions={
           <Button asChild size="lg">
             <Link href="#analysis">

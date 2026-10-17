@@ -12,7 +12,7 @@
  * reaches the page, the data loaders, or the upstream feed providers.
  */
 
-export const SIGNAL_DESK_REALM = 'Secure Sense Signal Desk';
+export const SIGNAL_DESK_REALM = 'Sule Zeen Signal Desk';
 
 export type AccessDecision =
   | { outcome: 'allow' }

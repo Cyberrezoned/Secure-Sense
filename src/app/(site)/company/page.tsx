@@ -1,147 +1,121 @@
 import Link from 'next/link';
-import { ArrowRight, BadgeCheck, Building2, Globe2, ShieldCheck, Users } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
-import { CtaBanner } from '@/components/company/cta-banner';
-import { PageHero } from '@/components/company/page-hero';
-import { SectionHeading } from '@/components/company/section-heading';
-import { Button } from '@/components/ui/button';
+import { COMPANY_DESCRIPTION } from '@/lib/company';
+import { pageMetadata } from '@/lib/page-metadata';
 
-const companyPoints = [
+export const metadata = pageMetadata('Company', COMPANY_DESCRIPTION, '/company');
+
+const practices = [
   {
-    title: 'Operator-led delivery',
-    description: 'The company positioning is rooted in hands-on offensive security, compliance work, and software delivery.',
-    icon: ShieldCheck,
+    number: '01',
+    name: 'Supply-chain infrastructure',
+    description: 'Commodity records connect farmers, warehouse operators, merchants and financiers. Our work covers the path from a graded delivery to a verified warehouse receipt, an offtake order and a financing decision.',
+    detail: 'Electronic warehouse receipts / signed records / escrow workflows',
+    href: '/supply-chain',
   },
   {
-    title: 'Business-aware security',
-    description: 'Secure Sense is presented as a partner that understands risk, regulation, engineering, and executive communication together.',
-    icon: Building2,
-  },
-  {
-    title: 'Regional depth, global relevance',
-    description: 'Lagos-based experience paired with frameworks and delivery patterns useful to distributed and international teams.',
-    icon: Globe2,
+    number: '02',
+    name: 'Cybersecurity',
+    description: 'We examine how systems can be compromised, develop detection and response workflows, and organise the controls and evidence required for compliance. The practice works across applications, APIs, cloud infrastructure and identity.',
+    detail: 'Offensive security / detection and response / compliance engineering',
+    href: '/cybersecurity',
   },
 ];
 
-const credentialGroups = ['ISC2 CC', 'CNSP', 'CCEP', 'CISA', 'CEH', 'CompTIA+'];
+const brands = [
+  {
+    name: 'Sule Zeen',
+    role: 'Company',
+    description: 'The Nigerian technology company behind the supply-chain infrastructure and cybersecurity practices.',
+  },
+  {
+    name: 'ZeenTheCyber',
+    role: 'Product brand',
+    description: 'A distinct cybersecurity product identity for the platform, integrations and research resources.',
+    href: '/products',
+  },
+  {
+    name: 'Sule Zeen Studio',
+    role: 'Proposed media extension',
+    description: 'A planned media and learning venture, beginning with digital safety for emerging creators and small online businesses.',
+    href: '/studio',
+  },
+];
 
 export default function CompanyPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Company"
-        title="A cybersecurity company story built around delivery, not a personal portfolio."
-        description="This route turns Secure Sense into a clearer company narrative with operating principles, capability context, and credentials that support enterprise trust."
-        actions={
-          <>
-            <Button asChild size="lg">
-              <Link href="/contact">
-                Talk to Secure Sense
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link href="/services">Review Services</Link>
-            </Button>
-          </>
-        }
-        stats={[
-          { value: 'Lagos, NG', label: 'Base of operations' },
-          { value: 'Cyber + engineering', label: 'Delivery blend' },
-          { value: 'Multi-framework', label: 'Assurance experience' },
-        ]}
-      />
+      <section className="shell editorial-section">
+        <p className="section-index">Company / Nigeria</p>
+        <div className="mt-10 grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-end lg:gap-20">
+          <h1 className="editorial-title">Sule Zeen.</h1>
+          <p className="max-w-xl text-xl leading-relaxed text-muted-foreground md:text-2xl">{COMPANY_DESCRIPTION}</p>
+        </div>
+        <p className="mt-12 border-t border-hairline pt-6 text-sm text-muted-foreground">Trade infrastructure. Cybersecurity. Built in Nigeria.</p>
+      </section>
 
-      <section className="shell py-20 md:py-24">
-        <SectionHeading
-          eyebrow="How We Operate"
-          title="Designed to read like a company buyers can trust."
-          description="The company page now explains why Secure Sense exists, how it delivers work, and what kind of expertise supports the engagement model."
-        />
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {companyPoints.map((point) => {
-            const Icon = point.icon;
-
-            return (
-              <div key={point.title} className="surface p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-md border border-primary/20 bg-primary/10 text-primary">
-                  <Icon className="h-5 w-5" />
-                </div>
-                <h3 className="mt-6 font-headline text-2xl font-semibold text-foreground">{point.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-muted-foreground">{point.description}</p>
-              </div>
-            );
-          })}
+      <section className="border-y border-hairline">
+        <div className="shell editorial-section grid gap-10 lg:grid-cols-[0.65fr_1.35fr] lg:gap-20">
+          <div>
+            <p className="section-index">01 / Why these practices</p>
+            <h2 className="mt-6 max-w-sm font-headline text-3xl font-semibold leading-tight md:text-4xl">Who did what, under whose authority?</h2>
+          </div>
+          <div className="max-w-2xl space-y-6 text-lg leading-relaxed text-muted-foreground">
+            <p>A warehouse receipt records a delivery. An access log records an action. Both become useful when the people relying on them can establish who created the record, what changed and who had permission to act.</p>
+            <p>That is the engineering concern linking our two practices: identity, authenticity, access controls and accountable records. In commodity trade, these questions sit behind custody and financing decisions. In cybersecurity, they shape prevention, investigation and evidence.</p>
+            <p>We approach each practice through its own operational requirements, with a shared emphasis on systems that can be examined and decisions that can be traced.</p>
+          </div>
         </div>
       </section>
 
-      <section className="shell pb-20 md:pb-24">
-        <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="surface p-6 md:p-8">
-            <p className="eyebrow">Leadership Snapshot</p>
-            <h2 className="mt-5 font-headline text-3xl font-semibold text-foreground">Built from hands-on cybersecurity and full-stack delivery.</h2>
-            <p className="mt-4 text-sm leading-7 text-muted-foreground">
-              Operating experience across penetration testing, red team leadership, security training, and software
-              engineering. The people who scope the work are the people who deliver it.
-            </p>
-            <div className="mt-6 space-y-3">
-              {[
-                'Penetration testing and red team leadership across web, API, cloud, and internal environments.',
-                'Compliance mapping and audit-oriented reporting tied to business and regulatory context.',
-                'Security-aware software engineering with Next.js, Python, and modern cloud tooling.',
-              ].map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <div className="mt-1 h-2.5 w-2.5 rounded-full bg-primary" />
-                  <p className="text-sm leading-7 text-muted-foreground">{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="surface p-6 md:p-8">
-            <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-md border border-primary/20 bg-primary/10 text-primary">
-                <Users className="h-5 w-5" />
-              </div>
+      <section className="shell editorial-section">
+        <p className="section-index">02 / Our two practices</p>
+        <div className="mt-10 border-t border-hairline">
+          {practices.map((practice) => (
+            <article key={practice.name} className="grid gap-6 border-b border-hairline py-10 md:grid-cols-[3rem_1fr_1.2fr] md:gap-8 lg:py-12">
+              <span className="font-mono text-sm text-primary" aria-hidden="true">{practice.number}</span>
+              <h2 className="max-w-sm font-headline text-2xl font-semibold leading-tight md:text-3xl">{practice.name}</h2>
               <div>
-                <p className="font-headline text-2xl font-semibold text-foreground">Credentials and trust markers</p>
-                <p className="text-sm text-muted-foreground">Use these as proof points, not as the entire story.</p>
+                <p className="text-base leading-7 text-muted-foreground">{practice.description}</p>
+                <p className="mt-5 text-xs leading-6 text-muted-foreground">{practice.detail}</p>
+                <Link href={practice.href} className="text-link mt-6">Explore the practice<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
               </div>
-            </div>
-
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {credentialGroups.map((item) => (
-                <div key={item} className="rounded-md border border-hairline bg-surface px-4 py-4">
-                  <p className="flex items-center gap-3 text-sm font-medium text-foreground">
-                    <BadgeCheck className="h-4 w-4 text-primary" />
-                    {item}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-6 rounded-md border border-hairline bg-surface p-5">
-              <p className="text-sm font-semibold text-foreground">Strategic partner context</p>
-              <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                Active delivery with the ITSkillsCenter Cyber Division, covering training programmes and joint
-                engagements alongside our own client work.
-              </p>
-            </div>
-          </div>
+            </article>
+          ))}
         </div>
       </section>
 
-      <div className="shell pb-20 md:pb-24">
-        <CtaBanner
-          title="Need a cybersecurity partner that can explain the work clearly to technical and executive stakeholders?"
-          description="Use the contact route to start a conversation around services, platform fit, partnerships, or broader security transformation."
-          primaryHref="/contact"
-          primaryLabel="Start the Conversation"
-          secondaryHref="/community"
-          secondaryLabel="View Resources"
-        />
-      </div>
+      <section className="border-y border-hairline bg-surface">
+        <div className="shell editorial-section">
+          <div className="grid gap-6 lg:grid-cols-[0.65fr_1.35fr] lg:gap-20">
+            <p className="section-index">03 / Company and brands</p>
+            <h2 className="max-w-xl font-headline text-3xl font-semibold leading-tight md:text-4xl">A clear role for each name.</h2>
+          </div>
+          <dl className="mt-12 border-t border-hairline">
+            {brands.map((brand) => (
+              <div key={brand.name} className="grid gap-4 border-b border-hairline py-7 md:grid-cols-[1fr_1fr_2fr] md:gap-8">
+                <dt className="text-lg font-semibold">{brand.name}</dt>
+                <dd className="text-sm text-muted-foreground">{brand.role}</dd>
+                <dd>
+                  <p className="text-sm leading-7 text-muted-foreground">{brand.description}</p>
+                  {brand.href ? <Link href={brand.href} className="text-link mt-4">Explore {brand.name}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link> : null}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      <section className="shell editorial-section grid gap-8 md:grid-cols-[1.4fr_1fr] md:items-end">
+        <div>
+          <p className="section-index">Work with Sule Zeen</p>
+          <h2 className="mt-5 max-w-xl font-headline text-3xl font-semibold leading-tight md:text-4xl">Start with the system you need to build or secure.</h2>
+        </div>
+        <div className="md:justify-self-end">
+          <Link href="/contact" className="text-link">Book a consultation<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+        </div>
+      </section>
     </>
   );
 }

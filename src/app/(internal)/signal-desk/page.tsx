@@ -44,7 +44,7 @@ export default function SignalDeskPage() {
 
       <footer className="mt-10 border-t border-hairline pt-5 text-xs text-muted-foreground">
         Upstream sources are public. The aggregation, prioritisation, and client mapping shown here are internal
-        working material and should not be shared outside Secure Sense.
+        working material and should not be shared outside Sule Zeen.
       </footer>
     </div>
   );

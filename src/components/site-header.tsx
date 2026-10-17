@@ -12,11 +12,10 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { href: '/services', label: 'Services' },
-  { href: '/platform', label: 'Platform' },
-  { href: '/solutions', label: 'Solutions' },
-  { href: '/integrations', label: 'Integrations' },
-  { href: '/community', label: 'Research' },
+  { href: '/supply-chain', label: 'Supply Chain' },
+  { href: '/cybersecurity', label: 'Cybersecurity' },
+  { href: '/products', label: 'ZeenTheCyber' },
+  { href: '/studio', label: 'Studio' },
   { href: '/company', label: 'Company' },
 ];
 
@@ -31,11 +30,11 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-hairline bg-background/85 backdrop-blur-md supports-[backdrop-filter]:bg-surface">
-      <div className="shell flex h-16 items-center justify-between gap-8">
-        <div className="flex items-center gap-10">
+      <div className="shell flex h-20 items-center justify-between gap-6">
+        <div className="flex items-center gap-8 xl:gap-14">
           <BrandLockup />
 
-          <nav aria-label="Main" className="hidden items-center gap-7 lg:flex">
+          <nav aria-label="Main" className="hidden items-center gap-5 lg:flex xl:gap-7">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -52,11 +51,8 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <ThemeToggle />
-          <Button asChild variant="ghost" size="sm">
-            <Link href="/request-a-quote">Request a quote</Link>
-          </Button>
           <Button asChild size="sm">
-            <Link href="/contact">Book an assessment</Link>
+            <Link href="/contact">Book a consultation</Link>
           </Button>
         </div>
 
@@ -94,7 +90,7 @@ export function SiteHeader() {
                 <div className="mt-auto flex flex-col gap-2 pt-8">
                   <Button asChild>
                     <Link href="/contact" onClick={() => setOpen(false)}>
-                      Book an assessment
+                      Book a consultation
                     </Link>
                   </Button>
                   <Button asChild variant="outline">

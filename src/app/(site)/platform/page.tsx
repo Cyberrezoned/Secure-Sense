@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import { getKevSummary } from '@/lib/intel';
 
 export const metadata: Metadata = {
-  title: 'Compliance Platform',
+  title: 'ZeenTheCyber Platform',
   description:
     'Control mapping, evidence pipelines, and exposure prioritisation in one operational workspace, fed by live vulnerability intelligence.',
 };
@@ -50,7 +50,7 @@ export default async function PlatformPage() {
   return (
     <>
       <PageHero
-        eyebrow="Compliance platform"
+        eyebrow="ZeenTheCyber / A Sule Zeen product"
         title="One workspace for exposure, controls, and evidence."
         description="Compliance work fails when evidence lives in spreadsheets and remediation order is guesswork. The platform keeps both in one place and prioritises against vulnerabilities that are actually being exploited."
         actions={
@@ -114,7 +114,7 @@ export default async function PlatformPage() {
           description="A walkthrough uses your frameworks and current evidence, so you can judge the platform on your actual obligations rather than a demo tenant."
           primaryHref="/contact"
           primaryLabel="Book a walkthrough"
-          secondaryHref="/services"
+          secondaryHref="/cybersecurity"
           secondaryLabel="Review services"
         />
       </div>

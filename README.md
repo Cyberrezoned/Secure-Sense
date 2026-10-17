@@ -1,24 +1,16 @@
-<div align="center">
-  <!-- You can replace this with a real logo if you have one -->
-  <img src="https://raw.githubusercontent.com/rythecyber/Secure-Sense/main/public/logo.png" alt="Secure-Sense Logo" width="150" />
-  <h1>Secure-Sense</h1>
-  <p>A modern, feature-rich web application built with Next.js, Firebase, and integrated AI capabilities.</p>
+# Sule Zeen
 
-  <!-- Badges -->
-  <p>
-    <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Framework-Next.js-black?style=for-the-badge&logo=next.js" alt="Next.js"></a>
-    <a href="https://firebase.google.com/"><img src="https://img.shields.io/badge/Backend-Firebase-orange?style=for-the-badge&logo=firebase" alt="Firebase"></a>
-    <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Styling-Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind CSS"></a>
-    <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/Language-TypeScript-blue?style=for-the-badge&logo=typescript" alt="TypeScript"></a>
-    <a href="https://vercel.com/"><img src="https://img.shields.io/badge/Deployed_On-Vercel-black?style=for-the-badge&logo=vercel" alt="Vercel"></a>
-  </p>
-</div>
+Sule Zeen is a Nigerian technology company operating across two practices: commodity supply-chain infrastructure and cybersecurity. ZeenTheCyber remains a distinct product brand. The proposed Sule Zeen Studio is a media and learning extension drawing on those practices, initially focused on digital safety for emerging creators and small online businesses. The company positioning is **Build trust. Create opportunity.**
 
----
+The public site introduces the proposed Studio at `/studio`, the technology practices at `/supply-chain` and `/cybersecurity`, and the product portfolio at `/products`. Shared company copy lives in `src/lib/company.ts`. The Studio is explicitly in development; sample episode concepts are not published content. Signal Desk is an internal surface with its existing access controls.
+
+The editable brand and funding-application drafts are in `docs/brand/sule-zeen-100-dreams/`. They use the official 100 Dreams programme as the working interpretation of the requested UAE opportunity. The website makes no claim of programme affiliation, selection, funding, or established UAE operations.
+
+The site retains its existing canonical domain and contact details until replacements are supplied. Set `NEXT_PUBLIC_SITE_URL` when the new company domain is configured. This repository contains the company website; the supply-chain page describes the platform and does not implement warehouse, finance, escrow, or ledger operations.
 
 ## 🚀 Introduction
 
-**Secure-Sense** is a comprehensive web platform designed to provide a seamless user experience with a focus on security and modern web technologies. It features a robust quote request system, user authentication, interactive data visualizations, and is powered by a cutting-edge tech stack including Next.js for the frontend and Firebase for the backend.
+**Sule Zeen** is a company website for supply-chain infrastructure and cybersecurity. It features a robust quote request system, user authentication, interactive data visualizations, and is powered by a cutting-edge tech stack including Next.js for the frontend and Firebase for the backend.
 
 The project also integrates AI functionalities using **Google's Genkit**, showcasing the potential for intelligent, data-driven features.
 
@@ -37,7 +29,7 @@ The project also integrates AI functionalities using **Google's Genkit**, showca
 
 ## 🛡️ Security Features
 
-Security is a top priority for Secure-Sense. The application is built with a multi-layered security approach to protect user data and prevent common web vulnerabilities.
+Security is a top priority for Sule Zeen. The application is built with a multi-layered security approach to protect user data and prevent common web vulnerabilities.
 
 - **API Endpoint Protection**:
   - **Input Validation**: All API routes use **Zod** to enforce strict data schemas, protecting against injection attacks, Cross-Site Scripting (XSS), and malformed data payloads.

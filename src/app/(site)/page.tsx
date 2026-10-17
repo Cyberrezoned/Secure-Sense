@@ -1,233 +1,82 @@
 import Link from 'next/link';
-import {
-  Activity,
-  ArrowRight,
-  Building2,
-  ChevronRight,
-  Fingerprint,
-  Landmark,
-  Lock,
-  Radar,
-  ShieldCheck,
-  Workflow,
-} from 'lucide-react';
-
-import { PageHero } from '@/components/company/page-hero';
-import { SectionHeading } from '@/components/company/section-heading';
+import { ArrowDown, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { WorkflowExplorer } from '@/components/company/workflow-explorer';
 import { CtaBanner } from '@/components/company/cta-banner';
-import { ThreatExposure } from '@/components/intel/threat-exposure';
-import { OssStack } from '@/components/intel/oss-stack';
-import { Button } from '@/components/ui/button';
+import { COMPANY_DESCRIPTION } from '@/lib/company';
+import { pageMetadata } from '@/lib/page-metadata';
 
-/**
- * Figures on this page come from live feeds (see components/intel). Static
- * marketing claims are kept to things that are actually verifiable.
- */
-export const revalidate = 1800;
+export const metadata = pageMetadata('Trade Infrastructure and Cybersecurity', COMPANY_DESCRIPTION, '/');
 
-const servicePillars = [
-  {
-    title: 'Offensive Security',
-    description:
-      'Penetration testing and red teaming across web, API, cloud, identity, and internal networks. Every finding is reproduced, rated by exploitability, and retested after the fix.',
-    href: '/services',
-    icon: Fingerprint,
-  },
-  {
-    title: 'Managed Detection and Response',
-    description:
-      'Detection engineering and 24/7 monitoring built on Wazuh, Suricata, and Sigma. Alerts arrive with the context needed to act, not a severity number on its own.',
-    href: '/services',
-    icon: Radar,
-  },
-  {
-    title: 'Compliance and Assurance',
-    description:
-      'ISO 27001, SOC 2, PCI DSS, and NDPR programmes run as engineering work: control mapping, evidence pipelines, and audit-ready reporting.',
-    href: '/platform',
-    icon: ShieldCheck,
-  },
-  {
-    title: 'Security Engineering',
-    description:
-      'Architecture review, AppSec, DevSecOps, and cloud hardening delivered alongside your engineers rather than handed over as a document.',
-    href: '/services',
-    icon: Workflow,
-  },
-];
-
-const sectors = [
-  {
-    title: 'Financial Services',
-    description: 'PCI DSS scope reduction, API abuse testing, and NDPR obligations for regulated institutions.',
-    icon: Landmark,
-  },
-  {
-    title: 'Healthcare',
-    description: 'Patient data protection, vendor risk, and audit evidence across hybrid clinical environments.',
-    icon: Building2,
-  },
-  {
-    title: 'Critical Infrastructure',
-    description: 'IT and OT segmentation, resilience testing, and incident readiness for high-consequence systems.',
-    icon: Activity,
-  },
-  {
-    title: 'SaaS and Product Teams',
-    description: 'Application security, release pipeline integrity, and the security questionnaires that gate deals.',
-    icon: Lock,
-  },
-];
-
-const engagementPhases = [
-  {
-    phase: '01',
-    title: 'Establish the real attack surface',
-    copy: 'Asset discovery, external exposure, and identity mapping. Scope is set from what exists, not from what the asset register claims.',
-  },
-  {
-    phase: '02',
-    title: 'Validate exploitability',
-    copy: 'Findings are proven end to end and ranked against exploitation data, so remediation starts where the actual risk is.',
-  },
-  {
-    phase: '03',
-    title: 'Remediate with the engineers',
-    copy: 'Fixes are built with your teams, tracked to closure, and retested. Evidence is captured as the work happens.',
-  },
-  {
-    phase: '04',
-    title: 'Operate and measure',
-    copy: 'Detection coverage, control maturity, and remediation velocity reported on a cadence your board can read.',
-  },
-];
-
-export default function Home() {
+export default function HomePage() {
   return (
     <>
-      <PageHero
-        eyebrow="Cyber defence · Offensive security · Compliance"
-        title="Security programmes that hold up under audit and attack."
-        description="Secure Sense reduces risk across applications, cloud, identity, and regulation. We test what attackers would reach first, build the detections that catch them, and leave evidence an auditor accepts."
-        actions={
-          <>
-            <Button asChild size="lg">
-              <Link href="/contact">
-                Book an assessment
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link href="/services">Review capabilities</Link>
-            </Button>
-          </>
-        }
-        stats={[
-          { value: 'Web to OT', label: 'Coverage across the full attack surface' },
-          { value: '4', label: 'Integrated delivery practices' },
-          { value: 'ISO · SOC 2 · PCI · NDPR', label: 'Frameworks run as engineering work' },
-          { value: 'Open source', label: 'Auditable stack, no licence lock-in' },
-        ]}
-      />
+      <section className="shell pb-14 pt-12 sm:pt-16 lg:pb-20 lg:pt-20">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-foreground/20 pt-4">
+          <p className="section-index">Sule Zeen / Nigerian technology company</p>
+          <p className="font-code text-[0.625rem] uppercase tracking-widest text-muted-foreground">Two practices. One company.</p>
+        </div>
+        <div className="mt-10 grid gap-10 lg:mt-14 lg:grid-cols-[1.6fr_1fr] lg:items-end lg:gap-16">
+          <h1 className="home-title"><span className="block">Trade</span><span className="block">infrastructure.</span><span className="block text-primary">Cybersecurity.</span></h1>
+          <div className="max-w-md lg:pb-1">
+            <p className="text-xl leading-relaxed tracking-tight sm:text-2xl">We build commodity systems and deliver security engineering for the organisations that depend on them.</p>
+            <p className="mt-5 text-sm leading-7 text-muted-foreground">Based in Nigeria. Working across warehouse receipts, trade finance workflows, offensive security, detection, and compliance.</p>
+            <Link href="/contact" className="text-link mt-8">Book a consultation<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+          </div>
+        </div>
+        <div className="mt-12 flex items-center justify-between border-t border-hairline pt-5 lg:mt-16">
+          <p className="font-code text-xs text-muted-foreground">Built in Nigeria.</p>
+          <a href="#practices" className="flex items-center gap-3 text-xs font-medium">Explore the practices<ArrowDown className="h-4 w-4" aria-hidden="true" /></a>
+        </div>
+      </section>
 
-      {/* Live CISA KEV and NIST NVD figures. */}
-      <ThreatExposure />
-
-      <section className="border-t border-hairline bg-surface">
-        <div className="shell py-20 lg:py-24">
-          <SectionHeading
-            eyebrow="Capabilities"
-            title="Four practices, one delivery model"
-            description="Offensive testing, detection, compliance, and engineering are run by the same team against the same findings, so nothing is lost between a report and a fix."
-          />
-
-          <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4" data-stagger>
-            {servicePillars.map((pillar) => {
-              const Icon = pillar.icon;
-
-              return (
-                <article key={pillar.title} className="surface-interactive flex h-full flex-col p-6">
-                  <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
-                  <h3 className="mt-5 text-lg font-semibold text-foreground">{pillar.title}</h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{pillar.description}</p>
-                  <Link
-                    href={pillar.href}
-                    className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
-                  >
-                    Learn more
-                    <ChevronRight className="h-3.5 w-3.5" />
-                  </Link>
-                </article>
-              );
-            })}
+      <section id="practices" className="scroll-mt-24 border-y border-hairline bg-surface">
+        <div className="shell editorial-section">
+          <div className="grid gap-6 lg:grid-cols-[1fr_2fr]">
+            <p className="section-index">01 / The practices</p>
+            <h2 className="max-w-3xl text-3xl font-medium leading-tight sm:text-4xl lg:text-5xl">A record that can be checked.<br /><span className="text-muted-foreground">A system that can be defended.</span></h2>
+          </div>
+          <div className="mt-12 grid gap-12 border-t border-foreground/20 pt-9 md:grid-cols-2 lg:mt-16 lg:gap-20">
+            <article>
+              <p className="section-index">Practice 01</p>
+              <h3 className="mt-4 text-3xl font-medium sm:text-4xl">Supply Chain</h3>
+              <p className="mt-5 max-w-xl text-base leading-8 text-muted-foreground">A commodity platform connecting farmers, warehouses, merchants, and financiers. Graded deliveries become verified electronic warehouse receipts, linking offtake orders, invoices, and escrow advances.</p>
+              <ul className="mt-6 divide-y divide-hairline border-y border-hairline text-sm"><li className="py-3">Operator-signed delivery records</li><li className="py-3">Electronic warehouse receipts and financing workflows</li><li className="py-3">Mobile PWA for low-connectivity environments</li></ul>
+              <Link href="/supply-chain" className="text-link mt-7">The commodity platform<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+            </article>
+            <article>
+              <p className="section-index">Practice 02</p>
+              <h3 className="mt-4 text-3xl font-medium sm:text-4xl">Cybersecurity</h3>
+              <p className="mt-5 max-w-xl text-base leading-8 text-muted-foreground">Technical assessments, managed detection and response, and compliance engineering. Work spans web, API, cloud, and identity, with findings and corrections tied to evidence.</p>
+              <ul className="mt-6 divide-y divide-hairline border-y border-hairline text-sm"><li className="py-3">Penetration testing and red teaming</li><li className="py-3">Wazuh, Suricata, and Sigma detection engineering</li><li className="py-3">Control implementation and audit evidence</li></ul>
+              <Link href="/cybersecurity" className="text-link mt-7">The security practice<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+            </article>
           </div>
         </div>
       </section>
 
-      {/* Live GitHub telemetry for the deployed open-source stack. */}
-      <OssStack />
+      <div className="shell editorial-section"><WorkflowExplorer mode="supply" /></div>
 
-      <section className="shell py-20 lg:py-24">
-        <SectionHeading
-          eyebrow="How engagements run"
-          title="A sequence, not a deliverable"
-          description="Each phase produces something the next one depends on. The programme is designed to end with your team operating it, not with a PDF."
-        />
-
-        <ol className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4" data-stagger>
-          {engagementPhases.map((item) => (
-            <li key={item.phase} className="surface flex h-full flex-col p-6">
-              <span className="font-code text-xs font-medium text-primary">{item.phase}</span>
-              <h3 className="mt-4 text-base font-semibold text-foreground">{item.title}</h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">{item.copy}</p>
-            </li>
-          ))}
-        </ol>
+      <section className="border-y border-hairline">
+        <div className="shell grid gap-8 py-14 lg:grid-cols-[1fr_2fr] lg:gap-16 lg:py-20">
+          <div><p className="section-index">02 / Our product brand</p><h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">ZeenTheCyber</h2><p className="mt-3 text-xs text-muted-foreground">A Sule Zeen product brand</p></div>
+          <div><p className="max-w-2xl text-xl leading-relaxed sm:text-2xl">The cybersecurity platform, tools, and research retain their own identity under ZeenTheCyber.</p><div className="mt-8 flex flex-wrap gap-x-10 gap-y-5"><Link href="/products" className="text-link">Product overview<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link><Link href="/platform" className="text-link">Platform capabilities<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link></div></div>
+        </div>
       </section>
 
-      <section className="border-t border-hairline bg-surface">
-        <div className="shell py-20 lg:py-24">
-          <SectionHeading
-            eyebrow="Industries"
-            title="Regulated environments, different pressure"
-            description="Sector context changes what matters first: the obligations, the downtime tolerance, and who signs off on residual risk."
-          />
-
-          <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4" data-stagger>
-            {sectors.map((sector) => {
-              const Icon = sector.icon;
-
-              return (
-                <div key={sector.title} className="surface p-6">
-                  <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
-                  <h3 className="mt-5 text-base font-semibold text-foreground">{sector.title}</h3>
-                  <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">{sector.description}</p>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="mt-8">
-            <Button asChild variant="outline">
-              <Link href="/solutions">
-                Explore industry solutions
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
+      <section className="shell editorial-section">
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-24">
+          <div><p className="section-index">03 / Sule Zeen Studio · In development</p><h2 className="mt-6 text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl">Digital safety for people building online.</h2><p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">A proposed media and learning venture for creators, freelancers, and small online businesses. The first programme translates cybersecurity practice into lessons about accounts, business communications, and customer information.</p><Link href="/studio" className="text-link mt-8">Read the Studio brief<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></div>
+          <div className="studio-sheet">
+            <div className="flex justify-between gap-4 border-b border-primary/30 pb-5"><p className="section-index">Studio / Programme preview</p><span className="font-code text-xs text-primary">001</span></div>
+            <p className="mt-10 text-xs uppercase tracking-widest text-muted-foreground">Proposed field guide</p>
+            <h3 className="mt-4 max-w-sm text-4xl font-medium leading-tight sm:text-5xl">Who can recover<br />your account?</h3>
+            <p className="mt-6 max-w-sm text-sm leading-7 text-muted-foreground">A lesson in account ownership, recovery access, and preparing for the loss of a device.</p>
+            <div className="mt-10 border-t border-primary/30 pt-5"><p className="font-code text-[0.625rem] uppercase tracking-wider text-muted-foreground">Demonstration / Field guide / Facilitated exercise</p><p className="mt-3 text-xs text-muted-foreground">Concept preview. The programme has not launched.</p></div>
           </div>
         </div>
       </section>
 
-      <div className="shell py-20 lg:py-24">
-        <CtaBanner
-          title="Start with the exposure you can already measure"
-          description="An initial assessment establishes your external attack surface, maps it against actively exploited vulnerabilities, and gives you a remediation order you can defend to a board."
-          primaryHref="/contact"
-          primaryLabel="Book an assessment"
-          secondaryHref="/request-a-quote"
-          secondaryLabel="Request a quote"
-        />
-      </div>
+      <div className="shell pb-12"><CtaBanner eyebrow="Work with Sule Zeen" title="Bring a specific problem." description="Tell us about your commodity workflow, security requirements, or interest in the Studio pilot." primaryHref="/contact" primaryLabel="Book a consultation" /></div>
     </>
   );
 }

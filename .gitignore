@@ -45,3 +45,6 @@ firebase-debug.log
 firestore-debug.log
 # keep the documented template for local setup
 !.env.example
+
+# generated document packs (regenerable from docs/brand)
+/outputs/
