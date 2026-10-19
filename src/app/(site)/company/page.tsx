@@ -37,8 +37,8 @@ const brands = [
   },
   {
     name: 'Sule Zeen Studio',
-    role: 'Proposed media extension',
-    description: 'A planned media and learning venture, beginning with digital safety for emerging creators and small online businesses.',
+    role: 'Creative and learning studio',
+    description: 'Content creation, social media management, AI-assisted workflows, monetization education, and cybersecurity and AI awareness for people building online.',
     href: '/studio',
   },
 ];

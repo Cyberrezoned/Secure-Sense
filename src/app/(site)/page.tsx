@@ -65,18 +65,18 @@ export default function HomePage() {
 
       <section className="shell editorial-section">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-24">
-          <div><p className="section-index">03 / Sule Zeen Studio · In development</p><h2 className="mt-6 text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl">Digital safety for people building online.</h2><p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">A proposed media and learning venture for creators, freelancers, and small online businesses. The first programme translates cybersecurity practice into lessons about accounts, business communications, and customer information.</p><Link href="/studio" className="text-link mt-8">Read the Studio brief<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></div>
+          <div><p className="section-index">03 / Sule Zeen Creative Studio</p><h2 className="mt-6 text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl">Learn to create.<br />Learn to be online.</h2><p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">Practical learning and creative production for people building online. Explore AI-assisted content creation, YouTube and other platforms, social media management, monetization, and cybersecurity and AI awareness.</p><Link href="/studio" className="text-link mt-8">Explore the Creative Studio<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></div>
           <div className="studio-sheet">
-            <div className="flex justify-between gap-4 border-b border-primary/30 pb-5"><p className="section-index">Studio / Programme preview</p><span className="font-code text-xs text-primary">001</span></div>
-            <p className="mt-10 text-xs uppercase tracking-widest text-muted-foreground">Proposed field guide</p>
-            <h3 className="mt-4 max-w-sm text-4xl font-medium leading-tight sm:text-5xl">Who can recover<br />your account?</h3>
-            <p className="mt-6 max-w-sm text-sm leading-7 text-muted-foreground">A lesson in account ownership, recovery access, and preparing for the loss of a device.</p>
-            <div className="mt-10 border-t border-primary/30 pt-5"><p className="font-code text-[0.625rem] uppercase tracking-wider text-muted-foreground">Demonstration / Field guide / Facilitated exercise</p><p className="mt-3 text-xs text-muted-foreground">Concept preview. The programme has not launched.</p></div>
+            <div className="flex justify-between gap-4 border-b border-primary/30 pb-5"><p className="section-index">Inside the Studio / The remix desk</p><span className="font-code text-xs text-primary">001</span></div>
+            <p className="mt-10 text-xs uppercase tracking-widest text-muted-foreground">An idea becomes a content plan</p>
+            <h3 className="mt-4 max-w-sm text-4xl font-medium leading-tight sm:text-5xl">One idea.<br />More ways to tell it.</h3>
+            <p className="mt-6 max-w-sm text-sm leading-7 text-muted-foreground">See how a cybersecurity awareness topic becomes a YouTube video, a short clip, a carousel, and a website article.</p>
+            <div className="mt-10 border-t border-primary/30 pt-5"><p className="font-code text-[0.625rem] uppercase tracking-wider text-muted-foreground">Create / Manage / Monetize / Stay aware</p><Link href="/studio#learn" className="text-link mt-4">Find your starting point<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></div>
           </div>
         </div>
       </section>
 
-      <div className="shell pb-12"><CtaBanner eyebrow="Work with Sule Zeen" title="Bring a specific problem." description="Tell us about your commodity workflow, security requirements, or interest in the Studio pilot." primaryHref="/contact" primaryLabel="Book a consultation" /></div>
+      <div className="shell pb-12"><CtaBanner eyebrow="Work with Sule Zeen" title="Bring a specific problem." description="Tell us about your commodity workflow, security requirements, or a Studio content or learning project." primaryHref="/contact" primaryLabel="Book a consultation" /></div>
     </>
   );
 }

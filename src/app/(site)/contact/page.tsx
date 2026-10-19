@@ -17,7 +17,7 @@ export const metadata = pageMetadata(
 const contactCards = [
   {
     title: 'Practices and partnerships',
-    description: 'Discuss the planned Studio, content and learning partnerships, commodity infrastructure, cybersecurity services, or ZeenTheCyber products.',
+    description: 'Discuss the Creative Studio, content and learning partnerships, commodity infrastructure, cybersecurity services, or ZeenTheCyber products.',
     icon: MessageSquareShare,
   },
   {
@@ -40,7 +40,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Build trust. Create opportunity. Start a conversation."
-        description="Talk to Sule Zeen about the planned Studio, supply-chain infrastructure, cybersecurity, or ZeenTheCyber. Share your interests and timeline so we can scope the next step."
+        description="Talk to Sule Zeen about the Creative Studio, supply-chain infrastructure, cybersecurity, or ZeenTheCyber. Share your interests and timeline so we can scope the next step."
         actions={
           <>
             <Button asChild size="lg">

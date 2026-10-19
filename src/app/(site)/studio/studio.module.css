@@ -1,0 +1,126 @@
+﻿.studio { --studio-accent: #bdf35c; --studio-ink: #192820; --studio-paper: #f4f3eb; }
+.masthead { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 16px; border-top: 1px solid hsl(var(--foreground) / .35); border-bottom: 1px solid hsl(var(--foreground) / .2); font-size: 14px; }
+.masthead strong { margin-left: 12px; font-weight: 500; }
+.masthead > span, .kicker, .boardTop, .boardCaption, .number, .output > span, .note, .formats, .subjectStrip { font-family: monospace; font-size: 11px; line-height: 1.7; letter-spacing: .04em; }
+.masthead > span, .kicker, .output > span { text-transform: uppercase; }
+.masthead > span { color: hsl(var(--muted-foreground)); }
+.hero { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 7%; padding-block: 64px; }
+.kicker { font-weight: 600; }
+.title { margin-top: 22px; max-width: 680px; font-size: clamp(3.2rem, 6.1vw, 5.9rem); font-weight: 500; line-height: 1; letter-spacing: -.065em; }
+.title em, .storyFrame em, .awareness h2 em { font-family: Georgia, serif; font-weight: 400; }
+.asterisk { display: inline-block; margin-left: 18px; color: hsl(var(--primary)); font-size: .8em; vertical-align: middle; }
+.intro { margin-top: 28px; max-width: 470px; font-size: 17px; line-height: 1.8; color: hsl(var(--muted-foreground)); }
+.primaryLink { display: inline-flex; justify-content: space-between; align-items: center; gap: 28px; margin-top: 28px; background: var(--studio-ink); color: white; padding: 16px 21px; font-size: 14px; transition: background 160ms; }
+.primaryLink:hover { background: #314d3c; }
+.composition { background: var(--studio-ink); padding: 25px; color: var(--studio-paper); transform: rotate(2deg); box-shadow: 11px 12px 0 hsl(var(--foreground) / .07); }
+.boardTop { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 20px; }
+.boardTop > span:last-child { margin-left: auto; }
+.storyFrame { position: relative; min-height: 285px; background: var(--studio-accent); color: var(--studio-ink); padding: 25px 28px; }
+.storyFrame p { margin-top: 25px; font-size: clamp(2.5rem, 4.6vw, 4.2rem); line-height: 1; letter-spacing: -.05em; font-weight: 500; }
+.storyFrame > svg { position: absolute; bottom: 25px; right: 25px; }
+.audio { display: flex; align-items: center; gap: 14px; margin-block: 21px; font-size: 12px; }
+.audio svg { color: var(--studio-accent); }
+.timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+.timeline > div { display: flex; flex-direction: column; gap: 9px; padding: 12px 10px; background: #304637; font-size: 12px; }
+.timeline span { font-family: monospace; color: var(--studio-accent); font-size: 10px; }
+.boardCaption { margin-top: 18px; color: #b9c8bb; font-size: 9px; }
+.subjectStrip { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 25px; border-top: 1px solid hsl(var(--foreground) / .2); padding-top: 22px; text-transform: uppercase; }
+.learning { background: hsl(var(--surface)); border-block: 1px solid hsl(var(--hairline)); }
+.sectionHeading { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
+.sectionHeading h2 { font-size: clamp(2rem, 3.8vw, 3.5rem); line-height: 1.1; letter-spacing: -.045em; font-weight: 500; }
+.sectionHeading > div > p { max-width: 640px; margin-top: 22px; font-size: 15px; line-height: 1.9; color: hsl(var(--muted-foreground)); }
+.learningList { margin-top: 48px; border-top: 1px solid hsl(var(--foreground) / .3); }
+.learningRow { display: grid; grid-template-columns: 55px 1fr 1.1fr; gap: 30px; padding-block: 32px; border-bottom: 1px solid hsl(var(--foreground) / .2); }
+.number { color: hsl(var(--primary)); }
+.learningRow h3 { font-size: 25px; font-weight: 500; letter-spacing: -.035em; }
+.prompt { margin-top: 9px; font-size: 13px; color: hsl(var(--muted-foreground)); }
+.learningRow > div > p:not(.prompt):not(.output) { font-size: 14px; line-height: 1.9; color: hsl(var(--muted-foreground)); }
+.output { margin-top: 20px; font-size: 12px; line-height: 1.8; }
+.output > span { display: block; margin-bottom: 3px; color: hsl(var(--primary)); font-size: 9px; }
+.note { color: hsl(var(--muted-foreground)); }
+.learningList + .note { margin-top: 22px; max-width: 750px; }
+.remix { margin-top: 42px; border: 1px solid hsl(var(--foreground) / .25); }
+.brief { padding: 25px 30px; background: var(--studio-paper); color: var(--studio-ink); display: grid; grid-template-columns: 1fr 1.3fr; gap: 10px 30px; }
+.brief p { font-size: 20px; line-height: 1.5; letter-spacing: -.02em; }
+.brief .note { grid-column: 2; color: #526054; }
+.formatButtons { display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid hsl(var(--foreground) / .25); }
+.formatButtons button { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 19px; font-size: 12px; text-align: left; border-right: 1px solid hsl(var(--foreground) / .2); }
+.formatButtons button:last-child { border-right: 0; }
+.formatButtons button[aria-pressed="true"] { background: var(--studio-ink); color: var(--studio-accent); }
+.formatButtons button:hover { text-decoration: underline; text-underline-offset: 4px; }
+.remixOutput { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; padding: 38px 30px; min-height: 370px; }
+.remixOutput h3 { font-size: clamp(1.8rem, 3vw, 2.7rem); line-height: 1.16; margin-top: 24px; font-weight: 500; }
+.remixHook { color: hsl(var(--muted-foreground)); line-height: 1.9; font-size: 14px; margin-top: 20px; }
+.remixOutput dl > div + div { margin-top: 23px; }
+.remixOutput dt { font-size: 12px; font-weight: 600; margin-bottom: 7px; }
+.remixOutput dd { font-size: 13px; line-height: 1.9; color: hsl(var(--muted-foreground)); }
+.awareness { background: var(--studio-ink); color: var(--studio-paper); }
+.awareness > div > .kicker { color: var(--studio-accent); }
+.awarenessGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 9%; margin-top: 42px; }
+.awareness h2 { color: var(--studio-paper); font-size: clamp(2.6rem, 4.9vw, 4.7rem); font-weight: 500; line-height: 1.1; letter-spacing: -.05em; }
+.awareness h2 em { color: var(--studio-accent); }
+.awarenessIntro { font-size: 19px; line-height: 1.7; }
+.awareness ul { margin-top: 30px; }
+.awareness li { padding-block: 20px; border-top: 1px solid #526054; }
+.awareness li strong { display: block; font-weight: 500; font-size: 14px; }
+.awareness li span { display: block; margin-top: 8px; font-size: 13px; line-height: 1.9; color: #c3cec5; }
+.lightLink { display: inline-flex; gap: 12px; align-items: center; color: var(--studio-accent); margin-top: 22px; font-size: 13px; border-bottom: 1px solid #8caa66; padding-bottom: 8px; }
+.formats { display: flex; flex-wrap: wrap; gap: 9px 20px; margin-top: 26px; }
+.formats span { border-bottom: 1px solid hsl(var(--foreground) / .2); padding-bottom: 8px; }
+@media (max-width: 900px) { .hero { grid-template-columns: 1fr 1fr; gap: 35px; } .title { font-size: 4rem; } .composition { padding: 17px; } .boardTop { font-size: 9px; } .storyFrame { padding: 20px; min-height: 250px; } .storyFrame p { font-size: 3rem; } .learningRow { grid-template-columns: 30px 1fr 1.1fr; gap: 20px; } }
+@media (max-width: 640px) { .masthead > span { font-size: 9px; } .hero { grid-template-columns: 1fr; padding-block: 38px; gap: 42px; } .title { font-size: clamp(3.2rem, 13vw, 4.5rem); } .composition { transform: none; margin-right: 8px; } .storyFrame p { font-size: 3.5rem; } .subjectStrip { font-size: 9px; justify-content: flex-start; } .sectionHeading, .awarenessGrid, .remixOutput { grid-template-columns: 1fr; gap: 25px; } .learningRow { grid-template-columns: 25px 1fr; gap: 14px; } .learningRow > div:last-child { grid-column: 2; } .learningRow h3 { font-size: 23px; } .brief { grid-template-columns: 1fr; padding: 23px; } .brief .note { grid-column: 1; } .formatButtons { grid-template-columns: 1fr 1fr; } .formatButtons button { min-height: 66px; font-size: 11px; padding: 14px; } .formatButtons button:nth-child(2) { border-right: 0; } .formatButtons button:nth-child(-n+2) { border-bottom: 1px solid hsl(var(--foreground) / .2); } .remixOutput { padding: 26px 23px; min-height: 0; } .awarenessGrid { margin-top: 30px; gap: 35px; } }
+/* The Studio has its own art direction; all rules stay inside this CSS module. */
+.studio { --studio-lilac: #d8c8f5; --studio-peach: #ffba98; }
+.canvasWrap { position: relative; padding: 12px 12px 20px 0; min-width: 0; }
+.orbitStamp { position: absolute; z-index: 2; right: -5px; top: -24px; display: grid; place-content: center; width: 96px; height: 96px; border-radius: 50%; background: var(--studio-lilac); color: var(--studio-ink); font: 600 11px/1.3 monospace; text-align: center; transform: rotate(13deg); border: 1px solid var(--studio-ink); }
+.canvasSticker { position: absolute; right: 30px; bottom: 0; display: flex; align-items: center; gap: 10px; padding: 14px 20px; background: var(--studio-peach); color: var(--studio-ink); border: 1px solid var(--studio-ink); font-size: 12px; transform: rotate(-5deg); box-shadow: 4px 4px 0 hsl(var(--foreground) / .12); }
+.storyFrame { overflow: hidden; transition: background-color 220ms ease; }
+.storyFrame[data-tone="lilac"] { background: var(--studio-lilac); }
+.storyFrame[data-tone="peach"] { background: var(--studio-peach); }
+.canvasHeadline { animation: ink-in 240ms ease both; }
+.frameCross { position: absolute; top: 17px; right: 20px; font: 26px monospace; }
+.canvasControls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; }
+.canvasControls button { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 9px; min-height: 75px; padding: 12px 9px; background: #304637; color: #eff4ec; font-size: 11px; text-align: left; border-top: 2px solid transparent; transition: background 160ms, border-color 160ms; }
+.canvasControls button > span { font: 10px monospace; color: var(--studio-accent); }
+.canvasControls button > svg { position: absolute; top: 12px; right: 9px; }
+.canvasControls button[aria-pressed="true"] { background: #405a45; border-color: var(--studio-accent); }
+.canvasControls button:hover { background: #4a6550; }
+.canvasControls button:focus-visible { outline-color: var(--studio-accent); }
+.primaryLink svg, .lightLink svg { transition: transform 180ms ease; }
+.primaryLink:hover svg, .lightLink:hover svg { transform: translate(3px, -3px); }
+.subjectStrip span { display: inline-flex; align-items: center; gap: 16px; }
+.subjectStrip span::before { content: '+'; color: hsl(var(--primary)); font-size: 18px; }
+.learningRow { transition: padding 180ms ease, background 180ms ease; }
+.learningRow:hover { background: hsl(var(--foreground) / .025); padding-inline: 12px; }
+.number { display: flex; justify-content: center; align-items: center; width: 35px; height: 35px; border-radius: 50%; background: var(--studio-lilac); color: var(--studio-ink); }
+.learningRow:nth-child(3n + 2) .number { background: var(--studio-accent); }
+.learningRow:nth-child(3n) .number { background: var(--studio-peach); }
+.remix { border: 1px solid hsl(var(--foreground) / .3); box-shadow: 8px 8px 0 hsl(var(--foreground) / .04); }
+.formatButtons button { position: relative; transition: color 180ms, background 180ms; }
+.formatButtons button[aria-pressed="true"]::after { content: ''; position: absolute; bottom: -8px; left: 24px; width: 14px; height: 14px; background: var(--studio-ink); transform: rotate(45deg); }
+.remixOutput { grid-template-columns: .95fr 1.05fr; align-items: center; padding: 45px 35px; gap: 50px; }
+.mockupColumn { min-width: 0; }
+.contentMockup { position: relative; display: flex; flex-direction: column; padding: 24px; min-height: 320px; background: var(--studio-lilac); color: var(--studio-ink); border: 1px solid var(--studio-ink); transform: rotate(-2deg); box-shadow: 7px 7px 0 var(--studio-ink); animation: ink-in 240ms ease both; }
+.mockupTop { display: flex; justify-content: space-between; align-items: center; font: 9px monospace; letter-spacing: .06em; }
+.contentMockup > p { margin-block: 30px; font-size: clamp(2.2rem, 4.2vw, 4rem); line-height: .98; letter-spacing: -.05em; font-weight: 600; }
+.contentMockup em { font-family: Georgia, serif; font-weight: 400; }
+.mockupSticker { align-self: flex-end; margin-top: 23px; padding: 8px 12px; background: var(--studio-peach); font: 10px monospace; border: 1px solid var(--studio-ink); transform: rotate(5deg); }
+.mockupBottom { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: auto; padding-top: 17px; border-top: 1px solid #19282060; font: 10px/1.6 monospace; }
+.contentMockup[data-format="1"] { max-width: 280px; margin-inline: auto; min-height: 410px; background: var(--studio-peach); border-radius: 20px; transform: rotate(3deg); }
+.contentMockup[data-format="1"] .mockupSticker { background: var(--studio-accent); font-size: 9px; }
+.contentMockup[data-format="1"] > p { font-size: 2.9rem; }
+.contentMockup[data-format="2"] { max-width: 350px; min-height: 355px; margin-inline: auto; background: var(--studio-accent); }
+.contentMockup[data-format="2"] .mockupSticker { background: var(--studio-lilac); }
+.contentMockup[data-format="3"] { background: var(--studio-paper); transform: rotate(1deg); }
+.contentMockup[data-format="3"] > .kicker { margin-top: 20px; font-size: 9px; }
+.articleRule { height: 6px; margin-top: 16px; background: var(--studio-ink); }
+.waveform { font-size: 15px; letter-spacing: -1px; }
+.mockupCaption { margin-top: 23px; font: 10px/1.6 monospace; color: hsl(var(--muted-foreground)); text-align: center; }
+.remixDetails { animation: ink-in 240ms ease both; }
+.remixDetails h3 { font-size: clamp(1.6rem, 2.4vw, 2.35rem); margin-top: 14px; }
+.remixDetails dl { margin-top: 26px; border-top: 1px solid hsl(var(--foreground) / .2); padding-top: 22px; }
+.remixDetails .remixHook { margin-top: 14px; }
+@keyframes ink-in { from { opacity: .3; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
+@media (max-width: 900px) { .orbitStamp { width: 76px; height: 76px; font-size: 9px; right: -3px; } .remixOutput { gap: 30px; padding: 35px 25px; } .contentMockup { padding: 20px; } .contentMockup > p { font-size: 2.8rem; } .contentMockup[data-format="1"] > p { font-size: 2.4rem; } }
+@media (max-width: 640px) { .canvasWrap { padding-right: 4px; margin-top: 12px; } .orbitStamp { right: -2px; top: -27px; } .canvasSticker { right: 15px; padding: 11px 15px; } .canvasControls button { font-size: 10px; min-height: 75px; } .subjectStrip span { gap: 7px; } .subjectStrip { gap: 9px 17px; } .number { width: 25px; height: 25px; font-size: 9px; } .learningRow:hover { padding-inline: 0; } .remixOutput { grid-template-columns: 1fr; padding: 35px 23px; gap: 35px; } .contentMockup { min-height: 300px; } .contentMockup > p { font-size: 3rem; } .contentMockup[data-format="2"] { min-height: 330px; } }
+@media (prefers-reduced-motion: reduce) { .studio *, .studio *::before, .studio *::after { animation: none !important; transition: none !important; } }

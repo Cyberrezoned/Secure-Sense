@@ -12,7 +12,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 
 const serviceOptions = [
-  { id: 'studio', label: 'Studio Content and Learning Partnerships' },
+  { id: 'studio', label: 'Creative Studio: Content, Social Media and Training' },
   { id: 'supply-chain', label: 'Commodity Supply-Chain Infrastructure' },
   { id: 'zeenthecyber', label: 'ZeenTheCyber Products' },
   { id: 'pentesting', label: 'Penetration Testing and Red Teaming' },

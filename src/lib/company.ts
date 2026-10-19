@@ -2,7 +2,7 @@ export const COMPANY_DESCRIPTION =
   'Sule Zeen is a Nigerian technology company operating across two practices: commodity supply-chain infrastructure and cybersecurity.';
 
 export const COMPANY_NEXT_CHAPTER =
-  'Through the proposed Sule Zeen Studio, we plan to turn that expertise into practical digital-safety media and learning for emerging creators and small online businesses.';
+  'Sule Zeen Studio brings together content creation, social media management, AI-assisted production, and digital awareness for people building online.';
 
 export const COMPANY_TAGLINE = 'Trade infrastructure. Cybersecurity. Built in Nigeria.';
 export const COMPANY_TITLE = 'Sule Zeen | Trade Infrastructure and Cybersecurity';
@@ -12,15 +12,16 @@ export const COMPANY_PURPOSE =
 
 export const studio = {
   name: 'Sule Zeen Studio',
-  status: 'In development',
-  tagline: 'Digital safety for people building online.',
-  description: 'A media and learning venture in development, translating cybersecurity practice into useful lessons for creators, freelancers, and small online businesses.',
-  audience: 'The first programme is being designed for Nigerian creators, freelancers, and small businesses whose work depends on online accounts, customer information, and digital payments.',
-  formats: ['Short demonstrations', 'Downloadable field guides', 'Creator interviews', 'Facilitated workshops'],
+  tagline: 'Learn to create. Learn to be online.',
+  description: 'Sule Zeen Studio teaches content creation, social media management, AI-assisted workflows, YouTube, monetization, and digital awareness through practical creative learning.',
+  audience: 'For creators finding their voice, social media managers building a workflow, and businesses learning to show up online.',
+  formats: ['Practical tutorials', 'Content production', 'Workshops and training', 'Awareness programs'],
   series: [
-    { title: 'Account ownership', description: 'Account access, recovery options, and the decisions that determine whether a creator can regain control after an incident.', example: 'Who can recover your account if you lose your phone?' },
-    { title: 'The business inbox', description: 'How to examine unfamiliar partnership requests, payment instructions, and files before acting on them.', example: 'A brand deal arrives. What should you check first?' },
-    { title: 'Customer information', description: 'Practical ways to decide what information a small business needs, who can access it, and when to remove it.', example: 'Your customer list is in a shared spreadsheet. Who has access?' },
+    { title: 'Create with AI', description: 'Turn a brief into ideas, scripts, visuals, and edits. Learn to give useful instructions, check outputs, and keep your own voice.', example: 'From a rough idea to a publishable story.', output: 'A creative brief, script, and reviewed draft' },
+    { title: 'Build for each platform', description: 'Develop YouTube videos, short-form clips, carousels, and website articles. Adapt the story, pacing, framing, and next step to the audience.', example: 'One idea. Different ways to tell it.', output: 'A video outline and a cross-platform content plan' },
+    { title: 'Manage social media', description: 'Work with social media management tools to plan calendars, organise assets, schedule approved posts, respond to a community, and review performance.', example: 'Give your content a working rhythm.', output: 'A content calendar and approval workflow' },
+    { title: 'Understand monetization', description: 'Explore sponsorships, services, digital products, and platform revenue. Learn to shape an offer, prepare a media kit, and assess which model fits your work.', example: 'Connect what you create to what you offer.', output: 'An offer outline and a media-kit structure' },
+    { title: 'Stay informed and secure', description: 'Create and learn through cybersecurity education, information cues, scam awareness, account safety, and AI awareness, including how to question synthetic content.', example: 'Know what to trust. Know what to protect.', output: 'An awareness brief and an account-safety checklist' },
   ],
 } as const;
 
