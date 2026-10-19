@@ -44,7 +44,7 @@ function SubmitButton() {
   );
 }
 
-export function RequestQuoteForm() {
+export function RequestQuoteForm({ studioInterest }: { studioInterest?: string } = {}) {
   const [state, formAction] = useActionState(requestPricing, {} as any);
 
   if (state.success) {
@@ -65,24 +65,24 @@ export function RequestQuoteForm() {
           <Input id="contactName" name="contactName" placeholder="Your full name" className="h-12 rounded-md border-input bg-surface" />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="companyName">Company Name</Label>
-          <Input id="companyName" name="companyName" placeholder="Company or organization" required className="h-12 rounded-md border-input bg-surface" />
+          <Label htmlFor="companyName">{studioInterest ? 'Your name, channel or business' : 'Company Name'}</Label>
+          <Input id="companyName" name="companyName" placeholder={studioInterest ? 'Your name or creator identity' : 'Company or organization'} required className="h-12 rounded-md border-input bg-surface" />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="email">Work Email</Label>
-          <Input id="email" name="email" type="email" placeholder="you@company.com" required className="h-12 rounded-md border-input bg-surface" />
+          <Label htmlFor="email">{studioInterest ? 'Email address' : 'Work Email'}</Label>
+          <Input id="email" name="email" type="email" placeholder={studioInterest ? 'you@example.com' : 'you@company.com'} required className="h-12 rounded-md border-input bg-surface" />
         </div>
         <div className="space-y-2">
           <Label htmlFor="phone">Phone Number</Label>
           <Input id="phone" name="phone" type="tel" placeholder="+234..." className="h-12 rounded-md border-input bg-surface" />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="employees">Organization Size</Label>
+          <Label htmlFor="employees">{studioInterest ? 'Your team size' : 'Organization Size'}</Label>
           <select
             id="employees"
             name="employees"
             required
-            defaultValue=""
+            defaultValue={studioInterest ? '1-50' : ''}
             className="h-12 w-full rounded-md border border-input bg-surface px-4 text-sm text-foreground outline-none ring-offset-background transition focus-visible:ring-2 focus-visible:ring-ring"
           >
             <option value="" disabled>
@@ -90,7 +90,7 @@ export function RequestQuoteForm() {
             </option>
             {employeeRanges.map((range) => (
               <option key={range} value={range}>
-                {range}
+                {studioInterest && range === '1-50' ? 'Individual creator or small team (1–50)' : range}
               </option>
             ))}
           </select>
@@ -100,7 +100,7 @@ export function RequestQuoteForm() {
           <select
             id="industry"
             name="industry"
-            defaultValue=""
+            defaultValue={studioInterest ? 'Media / Creator Economy' : ''}
             className="h-12 w-full rounded-md border border-input bg-surface px-4 text-sm text-foreground outline-none ring-offset-background transition focus-visible:ring-2 focus-visible:ring-ring"
           >
             <option value="">Select industry</option>
@@ -136,6 +136,7 @@ export function RequestQuoteForm() {
             id="message"
             name="message"
             rows={4}
+            defaultValue={studioInterest ? `I would like help with: ${studioInterest}.\n\nWhere I am starting:\nWhat I want to create or earn from:\nThe support I need:\nMy time and budget for learning:\n\nPlease share current formats, fees, and availability.` : undefined}
             placeholder="Tell us about your content or learning idea, commodity workflow, security priorities, or partnership interests."
             className="min-h-[130px] rounded-md border-input bg-surface"
           />
@@ -154,7 +155,7 @@ export function RequestQuoteForm() {
               htmlFor={service.id}
               className="group block cursor-pointer rounded-lg border border-input bg-surface p-4 transition-colors has-[:checked]:border-primary/40 has-[:checked]:bg-primary/10 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-ring"
             >
-              <input id={service.id} name="services" type="checkbox" value={service.id} className="sr-only" />
+              <input id={service.id} name="services" type="checkbox" value={service.id} defaultChecked={!!studioInterest && service.id === 'studio'} className="sr-only" />
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="font-medium text-foreground">{service.label}</p>

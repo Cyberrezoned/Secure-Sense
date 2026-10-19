@@ -180,3 +180,72 @@
 .toolNotice { grid-column: 1 / -1; min-height: 32px; padding: 0 30px 15px; font-size: 12px; color: hsl(var(--primary)); }
 @media (max-width: 900px) { .plannerBrief, .plannerResult { padding: 23px; } .fieldPair { grid-template-columns: 1fr; gap: 0; } .pathChoices, .pathResult { padding: 25px; } }
 @media (max-width: 640px) { .studioNav { gap: 8px 15px; font-size: 10px; } .pathFinder, .planner { grid-template-columns: 1fr; } .plannerBrief { border-right: 0; border-bottom: 1px solid hsl(var(--foreground) / .2); } .pathResult { padding: 25px 21px; } .pathChoices { padding: 25px 21px; } .toolNotice { padding-inline: 23px; } }
+.heroActions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 24px; }
+.textCta { display: inline-flex; align-items: center; gap: 10px; padding-block: 10px; font-size: 13px; border-bottom: 1px solid hsl(var(--foreground) / .3); }
+.heroActions .textCta { margin-top: 28px; }
+.creatorManifesto { background: var(--studio-lilac); color: var(--studio-ink); padding-block: 40px; border-block: 1px solid var(--studio-ink); }
+.creatorManifesto > div { display: grid; grid-template-columns: .8fr 2fr; gap: 16px 50px; }
+.creatorManifesto > div > p:nth-child(2) { max-width: 800px; font-size: clamp(1.3rem, 2.4vw, 2rem); line-height: 1.5; letter-spacing: -.025em; }
+.creatorManifesto strong { font-weight: 500; }
+.creatorManifesto a { grid-column: 2; display: inline-flex; align-items: center; gap: 10px; width: fit-content; padding-bottom: 6px; font-size: 12px; border-bottom: 1px solid var(--studio-ink); }
+.earnExplorer { margin-top: 42px; }
+.earnChoices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid hsl(var(--foreground) / .25); border-left: 1px solid hsl(var(--foreground) / .25); }
+.earnChoices button { position: relative; min-height: 130px; padding: 23px 45px 23px 23px; text-align: left; border-right: 1px solid hsl(var(--foreground) / .25); border-bottom: 1px solid hsl(var(--foreground) / .25); transition: background 160ms; }
+.earnChoices button > strong { display: block; margin-top: 12px; font-size: 20px; font-weight: 500; line-height: 1.2; letter-spacing: -.03em; }
+.earnChoices button > svg { position: absolute; right: 18px; bottom: 23px; }
+.earnChoices button .kicker { font-size: 9px; }
+.earnChoices button[aria-pressed="true"] { background: var(--studio-accent); color: var(--studio-ink); }
+.earnChoices button:hover { background: var(--studio-lilac); color: var(--studio-ink); }
+.earnDetail { border: 1px solid hsl(var(--foreground) / .25); border-top: 0; }
+.earnHeadline { display: grid; grid-template-columns: .8fr 2fr; gap: 40px; padding: 35px; border-bottom: 1px solid hsl(var(--foreground) / .18); }
+.earnHeadline h3 { max-width: 760px; font-size: clamp(1.7rem, 3vw, 2.6rem); line-height: 1.15; font-weight: 500; }
+.earnFacts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; padding: 30px 35px; background: hsl(var(--surface)); }
+.earnFacts h4, .earnSteps aside h4 { font-size: 13px; font-weight: 600; }
+.earnFacts p, .earnSteps aside p { margin-top: 12px; font-size: 13px; line-height: 1.9; color: hsl(var(--muted-foreground)); }
+.earnSteps { display: grid; grid-template-columns: 1.1fr 1fr; gap: 45px; padding: 35px; border-top: 1px solid hsl(var(--foreground) / .18); }
+.earnSteps ol { margin-top: 18px; }
+.earnSteps li { display: grid; grid-template-columns: 25px 1fr; gap: 15px; padding-block: 16px; border-top: 1px solid hsl(var(--foreground) / .15); font-size: 13px; line-height: 1.85; }
+.earnSteps li > span { font: 10px/1.85 monospace; color: hsl(var(--primary)); }
+.earnSteps aside { border-left: 1px solid hsl(var(--foreground) / .2); padding-left: 35px; }
+.earnSteps aside h4:not(:first-child) { margin-top: 24px; }
+.sourceLinks { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 20px; font-size: 10px; line-height: 1.8; }
+.sourceLinks > span { font-family: monospace; color: hsl(var(--muted-foreground)); }
+.sourceLinks a { border-bottom: 1px solid hsl(var(--foreground) / .3); }
+.launchPlan { margin-top: 42px; }
+.launchBrief { padding: 30px; background: hsl(var(--background)); border: 1px solid hsl(var(--foreground) / .25); }
+.launchInputs { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; }
+.launchInputs > div { min-width: 0; }
+.launchInputs input, .launchInputs select { display: block; width: 100%; min-width: 0; border: 1px solid hsl(var(--foreground) / .4); padding: 12px; background: hsl(var(--background)); color: hsl(var(--foreground)); font-size: 13px; line-height: 1.6; border-radius: 0; }
+.sprintButtons { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-left: 1px solid hsl(var(--foreground) / .25); }
+.sprintButtons button { padding: 18px 12px; text-align: left; border-bottom: 1px solid hsl(var(--foreground) / .25); border-right: 1px solid hsl(var(--foreground) / .25); background: hsl(var(--background)); }
+.sprintButtons button > span { display: block; font: 10px/1.6 monospace; }
+.sprintButtons button > strong { display: block; margin-top: 7px; font-size: 15px; font-weight: 500; }
+.sprintButtons button[aria-pressed="true"] { background: var(--studio-ink); color: var(--studio-accent); }
+.sprintButtons button:hover { background: var(--studio-lilac); color: var(--studio-ink); }
+.sprintBody { display: grid; grid-template-columns: .85fr 1.15fr; gap: 40px; padding: 35px; border: 1px solid hsl(var(--foreground) / .25); border-top: 0; background: hsl(var(--background)); }
+.sprintBody h3 { font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1.15; font-weight: 500; margin-top: 20px; }
+.sprintBody > div > p:not(.kicker) { margin-top: 20px; font-size: 13px; line-height: 1.9; color: hsl(var(--muted-foreground)); }
+.sprintTasks label { display: flex; align-items: flex-start; gap: 13px; padding: 16px 0; border-top: 1px solid hsl(var(--foreground) / .18); font-size: 13px; line-height: 1.85; cursor: pointer; }
+.sprintTasks input { flex-shrink: 0; width: 17px; height: 17px; margin-top: 4px; accent-color: #526b32; }
+.sprintDeliverable { background: var(--studio-paper); color: var(--studio-ink); padding: 23px; margin-top: 22px; }
+.sprintDeliverable p { margin-top: 8px; font-size: 13px; line-height: 1.8; }
+.sprintDeliverable > .kicker:not(:first-child) { display: block; margin-top: 18px; }
+.planFooter { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; padding-block: 24px; border-bottom: 1px solid hsl(var(--foreground) / .2); }
+.planFooter > p { font: 11px/1.8 monospace; color: hsl(var(--muted-foreground)); }
+.planFooter > p strong { color: hsl(var(--foreground)); }
+.planFooter > div { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; }
+.planFooter .downloadPlan { margin-top: 0; }
+.offerWorksheet { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 42px; padding: 35px; border: 1px solid hsl(var(--foreground) / .25); }
+.offerWorksheet h3 { margin-top: 20px; font-size: 30px; line-height: 1.15; font-weight: 500; }
+.worksheetIntro { margin-top: 18px; font-size: 13px; line-height: 1.9; color: hsl(var(--muted-foreground)); }
+.worksheetResult { background: var(--studio-ink); color: var(--studio-paper); padding: 28px; }
+.worksheetResult > .kicker { color: var(--studio-accent); }
+.worksheetResult dl { margin-top: 25px; }
+.worksheetResult dl > div { border-top: 1px solid #536257; padding-block: 18px; }
+.worksheetResult dt { font-size: 11px; color: #c3cec5; }
+.worksheetResult dd { margin-top: 8px; font-size: clamp(1.3rem, 2.5vw, 2rem); letter-spacing: -.03em; overflow-wrap: anywhere; }
+.worksheetResult dl > div:last-child dd { color: var(--studio-accent); }
+.worksheetResult .smallNote { color: #c3cec5; }
+.worksheetResult .primaryLink { border: 1px solid #697f68; color: var(--studio-accent); font-size: 12px; }
+@media (max-width: 900px) { .earnChoices button { padding: 18px 35px 18px 18px; } .earnChoices button > strong { font-size: 17px; } .earnFacts, .earnSteps, .earnHeadline { padding: 25px; gap: 23px; } .earnSteps aside { padding-left: 23px; } .sprintBody, .offerWorksheet { padding: 25px; gap: 25px; } .sprintButtons button > span { font-size: 9px; } .sprintButtons button > strong { font-size: 13px; } }
+@media (max-width: 640px) { .creatorManifesto > div { grid-template-columns: 1fr; gap: 18px; } .creatorManifesto a { grid-column: 1; } .heroActions { gap: 0 20px; } .heroActions .textCta { margin-top: 15px; } .earnChoices { grid-template-columns: 1fr 1fr; } .earnChoices button { min-height: 130px; } .earnChoices button .kicker { font-size: 8px; } .earnChoices button > strong { font-size: 16px; } .earnHeadline, .earnFacts, .earnSteps, .sprintBody, .offerWorksheet { grid-template-columns: 1fr; } .earnHeadline, .earnFacts, .earnSteps { padding: 23px; } .earnFacts { gap: 25px; } .earnSteps aside { padding-left: 0; border-left: 0; border-top: 1px solid hsl(var(--foreground) / .2); padding-top: 24px; } .launchBrief { padding: 23px; } .launchInputs { grid-template-columns: 1fr; } .sprintButtons { grid-template-columns: repeat(3, minmax(0, 1fr)); } .sprintButtons button { padding: 15px 10px; } .sprintBody, .offerWorksheet { padding: 23px; } .worksheetResult { padding: 23px; } .offerWorksheet h3 { font-size: 26px; } }

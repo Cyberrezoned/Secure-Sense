@@ -12,9 +12,9 @@ export const COMPANY_PURPOSE =
 
 export const studio = {
   name: 'Sule Zeen Studio',
-  tagline: 'Learn to create. Learn to be online.',
-  description: 'Sule Zeen Studio teaches content creation, social media management, AI-assisted workflows, YouTube, monetization, and digital awareness through practical creative learning.',
-  audience: 'For creators finding their voice, social media managers building a workflow, and businesses learning to show up online.',
+  tagline: 'Create. Build a channel. Learn to earn.',
+  description: 'Learn to create content, build a channel, and explore ways to earn online with Sule Zeen Studio. Practical creator skills, AI, social media services, digital products, and online awareness for young people and emerging creators.',
+  audience: 'For young people, emerging creators, freelancers, and small businesses turning creativity into useful skills and income opportunities.',
   formats: ['Practical tutorials', 'Content production', 'Workshops and training', 'Awareness programs'],
   series: [
     { title: 'Create with AI', description: 'Turn a brief into ideas, scripts, visuals, and edits. Learn to give useful instructions, check outputs, and keep your own voice.', example: 'From a rough idea to a publishable story.', output: 'A creative brief, script, and reviewed draft' },

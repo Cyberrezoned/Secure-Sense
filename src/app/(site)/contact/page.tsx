@@ -7,6 +7,7 @@ import { SectionHeading } from '@/components/company/section-heading';
 import { RequestQuoteForm } from '@/components/request-a-quote/request-quote-form';
 import { Button } from '@/components/ui/button';
 import { pageMetadata } from '@/lib/page-metadata';
+import { studioInterest } from '@/lib/studio-growth';
 
 export const metadata = pageMetadata(
   'Contact',
@@ -34,7 +35,9 @@ const contactCards = [
   },
 ];
 
-export default function ContactPage() {
+export default async function ContactPage({ searchParams }: { searchParams: Promise<{ studioPath?: string | string[] }> }) {
+  const params = await searchParams;
+  const interest = studioInterest(params.studioPath);
   return (
     <>
       <PageHero
@@ -92,11 +95,11 @@ export default function ContactPage() {
       <section id="engagement-form" className="shell pb-20 md:pb-24">
         <SectionHeading
           eyebrow="Engagement Form"
-          title="Capture the right details once."
-          description="Tell us about your organisation, the practice or product you are interested in, and what you want to achieve."
+          title={interest ? 'Let’s plan your next step as a creator.' : 'Capture the right details once.'}
+          description={interest ? `Your interest: ${interest}. Tell us where you are starting and what you want help with. Ask about training formats, fees, and availability.` : 'Tell us about your organisation, the practice or product you are interested in, and what you want to achieve.'}
         />
         <div className="mt-10 surface p-6 md:p-8">
-          <RequestQuoteForm />
+          <RequestQuoteForm key={interest || 'general'} studioInterest={interest} />
         </div>
       </section>
 

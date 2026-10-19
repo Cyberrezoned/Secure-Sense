@@ -164,3 +164,11 @@ This project is distributed under the MIT License. See `LICENSE` for more inform
 <div align="center">
   Made with ❤️ by rythecyber
 </div>
+
+## Creative Studio earning and channel-building experience
+
+The Studio is positioned around youth empowerment, creator skills, channel-building, and learning to earn online. Its earning explorer covers six models with buyers, example offers, requirements, first steps, channel strategy, and Studio support. The channel planner provides six two-week stages, 18 checkable tasks, topic/audience/time inputs, earning-path selection, and a Markdown download. The offer worksheet models sales less direct costs from visitor-supplied inputs; it is not a forecast, recommended price, or profit calculation.
+
+Earning-path CTAs link to `/contact?studioPath=<allowed-id>#engagement-form`. The contact route validates the ID against `src/lib/studio-growth.ts`, then preselects the Studio service and provides an editable enquiry brief. Individual creators can identify themselves without inventing a company. No enquiry is sent without form submission. Existing email delivery still depends on server configuration; UI prefill is not proof of delivery.
+
+YouTube earning-feature, eligibility, originality, and paid-promotion references link to official guidance checked on 19 October 2026. The site avoids fixed eligibility thresholds or guaranteed income, monetization approval, jobs, course dates, and enrolment claims. The roadmap is a suggested self-guided sequence; task progress is session-only and included in the download.
