@@ -9,6 +9,7 @@ import { ContentAnalysis } from '@/components/community/content-analysis';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { emailHref } from '@/lib/contact';
 import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata(
@@ -161,7 +162,7 @@ export default function CommunityPage() {
         <CtaBanner
           title="Need this research applied to your own environment?"
           description="Research only pays off once it changes what you defend and in what order. Bring us your estate and we will map it."
-          primaryHref="/contact"
+          primaryHref={emailHref('Research and security program enquiry')}
           primaryLabel="Discuss a Program"
           secondaryHref="/platform"
           secondaryLabel="View the Platform"

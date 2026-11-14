@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowRight, Check, GitBranch, Layers3 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { CALL_HREF, emailHref } from '@/lib/contact';
 
 /**
  * Delivery-model comparison for build engagements.
@@ -51,7 +52,7 @@ const models = [
       'Working software released in focused cycles',
       'Flexible scope with regular collaboration',
     ],
-    href: '/contact',
+    href: emailHref('Agile development enquiry'),
     cta: 'Discuss an agile engagement',
     variant: 'default' as const,
   },
@@ -175,7 +176,7 @@ export function DevelopmentApproach() {
             </p>
           </div>
           <Button asChild size="lg">
-            <Link href="/contact">
+            <Link href={CALL_HREF}>
               Book a consultation
               <ArrowRight className="h-4 w-4" />
             </Link>

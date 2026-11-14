@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { WorkflowExplorer } from '@/components/company/workflow-explorer';
 import { Button } from '@/components/ui/button';
 import { practices } from '@/lib/company';
+import { CALL_HREF } from '@/lib/contact';
 import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata(
@@ -139,7 +140,7 @@ export default function SupplyChainPage() {
             </p>
           </div>
           <Button asChild size="lg" className="self-start md:shrink-0">
-            <Link href="/contact">Book a consultation <span aria-hidden="true">↗</span></Link>
+            <Link href={CALL_HREF}>Book a consultation <span aria-hidden="true">↗</span></Link>
           </Button>
         </div>
       </section>

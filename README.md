@@ -19,7 +19,7 @@ The project also integrates AI functionalities using **Google's Genkit**, showca
 - **Modern Frontend**: Built with **Next.js 16** and the App Router for a fast, server-rendered React experience.
 - **Sleek UI/UX**: Styled with **Tailwind CSS** and a component library from **shadcn/ui**, ensuring a consistent and visually appealing design.
 - **User Authentication**: Secure user sign-up and login functionality powered by **Firebase Authentication**.
-- **Quote Request System**: Customers can request quotes, and administrators receive instant email notifications. The app now prefers the Resend service (if configured) with an SMTP/Nodemailer fallback.
+- **Enquiry Form**: Visitors can send enquiries to `admin@zeenthecyber.online` through Resend or open a prefilled draft in their email app. Provider failures are shown to the visitor.
 - **Live Threat Intelligence**: Public-facing exposure metrics sourced at request time from the **CISA KEV** catalogue, **NIST NVD**, and **FIRST EPSS**. No figure on the site is illustrative; a failed feed renders an explicit unavailable state rather than a placeholder number.
 - **Open-Source Stack Telemetry**: Live GitHub metrics for the deployed defensive stack (Wazuh, Suricata, Zeek, OpenCTI, MISP, Falco, osquery, Trivy, Sigstore, Sigma, Velociraptor, DFIR-IRIS).
 - **Signal Desk**: An internal-only operations console at `/signal-desk`, gated by a kill switch, optional IP allowlist, and constant-time Basic auth.
@@ -98,27 +98,29 @@ NEXT_PUBLIC_FIREBASE_PROJECT_ID="your-project-id"
 NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET="your-storage-bucket"
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID="your-messaging-sender-id"
 NEXT_PUBLIC_FIREBASE_APP_ID="your-app-id"
+```
 
 ## Email / Resend configuration
 
-The project supports Resend as the primary mailer. If you configure `RESEND_API_KEY`, the app will use Resend; otherwise it falls back to Nodemailer SMTP.
+The website enquiry form uses Resend. Every enquiry is addressed to `admin@zeenthecyber.online`, with the visitor's email in Reply-To. `ADMIN_EMAIL` and `NOTIFY_TO` do not override this recipient. Missing credentials or a provider rejection display an error and an email-app fallback; this form does not fall back to SMTP.
 
 Add these to `.env.local`:
 
 ```env
-# Resend (preferred)
+# Enquiry delivery
 RESEND_API_KEY=your_resend_api_key
 RESEND_FROM=no-reply@yourdomain.com   # verified sender
-ADMIN_EMAIL=team@yourdomain.com       # recipient for quote requests
 RESEND_WEBHOOK_SECRET=your_webhook_secret # optional, for verifying webhooks
 
-# Optional SMTP fallback (Nodemailer)
-SMTP_HOST=smtp.example.com
-SMTP_PORT=465
-SMTP_USER=your-email@example.com
-SMTP_PASS=your-smtp-password
 ```
 
+Public contact destinations live in `src/lib/contact.ts`. WhatsApp uses `+2348144036429`, with a contextual draft for call requests. To enable direct Google Meet calls, set `NEXT_PUBLIC_GOOGLE_MEET_URL` to an actual permanent `https://meet.google.com/xxx-xxxx-xxx` room and rebuild. Without a valid room, call buttons open WhatsApp to arrange a time. An email address alone cannot identify a meeting room.
+
+Run `npm run test:enquiry` to check routing and provider failures with a mock sender. These checks never send mail.
+
+Optional rate limiting:
+
+```env
 # Upstash Redis for Rate Limiting
 UPSTASH_REDIS_REST_URL="your-upstash-redis-rest-url"
 UPSTASH_REDIS_REST_TOKEN="your-upstash-redis-rest-token"

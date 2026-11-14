@@ -10,7 +10,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "test:access": "tsx scripts/test-access-control.mts"
+    "test:access": "tsx scripts/test-access-control.mts",
+    "test:enquiry": "tsx scripts/test-enquiry-delivery.mts"
   },
   "dependencies": {
     "@genkit-ai/googleai": "^1.28.0",

@@ -5,6 +5,7 @@ import { CtaBanner } from '@/components/company/cta-banner';
 import { PageHero } from '@/components/company/page-hero';
 import { SectionHeading } from '@/components/company/section-heading';
 import { Button } from '@/components/ui/button';
+import { emailHref } from '@/lib/contact';
 import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata(
@@ -44,7 +45,7 @@ export default function IntegrationsPage() {
         actions={
           <>
             <Button asChild size="lg">
-              <Link href="/contact">Scope an integration<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+              <Link href={emailHref('Integration enquiry')}>Scope an integration<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
             </Button>
             <Button asChild variant="outline" size="lg">
               <Link href="/platform">Explore community tools</Link>
@@ -102,7 +103,7 @@ export default function IntegrationsPage() {
               <li>Your access approval, data handling and retention requirements.</li>
               <li>The result your team would use to accept the completed work.</li>
             </ol>
-            <Button asChild className="mt-7"><Link href="/contact">Discuss the requirements<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></Button>
+            <Button asChild className="mt-7"><Link href={emailHref('Integration requirements')}>Discuss the requirements<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></Button>
           </div>
         </div>
       </section>
@@ -111,7 +112,7 @@ export default function IntegrationsPage() {
         <CtaBanner
           title="Scope the integration your team needs."
           description="Share your systems, workflow requirements and delivery constraints with Sule Zeen to discuss a suitable approach."
-          primaryHref="/contact"
+          primaryHref={emailHref('Integration enquiry')}
           primaryLabel="Discuss an integration"
           secondaryHref="/platform"
           secondaryLabel="Explore community tools"

@@ -1,10 +1,11 @@
 'use client';
 
-import { useActionState } from 'react';
+import { useActionState, useState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { CheckCircle2, Loader2, XCircle } from 'lucide-react';
 
 import { requestPricing } from '@/lib/actions';
+import { CONTACT_EMAIL, emailHref } from '@/lib/contact';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -38,7 +39,7 @@ function SubmitButton({ securityReview = false }: { securityReview?: boolean }) 
           Sending Request...
         </>
       ) : (
-        securityReview ? 'Request a free 15-min call' : 'Submit Engagement Request'
+        securityReview ? 'Email my call request' : 'Send enquiry by email'
       )}
     </Button>
   );
@@ -47,6 +48,25 @@ function SubmitButton({ securityReview = false }: { securityReview?: boolean }) 
 export function RequestQuoteForm({ studioInterest, securityReview = false }: { studioInterest?: string; securityReview?: boolean } = {}) {
   const [state, formAction] = useActionState(requestPricing, {} as any);
   const isSecurityReview = securityReview && !studioInterest;
+  const subject = isSecurityReview ? 'Security review call request' : studioInterest ? `Studio enquiry: ${studioInterest}` : 'Sule Zeen enquiry';
+  const defaultMessage = studioInterest ? `I would like help with: ${studioInterest}.\n\nWhere I am starting:\nWhat I want to create or earn from:\nThe support I need:\nMy time and budget for learning:\n\nPlease share current formats, fees, and availability.` : isSecurityReview ? 'I would like a free 15-minute introductory call about a buyer security review.\n\nWhat the buyer is asking for (questionnaire, penetration test or audit readiness):\nDecision deadline:\nKnown security or evidence gaps:\n\nPlease follow up to arrange a time and discuss the next step.' : '';
+  const [emailDraftHref, setEmailDraftHref] = useState(() => emailHref(subject, defaultMessage));
+
+  function updateEmailDraft(form: HTMLFormElement) {
+    const data = new FormData(form);
+    const fields = [
+      ['Name', 'contactName'], ['Company / creator', 'companyName'],
+      ['Email', 'email'], ['Phone', 'phone'], ['Team size', 'employees'],
+      ['Industry', 'industry'], ['Timeline', 'timeline'], ['Enquiry', 'message'],
+    ];
+    const lines = fields.flatMap(([label, name]) => {
+      const value = String(data.get(name) || '').trim();
+      return value ? [`${label}: ${value}`] : [];
+    });
+    const services = data.getAll('services').map(id => serviceOptions.find(option => option.id === id)?.label || String(id));
+    if (services.length) lines.push(`Interests: ${services.join(', ')}`);
+    setEmailDraftHref(emailHref(subject, lines.join('\n\n')));
+  }
 
   if (state.success) {
     return (
@@ -59,7 +79,7 @@ export function RequestQuoteForm({ studioInterest, securityReview = false }: { s
   }
 
   return (
-    <form action={formAction} className="space-y-8">
+    <form action={formAction} onChange={event => updateEmailDraft(event.currentTarget)} className="space-y-8">
       <div className="grid gap-5 md:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="contactName">Contact Name</Label>
@@ -137,7 +157,7 @@ export function RequestQuoteForm({ studioInterest, securityReview = false }: { s
             id="message"
             name="message"
             rows={4}
-            defaultValue={studioInterest ? `I would like help with: ${studioInterest}.\n\nWhere I am starting:\nWhat I want to create or earn from:\nThe support I need:\nMy time and budget for learning:\n\nPlease share current formats, fees, and availability.` : isSecurityReview ? 'I would like a free 15-minute introductory call about a buyer security review.\n\nWhat the buyer is asking for (questionnaire, penetration test or audit readiness):\nDecision deadline:\nKnown security or evidence gaps:\n\nPlease follow up to arrange a time and discuss the next step.' : undefined}
+            defaultValue={defaultMessage}
             placeholder={isSecurityReview ? 'Share the buyer request, deadline and known gaps.' : 'Tell us about your content or learning idea, commodity workflow, security priorities, or partnership interests.'}
             className="min-h-[130px] rounded-md border-input bg-surface"
           />
@@ -175,15 +195,24 @@ export function RequestQuoteForm({ studioInterest, securityReview = false }: { s
         <Alert variant="destructive">
           <XCircle className="h-4 w-4" />
           <AlertTitle>Submission error</AlertTitle>
-          <AlertDescription>{state.error}</AlertDescription>
+          <AlertDescription>
+            {state.error}{' '}
+            <a href={emailDraftHref} className="font-medium underline underline-offset-4">Open your enquiry in your email app.</a>
+          </AlertDescription>
         </Alert>
       ) : null}
 
       <div className="flex flex-wrap items-center justify-between gap-4 rounded-lg border border-input bg-surface p-5">
         <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
-          {isSecurityReview ? 'Send your request and the team will follow up to arrange the free 15-minute introductory call. Any further assessment or implementation work is scoped separately.' : 'Share your requirements with Sule Zeen. We can follow up by email, scope call, or technical discovery depending on the service mix selected.'}
+          Your enquiry goes to <span className="font-medium text-foreground">{CONTACT_EMAIL}</span>.
+          {isSecurityReview ? ' We will reply to agree a time for your free 15-minute introductory call. Further work is scoped separately.' : ' We will reply to the email address you provide.'}
         </p>
         <SubmitButton securityReview={isSecurityReview} />
+        <p className="w-full text-sm text-muted-foreground">
+          Prefer your own email app?{' '}
+          <a href={emailDraftHref} className="font-medium text-primary underline underline-offset-4">Open an email with your enquiry</a>.
+          {' '}Review the draft and press Send in your app.
+        </p>
       </div>
     </form>
   );

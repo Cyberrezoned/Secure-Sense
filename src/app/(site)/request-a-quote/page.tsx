@@ -6,6 +6,7 @@ import { PageHero } from '@/components/company/page-hero';
 import { SectionHeading } from '@/components/company/section-heading';
 import { RequestQuoteForm } from '@/components/request-a-quote/request-quote-form';
 import { Button } from '@/components/ui/button';
+import { emailHref } from '@/lib/contact';
 import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata(
@@ -24,8 +25,8 @@ export default function RequestQuotePage() {
         actions={
           <>
             <Button asChild size="lg">
-              <Link href="/contact">
-                Go to Contact Hub
+              <Link href={emailHref('Sule Zeen project enquiry')}>
+                Email the team
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
@@ -82,9 +83,9 @@ export default function RequestQuotePage() {
       <div className="shell pb-20 md:pb-24">
         <CtaBanner
           title="Need a broader conversation before you request a quote?"
-          description="Use the contact hub if you want to discuss strategy, partnerships, or multi-phase programs first."
-          primaryHref="/contact"
-          primaryLabel="Open Contact Hub"
+          description="Email us to discuss strategy, partnerships, or multi-phase programs before you define the scope."
+          primaryHref={emailHref('Strategy or partnership enquiry')}
+          primaryLabel="Email the team"
           secondaryHref="/cybersecurity"
           secondaryLabel="Explore the community"
         />

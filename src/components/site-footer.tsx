@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import { Github, Mail, MapPin } from 'lucide-react';
+import { Github, Mail, MapPin, MessageCircle } from 'lucide-react';
 
 import { BrandLockup } from '@/components/brand-lockup';
 import { cybersecurityCommunity } from '@/lib/company';
+import { CONTACT_EMAIL, CONTACT_EMAIL_HREF, WHATSAPP_HREF } from '@/lib/contact';
 
 const footerGroups = [
   {
@@ -20,7 +21,7 @@ const footerGroups = [
     links: [
       { href: '/company', label: 'About' },
       { href: '/community', label: 'Research' },
-      { href: '/contact', label: 'Contact' },
+      { href: CONTACT_EMAIL_HREF, label: 'Contact' },
       { href: '/request-a-quote', label: 'Request a quote' },
     ],
   },
@@ -48,11 +49,18 @@ export function SiteFooter() {
 
             <div className="mt-6 space-y-2.5 text-sm text-muted-foreground">
               <a
-                href="mailto:zenethecyber@icloud.com"
+                href={CONTACT_EMAIL_HREF}
                 className="flex items-center gap-2.5 hover:text-foreground"
               >
                 <Mail className="h-3.5 w-3.5" aria-hidden="true" />
-                zenethecyber@icloud.com
+                {CONTACT_EMAIL}
+              </a>
+              <a
+                href={WHATSAPP_HREF}
+                className="flex items-center gap-2.5 hover:text-foreground"
+              >
+                <MessageCircle className="h-3.5 w-3.5" aria-hidden="true" />
+                WhatsApp +234 814 403 6429
               </a>
               <p className="flex items-center gap-2.5">
                 <MapPin className="h-3.5 w-3.5" aria-hidden="true" />

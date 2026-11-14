@@ -41,7 +41,14 @@ export async function sendResendEmail<Props = any>(opts: SendOptions<Props>) {
     sendPayload.react = React.createElement(opts.component as any, opts.props as any);
   }
 
-  return await resend.emails.send(sendPayload);
+  const result = await resend.emails.send(sendPayload);
+  // The SDK resolves with an error object for provider rejections. A resolved
+  // promise alone does not mean the enquiry was accepted.
+  if (result.error || !result.data?.id) {
+    throw new Error('Resend did not accept the email');
+  }
+
+  return result;
 }
 
 export default sendResendEmail;

@@ -7,14 +7,10 @@ import {
 import { z } from 'zod';
 import PricingRequestEmail from '@/emails/PricingRequestEmail';
 import sendResendEmail from '@/lib/resend';
+import { CONTACT_EMAIL } from '@/lib/contact';
 
 export type AnalysisResult = AnalyzeArticleOutput;
 
-/**
- * Contact of record for enquiries that cannot be delivered automatically.
- * Kept as a constant so no code path falls back to a domain we do not own.
- */
-const CONTACT_EMAIL = process.env.ADMIN_EMAIL || 'zenethecyber@icloud.com';
 const SENDER_DOMAIN = process.env.RESEND_SENDER_DOMAIN || 'zeenthecyber.online';
 
 export async function analyzeContent(
@@ -83,43 +79,24 @@ export async function requestPricing(_prevState: unknown, formData: FormData) {
     };
   }
 
-  // In a real app, you would send this data to your CRM or email service
   const requestData = validatedFields.data;
-  console.log('New pricing request:', requestData);
 
-  // Prepare email content
   const servicesList = Array.isArray(requestData.services)
     ? requestData.services.join(', ')
     : String(requestData.services || '');
 
-  const html = `
-    <h2>New Pricing Request</h2>
-    <p><strong>Company:</strong> ${String(requestData.companyName)}</p>
-    <p><strong>Contact Name:</strong> ${String(requestData.contactName || '')}</p>
-    <p><strong>Contact Email:</strong> ${String(requestData.email)}</p>
-    <p><strong>Phone:</strong> ${String(requestData.phone || '')}</p>
-    <p><strong>Industry:</strong> ${String(requestData.industry || '')}</p>
-    <p><strong>Employees:</strong> ${String(requestData.employees)}</p>
-    <p><strong>Timeline:</strong> ${String(requestData.timeline || '')}</p>
-    <p><strong>Services:</strong> ${servicesList}</p>
-    <p><strong>Message:</strong></p>
-    <p>${String(requestData.message || '')}</p>
-  `;
-
   // Send email using Resend if API key is available
   const resendApiKey = process.env.RESEND_API_KEY;
-  // Prefer RESEND_FROM and ADMIN_EMAIL env names; fall back to older names for compatibility
+  // Sender settings never determine the enquiry recipient.
   const emailFrom = process.env.RESEND_FROM || process.env.EMAIL_FROM || `no-reply@${SENDER_DOMAIN}`;
-  const notifyTo =
-    process.env.ADMIN_EMAIL || process.env.NOTIFY_TO || process.env.RESEND_FROM || process.env.EMAIL_FROM || CONTACT_EMAIL;
 
   if (resendApiKey) {
     try {
       await sendResendEmail({
         from: emailFrom,
-        to: notifyTo,
+        to: CONTACT_EMAIL,
         subject: `New pricing request — ${String(requestData.companyName)}`,
-        html,
+        // The React email template escapes visitor-supplied text.
         component: PricingRequestEmail,
         props: {
           companyName: String(requestData.companyName),
@@ -136,9 +113,9 @@ export async function requestPricing(_prevState: unknown, formData: FormData) {
       });
 
       return { success: 'Thank you for your request! Our team will be in touch with you shortly.' };
-    } catch (err) {
-      console.error('Failed to send pricing request email via Resend:', err);
-      return { error: 'There was an error sending your request. Please try again later.' };
+    } catch {
+      console.error('Pricing request email was not accepted by Resend.');
+      return { error: `We could not submit your request. Please try again or email ${CONTACT_EMAIL} directly.` };
     }
   }
 

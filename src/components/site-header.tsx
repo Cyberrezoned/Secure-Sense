@@ -11,6 +11,7 @@ import { BrandLockup } from '@/components/brand-lockup';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { cn } from '@/lib/utils';
 import { cybersecurityCommunity } from '@/lib/company';
+import { CALL_HREF } from '@/lib/contact';
 
 const navItems = [
   { href: '/supply-chain', label: 'Supply Chain' },
@@ -57,7 +58,7 @@ export function SiteHeader() {
         <div className="hidden items-center gap-3 lg:flex">
           <ThemeToggle />
           <Button asChild size="sm">
-            <Link href="/contact">Book a consultation</Link>
+            <a href={CALL_HREF}>Book a call</a>
           </Button>
         </div>
 
@@ -94,9 +95,9 @@ export function SiteHeader() {
 
                 <div className="mt-auto flex flex-col gap-2 pt-8">
                   <Button asChild>
-                    <Link href="/contact" onClick={() => setOpen(false)}>
-                      Book a consultation
-                    </Link>
+                    <a href={CALL_HREF} onClick={() => setOpen(false)}>
+                      Book a call
+                    </a>
                   </Button>
                   <Button asChild variant="outline">
                     <Link href="/request-a-quote" onClick={() => setOpen(false)}>

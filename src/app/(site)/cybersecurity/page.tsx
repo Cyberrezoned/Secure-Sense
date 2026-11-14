@@ -6,6 +6,7 @@ import securityStyles from './cybersecurity.module.css';
 import { WorkflowExplorer } from '@/components/company/workflow-explorer';
 import { cybersecurityCommunity, practices } from '@/lib/company';
 import { pageMetadata } from '@/lib/page-metadata';
+import { GOOGLE_MEET_HREF, SECURITY_REVIEW_EMAIL_HREF, SECURITY_REVIEW_WHATSAPP_HREF } from '@/lib/contact';
 
 export const metadata = pageMetadata(
   cybersecurityCommunity.name,
@@ -186,7 +187,10 @@ export default function CybersecurityPage() {
           <p className={securityStyles.reviewEyebrow}>Sule Zeen / For founders</p>
           <h2 id="security-review-title">Security review slowing<br />your next deal?</h2>
           <p className={securityStyles.reviewCopy}>A buyer questionnaire. A pen test. An audit deadline. Bring what&apos;s blocking the deal&mdash;we&apos;ll help you scope the next step in a free 15-minute call. No obligation.</p>
-          <Link href="/contact?securityReview=1#engagement-form" className={securityStyles.reviewButton}>Request a free 15-min call <ArrowUpRight size={20} aria-hidden="true" /></Link>
+          <div className={securityStyles.reviewActions}>
+            <a href={GOOGLE_MEET_HREF ?? SECURITY_REVIEW_WHATSAPP_HREF} className={securityStyles.reviewButton}>{GOOGLE_MEET_HREF ? 'Call on Google Meet' : 'Book a call on WhatsApp'} <ArrowUpRight size={20} aria-hidden="true" /></a>
+            <a href={SECURITY_REVIEW_EMAIL_HREF} className={securityStyles.reviewEmail}>Email your enquiry <ArrowRight size={16} aria-hidden="true" /></a>
+          </div>
           <ul className={securityStyles.reviewTopics} aria-label="What we can discuss">
             <li>Security questionnaires</li><li>Penetration testing</li><li>Audit readiness</li>
           </ul>

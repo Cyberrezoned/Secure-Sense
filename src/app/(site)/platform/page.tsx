@@ -6,6 +6,7 @@ import { PageHero } from '@/components/company/page-hero';
 import { SectionHeading } from '@/components/company/section-heading';
 import { PlatformConsole } from '@/components/platform/platform-console';
 import { Button } from '@/components/ui/button';
+import { emailHref } from '@/lib/contact';
 import { getKevSummary } from '@/lib/intel';
 import { pageMetadata } from '@/lib/page-metadata';
 
@@ -52,7 +53,7 @@ export default async function PlatformPage() {
         actions={
           <>
             <Button asChild size="lg">
-              <Link href="/contact">
+              <Link href={emailHref('Security workflow enquiry')}>
                 Discuss your security workflow
                 <ArrowRight className="h-4 w-4" />
               </Link>
@@ -108,7 +109,7 @@ export default async function PlatformPage() {
         <CtaBanner
           title="Plan the next step for your security team"
           description="Bring your findings, evidence requirements and existing tools. Sule Zeen can help define the scope, owners and integration work."
-          primaryHref="/contact"
+          primaryHref={emailHref('Security workflow enquiry')}
           primaryLabel="Discuss your workflow"
           secondaryHref="/cybersecurity"
           secondaryLabel="Review services"

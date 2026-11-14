@@ -14,6 +14,8 @@
 .reviewButton { display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-top: 8px; padding: 18px 28px; background: #fff; border: 0; border-radius: 0; color: #000; font-size: 16px; line-height: 1; font-weight: 600; text-decoration: none; transition: opacity .2s; }
 .reviewButton:hover { opacity: .95; }
 .reviewButton:focus-visible { outline: 2px solid white; outline-offset: 5px; }
+.reviewActions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px 24px; }
+.reviewEmail { display: inline-flex; align-items: center; gap: 10px; color: #fff; font-size: 15px; margin-top: 8px; padding-block: 10px; text-decoration: underline; text-underline-offset: 5px; }
 .reviewTopics { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; margin: 16px auto 0; color: #ffffff9e; font-size: 13px; line-height: 1.5; }
 .reviewTopics li + li::before { content: '\00b7'; margin-right: 12px; color: #ffffff4d; }
 @media (max-width: 600px) { .reviewButton { max-width: 100%; padding-inline: 20px; min-height: 52px; } .reviewTopics { gap: 8px 12px; } }

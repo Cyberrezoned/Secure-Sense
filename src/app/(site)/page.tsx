@@ -3,6 +3,7 @@ import { ArrowDown, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { WorkflowExplorer } from '@/components/company/workflow-explorer';
 import { CtaBanner } from '@/components/company/cta-banner';
 import { COMPANY_DESCRIPTION } from '@/lib/company';
+import { CALL_HREF } from '@/lib/contact';
 import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata('Trade Infrastructure and Cybersecurity', COMPANY_DESCRIPTION, '/');
@@ -20,7 +21,7 @@ export default function HomePage() {
           <div className="max-w-md lg:pb-1">
             <p className="text-xl leading-relaxed tracking-tight sm:text-2xl">We build commodity systems and deliver security engineering for the organisations that depend on them.</p>
             <p className="mt-5 text-sm leading-7 text-muted-foreground">Based in Nigeria. Working across warehouse receipts, trade finance workflows, offensive security, detection, and compliance.</p>
-            <Link href="/contact" className="text-link mt-8">Book a consultation<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+            <Link href={CALL_HREF} className="text-link mt-8">Book a consultation<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
           </div>
         </div>
         <div className="mt-12 flex items-center justify-between border-t border-hairline pt-5 lg:mt-16">
@@ -70,7 +71,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="shell pb-12"><CtaBanner eyebrow="Work with Sule Zeen" title="Bring a specific problem." description="Tell us about your commodity workflow, security requirements, or a Studio content or learning project." primaryHref="/contact" primaryLabel="Book a consultation" /></div>
+      <div className="shell pb-12"><CtaBanner eyebrow="Work with Sule Zeen" title="Bring a specific problem." description="Tell us about your commodity workflow, security requirements, or a Studio content or learning project." primaryHref={CALL_HREF} primaryLabel="Book a consultation" /></div>
     </>
   );
 }

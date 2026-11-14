@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 import { COMPANY_DESCRIPTION } from '@/lib/company';
+import { CALL_HREF } from '@/lib/contact';
 import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata('Company', COMPANY_DESCRIPTION, '/company');
@@ -113,7 +114,7 @@ export default function CompanyPage() {
           <h2 className="mt-5 max-w-xl font-headline text-3xl font-semibold leading-tight md:text-4xl">Start with the system you need to build or secure.</h2>
         </div>
         <div className="md:justify-self-end">
-          <Link href="/contact" className="text-link">Book a consultation<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+          <Link href={CALL_HREF} className="text-link">Book a consultation<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
         </div>
       </section>
     </>

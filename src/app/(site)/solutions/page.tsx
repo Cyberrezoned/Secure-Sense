@@ -5,6 +5,7 @@ import { CtaBanner } from '@/components/company/cta-banner';
 import { PageHero } from '@/components/company/page-hero';
 import { SectionHeading } from '@/components/company/section-heading';
 import { Button } from '@/components/ui/button';
+import { emailHref } from '@/lib/contact';
 import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata(
@@ -75,7 +76,7 @@ export default function SolutionsPage() {
         actions={
           <>
             <Button asChild size="lg">
-              <Link href="/contact">
+              <Link href={emailHref('Industry security enquiry')}>
                 Discuss Your Environment
                 <ArrowRight className="h-4 w-4" />
               </Link>
@@ -141,8 +142,8 @@ export default function SolutionsPage() {
       <div className="shell pb-20 md:pb-24">
         <CtaBanner
           title="Need a sector-specific security program rather than a generic package?"
-          description="Use the contact flow to scope the business environment, regulatory pressure, and service mix that fit your organization."
-          primaryHref="/contact"
+          description="Email us about your business environment, regulatory pressure, and the service mix your organization needs."
+          primaryHref={emailHref('Industry security enquiry')}
           primaryLabel="Scope by Industry"
           secondaryHref="/platform"
           secondaryLabel="See the Platform"
