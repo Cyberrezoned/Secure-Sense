@@ -74,3 +74,11 @@ Final HTTP verification: `/cybersecurity` returned 200 with exactly 42 mosaic bu
 ## Production marketing update
 
 The founder-focused security-review section links to `/contact?securityReview=1#engagement-form`, prefilling a free 15-minute call request. It requests a conversation; it does not claim a booked appointment. The user will replace the current generated role artwork with real photographs later; the imagery does not identify staff or endorse the business. Asset paths remain in `showcase-data.ts`. Simulated copilot responses, fake API examples and unfinished article stubs are removed from the public experience.
+
+## Reference typography
+
+The YSecurity source inspected on 14 November 2026 declares `SF Pro Display, -apple-system, BlinkMacSystemFont, Segoe UI, system-ui, sans-serif` for its final CTA. Its loaded base stylesheet supplies Inter font faces, but no SF Pro webfont. The community page now uses the same system stack; SF Pro is used where available and Windows falls back to Segoe UI, as the reference does. No third-party proprietary font file is copied.
+
+Reference CTA metrics are configured directly: 600 heading weight, `clamp(34px, 4vw, 56px)` size, 1.05 line height, -0.025em tracking; body text is 18px/1.55 at weight 400, with a 560px maximum measure. The centered inner column is capped at 760px. The button uses weight 600, 16px size and 18px/28px padding. Existing community imagery and Sule Zeen attribution remain; repeated slogans were replaced with concrete research, intelligence and practical-learning copy.
+
+Reference sources: `https://ysecurity.io/` (inline `.ys-final-cta` rules) and `https://ysecurity.io/_astro/BaseLayout.C8n4Cr7y.css` (font-face declarations). Desktop layout visually reviewed in the local browser. Production build passed.

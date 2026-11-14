@@ -28,7 +28,7 @@ const communityAreas = [
   },
   {
     name: 'Integrations',
-    description: 'Plan how alerts, engineering tasks and reporting should fit your team?s tools, and scope the implementation with Sule Zeen.',
+    description: 'Plan how alerts, engineering tasks and reporting should fit your team\'s tools, and scope the implementation with Sule Zeen.',
     href: '/integrations',
     action: 'Explore integrations',
   },
@@ -67,14 +67,14 @@ export default function CybersecurityPage() {
       <section className={`${styles.container} ${styles.hero} ${securityStyles.heroWithMosaic}`} aria-labelledby="security-title">
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>Sule Zeen&apos;s cybersecurity community</p>
-          <div className={styles.status}><span /> Learn. Share. Build.</div>
-          <h1 id="security-title">ZeenTheCyber.<br />Learn together.<br />Build security.</h1>
-          <p className={styles.intro}>A community for people learning, building and working in cybersecurity. Explore research, practical tools and security expertise from Sule Zeen.</p>
+          <div className={styles.status}><span /> Research. Tools. Practical learning.</div>
+          <h1 id="security-title">ZeenTheCyber.<br />Cybersecurity,<br />put to work.</h1>
+          <p className={styles.intro}>For the people who build and defend digital systems. Read threat research, work with live vulnerability intelligence, and sharpen your security practice.</p>
           <div className={styles.actions}>
             <Link href="/community" className={styles.primary}>Explore the research <ArrowRight size={17} aria-hidden="true" /></Link>
-            <Link href="/platform" className={styles.secondary}>Explore the tools</Link>
+            <Link href="/platform" className={styles.secondary}>Open security tools</Link>
           </div>
-          <div className={styles.heroNote}><p>Knowledge you can put to work</p><span>Research <b>&middot;</b> Learning <b>&middot;</b> Awareness <b>&middot;</b> Tools</span><a href="#security-scope" className={`${styles.inlineLink} mt-4`}>Security services from Sule Zeen <ArrowRight size={16} aria-hidden="true" /></a></div>
+          <div className={styles.heroNote}><p>Built in Nigeria. A community by Sule Zeen.</p><span>Threat research <b>&middot;</b> Live intelligence <b>&middot;</b> Practical learning</span><a href="#security-scope" className={`${styles.inlineLink} mt-4`}>Security services from Sule Zeen <ArrowRight size={16} aria-hidden="true" /></a></div>
         </div>
         <SecurityShowcase />
       </section>
@@ -182,12 +182,11 @@ export default function CybersecurityPage() {
       </section>
 
       <section className={securityStyles.reviewCta} aria-labelledby="security-review-title">
-        <div className={styles.container}>
-          <p className={securityStyles.reviewEyebrow}>For founders and growing teams</p>
+        <div className={securityStyles.reviewInner}>
+          <p className={securityStyles.reviewEyebrow}>Sule Zeen / For founders</p>
           <h2 id="security-review-title">Security review slowing<br />your next deal?</h2>
-          <p className={securityStyles.reviewCopy}>Your buyer has questions. Let&apos;s work through the next step. Talk to Sule Zeen about security questionnaires, penetration testing or audit readiness in a free 15-minute introductory call.</p>
+          <p className={securityStyles.reviewCopy}>A buyer questionnaire. A pen test. An audit deadline. Bring what&apos;s blocking the deal&mdash;we&apos;ll help you scope the next step in a free 15-minute call. No obligation.</p>
           <Link href="/contact?securityReview=1#engagement-form" className={securityStyles.reviewButton}>Request a free 15-min call <ArrowUpRight size={20} aria-hidden="true" /></Link>
-          <p className={securityStyles.reviewNote}>A focused conversation. A clear next step. No obligation.</p>
           <ul className={securityStyles.reviewTopics} aria-label="What we can discuss">
             <li>Security questionnaires</li><li>Penetration testing</li><li>Audit readiness</li>
           </ul>
