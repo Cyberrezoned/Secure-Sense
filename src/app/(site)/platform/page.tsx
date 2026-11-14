@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import type { Metadata } from 'next';
-import { ArrowRight, Bot, FileCheck2, Radar, Workflow } from 'lucide-react';
+import { ArrowRight, FileSearch, FileCheck2, Radar, Workflow } from 'lucide-react';
 
 import { CtaBanner } from '@/components/company/cta-banner';
 import { PageHero } from '@/components/company/page-hero';
@@ -11,8 +10,8 @@ import { getKevSummary } from '@/lib/intel';
 import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata(
-  'ZeenTheCyber Platform',
-  'Control mapping, evidence pipelines, and exposure prioritisation in one operational workspace, fed by live vulnerability intelligence.',
+  'Platform Tools / ZeenTheCyber',
+  "CISA exploitation intelligence, article analysis and integration planning through ZeenTheCyber, Sule Zeen's cybersecurity community.",
   '/platform'
 );
 
@@ -20,27 +19,23 @@ export const revalidate = 1800;
 
 const platformHighlights = [
   {
-    title: 'Compliance copilot',
-    description:
-      'Framework-aware guidance for ISO 27001, SOC 2, PCI DSS, and NDPR, grounded in the controls you already have in place.',
-    icon: Bot,
-  },
-  {
-    title: 'Exposure prioritisation',
-    description:
-      'Findings ranked against the CISA KEV catalogue and EPSS probabilities, so remediation order follows real-world exploitation.',
+    title: 'Exploitation intelligence',
+    description: 'Review CISA known exploited vulnerabilities, recent catalogue additions and affected vendors with the source and retrieval date attached.',
     icon: Radar,
   },
   {
-    title: 'Evidence and reporting',
-    description:
-      'Evidence captured once at the point of work, then mapped to every framework that asks for it. Reports generate from the same source.',
+    title: 'Article analysis',
+    description: 'Request a summary, suggested tags and a content review for security text, then check the results against your source.',
+    icon: FileSearch,
+  },
+  {
+    title: 'Source context',
+    description: 'See where the intelligence comes from and when it was retrieved. Feed interruptions are shown alongside the source.',
     icon: FileCheck2,
   },
   {
-    title: 'Workflow orchestration',
-    description:
-      'Findings routed into the systems your teams already run, with status flowing back so nothing closes without a retest.',
+    title: 'Integration planning',
+    description: 'Discuss your systems, permissions, owners and reporting needs with Sule Zeen to define an implementation scope.',
     icon: Workflow,
   },
 ];
@@ -51,35 +46,35 @@ export default async function PlatformPage() {
   return (
     <>
       <PageHero
-        eyebrow="ZeenTheCyber / A Sule Zeen product"
-        title="One workspace for exposure, controls, and evidence."
-        description="Compliance work fails when evidence lives in spreadsheets and remediation order is guesswork. The platform keeps both in one place and prioritises against vulnerabilities that are actually being exploited."
+        eyebrow="ZeenTheCyber / Community tools"
+        title="Explore exploitation data. Review security content."
+        description="Use CISA exploitation intelligence and article analysis to inform your security decisions. Bring your workflow requirements to Sule Zeen when you need help planning the next step."
         actions={
           <>
             <Button asChild size="lg">
               <Link href="/contact">
-                Book a walkthrough
+                Discuss your security workflow
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link href="/integrations">View integrations</Link>
+              <Link href="/integrations">Plan integrations</Link>
             </Button>
           </>
         }
         stats={[
-          { value: '4', label: 'Frameworks mapped from one evidence set' },
-          { value: 'KEV + EPSS', label: 'Exploitation data driving priority' },
-          { value: 'Bi-directional', label: 'Sync with engineering workflow' },
-          { value: 'Audit-ready', label: 'Evidence captured at the point of work' },
+          { value: 'CISA KEV', label: 'Known exploited vulnerabilities' },
+          { value: '30-day view', label: 'Recent catalogue additions' },
+          { value: 'Article analysis', label: 'Summaries, tags and content review' },
+          { value: 'Planning', label: 'Scope workflows with Sule Zeen' },
         ]}
       />
 
       <section className="shell py-20 lg:py-24">
         <SectionHeading
           eyebrow="Workspace"
-          title="The console your team actually works in"
-          description="Exposure data, framework guidance, research triage, and routing, reachable without switching tools."
+          title="Intelligence and tools for your next decision"
+          description="Review the exploitation feed, analyse an advisory or prepare an integration conversation."
         />
         <div className="mt-10">
           <PlatformConsole kev={kev} />
@@ -89,9 +84,9 @@ export default async function PlatformPage() {
       <section className="border-t border-hairline bg-surface">
         <div className="shell py-20 lg:py-24">
           <SectionHeading
-            eyebrow="Modules"
-            title="Built around how compliance work actually proceeds"
-            description="Each module removes a specific handoff where evidence or context is usually lost."
+            eyebrow="What you can use"
+            title="Start with the context behind the finding"
+            description="Source-backed intelligence and text analysis support your review; implementation work starts with an agreed scope."
           />
           <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4" data-stagger>
             {platformHighlights.map((item) => {
@@ -111,10 +106,10 @@ export default async function PlatformPage() {
 
       <div className="shell py-20 lg:py-24">
         <CtaBanner
-          title="See it against your own control set"
-          description="A walkthrough uses your frameworks and current evidence, so you can judge the platform on your actual obligations rather than a demo tenant."
+          title="Plan the next step for your security team"
+          description="Bring your findings, evidence requirements and existing tools. Sule Zeen can help define the scope, owners and integration work."
           primaryHref="/contact"
-          primaryLabel="Book a walkthrough"
+          primaryLabel="Discuss your workflow"
           secondaryHref="/cybersecurity"
           secondaryLabel="Review services"
         />

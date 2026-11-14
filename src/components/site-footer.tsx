@@ -2,14 +2,14 @@ import Link from 'next/link';
 import { Github, Mail, MapPin } from 'lucide-react';
 
 import { BrandLockup } from '@/components/brand-lockup';
+import { cybersecurityCommunity } from '@/lib/company';
 
 const footerGroups = [
   {
     title: 'Explore Sule Zeen',
     links: [
       { href: '/supply-chain', label: 'Supply Chain' },
-      { href: '/cybersecurity', label: 'Cybersecurity' },
-      { href: '/products', label: 'ZeenTheCyber' },
+      { href: cybersecurityCommunity.href, label: cybersecurityCommunity.name },
       { href: '/studio', label: 'Sule Zeen Studio' },
       // Linked here so the route is reachable rather than sitemap-only.
       { href: '/solutions', label: 'Industry solutions' },
@@ -43,7 +43,7 @@ export function SiteFooter() {
             <BrandLockup />
 
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-              A Nigerian technology company working in commodity supply-chain infrastructure and cybersecurity.
+              A Nigerian technology company working in commodity supply-chain infrastructure and cybersecurity. Home to the ZeenTheCyber cybersecurity community.
             </p>
 
             <div className="mt-6 space-y-2.5 text-sm text-muted-foreground">

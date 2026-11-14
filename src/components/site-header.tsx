@@ -10,17 +10,22 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/s
 import { BrandLockup } from '@/components/brand-lockup';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { cn } from '@/lib/utils';
+import { cybersecurityCommunity } from '@/lib/company';
 
 const navItems = [
   { href: '/supply-chain', label: 'Supply Chain' },
-  { href: '/cybersecurity', label: 'Cybersecurity' },
-  { href: '/products', label: 'ZeenTheCyber' },
+  { href: cybersecurityCommunity.href, label: cybersecurityCommunity.name },
   { href: '/studio', label: 'Studio' },
   { href: '/company', label: 'Company' },
 ];
 
 function isActive(pathname: string, href: string) {
   if (href === '/') return pathname === '/';
+  if (href === cybersecurityCommunity.href) {
+    return [href, '/platform', '/integrations', '/community'].some(
+      (path) => pathname === path || pathname.startsWith(`${path}/`)
+    );
+  }
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 

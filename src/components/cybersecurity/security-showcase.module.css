@@ -1,0 +1,23 @@
+﻿.showcase { width: 100%; min-width: 0; align-self: center; color: #111; }
+.mosaic { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 3px; background: #e4e4e1; }
+.tile { display: block; position: relative; aspect-ratio: 1.16; min-width: 0; padding: 0; border: 0; background: #efefed; perspective: 650px; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.flipper { position: absolute; inset: 0; display: block; transform-style: preserve-3d; }
+.face { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden; }
+.portrait { background: #dededb; transform: rotateY(0deg); }
+.portrait img { object-fit: cover; object-position: center 34%; filter: saturate(.65); user-select: none; pointer-events: none; }
+.tile:nth-child(4n + 1) .portrait img { filter: grayscale(1); }
+.framework { transform: rotateY(180deg); background: #090909; color: #fff; padding: clamp(3px, .45vw, 7px); text-align: center; }
+.framework > span { font-size: clamp(8px, .88vw, 12px); line-height: 1.35; font-weight: 600; letter-spacing: -.025em; overflow-wrap: anywhere; }
+.tile[data-selected='true']::after { content: ''; position: absolute; inset: 0; border: 2px solid white; box-shadow: inset 0 0 0 1px #111; pointer-events: none; }
+.tile:focus-visible { outline: 2px solid #111; outline-offset: 3px; z-index: 2; }
+.tile:focus-visible::after { content: ''; position: absolute; inset: 3px; border: 2px solid white; pointer-events: none; }
+.detail { display: grid; align-content: start; min-height: 102px; padding-top: 16px; margin-top: 9px; border-top: 1px solid #e4e4e4; }
+.detailSizer, .detailContent { grid-area: 1 / 1; }
+.detailSizer { visibility: hidden; pointer-events: none; }
+.detail strong { display: flex; flex-wrap: wrap; gap: 5px 12px; font-size: 12px; font-weight: 500; line-height: 1.6; }
+.detail strong > span { color: #777; font-size: 11px; }
+.detail p { font-size: 12px; line-height: 1.7; color: #686868; margin-top: 6px; max-width: 520px; }
+.srOnly { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+@media (max-width: 700px) { .framework > span { font-size: clamp(8px, 2vw, 12px); } .mosaic { gap: 2px; } .detail { min-height: 112px; } }
+@media (max-width: 380px) { .framework { padding: 3px; } .framework > span { font-size: 7px; } }
+@media (prefers-reduced-motion: reduce) { .showcase *, .showcase *::before, .showcase *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }

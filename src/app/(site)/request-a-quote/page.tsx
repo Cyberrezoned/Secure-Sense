@@ -10,7 +10,7 @@ import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata(
   'Request a Quote',
-  'Scope a cybersecurity assessment, compliance programme, or supply-chain engagement with Sule Zeen and receive a costed proposal.',
+  'Scope Sule Zeen security or supply-chain work, or inquire about ZeenTheCyber community research, learning and awareness.',
   '/request-a-quote'
 );
 
@@ -20,7 +20,7 @@ export default function RequestQuotePage() {
       <PageHero
         eyebrow="Request a Quote"
         title="Scope the right engagement with Sule Zeen."
-        description="Discuss a Studio content or learning partnership, commodity supply-chain infrastructure, cybersecurity services, or ZeenTheCyber products. Share the scope and timing so Sule Zeen can respond with a suitable approach."
+        description="Discuss a Studio content or learning partnership, commodity supply-chain infrastructure, or Sule Zeen security services. You can also ask about ZeenTheCyber community research, learning, awareness and tools."
         actions={
           <>
             <Button asChild size="lg">
@@ -86,7 +86,7 @@ export default function RequestQuotePage() {
           primaryHref="/contact"
           primaryLabel="Open Contact Hub"
           secondaryHref="/cybersecurity"
-          secondaryLabel="Review Services"
+          secondaryLabel="Explore the community"
         />
       </div>
     </>

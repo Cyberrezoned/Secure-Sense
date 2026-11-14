@@ -1,14 +1,38 @@
 import Link from 'next/link';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { SecurityShowcase } from '@/components/cybersecurity/security-showcase';
+import styles from './reference.module.css';
+import securityStyles from './cybersecurity.module.css';
 import { WorkflowExplorer } from '@/components/company/workflow-explorer';
-import { Button } from '@/components/ui/button';
-import { practices } from '@/lib/company';
+import { cybersecurityCommunity, practices } from '@/lib/company';
 import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata(
-  'Cybersecurity',
-  'Offensive security, managed detection and response, and compliance engineering from Sule Zeen. Evidence, remediation, and retesting on an open-source defensive stack.',
-  '/cybersecurity',
+  cybersecurityCommunity.name,
+  cybersecurityCommunity.description,
+  cybersecurityCommunity.href,
 );
+
+const communityAreas = [
+  {
+    name: 'Research & learning',
+    description: 'Explore technical explainers on phishing, cloud security and identity, with resources to build your security knowledge.',
+    href: '/community',
+    action: 'Explore the research',
+  },
+  {
+    name: 'Practical tools',
+    description: 'Explore live vulnerability intelligence and article analysis to bring more context to your security decisions.',
+    href: '/platform',
+    action: 'Explore the tools',
+  },
+  {
+    name: 'Integrations',
+    description: 'Plan how alerts, engineering tasks and reporting should fit your team?s tools, and scope the implementation with Sule Zeen.',
+    href: '/integrations',
+    action: 'Explore integrations',
+  },
+];
 
 const services = [
   {
@@ -39,39 +63,47 @@ const services = [
 
 export default function CybersecurityPage() {
   return (
-    <>
-      <section className="border-b border-hairline">
-        <div className="shell editorial-section">
-          <p className="section-index">Practice 02 / Cybersecurity</p>
-          <div className="mt-8 grid gap-10 lg:grid-cols-[1.5fr_0.7fr] lg:items-end lg:gap-16">
-            <h1 className="editorial-title max-w-4xl">
-              Find the weakness.<br />Verify the fix.
-            </h1>
-            <div className="border-l-2 border-primary pl-6">
-              <p className="lede">
-                Offensive security, detection and response, and compliance work
-                carried through to evidence your team can use.
-              </p>
-              <p className="mt-5 text-sm leading-7 text-muted-foreground">
-                Scope, technical findings, remediation, and verification stay connected
-                throughout the engagement.
-              </p>
-            </div>
+    <div className={`${styles.page} ${securityStyles.security}`}>
+      <section className={`${styles.container} ${styles.hero} ${securityStyles.heroWithMosaic}`} aria-labelledby="security-title">
+        <div className={styles.heroCopy}>
+          <p className={styles.eyebrow}>Sule Zeen&apos;s cybersecurity community</p>
+          <div className={styles.status}><span /> Learn. Share. Build.</div>
+          <h1 id="security-title">ZeenTheCyber.<br />Learn together.<br />Build security.</h1>
+          <p className={styles.intro}>A community for people learning, building and working in cybersecurity. Explore research, practical tools and security expertise from Sule Zeen.</p>
+          <div className={styles.actions}>
+            <Link href="/community" className={styles.primary}>Explore the research <ArrowRight size={17} aria-hidden="true" /></Link>
+            <Link href="/platform" className={styles.secondary}>Explore the tools</Link>
           </div>
-          <a href="#security-scope" className="text-link mt-10">
-            Explore the scope and deliverables <span aria-hidden="true">↘</span>
-          </a>
+          <div className={styles.heroNote}><p>Knowledge you can put to work</p><span>Research <b>&middot;</b> Learning <b>&middot;</b> Awareness <b>&middot;</b> Tools</span><a href="#security-scope" className={`${styles.inlineLink} mt-4`}>Security services from Sule Zeen <ArrowRight size={16} aria-hidden="true" /></a></div>
+        </div>
+        <SecurityShowcase />
+      </section>
+      <div className={`${styles.container} ${styles.capabilities}`} aria-label="Community focus areas">
+        <span>Security research</span><span>Practical learning</span><span>Cyber awareness</span><span>Security tools</span>
+      </div>
+
+      <section className={styles.explore} aria-labelledby="community-resources-title">
+        <div className={styles.container}>
+          <p className={styles.eyebrow}>01 / Inside ZeenTheCyber</p>
+          <h2 id="community-resources-title">Explore. Learn.<br /><span>Put it into practice.</span></h2>
+          <div className={styles.areaGrid}>
+            {communityAreas.map(area => <article key={area.name} className={styles.area}>
+              <h3>{area.name}</h3>
+              <p>{area.description}</p>
+              <Link href={area.href}>{area.action}<ArrowRight size={18} aria-hidden="true" /></Link>
+            </article>)}
+          </div>
         </div>
       </section>
 
       <section id="security-scope" className="shell editorial-section scroll-mt-24">
         <div className="grid gap-6 md:grid-cols-[0.45fr_1fr] md:gap-16">
-          <p className="section-index">01 / What we deliver</p>
+          <p className="section-index">02 / Security services from Sule Zeen</p>
           <div>
             <h2 className="display-2 max-w-2xl">A defined scope.<br />A usable handover.</h2>
             <p className="lede mt-5 max-w-2xl">
-              Engage a single service or connect assessment, implementation, and ongoing
-              operations. Deliverables and responsibilities are agreed at the start.
+              For organisations that need hands-on support, Sule Zeen provides assessment,
+              implementation and ongoing security services. Scope and responsibilities are agreed at the start.
             </p>
           </div>
         </div>
@@ -100,7 +132,7 @@ export default function CybersecurityPage() {
       <section className="border-y border-hairline">
         <div className="shell editorial-section">
           <div className="grid gap-6 md:grid-cols-[0.45fr_1fr] md:gap-16">
-            <p className="section-index">02 / How the work moves</p>
+            <p className="section-index">03 / How the work moves</p>
             <div>
               <h2 className="display-2 max-w-2xl">A finding is the beginning.</h2>
               <p className="lede mt-5 max-w-2xl">
@@ -116,7 +148,7 @@ export default function CybersecurityPage() {
       <section className="shell editorial-section">
         <div className="blueprint-panel grid gap-10 p-7 sm:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 lg:p-14">
           <div>
-            <p className="font-code text-xs uppercase tracking-[0.12em] text-white/70">03 / An inspectable defensive stack</p>
+            <p className="font-code text-xs uppercase tracking-[0.12em] text-white/70">04 / An inspectable defensive stack</p>
             <h2 className="mt-7 font-headline text-3xl font-semibold leading-tight !text-white sm:text-4xl">
               Open tools.<br />Visible engineering.
             </h2>
@@ -140,7 +172,7 @@ export default function CybersecurityPage() {
         </div>
 
         <details className="mt-10 border-y border-hairline py-6">
-          <summary className="cursor-pointer text-sm font-semibold marker:text-primary">Full practice profile</summary>
+          <summary className="cursor-pointer text-sm font-semibold marker:text-primary">About ZeenTheCyber</summary>
           <p className="mt-5 max-w-4xl text-sm leading-8 text-muted-foreground">{practices[1].description}</p>
           <p className="mt-4 max-w-4xl border-l-2 border-primary pl-4 text-sm leading-7">
             Service hours, including any 24/7 coverage, response commitments, and the
@@ -149,20 +181,18 @@ export default function CybersecurityPage() {
         </details>
       </section>
 
-      <section className="border-t border-hairline">
-        <div className="shell flex flex-col gap-8 py-14 md:flex-row md:items-end md:justify-between md:py-20">
-          <div className="max-w-2xl">
-            <p className="section-index">Work with Sule Zeen</p>
-            <h2 className="display-2 mt-4">Start with the systems that matter.</h2>
-            <p className="mt-5 text-sm leading-7 text-muted-foreground">
-              Bring your environment, a concern, or an upcoming audit. We will define the scope together.
-            </p>
-          </div>
-          <Button asChild size="lg" className="self-start md:shrink-0">
-            <Link href="/contact">Book a consultation <span aria-hidden="true">↗</span></Link>
-          </Button>
+      <section className={securityStyles.reviewCta} aria-labelledby="security-review-title">
+        <div className={styles.container}>
+          <p className={securityStyles.reviewEyebrow}>For founders and growing teams</p>
+          <h2 id="security-review-title">Security review slowing<br />your next deal?</h2>
+          <p className={securityStyles.reviewCopy}>Your buyer has questions. Let&apos;s work through the next step. Talk to Sule Zeen about security questionnaires, penetration testing or audit readiness in a free 15-minute introductory call.</p>
+          <Link href="/contact?securityReview=1#engagement-form" className={securityStyles.reviewButton}>Request a free 15-min call <ArrowUpRight size={20} aria-hidden="true" /></Link>
+          <p className={securityStyles.reviewNote}>A focused conversation. A clear next step. No obligation.</p>
+          <ul className={securityStyles.reviewTopics} aria-label="What we can discuss">
+            <li>Security questionnaires</li><li>Penetration testing</li><li>Audit readiness</li>
+          </ul>
         </div>
       </section>
-    </>
+    </div>
   );
 }

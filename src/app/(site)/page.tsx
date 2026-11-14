@@ -44,11 +44,12 @@ export default function HomePage() {
               <Link href="/supply-chain" className="text-link mt-7">The commodity platform<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
             </article>
             <article>
-              <p className="section-index">Practice 02</p>
-              <h3 className="mt-4 text-3xl font-medium sm:text-4xl">Cybersecurity</h3>
-              <p className="mt-5 max-w-xl text-base leading-8 text-muted-foreground">Technical assessments, managed detection and response, and compliance engineering. Work spans web, API, cloud, and identity, with findings and corrections tied to evidence.</p>
-              <ul className="mt-6 divide-y divide-hairline border-y border-hairline text-sm"><li className="py-3">Penetration testing and red teaming</li><li className="py-3">Wazuh, Suricata, and Sigma detection engineering</li><li className="py-3">Control implementation and audit evidence</li></ul>
-              <Link href="/cybersecurity" className="text-link mt-7">The security practice<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+              <p className="section-index">Cybersecurity community</p>
+              <h3 className="mt-4 text-3xl font-medium sm:text-4xl">ZeenTheCyber</h3>
+              <p className="mt-5 max-w-xl text-base leading-8 text-muted-foreground">Sule Zeen&apos;s cybersecurity community for people learning, building and working in security. Explore research, practical tools and awareness resources, alongside security expertise from Sule Zeen.</p>
+              <ul className="mt-6 divide-y divide-hairline border-y border-hairline text-sm"><li className="py-3">Research and practical security explainers</li><li className="py-3">Live vulnerability intelligence and article analysis</li><li className="py-3">Learning and cybersecurity awareness</li></ul>
+              <Link href="/cybersecurity" className="text-link mt-7">Explore ZeenTheCyber<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+              <div className="mt-5 flex flex-wrap gap-x-7 gap-y-3 text-sm text-muted-foreground"><Link href="/platform" className="hover:text-foreground">Platform capabilities</Link><Link href="/integrations" className="hover:text-foreground">Integrations</Link><Link href="/community" className="hover:text-foreground">Research</Link></div>
             </article>
           </div>
         </div>
@@ -56,16 +57,9 @@ export default function HomePage() {
 
       <div className="shell editorial-section"><WorkflowExplorer mode="supply" /></div>
 
-      <section className="border-y border-hairline">
-        <div className="shell grid gap-8 py-14 lg:grid-cols-[1fr_2fr] lg:gap-16 lg:py-20">
-          <div><p className="section-index">02 / Our product brand</p><h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">ZeenTheCyber</h2><p className="mt-3 text-xs text-muted-foreground">A Sule Zeen product brand</p></div>
-          <div><p className="max-w-2xl text-xl leading-relaxed sm:text-2xl">The cybersecurity platform, tools, and research retain their own identity under ZeenTheCyber.</p><div className="mt-8 flex flex-wrap gap-x-10 gap-y-5"><Link href="/products" className="text-link">Product overview<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link><Link href="/platform" className="text-link">Platform capabilities<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link></div></div>
-        </div>
-      </section>
-
       <section className="shell editorial-section">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-24">
-          <div><p className="section-index">03 / Sule Zeen Creative Studio</p><h2 className="mt-6 text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl">Learn to create.<br />Build a channel.<br />Learn to earn.</h2><p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">A creative studio helping young people and emerging creators learn practical skills, build channels, and explore earning online. Discover content services, social media management, digital products, brand partnerships, and channel revenue, alongside AI and online awareness.</p><Link href="/studio" className="text-link mt-8">Explore the Creative Studio<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></div>
+          <div><p className="section-index">02 / Sule Zeen Creative Studio</p><h2 className="mt-6 text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl">Learn to create.<br />Build a channel.<br />Learn to earn.</h2><p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">A creative studio helping young people and emerging creators learn practical skills, build channels, and explore earning online. Discover content services, social media management, digital products, brand partnerships, and channel revenue, alongside AI and online awareness.</p><Link href="/studio" className="text-link mt-8">Explore the Creative Studio<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></div>
           <div className="studio-sheet">
             <div className="flex justify-between gap-4 border-b border-primary/30 pb-5"><p className="section-index">Inside the Studio / The remix desk</p><span className="font-code text-xs text-primary">001</span></div>
             <p className="mt-10 text-xs uppercase tracking-widest text-muted-foreground">An idea becomes a content plan</p>

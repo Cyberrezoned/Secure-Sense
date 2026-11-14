@@ -14,7 +14,7 @@ import { Textarea } from '@/components/ui/textarea';
 const serviceOptions = [
   { id: 'studio', label: 'Creative Studio: Content, Social Media and Training' },
   { id: 'supply-chain', label: 'Commodity Supply-Chain Infrastructure' },
-  { id: 'zeenthecyber', label: 'ZeenTheCyber Products' },
+  { id: 'zeenthecyber', label: 'ZeenTheCyber Community Inquiry' },
   { id: 'pentesting', label: 'Penetration Testing and Red Teaming' },
   { id: 'soc', label: 'Managed Detection and Response' },
   { id: 'vulnerability', label: 'Vulnerability Management' },
@@ -27,7 +27,7 @@ const employeeRanges = ['1-50', '51-200', '201-1000', '1001+'];
 const timelines = ['Immediate', 'This quarter', 'Next quarter', 'Planning stage'];
 const industries = ['Media / Creator Economy', 'Agriculture / Commodities', 'Warehousing / Logistics', 'Trade Finance', 'Fintech', 'Healthcare', 'SaaS', 'Public Sector', 'Energy / OT', 'Education / NGO', 'Other'];
 
-function SubmitButton() {
+function SubmitButton({ securityReview = false }: { securityReview?: boolean }) {
   const { pending } = useFormStatus();
 
   return (
@@ -38,14 +38,15 @@ function SubmitButton() {
           Sending Request...
         </>
       ) : (
-        'Submit Engagement Request'
+        securityReview ? 'Request a free 15-min call' : 'Submit Engagement Request'
       )}
     </Button>
   );
 }
 
-export function RequestQuoteForm({ studioInterest }: { studioInterest?: string } = {}) {
+export function RequestQuoteForm({ studioInterest, securityReview = false }: { studioInterest?: string; securityReview?: boolean } = {}) {
   const [state, formAction] = useActionState(requestPricing, {} as any);
+  const isSecurityReview = securityReview && !studioInterest;
 
   if (state.success) {
     return (
@@ -131,13 +132,13 @@ export function RequestQuoteForm({ studioInterest }: { studioInterest?: string }
           </select>
         </div>
         <div className="space-y-2">
-          <Label htmlFor="message">Program Notes</Label>
+          <Label htmlFor="message">{isSecurityReview ? 'What is holding up the review?' : 'Program Notes'}</Label>
           <Textarea
             id="message"
             name="message"
             rows={4}
-            defaultValue={studioInterest ? `I would like help with: ${studioInterest}.\n\nWhere I am starting:\nWhat I want to create or earn from:\nThe support I need:\nMy time and budget for learning:\n\nPlease share current formats, fees, and availability.` : undefined}
-            placeholder="Tell us about your content or learning idea, commodity workflow, security priorities, or partnership interests."
+            defaultValue={studioInterest ? `I would like help with: ${studioInterest}.\n\nWhere I am starting:\nWhat I want to create or earn from:\nThe support I need:\nMy time and budget for learning:\n\nPlease share current formats, fees, and availability.` : isSecurityReview ? 'I would like a free 15-minute introductory call about a buyer security review.\n\nWhat the buyer is asking for (questionnaire, penetration test or audit readiness):\nDecision deadline:\nKnown security or evidence gaps:\n\nPlease follow up to arrange a time and discuss the next step.' : undefined}
+            placeholder={isSecurityReview ? 'Share the buyer request, deadline and known gaps.' : 'Tell us about your content or learning idea, commodity workflow, security priorities, or partnership interests.'}
             className="min-h-[130px] rounded-md border-input bg-surface"
           />
         </div>
@@ -155,7 +156,7 @@ export function RequestQuoteForm({ studioInterest }: { studioInterest?: string }
               htmlFor={service.id}
               className="group block cursor-pointer rounded-lg border border-input bg-surface p-4 transition-colors has-[:checked]:border-primary/40 has-[:checked]:bg-primary/10 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-ring"
             >
-              <input id={service.id} name="services" type="checkbox" value={service.id} defaultChecked={!!studioInterest && service.id === 'studio'} className="sr-only" />
+              <input id={service.id} name="services" type="checkbox" value={service.id} defaultChecked={!!studioInterest ? service.id === 'studio' : isSecurityReview && service.id === 'consulting'} className="sr-only" />
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="font-medium text-foreground">{service.label}</p>
@@ -180,10 +181,9 @@ export function RequestQuoteForm({ studioInterest }: { studioInterest?: string }
 
       <div className="flex flex-wrap items-center justify-between gap-4 rounded-lg border border-input bg-surface p-5">
         <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
-          Share your requirements with Sule Zeen. We can follow up by email, scope call,
-          or technical discovery depending on the service mix selected.
+          {isSecurityReview ? 'Send your request and the team will follow up to arrange the free 15-minute introductory call. Any further assessment or implementation work is scoped separately.' : 'Share your requirements with Sule Zeen. We can follow up by email, scope call, or technical discovery depending on the service mix selected.'}
         </p>
-        <SubmitButton />
+        <SubmitButton securityReview={isSecurityReview} />
       </div>
     </form>
   );

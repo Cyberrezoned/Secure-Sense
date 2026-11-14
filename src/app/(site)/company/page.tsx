@@ -17,8 +17,8 @@ const practices = [
   {
     number: '02',
     name: 'Cybersecurity',
-    description: 'We examine how systems can be compromised, develop detection and response workflows, and organise the controls and evidence required for compliance. The practice works across applications, APIs, cloud infrastructure and identity.',
-    detail: 'Offensive security / detection and response / compliance engineering',
+    description: 'Sule Zeen provides offensive security, detection and response, and compliance engineering. ZeenTheCyber is its cybersecurity community for research, learning, awareness and tools.',
+    detail: 'Security services / community research / learning and awareness / tools',
     href: '/cybersecurity',
   },
 ];
@@ -27,13 +27,13 @@ const brands = [
   {
     name: 'Sule Zeen',
     role: 'Company',
-    description: 'The Nigerian technology company behind the supply-chain infrastructure and cybersecurity practices.',
+    description: 'The Nigerian technology company working in supply-chain infrastructure and cybersecurity, and home to the ZeenTheCyber community.',
   },
   {
     name: 'ZeenTheCyber',
-    role: 'Product brand',
-    description: 'A distinct cybersecurity product identity for the platform, integrations and research resources.',
-    href: '/products',
+    role: 'Cybersecurity community',
+    description: 'A Sule Zeen cybersecurity community for research, learning, awareness and tools, with access to Sule Zeen security services.',
+    href: '/cybersecurity',
   },
   {
     name: 'Sule Zeen Studio',
@@ -79,7 +79,7 @@ export default function CompanyPage() {
               <div>
                 <p className="text-base leading-7 text-muted-foreground">{practice.description}</p>
                 <p className="mt-5 text-xs leading-6 text-muted-foreground">{practice.detail}</p>
-                <Link href={practice.href} className="text-link mt-6">Explore the practice<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+                <Link href={practice.href} className="text-link mt-6">Explore {practice.name}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
               </div>
             </article>
           ))}

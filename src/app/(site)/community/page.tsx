@@ -13,17 +13,13 @@ import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata(
   'Research',
-  'Threat analysis, explainers, and security engineering write-ups from the Sule Zeen cybersecurity practice.',
+  "Threat analysis, explainers, and security engineering write-ups from ZeenTheCyber, Sule Zeen's cybersecurity community.",
   '/community'
 );
 
 const recentPosts = [
-  { id: 3, title: 'AI-Powered Phishing: The Next Frontier in Social Engineering', author: 'Sule Zeen Research', date: 'August 5, 2024', imageId: 'post-img-3' },
-  { id: 4, title: "Deepfake Scams: When Seeing Isn't Believing", author: 'Sule Zeen Research', date: 'August 4, 2024', imageId: 'post-img-4' },
-  { id: 6, title: 'Anatomy of a Supply Chain Attack: Lessons from Recent Breaches', author: 'Sule Zeen Research', date: 'August 2, 2024', imageId: 'post-img-6' },
-  { id: 8, title: 'Cloud Security Posture Management (CSPM): Beyond Misconfigurations', author: 'Sule Zeen Research', date: 'July 31, 2024', imageId: 'post-img-8' },
-  { id: 11, title: 'Implementing Zero Trust: A Practical Roadmap', author: 'Sule Zeen Research', date: 'July 28, 2024', imageId: 'post-img-11' },
-  { id: 20, title: 'Securing Operational Technology (OT): From Factories to Power Grids', author: 'Sule Zeen Research', date: 'July 19, 2024', imageId: 'post-img-20' },
+  { id: 1, title: 'Understanding Zero-Day Vulnerabilities', author: 'Sule Zeen Research', date: 'July 15, 2024', imageId: 'community-blog-1' },
+  { id: 2, title: 'A Guide to Phishing Attack Prevention', author: 'Sule Zeen Research', date: 'July 12, 2024', imageId: 'community-blog-2' },
 ];
 
 const resourceTracks = [
@@ -38,8 +34,8 @@ const resourceTracks = [
     icon: GraduationCap,
   },
   {
-    title: 'AI-assisted curation',
-    copy: 'Moderate submissions, summarize articles, and generate categories before content reaches your hub.',
+    title: 'Article analysis',
+    copy: 'Request a summary, suggested tags and a content review for security text you provide.',
     icon: Sparkles,
   },
 ];
@@ -48,9 +44,9 @@ export default function CommunityPage() {
   return (
     <>
       <PageHero
-        eyebrow="Research and Resources"
-        title="A proper home for learning, threat research, and AI-assisted content workflows."
-        description="Explore cybersecurity research, practical guidance, and analysis from Sule Zeen through the ZeenTheCyber product community."
+        eyebrow="ZeenTheCyber / Research and resources"
+        title="Research and tools for practical cybersecurity."
+        description="Explore cybersecurity research, practical guidance, and analysis from ZeenTheCyber, the cybersecurity community from Sule Zeen."
         actions={
           <Button asChild size="lg">
             <Link href="#analysis">
@@ -70,7 +66,7 @@ export default function CommunityPage() {
         <SectionHeading
           eyebrow="Resource Tracks"
           title="Organized around how people actually learn and browse."
-          description="Use this hub to publish research, guide internal learning, and keep your AI-assisted content tools in one clear place."
+          description="Browse security reading, plan your learning and review advisory text with the article analysis tool."
         />
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {resourceTracks.map((track) => {
@@ -92,8 +88,8 @@ export default function CommunityPage() {
       <section id="analysis" className="shell pb-20 md:pb-24">
         <SectionHeading
           eyebrow="AI Analysis"
-          title="Moderate, summarize, and tag cybersecurity content before publishing."
-          description="Summarise long advisories, extract affected products, and tag them consistently so the library stays searchable as it grows."
+          title="Review a security article with a summary and suggested tags."
+          description="Paste the source text for analysis, then check the generated summary and categories against the original before using them."
         />
         <div className="mt-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="surface p-6">
@@ -103,9 +99,9 @@ export default function CommunityPage() {
             <h3 className="mt-6 font-headline text-2xl font-semibold text-foreground">Why this matters</h3>
             <div className="mt-4 space-y-3">
               {[
-                'Reduce low-quality or unsafe submissions before they reach your audience.',
+                'Review the content assessment alongside the original source.',
                 'Turn long-form articles into faster summaries for research teams and learners.',
-                'Keep categories and tags consistent so the resource hub scales cleanly.',
+                'Use suggested categories and tags to organise your research.',
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <div className="mt-1 h-2.5 w-2.5 rounded-full bg-primary" />
@@ -120,11 +116,11 @@ export default function CommunityPage() {
 
       <section className="shell pb-20 md:pb-24">
         <SectionHeading
-          eyebrow="Recent Articles"
+          eyebrow="Security reading"
           title="Research, explainers, and strategic security reading."
-          description="Explainers, threat analysis, and security engineering write-ups from the Sule Zeen cybersecurity practice."
+          description="Explainers, threat analysis, and security engineering write-ups from ZeenTheCyber, the cybersecurity community from Sule Zeen."
         />
-        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
           {recentPosts.map((post) => {
             const image = PlaceHolderImages.find((entry) => entry.id === post.imageId);
 
@@ -134,7 +130,6 @@ export default function CommunityPage() {
                   <Image
                     src={image.imageUrl}
                     alt={image.description}
-                    data-ai-hint={image.imageHint}
                     width={640}
                     height={360}
                     className="aspect-[16/9] w-full object-cover"

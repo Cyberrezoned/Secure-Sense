@@ -20,8 +20,7 @@ export const metadata = {
 
 const destinations = [
   { href: '/supply-chain', label: 'Supply Chain' },
-  { href: '/cybersecurity', label: 'Cybersecurity' },
-  { href: '/products', label: 'ZeenTheCyber' },
+  { href: '/cybersecurity', label: 'ZeenTheCyber Community' },
   { href: '/community', label: 'Research' },
 ];
 

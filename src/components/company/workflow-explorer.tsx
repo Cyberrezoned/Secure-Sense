@@ -40,7 +40,7 @@ export function WorkflowExplorer({ mode = 'supply' }: { mode?: keyof typeof work
     <section className="blueprint-panel" aria-labelledby={`${id}-title`}>
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/25 px-5 py-5 sm:px-8 lg:px-10">
         <p className="font-code text-[0.6875rem] uppercase tracking-wider">{workflow.label}</p>
-        <p className="font-code text-[0.625rem] uppercase tracking-wider text-white/70">Workflow illustration</p>
+        <p className="font-code text-[0.625rem] uppercase tracking-wider text-white/70">How the work moves</p>
       </div>
       <div className="px-5 pb-8 pt-8 sm:px-8 lg:px-10 lg:pt-10">
         <div className="grid gap-5 lg:grid-cols-[1.3fr_1fr] lg:gap-20">

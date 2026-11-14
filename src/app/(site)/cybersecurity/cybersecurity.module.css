@@ -1,0 +1,20 @@
+﻿.security { --foreground: 0 0% 4%; --muted-foreground: 0 0% 40%; --primary: 0 0% 4%; --primary-foreground: 0 0% 100%; --hairline: 0 0% 88%; --border: 0 0% 86%; --background: 0 0% 100%; --surface: 0 0% 96%; --card: 0 0% 100%; --card-foreground: 0 0% 4%; --muted: 0 0% 95%; --accent: 0 0% 92%; --accent-foreground: 0 0% 4%; --secondary: 0 0% 94%; --secondary-foreground: 0 0% 4%; }
+.security > section[id] { background: #f3f3f1; width: 100%; max-width: none; padding-inline: max(24px, calc((100% - 1280px) / 2)); }
+.security :global(.blueprint-panel) { background: #0a0a0a; background-image: none; }
+.security :global(.section-index), .security :global(.eyebrow) { color: #686868; }
+.security :global(.display-2) { font-family: inherit; font-weight: 600; letter-spacing: -.045em; }
+.security :global(.text-link) { color: #111; }
+.security :global(.shell) { max-width: 1376px; }
+.security .heroWithMosaic { align-items: start; }
+.reviewCta { background: #090909; color: #fff; text-align: center; padding-block: clamp(76px, 9vw, 132px); }
+.reviewEyebrow { color: #969696; font-size: 13px; margin-bottom: 25px; }
+.security .reviewCta h2 { color: #fff; font-size: clamp(36px, 5vw, 70px); line-height: 1.08; letter-spacing: -.055em; font-weight: 600; }
+.reviewCopy { color: #bbb; font-size: clamp(17px, 1.6vw, 21px); line-height: 1.65; max-width: 730px; margin: 28px auto 34px; }
+.reviewButton { display: inline-flex; align-items: center; justify-content: center; gap: 18px; padding: 20px 28px; background: #fff; border: 1px solid #fff; color: #090909; font-size: 16px; font-weight: 500; min-height: 64px; transition: background .2s; }
+.reviewButton:hover { background: #dfdfdc; }
+.reviewButton:focus-visible { outline: 2px solid white; outline-offset: 5px; }
+.reviewNote { font-size: 12px; color: #999; margin-top: 18px; }
+.reviewTopics { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 30px; margin: 40px auto 0; color: #aaa; font-size: 13px; }
+.reviewTopics li + li::before { content: '\00b7'; margin-right: 30px; color: #555; }
+@media (max-width: 600px) { .reviewCopy { margin-top: 22px; } .reviewButton { width: 100%; padding-inline: 16px; } .reviewTopics { flex-direction: column; gap: 10px; } .reviewTopics li + li::before { content: none; } }
+@media (prefers-reduced-motion: reduce) { .reviewButton { transition: none; } }

@@ -1,5 +1,11 @@
 export const COMPANY_DESCRIPTION =
-  'Sule Zeen is a Nigerian technology company operating across two practices: commodity supply-chain infrastructure and cybersecurity.';
+  'Sule Zeen is a Nigerian technology company working in commodity supply-chain infrastructure and cybersecurity, and home to the ZeenTheCyber cybersecurity community.';
+
+export const cybersecurityCommunity = {
+  name: 'ZeenTheCyber',
+  href: '/cybersecurity',
+  description: 'ZeenTheCyber is Sule Zeen\'s cybersecurity community: a place to explore security research, practical tools, learning and expertise.',
+} as const;
 
 export const COMPANY_NEXT_CHAPTER =
   'Sule Zeen Studio brings together content creation, social media management, AI-assisted production, and digital awareness for people building online.';
@@ -33,9 +39,9 @@ export const practices = [
     description: 'Sule Zeen runs a digital commodity platform that connects smallholder farmers, SEC-accredited warehouses, merchants, and financiers. Farmers deposit produce at NCX-framework warehouses; each delivery is graded, operator-signed, and converted into a cryptographically verified Electronic Warehouse Receipt (e-WR). Merchants place offtake orders against those receipts, financiers underwrite the invoices, and the platform disburses advances to farmers through escrow — all recorded on a tamper-evident, hash-chained ledger. It serves six roles across a mobile PWA and web console, built for low-connectivity Nigerian environments with no blockchain or app-store dependency.',
   },
   {
-    name: 'Cybersecurity',
-    href: '/cybersecurity',
-    summary: 'Offensive testing, detection engineering, and compliance evidence.',
-    description: 'Sule Zeen delivers offensive security, managed detection and response, and audit-ready compliance on an open-source defensive stack. Services cover penetration testing and red teaming across web, API, cloud, and identity; 24/7 detection engineering built on Wazuh, Suricata, and Sigma; and compliance programmes for ISO 27001, SOC 2, PCI DSS, and NDPR — run as engineering work, not paperwork. The stack is fully open-source and independently auditable, with no licence lock-in.',
+    name: cybersecurityCommunity.name,
+    href: cybersecurityCommunity.href,
+    summary: 'Cybersecurity research, learning, practical tools and expertise.',
+    description: 'ZeenTheCyber is Sule Zeen\'s cybersecurity community, bringing together research, practical tools, learning and awareness for people building their security knowledge. Alongside these resources, Sule Zeen offers penetration testing, detection and response, security engineering, and audit-readiness support. Its defensive stack uses Wazuh, Suricata and Sigma. Service hours and response commitments are agreed for each engagement.',
   },
 ] as const;

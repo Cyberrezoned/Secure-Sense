@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { ArrowRight, BellRing, FileSearch, GitBranch, Workflow } from 'lucide-react';
 
-import { ComplianceChatbot } from '@/components/compliance-chatbot';
 import { ContentAnalysis } from '@/components/community/content-analysis';
 import { KevTrendChart } from '@/components/intel/kev-trend-chart';
 import { FeedAttribution, FeedUnavailable } from '@/components/intel/primitives';
@@ -15,17 +14,17 @@ import { formatCount, formatDate, formatPercent } from '@/lib/format';
 const integrationCards = [
   {
     title: 'Alerting and collaboration',
-    description: 'Detection summaries and triage state pushed into Slack or Teams with the evidence attached.',
+    description: 'Plan which alert summaries and triage updates belong in your collaboration channels, with the right access and context.',
     icon: BellRing,
   },
   {
     title: 'Engineering workflow',
-    description: 'Findings routed into Jira or GitHub Issues carrying severity, reproduction steps, and retest status.',
+    description: 'Define how findings should reach Jira or GitHub Issues, including ownership, reproduction steps and retest criteria.',
     icon: GitBranch,
   },
   {
     title: 'Evidence pipeline',
-    description: 'Assessment output and control evidence collected once, then reused across every framework in scope.',
+    description: 'Agree the evidence sources, review responsibilities and reporting requirements before connecting systems.',
     icon: Workflow,
   },
 ];
@@ -36,21 +35,18 @@ export function PlatformConsole({ kev }: { kev: FeedResult<KevSummary> }) {
       <Tabs defaultValue="exposure" className="space-y-6">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <p className="eyebrow">Operational workspace</p>
-            <h3 className="mt-3 text-xl font-semibold text-foreground">Exposure, guidance, and routing</h3>
+            <p className="eyebrow">Community tools</p>
+            <h3 className="mt-3 text-xl font-semibold text-foreground">Exploitation intelligence and content review</h3>
           </div>
           <TabsList className="h-auto flex-wrap justify-start gap-1 rounded-full bg-secondary/60 p-1">
             <TabsTrigger value="exposure" className="rounded-full px-3.5 py-1.5 text-xs data-[state=active]:bg-card">
               Exposure
             </TabsTrigger>
-            <TabsTrigger value="copilot" className="rounded-full px-3.5 py-1.5 text-xs data-[state=active]:bg-card">
-              Compliance copilot
-            </TabsTrigger>
             <TabsTrigger value="analysis" className="rounded-full px-3.5 py-1.5 text-xs data-[state=active]:bg-card">
               Content analysis
             </TabsTrigger>
             <TabsTrigger value="workflow" className="rounded-full px-3.5 py-1.5 text-xs data-[state=active]:bg-card">
-              Workflow
+              Integration planning
             </TabsTrigger>
           </TabsList>
         </div>
@@ -128,26 +124,22 @@ export function PlatformConsole({ kev }: { kev: FeedResult<KevSummary> }) {
           )}
         </TabsContent>
 
-        <TabsContent value="copilot" className="mt-0">
-          <ComplianceChatbot />
-        </TabsContent>
-
         <TabsContent value="analysis" className="mt-0">
           <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="rounded-md border border-hairline p-5">
               <p className="eyebrow">Research workflow</p>
               <h3 className="mt-3 text-lg font-semibold text-foreground">
-                Review advisories before they reach the hub
+                Review security advisories
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Summarise long-form advisories, extract affected products, and generate tags so the research library
-                stays searchable as it grows.
+                Paste an advisory to request a summary, suggested tags and a content review.
+                Check the results against the source before using them in your research.
               </p>
               <ul className="mt-5 space-y-2.5">
                 {[
-                  'Summarisation for faster analyst triage',
-                  'Automatic tagging and categorisation',
-                  'Moderation pass before publication',
+                  'Advisory summaries for analyst review',
+                  'Suggested tags and categories',
+                  'Content review for human assessment',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2.5 text-sm text-muted-foreground">
                     <span className="status-dot mt-1.5" data-status="low" aria-hidden="true" />
@@ -178,7 +170,7 @@ export function PlatformConsole({ kev }: { kev: FeedResult<KevSummary> }) {
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild>
               <Link href="/integrations">
-                View integrations
+                Plan integrations
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
