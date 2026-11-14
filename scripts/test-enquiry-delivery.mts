@@ -164,10 +164,17 @@ assert.ok((await accepted.actions.analyzeContent(null, shortContent)).result);
 assert.equal(accepted.analysisInputs.length, 1);
 
 const contact = loadModule('src/lib/contact.ts', {});
-const call = new URL(contact.CALL_HREF);
+assert.equal(contact.GOOGLE_MEET_HREF, 'https://meet.google.com/ngn-etew-btb');
+assert.equal(contact.CALL_HREF, 'https://meet.google.com/ngn-etew-btb');
+const blankOverride = loadModule('src/lib/contact.ts', { NEXT_PUBLIC_GOOGLE_MEET_URL: '' });
+assert.equal(blankOverride.CALL_HREF, 'https://meet.google.com/ngn-etew-btb');
+const invalidRoom = loadModule('src/lib/contact.ts', { NEXT_PUBLIC_GOOGLE_MEET_URL: 'https://example.com/not-a-meeting' });
+assert.equal(invalidRoom.GOOGLE_MEET_HREF, null);
+const call = new URL(invalidRoom.CALL_HREF);
 assert.equal(call.origin, 'https://wa.me');
 assert.equal(call.pathname, '/2348144036429');
 assert.match(call.searchParams.get('text') || '', /arrange a call/);
+assert.equal(new URL(contact.WHATSAPP_HREF).pathname, '/2348144036429');
 const draft = new URL(contact.emailHref('Security & Studio enquiry', 'Name: Ada\nEnquiry: café + audit?'));
 assert.equal(draft.pathname, 'admin@zeenthecyber.online');
 assert.equal(draft.searchParams.get('subject'), 'Security & Studio enquiry');

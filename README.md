@@ -114,7 +114,7 @@ RESEND_WEBHOOK_SECRET=your_webhook_secret # optional, for verifying webhooks
 
 ```
 
-Public contact destinations live in `src/lib/contact.ts`. WhatsApp uses `+2348144036429`, with a contextual draft for call requests. To enable direct Google Meet calls, set `NEXT_PUBLIC_GOOGLE_MEET_URL` to an actual permanent `https://meet.google.com/xxx-xxxx-xxx` room and rebuild. Without a valid room, call buttons open WhatsApp to arrange a time. An email address alone cannot identify a meeting room.
+Public contact destinations live in `src/lib/contact.ts`. Call buttons open the owner-provided Google Meet room at `https://meet.google.com/ngn-etew-btb`. WhatsApp remains available at `+2348144036429`. Set `NEXT_PUBLIC_GOOGLE_MEET_URL` and rebuild to override the room; a blank value uses the default. An invalid override falls back to arranging a call on WhatsApp. Email enquiries use `admin@zeenthecyber.online`.
 
 Run `npm run test:enquiry` to check routing and provider failures with a mock sender. These checks never send mail.
 

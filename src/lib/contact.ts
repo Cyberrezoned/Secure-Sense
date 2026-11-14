@@ -26,7 +26,7 @@ export function googleMeetHref(value: string | undefined): string | null {
   }
 }
 
-export const GOOGLE_MEET_HREF = googleMeetHref(process.env.NEXT_PUBLIC_GOOGLE_MEET_URL);
+export const GOOGLE_MEET_HREF = googleMeetHref(process.env.NEXT_PUBLIC_GOOGLE_MEET_URL || 'https://meet.google.com/ngn-etew-btb');
 export const CONTACT_EMAIL_HREF = emailHref();
 export const WHATSAPP_HREF = whatsappHref();
 export const CALL_HREF = GOOGLE_MEET_HREF ?? whatsappHref('Hello Sule Zeen, I would like to arrange a call. My enquiry is about: ');
