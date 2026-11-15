@@ -17,4 +17,10 @@ export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.zeenthecyber.online'
 ).replace(/\/+$/, '');
 
-export const SITE_NAME = 'Sule Zeen';
+export const SITE_NAME = 'SuleZeen';
+export const SOCIAL_IMAGE = {
+  url: '/images/brand/sulezeen-social.png',
+  width: 1200,
+  height: 630,
+  alt: 'SuleZeen — Web3 at the core. Built in Nigeria.',
+};

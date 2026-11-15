@@ -11,7 +11,7 @@ export const COMPANY_NEXT_CHAPTER =
   'Sule Zeen Studio brings together content creation, social media management, AI-assisted production, and digital awareness for people building online.';
 
 export const COMPANY_TAGLINE = 'Web3 at the core. Built in Nigeria.';
-export const COMPANY_TITLE = 'Sule Zeen | Web3, Trade Infrastructure and Cybersecurity';
+export const COMPANY_TITLE = 'SuleZeen | Web3, Trade Infrastructure and Cybersecurity';
 
 export const COMPANY_PURPOSE =
   'Sule Zeen secures the infrastructure that trade runs on — and builds the digital rails that Nigerian commerce moves across.';

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { cn } from '@/lib/utils';
 
@@ -16,13 +17,10 @@ export function BrandLockup({
     <Link
       href="/"
       onClick={onNavigate}
-      className={cn('group inline-flex shrink-0 items-baseline gap-1', className)}
-      aria-label="Sule Zeen home"
+      className={cn('group inline-flex shrink-0 items-center rounded-sm bg-white px-3 py-2', className)}
+      aria-label="SuleZeen home"
     >
-      <span className="font-headline text-[1.45rem] font-semibold tracking-[-0.055em] text-foreground">
-        sule zeen
-      </span>
-      <span aria-hidden="true" className="text-[1.6rem] font-semibold leading-none text-primary">.</span>
+      <Image src="/images/brand/sulezeen-logo.png" alt="SuleZeen" width={1664} height={388} className="h-auto w-[160px]" priority />
     </Link>
   );
 }

@@ -4,7 +4,7 @@ import { IBM_Plex_Mono, Inter, Inter_Tight } from 'next/font/google';
 import { Toaster } from '@/components/ui/toaster';
 import { MotionOrchestrator } from '@/components/motion-orchestrator';
 import { ThemeProvider } from '@/components/theme-provider';
-import { SITE_NAME, SITE_URL } from '@/lib/site';
+import { SITE_NAME, SITE_URL, SOCIAL_IMAGE } from '@/lib/site';
 import { COMPANY_DESCRIPTION, COMPANY_TITLE } from '@/lib/company';
 import { cn } from '@/lib/utils';
 import './globals.css';
@@ -43,18 +43,25 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: COMPANY_TITLE,
-    template: '%s | Sule Zeen',
+    template: '%s | SuleZeen',
   },
   description: COMPANY_DESCRIPTION,
   applicationName: SITE_NAME,
+  manifest: '/manifest.webmanifest',
+  icons: {
+    icon: [{ url: '/favicon.ico', sizes: '16x16 32x32 48x48' }, { url: '/images/brand/icon-192.png', sizes: '192x192', type: 'image/png' }],
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
   openGraph: {
     type: 'website',
     siteName: SITE_NAME,
     url: SITE_URL,
     title: COMPANY_TITLE,
     description: COMPANY_DESCRIPTION,
+    images: [SOCIAL_IMAGE],
+    locale: 'en_NG',
   },
-  twitter: { card: 'summary' },
+  twitter: { card: 'summary_large_image', title: COMPANY_TITLE, description: COMPANY_DESCRIPTION, images: [SOCIAL_IMAGE] },
   robots: { index: true, follow: true },
 };
 

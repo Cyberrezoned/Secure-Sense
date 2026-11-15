@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { SITE_NAME, SITE_URL } from '@/lib/site';
+import { SITE_NAME, SITE_URL, SOCIAL_IMAGE } from '@/lib/site';
 
 export function pageMetadata(title: string, description: string, path: string): Metadata {
   const url = `${SITE_URL}${path}`;
@@ -8,7 +8,7 @@ export function pageMetadata(title: string, description: string, path: string): 
     title,
     description,
     alternates: { canonical: url },
-    openGraph: { type: 'website', siteName: SITE_NAME, title: socialTitle, description, url },
-    twitter: { card: 'summary', title: socialTitle, description },
+    openGraph: { type: 'website', siteName: SITE_NAME, title: socialTitle, description, url, images: [SOCIAL_IMAGE], locale: 'en_NG' },
+    twitter: { card: 'summary_large_image', title: socialTitle, description, images: [SOCIAL_IMAGE] },
   };
 }
