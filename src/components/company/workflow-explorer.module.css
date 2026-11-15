@@ -9,7 +9,7 @@
 .recordTag svg { flex-shrink: 0; }
 
 /* The active state: a white panel carrying a second copy of the stage label. */
-.fill { position: absolute; inset: 0; overflow: hidden; background: #fff; color: #0C5040; pointer-events: none; }
+.fill { position: absolute; inset: 0; overflow: hidden; background: #fff; color: var(--workflow-ink, #063b80); pointer-events: none; }
 .fillLabel { position: absolute; inset: 0; }
 
 /* Reserve the tallest variant: every variant shares one grid cell. */

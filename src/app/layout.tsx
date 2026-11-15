@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Noto_Sans } from 'next/font/google';
+import { Noto_Sans, Inter, Inter_Tight, IBM_Plex_Mono } from 'next/font/google';
 
 import { Toaster } from '@/components/ui/toaster';
 import { MotionOrchestrator } from '@/components/motion-orchestrator';
@@ -19,11 +19,31 @@ import './globals.css';
  * Fonts are self-hosted through next/font rather than a Google Fonts
  * stylesheet link, which removes a render-blocking third-party request.
  */
-const sans = Noto_Sans({
+const brand = Noto_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-brand',
+  weight: ['400', '700'],
+});
+
+const sans = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-sans',
-  weight: ['400', '700'],
+});
+
+const display = Inter_Tight({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['500', '600', '700'],
+  variable: '--font-display',
+});
+
+const mono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500', '600'],
+  variable: '--font-mono',
 });
 
 export const metadata: Metadata = {
@@ -66,6 +86,9 @@ export default function RootLayout({
       <body
         className={cn(
           sans.variable,
+          display.variable,
+          mono.variable,
+          brand.variable,
           'min-h-screen bg-background font-body text-foreground antialiased'
         )}
       >

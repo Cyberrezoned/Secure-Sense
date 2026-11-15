@@ -1,14 +1,18 @@
-﻿.security { --foreground: 162.00000 33.33333% 11.76471%; --muted-foreground: 152.72727 12.64368% 34.11765%; --primary: 165.88235 73.91304% 18.03922%; --primary-foreground: 0.00000 0.00000% 100.00000%; --hairline: 88.00000 21.12676% 86.07843%; --border: 97.50000 17.02128% 81.56863%; --background: 73.33333 36.00000% 95.09804%; --surface: 73.33333 36.00000% 95.09804%; --card: 0.00000 0.00000% 100.00000%; --card-foreground: 162.00000 33.33333% 11.76471%; --muted: 75.00000 28.57143% 91.76471%; --accent: 76.64234 77.40113% 65.29412%; --accent-foreground: 162.00000 33.33333% 11.76471%; --secondary: 76.64234 77.40113% 65.29412%; --secondary-foreground: 162.00000 33.33333% 11.76471%; }
-.security > section[id] { background: #F5F7EE; width: 100%; max-width: none; padding-inline: max(24px, calc((100% - 1280px) / 2)); }
-.security :global(.blueprint-panel) { background: #0C5040; background-image: none; }
+﻿.security { --foreground: 0 0% 4%; --muted-foreground: 0 0% 40%; --primary: 0 0% 4%; --primary-foreground: 0 0% 100%; --hairline: 0 0% 88%; --border: 0 0% 86%; --background: 0 0% 100%; --surface: 0 0% 96%; --card: 0 0% 100%; --card-foreground: 0 0% 4%; --muted: 0 0% 95%; --accent: 0 0% 92%; --accent-foreground: 0 0% 4%; --secondary: 0 0% 94%; --secondary-foreground: 0 0% 4%; }
+.security > section[id] { background: #f3f3f1; width: 100%; max-width: none; padding-inline: max(24px, calc((100% - 1280px) / 2)); }
+.security :global(.blueprint-panel) { background: #0a0a0a; background-image: none; }
 /* The page-wide dark heading colour would otherwise win inside the dark panels. */
 .security :global(.blueprint-panel) :is(h2, h3, h4) { color: #fff; }
 .security :global(.section-index), .security :global(.eyebrow) { color: #686868; }
 .security :global(.display-2) { font-family: inherit; font-weight: 600; letter-spacing: -.045em; }
-.security :global(.text-link) { color: #142822; }
+.security :global(.text-link) { color: #111; }
 .security :global(.shell) { max-width: 1376px; }
 .security .heroWithMosaic { align-items: start; }
-.reviewCta { background: #142822; color: #fff; text-align: center; padding: clamp(80px, 9vw, 128px) 24px; font-family: var(--community-font); }
+:global(.dark) .security { --foreground: 214 24% 96%; --muted-foreground: 217 14% 66%; --background: 222 32% 7%; --surface: 222 28% 9%; --card: 222 28% 10%; --card-foreground: 214 24% 96%; --border: 220 16% 20%; --hairline: 220 16% 20%; --primary: 0 0% 96%; --primary-foreground: 0 0% 4%; --muted: 221 20% 15%; --secondary: 221 22% 16%; --secondary-foreground: 214 24% 94%; }
+:global(.dark) .security > section[id] { background: #161b22; }
+:global(.dark) .security :global(.section-index), :global(.dark) .security :global(.eyebrow) { color: #a3a8af; }
+:global(.dark) .security :global(.text-link) { color: #f3f3f3; }
+.reviewCta { background: #0a0a0a; color: #fff; text-align: center; padding: clamp(80px, 9vw, 128px) 24px; font-family: var(--community-font); }
 .reviewInner { display: flex; flex-direction: column; align-items: center; gap: 16px; max-width: 760px; margin-inline: auto; }
 .reviewEyebrow { color: #ffffff8c; font-size: 13px; font-weight: 500; line-height: 1; letter-spacing: normal; }
 .security .reviewCta h2 { color: #fff; margin: 0; font-size: clamp(34px, 4vw, 56px); line-height: 1.05; letter-spacing: -.025em; font-weight: 600; text-wrap: balance; }

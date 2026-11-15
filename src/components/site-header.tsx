@@ -9,6 +9,7 @@ import { motion } from 'motion/react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { BrandLockup } from '@/components/brand-lockup';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { cn } from '@/lib/utils';
 import { cybersecurityCommunity } from '@/lib/company';
 import { CALL_HREF } from '@/lib/contact';
@@ -39,7 +40,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-hairline bg-background/85 backdrop-blur-md supports-[backdrop-filter]:bg-surface">
-      <div className="shell flex h-20 items-center justify-between gap-6">
+      <div className="shell flex h-20 items-center justify-between gap-2 sm:gap-6">
         <div className="flex items-center gap-8 xl:gap-14">
           <BrandLockup />
 
@@ -72,12 +73,14 @@ export function SiteHeader() {
         </div>
 
         <div className="hidden items-center gap-3 lg:flex">
+          <ThemeToggle />
           <Button asChild size="sm">
             <a href={CALL_HREF}>Book a call</a>
           </Button>
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
+          <ThemeToggle />
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" aria-label="Open navigation">

@@ -1,4 +1,5 @@
 import { SiteHeader } from '@/components/site-header';
+import { BrandScope } from '@/components/brand-scope';
 import { SiteFooter } from '@/components/site-footer';
 import { SITE_NAME, SITE_URL } from '@/lib/site';
 import { COMPANY_DESCRIPTION } from '@/lib/company';
@@ -21,13 +22,13 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       >
         Skip to content
       </a>
-      <div className="relative flex min-h-screen flex-col">
+      <BrandScope>
         <SiteHeader />
         <main id="main" className="flex-1">
           {children}
         </main>
         <SiteFooter />
-      </div>
+      </BrandScope>
     </>
   );
 }

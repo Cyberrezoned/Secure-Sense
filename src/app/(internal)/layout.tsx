@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Lock } from 'lucide-react';
 
 import { BrandLockup } from '@/components/brand-lockup';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 /**
  * Internal operations chrome.
@@ -36,6 +37,7 @@ export default function InternalLayout({ children }: { children: React.ReactNode
               ))}
             </nav>
           </div>
+          <ThemeToggle />
         </div>
       </header>
 
