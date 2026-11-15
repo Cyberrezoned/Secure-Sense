@@ -5,38 +5,36 @@
 /**
  * Sule Zeen design tokens.
  *
- * One neutral spine, one azure accent, and a fixed set of signal colours used
- * only to encode severity in data. Light is the default; dark is a first-class
- * peer rather than an inverted afterthought.
+ * Exact palette and typography from the SuleZeen brand guide, November 2026.
  */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --surface: 220 24% 98%;
-    --surface-raised: 0 0% 100%;
-    --foreground: 222 28% 11%;
+    --background: 73.33333 36.00000% 95.09804%;
+    --surface: 73.33333 36.00000% 95.09804%;
+    --surface-raised: 0.00000 0.00000% 100.00000%;
+    --foreground: 162.00000 33.33333% 11.76471%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222 28% 11%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 28% 11%;
+    --card: 0.00000 0.00000% 100.00000%;
+    --card-foreground: 162.00000 33.33333% 11.76471%;
+    --popover: 0.00000 0.00000% 100.00000%;
+    --popover-foreground: 162.00000 33.33333% 11.76471%;
 
-    --primary: 214 88% 44%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 220 20% 96%;
-    --secondary-foreground: 222 24% 18%;
-    --muted: 220 20% 96%;
-    --muted-foreground: 219 12% 42%;
-    --accent: 214 88% 44%;
-    --accent-foreground: 0 0% 100%;
+    --primary: 165.88235 73.91304% 18.03922%;
+    --primary-foreground: 0.00000 0.00000% 100.00000%;
+    --secondary: 76.64234 77.40113% 65.29412%;
+    --secondary-foreground: 162.00000 33.33333% 11.76471%;
+    --muted: 75.00000 28.57143% 91.76471%;
+    --muted-foreground: 152.72727 12.64368% 34.11765%;
+    --accent: 76.64234 77.40113% 65.29412%;
+    --accent-foreground: 162.00000 33.33333% 11.76471%;
     --destructive: 0 72% 46%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 16% 88%;
-    --hairline: 220 16% 92%;
-    --input: 220 16% 58%;
-    --ring: 214 88% 44%;
+    --border: 97.50000 17.02128% 81.56863%;
+    --hairline: 88.00000 21.12676% 86.07843%;
+    --input: 135.65217 9.23695% 48.82353%;
+    --ring: 165.88235 73.91304% 18.03922%;
 
     /* Severity scale. Used for data encoding only, never for decoration. */
     --signal-critical: 352 72% 44%;
@@ -45,8 +43,8 @@
     --signal-low: 199 76% 36%;
     --signal-ok: 158 68% 32%;
 
-    --chart-1: 214 88% 44%;
-    --chart-2: 199 76% 40%;
+    --chart-1: 165.88235 73.91304% 18.03922%;
+    --chart-2: 76.64234 77.40113% 65.29412%;
     --chart-3: 352 68% 48%;
     --chart-4: 38 88% 46%;
     --chart-5: 262 62% 52%;
@@ -58,53 +56,6 @@
     --shadow-lg: 0 12px 28px -8px hsl(222 28% 11% / 0.12), 0 4px 10px -4px hsl(222 28% 11% / 0.06);
   }
 
-  .dark {
-    --background: 222 32% 7%;
-    --surface: 222 28% 9%;
-    --surface-raised: 221 26% 12%;
-    --foreground: 214 24% 96%;
-
-    --card: 222 28% 10%;
-    --card-foreground: 214 24% 96%;
-    --popover: 221 28% 11%;
-    --popover-foreground: 214 24% 96%;
-
-    --primary: 212 94% 62%;
-    --primary-foreground: 222 44% 8%;
-    --secondary: 221 22% 16%;
-    --secondary-foreground: 214 24% 94%;
-    --muted: 221 20% 15%;
-    --muted-foreground: 217 14% 66%;
-    --accent: 212 94% 62%;
-    --accent-foreground: 222 44% 8%;
-    --destructive: 0 68% 58%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 220 16% 20%;
-    --hairline: 220 16% 17%;
-    --input: 220 12% 46%;
-    --ring: 212 94% 62%;
-
-    --signal-critical: 352 78% 62%;
-    --signal-high: 20 88% 62%;
-    --signal-moderate: 38 92% 60%;
-    --signal-low: 199 84% 60%;
-    --signal-ok: 158 62% 50%;
-
-    /* Chart steps are selected against the dark surface, not flipped from the
-       light set: chart-1 sits at 58% so its OKLCH lightness stays inside the
-       dark band while holding ΔE > 20 from chart-3 under protanopia. */
-    --chart-1: 212 94% 58%;
-    --chart-2: 199 84% 58%;
-    --chart-3: 352 78% 64%;
-    --chart-4: 38 92% 62%;
-    --chart-5: 262 78% 70%;
-
-    --shadow-xs: 0 1px 2px 0 hsl(222 48% 3% / 0.4);
-    --shadow-sm: 0 1px 3px 0 hsl(222 48% 3% / 0.5), 0 1px 2px -1px hsl(222 48% 3% / 0.4);
-    --shadow-md: 0 4px 12px -2px hsl(222 48% 3% / 0.55), 0 2px 4px -2px hsl(222 48% 3% / 0.4);
-    --shadow-lg: 0 12px 28px -8px hsl(222 48% 3% / 0.65), 0 4px 10px -4px hsl(222 48% 3% / 0.45);
-  }
 
   * {
     @apply border-border;
@@ -166,7 +117,7 @@
 
   .home-title {
     @apply font-headline font-medium;
-    font-size: clamp(3.5rem, 7.9vw, 7rem);
+    font-size: clamp(2.4rem, 5vw, 4.4rem);
     line-height: 0.98;
     letter-spacing: -0.055em;
   }
@@ -204,7 +155,7 @@
     transform-origin: left center;
   }
 
-  .blueprint-panel { background: #063b80; color: #ffffff; }
+  .blueprint-panel { background: #0C5040; color: #ffffff; }
   .blueprint-panel h2,
   .blueprint-panel h3,
   .blueprint-panel h4 { color: #ffffff; }
@@ -661,3 +612,7 @@ details[open] > :not(summary) {
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground));
 }
+
+/* Brand guide typography: Noto Sans Regular and Bold. */
+:root { --font-display: var(--font-sans); --font-mono: var(--font-sans); }
+h1, h2, h3, h4, h5, h6, button, [role="button"], .text-link, .nav-link { font-weight: 700 !important; }

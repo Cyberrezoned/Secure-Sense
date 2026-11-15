@@ -30,7 +30,7 @@ const communityAreas = [
   },
   {
     name: 'Integrations',
-    description: 'Plan how alerts, engineering tasks and reporting should fit your team\'s tools, and scope the implementation with Sule Zeen.',
+    description: 'Plan how alerts, engineering tasks and reporting should fit your team\'s tools, and scope the implementation with SuleZeen.',
     href: '/integrations',
     action: 'Explore integrations',
   },
@@ -95,7 +95,7 @@ export default function CybersecurityPage() {
     <div className={`${styles.page} ${securityStyles.security}`} data-motion-area="cyber">
       <section className={`${styles.container} ${styles.hero} ${securityStyles.heroWithMosaic}`} aria-labelledby="security-title">
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>Sule Zeen&apos;s cybersecurity community</p>
+          <p className={styles.eyebrow}>SuleZeen&apos;s cybersecurity community</p>
           <div className={styles.status}><span /> Research. Tools. Practical learning.</div>
           <h1 id="security-title">ZeenTheCyber.<br />Cybersecurity,<br />put to work.</h1>
           <p className={styles.intro}>For the people who build and defend digital systems. Read threat research, work with live vulnerability intelligence, and sharpen your security practice.</p>
@@ -103,7 +103,7 @@ export default function CybersecurityPage() {
             <Link href="/community" className={styles.primary}>Explore the research <ArrowRight size={17} aria-hidden="true" /></Link>
             <Link href="/platform" className={styles.secondary}>Open security tools</Link>
           </div>
-          <div className={styles.heroNote}><p>Built in Nigeria. A community by Sule Zeen.</p><span>Threat research <b>&middot;</b> Live intelligence <b>&middot;</b> Practical learning</span><a href="#security-scope" className={`${styles.inlineLink} mt-4`}>Security services from Sule Zeen <ArrowRight size={16} aria-hidden="true" /></a></div>
+          <div className={styles.heroNote}><p>Built in Nigeria. A community by SuleZeen.</p><span>Threat research <b>&middot;</b> Live intelligence <b>&middot;</b> Practical learning</span><a href="#security-scope" className={`${styles.inlineLink} mt-4`}>Security services from SuleZeen <ArrowRight size={16} aria-hidden="true" /></a></div>
         </div>
         <SecurityShowcase />
       </section>
@@ -127,11 +127,11 @@ export default function CybersecurityPage() {
 
       <section id="security-scope" className="shell editorial-section scroll-mt-24">
         <div className="grid gap-6 md:grid-cols-[0.45fr_1fr] md:gap-16">
-          <p className="section-index">02 / Security services from Sule Zeen</p>
+          <p className="section-index">02 / Security services from SuleZeen</p>
           <div>
             <h2 className="display-2 max-w-2xl">A defined scope.<br />A usable handover.</h2>
             <p className="lede mt-5 max-w-2xl">
-              For organisations that need hands-on support, Sule Zeen provides assessment,
+              For organisations that need hands-on support, SuleZeen provides assessment,
               implementation and ongoing security services across commercial, open-source,
               and mixed environments. Scope and responsibilities are agreed at the start.
             </p>
@@ -187,7 +187,7 @@ export default function CybersecurityPage() {
             </p>
             <p className="mt-6 max-w-md text-sm leading-7 text-white/80">
               Prefer commercial security platforms? Bring the tools your organisation
-              already trusts. Sule Zeen brings together engineers across practices,
+              already trusts. SuleZeen brings together engineers across practices,
               with the engagement shaped around your environment, priorities, and internal team.
             </p>
           </div>
@@ -232,7 +232,7 @@ export default function CybersecurityPage() {
               <a href={item.href} className={`${styles.inlineLink} mt-5`} aria-label={`Read the official ${item.name} reference`}>Official reference <ArrowUpRight size={16} aria-hidden="true" /></a>
             </article>)}
           </div>
-          <a href={emailHref('Enterprise security enquiry', 'Hello Sule Zeen,\n\nI would like to discuss security support for our organisation.\nOur current platforms:\nThe security practices we need help with:\nOur standards or audit requirements:\nOur timeline:')} className={`${styles.inlineLink} mt-6`}>Discuss your security requirements <ArrowRight size={17} aria-hidden="true" /></a>
+          <a href={emailHref('Enterprise security enquiry', 'Hello SuleZeen,\n\nI would like to discuss security support for our organisation.\nOur current platforms:\nThe security practices we need help with:\nOur standards or audit requirements:\nOur timeline:')} className={`${styles.inlineLink} mt-6`}>Discuss your security requirements <ArrowRight size={17} aria-hidden="true" /></a>
         </div>
 
         <details className="mt-10 border-y border-hairline py-6">
@@ -247,7 +247,7 @@ export default function CybersecurityPage() {
 
       <section className={securityStyles.reviewCta} aria-labelledby="security-review-title">
         <div className={securityStyles.reviewInner}>
-          <p className={securityStyles.reviewEyebrow}>Sule Zeen / For founders</p>
+          <p className={securityStyles.reviewEyebrow}>SuleZeen / For founders</p>
           <h2 id="security-review-title">Security review slowing<br />your next deal?</h2>
           <p className={securityStyles.reviewCopy}>A buyer questionnaire. A pen test. An audit deadline. Bring what&apos;s blocking the deal&mdash;we&apos;ll help you scope the next step in a free 15-minute call. No obligation.</p>
           <div className={securityStyles.reviewActions}>

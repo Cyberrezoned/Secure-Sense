@@ -10,7 +10,7 @@ import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata(
   'Integration Planning / ZeenTheCyber',
-  'Scope collaboration, ticketing and reporting integrations with Sule Zeen. Define systems, owners, permissions and delivery requirements before implementation.',
+  'Scope collaboration, ticketing and reporting integrations with SuleZeen. Define systems, owners, permissions and delivery requirements before implementation.',
   '/integrations'
 );
 
@@ -41,7 +41,7 @@ export default function IntegrationsPage() {
       <PageHero
         eyebrow="ZeenTheCyber / Integration planning"
         title="Plan how your security workflows connect."
-        description="Work with Sule Zeen to define the handoffs between security findings, collaboration channels, engineering tasks and evidence. Integration work starts with your systems and an agreed scope."
+        description="Work with SuleZeen to define the handoffs between security findings, collaboration channels, engineering tasks and evidence. Integration work starts with your systems and an agreed scope."
         actions={
           <>
             <Button asChild size="lg">
@@ -111,7 +111,7 @@ export default function IntegrationsPage() {
       <div className="shell pb-20 md:pb-24">
         <CtaBanner
           title="Scope the integration your team needs."
-          description="Share your systems, workflow requirements and delivery constraints with Sule Zeen to discuss a suitable approach."
+          description="Share your systems, workflow requirements and delivery constraints with SuleZeen to discuss a suitable approach."
           primaryHref={emailHref('Integration enquiry')}
           primaryLabel="Discuss an integration"
           secondaryHref="/platform"

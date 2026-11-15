@@ -7,11 +7,11 @@ import { CONTACT_EMAIL, CONTACT_EMAIL_HREF, WHATSAPP_HREF } from '@/lib/contact'
 
 const footerGroups = [
   {
-    title: 'Explore Sule Zeen',
+    title: 'Explore SuleZeen',
     links: [
       { href: '/supply-chain', label: 'Supply Chain' },
       { href: cybersecurityCommunity.href, label: cybersecurityCommunity.name },
-      { href: '/studio', label: 'Sule Zeen Studio' },
+      { href: '/studio', label: 'SuleZeen Studio' },
       // Linked here so the route is reachable rather than sitemap-only.
       { href: '/solutions', label: 'Industry solutions' },
     ],
@@ -44,7 +44,7 @@ export function SiteFooter() {
             <BrandLockup />
 
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-              A Nigerian technology company working in commodity supply-chain infrastructure and cybersecurity. Home to the ZeenTheCyber cybersecurity community.
+              Dispatch, tracking and verified handover for agricultural marketplaces. Built in Nigeria, with Web3 at the core. Home to the ZeenTheCyber cybersecurity community.
             </p>
 
             <div className="mt-6 space-y-2.5 text-sm text-muted-foreground">
@@ -106,7 +106,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 flex flex-col gap-2 border-t border-hairline pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>&copy; {new Date().getFullYear()} Sule Zeen. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} SuleZeen. All rights reserved.</p>
           <p>
             Trade infrastructure. Cybersecurity. Built in Nigeria.
           </p>

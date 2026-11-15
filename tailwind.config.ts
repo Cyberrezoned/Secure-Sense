@@ -19,8 +19,8 @@ export default {
       fontFamily: {
         // Wired to the next/font CSS variables declared in the root layout.
         body: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        headline: ['var(--font-display)', 'var(--font-sans)', 'ui-sans-serif', 'sans-serif'],
-        code: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        headline: ['var(--font-sans)', 'ui-sans-serif', 'sans-serif'],
+        code: ['var(--font-sans)', 'ui-sans-serif', 'sans-serif'],
       },
       colors: {
         background: 'hsl(var(--background))',

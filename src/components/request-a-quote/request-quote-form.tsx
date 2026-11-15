@@ -51,7 +51,7 @@ function SubmitButton({ securityReview = false }: { securityReview?: boolean }) 
 export function RequestQuoteForm({ studioInterest, securityReview = false }: { studioInterest?: string; securityReview?: boolean } = {}) {
   const [state, formAction] = useActionState(requestPricing, {} as any);
   const isSecurityReview = securityReview && !studioInterest;
-  const subject = isSecurityReview ? 'Security review call request' : studioInterest ? `Studio enquiry: ${studioInterest}` : 'Sule Zeen enquiry';
+  const subject = isSecurityReview ? 'Security review call request' : studioInterest ? `Studio enquiry: ${studioInterest}` : 'SuleZeen enquiry';
   const defaultMessage = studioInterest ? `I would like help with: ${studioInterest}.\n\nWhere I am starting:\nWhat I want to create or earn from:\nThe support I need:\nMy time and budget for learning:\n\nPlease share current formats, fees, and availability.` : isSecurityReview ? 'I would like a free 15-minute introductory call about a buyer security review.\n\nWhat the buyer is asking for (questionnaire, penetration test or audit readiness):\nDecision deadline:\nKnown security or evidence gaps:\n\nPlease follow up to arrange a time and discuss the next step.' : '';
   const [emailDraftHref, setEmailDraftHref] = useState(() => emailHref(subject, defaultMessage));
 

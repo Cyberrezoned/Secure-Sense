@@ -18,7 +18,7 @@ const practices = [
   {
     number: '02',
     name: 'Cybersecurity',
-    description: 'Sule Zeen provides offensive security, detection and response, and compliance engineering. ZeenTheCyber is its cybersecurity community for research, learning, awareness and tools.',
+    description: 'SuleZeen provides offensive security, detection and response, and compliance engineering. ZeenTheCyber is its cybersecurity community for research, learning, awareness and tools.',
     detail: 'Security services / community research / learning and awareness / tools',
     href: '/cybersecurity',
   },
@@ -26,18 +26,18 @@ const practices = [
 
 const brands = [
   {
-    name: 'Sule Zeen',
+    name: 'SuleZeen',
     role: 'Company',
     description: 'The Nigerian Web3 technology company bringing verifiable trust to agricultural trade, supported by supply-chain infrastructure, cybersecurity, and the ZeenTheCyber community.',
   },
   {
     name: 'ZeenTheCyber',
     role: 'Cybersecurity community',
-    description: 'A Sule Zeen cybersecurity community for research, learning, awareness and tools, with access to Sule Zeen security services.',
+    description: 'A SuleZeen cybersecurity community for research, learning, awareness and tools, with access to SuleZeen security services.',
     href: '/cybersecurity',
   },
   {
-    name: 'Sule Zeen Studio',
+    name: 'SuleZeen Studio',
     role: 'Creative and learning studio',
     description: 'Content creation, social media management, AI-assisted workflows, monetization education, and cybersecurity and AI awareness for people building online.',
     href: '/studio',
@@ -50,10 +50,10 @@ export default function CompanyPage() {
       <section className="shell editorial-section">
         <p className="section-index">Company / Nigeria</p>
         <div className="mt-10 grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-end lg:gap-20">
-          <h1 className="editorial-title">Sule Zeen.</h1>
+          <h1 className="editorial-title">SuleZeen.</h1>
           <p className="max-w-xl text-xl leading-relaxed text-muted-foreground md:text-2xl">{COMPANY_DESCRIPTION}</p>
         </div>
-        <p className="mt-12 border-t border-hairline pt-6 text-sm text-muted-foreground">Web3 at the core. Built in Nigeria.</p>
+        <p className="mt-12 border-t border-hairline pt-6 text-sm text-muted-foreground">See where it is. Know it arrived.</p>
       </section>
 
       <section className="border-y border-hairline">
@@ -110,7 +110,7 @@ export default function CompanyPage() {
 
       <section data-reveal="fade" className="shell editorial-section grid gap-8 md:grid-cols-[1.4fr_1fr] md:items-end">
         <div>
-          <p className="section-index">Work with Sule Zeen</p>
+          <p className="section-index">Work with SuleZeen</p>
           <h2 className="mt-5 max-w-xl font-headline text-3xl font-semibold leading-tight md:text-4xl">Start with the system you need to build or secure.</h2>
         </div>
         <div className="md:justify-self-end">

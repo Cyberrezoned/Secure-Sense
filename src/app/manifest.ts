@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: SITE_NAME,
     short_name: SITE_NAME,
-    description: 'Web3, agricultural trade infrastructure and cybersecurity. Built in Nigeria.',
+    description: 'Dispatch, tracking and verified handover for agricultural marketplaces.',
     start_url: '/',
     display: 'standalone',
     background_color: '#F5F7EE',

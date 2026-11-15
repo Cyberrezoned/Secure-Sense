@@ -72,7 +72,7 @@ export default function SolutionsPage() {
       <PageHero
         eyebrow="Industry Solutions"
         title="Security posture looks different in every environment"
-        description="Sule Zeen tailors cybersecurity services to regulated sectors, growing product teams, and complex operational environments."
+        description="SuleZeen tailors cybersecurity services to regulated sectors, growing product teams, and complex operational environments."
         actions={
           <>
             <Button asChild size="lg">

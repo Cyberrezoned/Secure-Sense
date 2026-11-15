@@ -14,13 +14,13 @@ import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata(
   'Research',
-  "Threat analysis, explainers, and security engineering write-ups from ZeenTheCyber, Sule Zeen's cybersecurity community.",
+  "Threat analysis, explainers, and security engineering write-ups from ZeenTheCyber, SuleZeen's cybersecurity community.",
   '/community'
 );
 
 const recentPosts = [
-  { id: 1, title: 'Understanding Zero-Day Vulnerabilities', author: 'Sule Zeen Research', date: 'July 15, 2024', imageId: 'community-blog-1' },
-  { id: 2, title: 'A Guide to Phishing Attack Prevention', author: 'Sule Zeen Research', date: 'July 12, 2024', imageId: 'community-blog-2' },
+  { id: 1, title: 'Understanding Zero-Day Vulnerabilities', author: 'SuleZeen Research', date: 'July 15, 2024', imageId: 'community-blog-1' },
+  { id: 2, title: 'A Guide to Phishing Attack Prevention', author: 'SuleZeen Research', date: 'July 12, 2024', imageId: 'community-blog-2' },
 ];
 
 const resourceTracks = [
@@ -47,7 +47,7 @@ export default function CommunityPage() {
       <PageHero
         eyebrow="ZeenTheCyber / Research and resources"
         title="Research and tools for practical cybersecurity."
-        description="Explore cybersecurity research, practical guidance, and analysis from ZeenTheCyber, the cybersecurity community from Sule Zeen."
+        description="Explore cybersecurity research, practical guidance, and analysis from ZeenTheCyber, the cybersecurity community from SuleZeen."
         actions={
           <Button asChild size="lg">
             <Link href="#analysis">
@@ -119,7 +119,7 @@ export default function CommunityPage() {
         <SectionHeading
           eyebrow="Security reading"
           title="Research, explainers, and strategic security reading."
-          description="Explainers, threat analysis, and security engineering write-ups from ZeenTheCyber, the cybersecurity community from Sule Zeen."
+          description="Explainers, threat analysis, and security engineering write-ups from ZeenTheCyber, the cybersecurity community from SuleZeen."
         />
         <div data-stagger className="mt-10 grid gap-6 md:grid-cols-2">
           {recentPosts.map((post) => {

@@ -16,7 +16,7 @@ export default function StudioPage() {
   return (
     <div className={styles.studio} data-motion-area="studio">
       <section className="shell pb-14 pt-8 sm:pb-20 sm:pt-12">
-        <div className={styles.masthead}><p>Sule Zeen <strong>Creative Studio</strong></p><span>Ideas / Skills / Digital culture</span></div>
+        <div className={styles.masthead}><p>SuleZeen <strong>Creative Studio</strong></p><span>Ideas / Skills / Digital culture</span></div>
         <nav className={styles.studioNav} aria-label="Studio sections"><a href="#earn">Ways to earn</a><a href="#channel-plan">Build your channel</a><a href="#offer">Price your offer</a><a href="#pathfinder">Find your path</a><a href="#planner">Content planner</a><a href="#work-with-us">Learn with us</a></nav>
         <div className={styles.hero}>
           <div><p className={styles.kicker}>Create a lifestyle. Build a skill. Explore an income.</p><h1 className={styles.title}>Create.<br />Build a channel.<br /><em>Learn to earn.</em></h1><p className={styles.intro}>Come and learn how to make money online through useful skills, original content, and a channel with purpose. We help young people and emerging creators learn to create, work online, and build income opportunities.</p><div className={styles.heroActions}><a href="#earn" className={styles.primaryLink}>Explore ways to earn <ArrowDown size={17} aria-hidden="true" /></a><Link href={studioContactHref('channel-launch')} className={styles.textCta}>Teach me how to start <ArrowUpRight size={17} aria-hidden="true" /></Link></div><p className={styles.smallNote}>Practical education and support. Earnings depend on your work, audience, costs, and demand.</p></div>

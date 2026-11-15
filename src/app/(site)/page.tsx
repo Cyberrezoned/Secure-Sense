@@ -6,20 +6,20 @@ import { COMPANY_DESCRIPTION } from '@/lib/company';
 import { CALL_HREF } from '@/lib/contact';
 import { pageMetadata } from '@/lib/page-metadata';
 
-export const metadata = pageMetadata('Web3, Trade Infrastructure and Cybersecurity', COMPANY_DESCRIPTION, '/');
+export const metadata = pageMetadata('Dispatch, Tracking and Verified Handover', COMPANY_DESCRIPTION, '/');
 
 export default function HomePage() {
   return (
     <div data-motion-area="home">
       <section className="shell pb-14 pt-12 sm:pt-16 lg:pb-20 lg:pt-20">
         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-foreground/20 pt-4">
-          <p className="section-index">Sule Zeen / Nigerian Web3 company</p>
+          <p className="section-index">SuleZeen / Agricultural marketplaces</p>
           <p className="font-code text-[0.625rem] uppercase tracking-widest text-muted-foreground">Web3 at the core.</p>
         </div>
         <div className="mt-10 grid gap-10 lg:mt-14 lg:grid-cols-[1.6fr_1fr] lg:items-end lg:gap-16">
-          <h1 className="home-title"><span className="headline-line text-primary"><span>Web3.</span></span><span className="headline-line"><span>Trust.</span></span><span className="headline-line"><span>Real trade.</span></span></h1>
+          <h1 className="home-title"><span className="headline-line"><span>See where it is.</span></span><span className="headline-line text-primary"><span>Know it arrived.</span></span></h1>
           <div className="hero-follow max-w-md lg:pb-1">
-            <p className="text-xl leading-relaxed tracking-tight sm:text-2xl">Web3 is the foundation of our vision for agricultural trade: dispatch, produce tracking, and verified handover.</p>
+            <p className="text-xl leading-relaxed tracking-tight sm:text-2xl">SuleZeen helps Nigerian agricultural marketplaces dispatch vehicles, track produce in transit and confirm handover with the buyer.</p>
             <p className="mt-5 text-sm leading-7 text-muted-foreground">Built in Nigeria, with Base as the intended network for on-chain milestones. Supply-chain infrastructure and cybersecurity support that vision.</p>
             <Link href={CALL_HREF} className="text-link hero-cue mt-8">Book a consultation<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
           </div>
@@ -47,7 +47,7 @@ export default function HomePage() {
             <article>
               <p className="section-index">Cybersecurity community</p>
               <h3 className="mt-4 text-3xl font-medium sm:text-4xl">ZeenTheCyber</h3>
-              <p className="mt-5 max-w-xl text-base leading-8 text-muted-foreground">Sule Zeen&apos;s cybersecurity community for people learning, building and working in security. Explore research, practical tools and awareness resources, alongside security expertise from Sule Zeen.</p>
+              <p className="mt-5 max-w-xl text-base leading-8 text-muted-foreground">SuleZeen&apos;s cybersecurity community for people learning, building and working in security. Explore research, practical tools and awareness resources, alongside security expertise from SuleZeen.</p>
               <ul className="mt-6 divide-y divide-hairline border-y border-hairline text-sm"><li className="py-3">Research and practical security explainers</li><li className="py-3">Live vulnerability intelligence and article analysis</li><li className="py-3">Learning and cybersecurity awareness</li></ul>
               <Link href="/cybersecurity" className="text-link mt-7">Explore ZeenTheCyber<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
               <div className="mt-5 flex flex-wrap gap-x-7 gap-y-3 text-sm text-muted-foreground"><Link href="/platform" className="hover:text-foreground">Platform capabilities</Link><Link href="/integrations" className="hover:text-foreground">Integrations</Link><Link href="/community" className="hover:text-foreground">Research</Link></div>
@@ -60,7 +60,7 @@ export default function HomePage() {
 
       <section className="shell editorial-section">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-24">
-          <div data-reveal><p className="section-index">02 / Sule Zeen Creative Studio</p><h2 className="mt-6 text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl">Learn to create.<br />Build a channel.<br />Learn to earn.</h2><p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">A creative studio helping young people and emerging creators learn practical skills, build channels, and explore earning online. Discover content services, social media management, digital products, brand partnerships, and channel revenue, alongside AI and online awareness.</p><Link href="/studio" className="text-link mt-8">Explore the Creative Studio<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></div>
+          <div data-reveal><p className="section-index">02 / SuleZeen Creative Studio</p><h2 className="mt-6 text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl">Learn to create.<br />Build a channel.<br />Learn to earn.</h2><p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">A creative studio helping young people and emerging creators learn practical skills, build channels, and explore earning online. Discover content services, social media management, digital products, brand partnerships, and channel revenue, alongside AI and online awareness.</p><Link href="/studio" className="text-link mt-8">Explore the Creative Studio<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></div>
           <div data-reveal data-reveal-delay="2" className="studio-sheet">
             <div className="flex justify-between gap-4 border-b border-primary/30 pb-5"><p className="section-index">Inside the Studio / The remix desk</p><span className="font-code text-xs text-primary">001</span></div>
             <p className="mt-10 text-xs uppercase tracking-widest text-muted-foreground">An idea becomes a content plan</p>
@@ -71,7 +71,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="shell pb-12"><CtaBanner eyebrow="Work with Sule Zeen" title="Bring a specific problem." description="Tell us about your commodity workflow, security requirements, or a Studio content or learning project." primaryHref={CALL_HREF} primaryLabel="Book a consultation" /></div>
+      <div className="shell pb-12"><CtaBanner eyebrow="Work with SuleZeen" title="Bring a specific problem." description="Tell us about your commodity workflow, security requirements, or a Studio content or learning project." primaryHref={CALL_HREF} primaryLabel="Book a consultation" /></div>
     </div>
   );
 }

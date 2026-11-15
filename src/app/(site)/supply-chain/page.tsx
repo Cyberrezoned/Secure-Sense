@@ -42,16 +42,16 @@ export default function SupplyChainPage() {
           <p className="section-index">Practice 01 / Web3 and Supply Chain</p>
           <div className="mt-8 grid gap-10 lg:grid-cols-[1.5fr_0.7fr] lg:items-end lg:gap-16">
             <h1 className="editorial-title max-w-4xl">
-              From the farm.<br />Into trade.
+              See where it is.<br />Know it arrived.
             </h1>
             <div className="border-l-2 border-primary pl-6">
               <p className="lede">
-                Commodity infrastructure connecting Nigerian smallholder farmers,
-                SEC-accredited warehouses, merchants, and financiers.
+                Dispatch, tracking and verified handover for agricultural marketplaces.
               </p>
               <p className="mt-5 text-sm leading-7 text-muted-foreground">
-                A signed receipt carries the record from a graded delivery through
-                an offtake order and into financing.
+                Dispatch vehicles, track produce in transit and confirm handover
+                with the buyer. Web3 is central to our direction, with on-chain
+                milestones planned on Base.
               </p>
             </div>
           </div>
@@ -134,7 +134,7 @@ export default function SupplyChainPage() {
       <section className="border-t border-hairline">
         <div data-reveal="fade" className="shell flex flex-col gap-8 py-14 md:flex-row md:items-end md:justify-between md:py-20">
           <div className="max-w-2xl">
-            <p className="section-index">Work with Sule Zeen</p>
+            <p className="section-index">Work with SuleZeen</p>
             <h2 className="display-2 mt-4">Connect your part of the chain.</h2>
             <p className="mt-5 text-sm leading-7 text-muted-foreground">
               Discuss a warehouse partnership, a commodity workflow, or a trade-finance integration.

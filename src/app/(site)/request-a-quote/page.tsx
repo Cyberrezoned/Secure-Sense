@@ -11,7 +11,7 @@ import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata(
   'Request a Quote',
-  'Scope Sule Zeen security or supply-chain work, or inquire about ZeenTheCyber community research, learning and awareness.',
+  'Scope SuleZeen security or supply-chain work, or inquire about ZeenTheCyber community research, learning and awareness.',
   '/request-a-quote'
 );
 
@@ -20,12 +20,12 @@ export default function RequestQuotePage() {
     <>
       <PageHero
         eyebrow="Request a Quote"
-        title="Scope the right engagement with Sule Zeen."
-        description="Discuss a Studio content or learning partnership, commodity supply-chain infrastructure, or Sule Zeen security services. You can also ask about ZeenTheCyber community research, learning, awareness and tools."
+        title="Scope the right engagement with SuleZeen."
+        description="Discuss a Studio content or learning partnership, commodity supply-chain infrastructure, or SuleZeen security services. You can also ask about ZeenTheCyber community research, learning, awareness and tools."
         actions={
           <>
             <Button asChild size="lg">
-              <Link href={emailHref('Sule Zeen project enquiry')}>
+              <Link href={emailHref('SuleZeen project enquiry')}>
                 Email the team
                 <ArrowRight className="h-4 w-4" />
               </Link>

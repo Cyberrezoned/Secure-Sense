@@ -22,5 +22,5 @@ export const SOCIAL_IMAGE = {
   url: '/images/brand/sulezeen-social.png',
   width: 1200,
   height: 630,
-  alt: 'SuleZeen — Web3 at the core. Built in Nigeria.',
+  alt: 'SuleZeen — See where it is. Know it arrived.',
 };

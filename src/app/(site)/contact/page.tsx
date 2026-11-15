@@ -11,7 +11,7 @@ import { CALL_HREF, CONTACT_EMAIL, CONTACT_EMAIL_HREF, GOOGLE_MEET_HREF, WHATSAP
 
 export const metadata = pageMetadata(
   'Contact',
-  'Speak with Sule Zeen about commodity supply-chain infrastructure, security services, or the ZeenTheCyber cybersecurity community.',
+  'Speak with SuleZeen about commodity supply-chain infrastructure, security services, or the ZeenTheCyber cybersecurity community.',
   '/contact'
 );
 
@@ -47,7 +47,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
     <>
       <PageHero
         eyebrow="Contact"
-        title="Speak directly with Sule Zeen."
+        title="Speak directly with SuleZeen."
         description={`A community question, a security review, a commodity workflow or a Studio idea. Email ${CONTACT_EMAIL} or message us on WhatsApp and tell us what you need.`}
         actions={
           <>
@@ -110,7 +110,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
 
       <div className="shell pb-20 md:pb-24">
         <CtaBanner
-          title="Want to explore Sule Zeen before you submit?"
+          title="Want to explore SuleZeen before you submit?"
           description="Review community resources, security tools or the company story, then return here when you are ready to discuss the next step."
           primaryHref="/platform"
           primaryLabel="View Platform"

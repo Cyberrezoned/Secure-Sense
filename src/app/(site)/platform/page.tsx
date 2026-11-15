@@ -12,7 +12,7 @@ import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata(
   'Platform Tools / ZeenTheCyber',
-  "CISA exploitation intelligence, article analysis and integration planning through ZeenTheCyber, Sule Zeen's cybersecurity community.",
+  "CISA exploitation intelligence, article analysis and integration planning through ZeenTheCyber, SuleZeen's cybersecurity community.",
   '/platform'
 );
 
@@ -36,7 +36,7 @@ const platformHighlights = [
   },
   {
     title: 'Integration planning',
-    description: 'Discuss your systems, permissions, owners and reporting needs with Sule Zeen to define an implementation scope.',
+    description: 'Discuss your systems, permissions, owners and reporting needs with SuleZeen to define an implementation scope.',
     icon: Workflow,
   },
 ];
@@ -49,7 +49,7 @@ export default async function PlatformPage() {
       <PageHero
         eyebrow="ZeenTheCyber / Community tools"
         title="Explore exploitation data. Review security content."
-        description="Use CISA exploitation intelligence and article analysis to inform your security decisions. Bring your workflow requirements to Sule Zeen when you need help planning the next step."
+        description="Use CISA exploitation intelligence and article analysis to inform your security decisions. Bring your workflow requirements to SuleZeen when you need help planning the next step."
         actions={
           <>
             <Button asChild size="lg">
@@ -67,7 +67,7 @@ export default async function PlatformPage() {
           { value: 'CISA KEV', label: 'Known exploited vulnerabilities' },
           { value: '30-day view', label: 'Recent catalogue additions' },
           { value: 'Article analysis', label: 'Summaries, tags and content review' },
-          { value: 'Planning', label: 'Scope workflows with Sule Zeen' },
+          { value: 'Planning', label: 'Scope workflows with SuleZeen' },
         ]}
       />
 
@@ -108,7 +108,7 @@ export default async function PlatformPage() {
       <div className="shell py-20 lg:py-24">
         <CtaBanner
           title="Plan the next step for your security team"
-          description="Bring your findings, evidence requirements and existing tools. Sule Zeen can help define the scope, owners and integration work."
+          description="Bring your findings, evidence requirements and existing tools. SuleZeen can help define the scope, owners and integration work."
           primaryHref={emailHref('Security workflow enquiry')}
           primaryLabel="Discuss your workflow"
           secondaryHref="/cybersecurity"

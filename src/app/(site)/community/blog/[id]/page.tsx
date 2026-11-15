@@ -13,7 +13,7 @@ const recentPosts = [
   {
     id: 1,
     title: "Understanding Zero-Day Vulnerabilities",
-    author: "Sule Zeen Research",
+    author: "SuleZeen Research",
     date: "July 15, 2024",
     imageId: "community-blog-1",
     content: `
@@ -48,7 +48,7 @@ finally:
   {
     id: 2,
     title: "A Guide to Phishing Attack Prevention",
-    author: "Sule Zeen Research",
+    author: "SuleZeen Research",
     date: "July 12, 2024",
     imageId: "community-blog-2",
     content: `

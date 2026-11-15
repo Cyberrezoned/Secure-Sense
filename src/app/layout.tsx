@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { IBM_Plex_Mono, Inter, Inter_Tight } from 'next/font/google';
+import { Noto_Sans } from 'next/font/google';
 
 import { Toaster } from '@/components/ui/toaster';
 import { MotionOrchestrator } from '@/components/motion-orchestrator';
@@ -19,24 +19,11 @@ import './globals.css';
  * Fonts are self-hosted through next/font rather than a Google Fonts
  * stylesheet link, which removes a render-blocking third-party request.
  */
-const sans = Inter({
+const sans = Noto_Sans({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-sans',
-});
-
-const display = Inter_Tight({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['500', '600', '700'],
-  variable: '--font-display',
-});
-
-const mono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['400', '500', '600'],
-  variable: '--font-mono',
+  weight: ['400', '700'],
 });
 
 export const metadata: Metadata = {
@@ -66,10 +53,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#0d1117' },
-  ],
+  themeColor: '#0C5040',
 };
 
 export default function RootLayout({
@@ -82,8 +66,6 @@ export default function RootLayout({
       <body
         className={cn(
           sans.variable,
-          display.variable,
-          mono.variable,
           'min-h-screen bg-background font-body text-foreground antialiased'
         )}
       >
