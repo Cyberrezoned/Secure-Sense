@@ -1,0 +1,16 @@
+.panel { background: #fff; color: #142822; border: 1px solid #dce3e1; border-radius: 16px; padding: clamp(20px, 3vw, 36px); overflow: hidden; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+.top button { font-size: 11px; text-transform: none; letter-spacing: 0; border-bottom: 1px solid #73847b; padding: 6px 0; white-space: nowrap; }
+.tabs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 28px; }
+.tabs button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 14px 6px; border: 1px solid #e4e9e7; border-radius: 8px; background: #f8faf9; min-width: 0; font-size: 10px; font-weight: 700; }
+.tabs button[aria-pressed=true] { background: #fff; box-shadow: 0 4px 16px #1428220c; border-width: 2px; padding: 13px 5px; }
+.logo { position: relative; display: block; height: 46px; overflow: hidden; }
+.logo img { position: absolute; max-width: none; height: auto; }
+.stage { min-height: 240px; padding-top: 30px; }
+.panel .label { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin: 0 0 12px; }
+.panel h3 { color: #142822 !important; font-size: clamp(22px, 2.2vw, 30px); font-weight: 600; line-height: 1.12; letter-spacing: -.035em; }
+.stage p:not(.label) { font-size: 14px; line-height: 1.7; color: #53635c; margin-top: 15px; }
+.stage a { display: inline-block; margin-top: 20px; font-size: 12px; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.note { border-top: 1px solid #e4e9e7; padding-top: 18px; color: #63716a; font-size: 11px; line-height: 1.6; }
+.panel button:focus-visible, .panel a:focus-visible { outline: 2px solid #176a3c; outline-offset: 4px; }
+@media (max-width: 480px) { .tabs { gap: 5px; } .tabs button { font-size: 8px; } .logo { height: 32px; } .stage { min-height: 280px; } .top { align-items: start; font-size: 10px; } }

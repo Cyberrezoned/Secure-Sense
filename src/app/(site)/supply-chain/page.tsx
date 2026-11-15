@@ -7,7 +7,7 @@ import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata(
   'Supply Chain',
-  'Commodity infrastructure connecting Nigerian farmers, warehouses, merchants, and financiers through verified electronic warehouse receipts.',
+  'Web3-led agricultural trade infrastructure for Nigeria: dispatch, produce tracking, verified handover, and planned on-chain milestones on Base.',
   '/supply-chain',
 );
 
@@ -36,10 +36,10 @@ const participants = [
 
 export default function SupplyChainPage() {
   return (
-    <>
+    <div data-motion-area="supply">
       <section className="border-b border-hairline">
         <div className="shell editorial-section">
-          <p className="section-index">Practice 01 / Supply Chain</p>
+          <p className="section-index">Practice 01 / Web3 and Supply Chain</p>
           <div className="mt-8 grid gap-10 lg:grid-cols-[1.5fr_0.7fr] lg:items-end lg:gap-16">
             <h1 className="editorial-title max-w-4xl">
               From the farm.<br />Into trade.
@@ -56,13 +56,13 @@ export default function SupplyChainPage() {
             </div>
           </div>
           <a href="#commodity-workflow" className="text-link mt-10">
-            Follow the commodity workflow <span aria-hidden="true">↘</span>
+            Follow the commodity workflow <span aria-hidden="true" data-arrow="down-right">↘</span>
           </a>
         </div>
       </section>
 
       <section id="commodity-workflow" className="shell editorial-section scroll-mt-24">
-        <div className="grid gap-6 md:grid-cols-[0.45fr_1fr] md:gap-16">
+        <div data-reveal className="grid gap-6 md:grid-cols-[0.45fr_1fr] md:gap-16">
           <p className="section-index">01 / The workflow</p>
           <div>
             <h2 className="display-2 max-w-2xl">Each handover keeps its record.</h2>
@@ -85,7 +85,7 @@ export default function SupplyChainPage() {
               and providing the finance into one connected workflow.
             </p>
           </div>
-          <dl>
+          <dl data-stagger>
             {participants.map((participant, index) => (
               <div key={participant.name} className="grid gap-3 border-t border-hairline py-7 first:border-t-0 first:pt-0 sm:grid-cols-[9rem_1fr] sm:gap-8">
                 <dt>
@@ -117,9 +117,10 @@ export default function SupplyChainPage() {
               need for an app-store installation.
             </p>
             <p>
-              Operator signatures and cryptographic verification bind the receipt to
-              its record. The ledger makes changes evident through linked hashes,
-              with no blockchain dependency.
+              Web3 is central to our direction, with Base as the intended network
+              for on-chain delivery milestones. The workflow shown here illustrates
+              signed receipts and hash-chained records; it does not submit live
+              transactions to Base.
             </p>
           </div>
         </div>
@@ -131,7 +132,7 @@ export default function SupplyChainPage() {
       </section>
 
       <section className="border-t border-hairline">
-        <div className="shell flex flex-col gap-8 py-14 md:flex-row md:items-end md:justify-between md:py-20">
+        <div data-reveal="fade" className="shell flex flex-col gap-8 py-14 md:flex-row md:items-end md:justify-between md:py-20">
           <div className="max-w-2xl">
             <p className="section-index">Work with Sule Zeen</p>
             <h2 className="display-2 mt-4">Connect your part of the chain.</h2>
@@ -140,10 +141,10 @@ export default function SupplyChainPage() {
             </p>
           </div>
           <Button asChild size="lg" className="self-start md:shrink-0">
-            <Link href={CALL_HREF}>Book a consultation <span aria-hidden="true">↗</span></Link>
+            <Link href={CALL_HREF}>Book a consultation <span aria-hidden="true" data-arrow="up-right">↗</span></Link>
           </Button>
         </div>
       </section>
-    </>
+    </div>
   );
 }

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu } from 'lucide-react';
+import { motion } from 'motion/react';
 
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
@@ -12,6 +13,8 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { cn } from '@/lib/utils';
 import { cybersecurityCommunity } from '@/lib/company';
 import { CALL_HREF } from '@/lib/contact';
+import { usePrefersReducedMotion } from '@/hooks/use-prefers-reduced-motion';
+import { INSTANT, calmMotion } from '@/lib/motion-tokens';
 
 const navItems = [
   { href: '/supply-chain', label: 'Supply Chain' },
@@ -33,6 +36,7 @@ function isActive(pathname: string, href: string) {
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const reduced = usePrefersReducedMotion();
 
   return (
     <header className="sticky top-0 z-50 border-b border-hairline bg-background/85 backdrop-blur-md supports-[backdrop-filter]:bg-surface">
@@ -41,17 +45,30 @@ export function SiteHeader() {
           <BrandLockup />
 
           <nav aria-label="Main" className="hidden items-center gap-5 lg:flex xl:gap-7">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="nav-link"
-                data-active={isActive(pathname, item.href) || undefined}
-                aria-current={isActive(pathname, item.href) ? 'page' : undefined}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const active = isActive(pathname, item.href);
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="nav-link"
+                  data-active={active || undefined}
+                  aria-current={active ? 'page' : undefined}
+                >
+                  {item.label}
+                  {/* One bar for the whole nav: it slides to the section being opened. */}
+                  {active ? (
+                    <motion.span
+                      layoutId="nav-indicator"
+                      className="nav-indicator"
+                      transition={{ layout: reduced ? INSTANT : { duration: calmMotion.duration, ease: calmMotion.ease } }}
+                      aria-hidden="true"
+                    />
+                  ) : null}
+                </Link>
+              );
+            })}
           </nav>
         </div>
 

@@ -23,7 +23,7 @@ export function CtaBanner({
   eyebrow = 'Start a conversation',
 }: CtaBannerProps) {
   return (
-    <section data-reveal className="border-t-2 border-primary py-10 lg:py-14">
+    <section data-reveal="fade" className="border-t-2 border-primary py-10 lg:py-14">
       <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl">
           <p className="eyebrow">{eyebrow}</p>

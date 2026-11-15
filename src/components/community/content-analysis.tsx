@@ -49,7 +49,7 @@ export function ContentAnalysis() {
         </form>
 
         {state.error && (
-          <Alert variant="destructive" className="mt-4">
+          <Alert variant="destructive" className="mt-4 duration-300 animate-in fade-in-0 slide-in-from-bottom-1">
             <XCircle className="h-4 w-4" />
             <AlertTitle>Error</AlertTitle>
             <AlertDescription>{state.error}</AlertDescription>
@@ -64,7 +64,7 @@ export function ContentAnalysis() {
 
 function AnalysisResults({ result }: { result: AnalysisResult }) {
   return (
-    <div className="mt-6 space-y-6">
+    <div className="mt-6 space-y-6 duration-300 animate-in fade-in-0 slide-in-from-bottom-1" role="status">
       <Card className="bg-background">
         <CardHeader className="flex flex-row items-center gap-2 space-y-0">
           {result.isSafe ? (

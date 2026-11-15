@@ -182,24 +182,56 @@
   }
 
   .text-link {
-    @apply inline-flex w-fit items-center gap-4 border-b border-primary/40 pb-2 text-sm font-medium text-primary;
-    transition: border-color 160ms ease;
+    @apply relative inline-flex w-fit items-center gap-4 border-b border-primary/40 pb-2 text-sm font-medium text-primary;
   }
 
-  .text-link:hover { border-color: hsl(var(--primary)); }
+  /* The faint resting rule stays put. A full-strength rule is drawn over it
+     from the reading edge and withdrawn towards the arrow. */
+  .text-link::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: -1px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform var(--link-duration) var(--link-ease);
+  }
+
+  .text-link:is(:hover, :focus-visible)::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
 
   .blueprint-panel { background: #063b80; color: #ffffff; }
   .blueprint-panel h2,
   .blueprint-panel h3,
   .blueprint-panel h4 { color: #ffffff; }
 
+  /* Shared by the stage button and by the white active copy laid over it, so
+     both set their label in exactly the same place. The top padding includes
+     the 1px rail line. */
+  .workflow-step,
+  .workflow-step-layout {
+    @apply flex h-full w-full flex-col items-start gap-4 px-3 pb-5 pt-[calc(1.25rem+1px)] text-left sm:px-5;
+  }
+
   .workflow-step {
-    @apply relative flex h-full w-full flex-col items-start gap-4 border-t border-white/30 px-3 py-5 text-left text-white/70 sm:px-5;
+    @apply relative overflow-hidden text-white/70;
     transition: background-color 160ms ease, color 160ms ease;
   }
 
+  /* The rail line. Drawn rather than a border so the active fill can cover it. */
+  .workflow-step::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 1px;
+    background: rgb(255 255 255 / 0.3);
+  }
+
   .workflow-step:hover { @apply bg-white/10 text-white; }
-  .workflow-step[aria-pressed="true"] { @apply border-white bg-white text-[#063b80]; }
   .workflow-step:focus-visible { outline: 2px solid white; outline-offset: 4px; }
 
   .studio-sheet {
@@ -331,8 +363,8 @@
     color: hsl(var(--foreground));
   }
 
-  .nav-link[data-active="true"]::after {
-    content: "";
+  /* The active bar. Rendered by the header as one element shared by all links. */
+  .nav-indicator {
     position: absolute;
     inset-inline: 0;
     bottom: -1.3125rem;
@@ -391,65 +423,192 @@
   }
 }
 
+/* ---- Motion ---------------------------------------------------------- */
+/* One design system, told apart by how it moves. Each area sets its own pace
+   and curve here; scroll reveals and link arrows read these values. The
+   matching values for motion/react live in src/lib/motion-tokens.ts. */
+
+:root {
+  /* Calm default: supporting pages and shared chrome. */
+  --reveal-shift: 0.75rem;
+  --reveal-duration: 450ms;
+  --reveal-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --stagger-step: 50ms;
+  --link-duration: 220ms;
+  --link-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Parent company: confident. Longer travel that decelerates hard. */
+[data-motion-area="home"] {
+  --reveal-shift: 1.25rem;
+  --reveal-duration: 700ms;
+  --reveal-ease: var(--ease-editorial);
+  --stagger-step: 90ms;
+  --link-duration: 320ms;
+  --link-ease: var(--ease-editorial);
+}
+
+/* Supply Chain: precise. Short travel, symmetric curve, even steps. */
+[data-motion-area="supply"] {
+  --reveal-shift: 0.5rem;
+  --reveal-duration: 340ms;
+  --reveal-ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --stagger-step: 70ms;
+  --link-duration: 200ms;
+  --link-ease: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ZeenTheCyber: responsive. Starts at once and settles fast. */
+[data-motion-area="cyber"] {
+  --reveal-shift: 0.375rem;
+  --reveal-duration: 240ms;
+  --reveal-ease: cubic-bezier(0.2, 0, 0, 1);
+  --stagger-step: 35ms;
+  --link-duration: 140ms;
+  --link-ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Creative Studio: tactile. A small overshoot before it settles. */
+[data-motion-area="studio"] {
+  --reveal-shift: 1rem;
+  --reveal-duration: 520ms;
+  --reveal-ease: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --stagger-step: 60ms;
+  --link-duration: 260ms;
+  --link-ease: cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
 /* ---- Scroll reveal --------------------------------------------------- */
-/* Short, single-axis, no blur. Motion confirms hierarchy; it is not the show. */
+/* Driven by MotionOrchestrator, which owns opacity and transform on
+   [data-reveal] elements and on the direct children of [data-stagger].
+   Content is visible unless the orchestrator has marked it pending, so it
+   stays readable if the script never runs.
+   Variants: data-reveal / data-stagger (rise), ="fade" (no travel). */
 
-html[data-motion="ready"] [data-reveal] {
+[data-reveal].reveal-pending,
+[data-stagger].reveal-pending > * {
   opacity: 0;
-  transform: translateY(0.75rem);
+  transform: translateY(var(--reveal-shift));
 }
 
-html[data-motion="ready"] [data-reveal].is-visible {
-  opacity: 1;
+[data-reveal="fade"].reveal-pending,
+[data-stagger="fade"].reveal-pending > * {
   transform: none;
+}
+
+[data-reveal].reveal-in,
+[data-stagger].reveal-in > * {
   transition:
-    opacity 0.45s cubic-bezier(0.22, 0.61, 0.36, 1),
-    transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+    opacity var(--reveal-duration) var(--reveal-ease),
+    transform var(--reveal-duration) var(--reveal-ease);
 }
 
-html[data-motion="ready"] [data-reveal][data-reveal-delay="1"].is-visible {
-  transition-delay: 60ms;
+[data-reveal][data-reveal-delay="1"].reveal-in { transition-delay: 60ms; }
+[data-reveal][data-reveal-delay="2"].reveal-in { transition-delay: 120ms; }
+[data-reveal][data-reveal-delay="3"].reveal-in { transition-delay: 180ms; }
+
+[data-stagger].reveal-in > :nth-child(2) { transition-delay: calc(var(--stagger-step) * 1); }
+[data-stagger].reveal-in > :nth-child(3) { transition-delay: calc(var(--stagger-step) * 2); }
+[data-stagger].reveal-in > :nth-child(4) { transition-delay: calc(var(--stagger-step) * 3); }
+[data-stagger].reveal-in > :nth-child(5) { transition-delay: calc(var(--stagger-step) * 4); }
+[data-stagger].reveal-in > :nth-child(6) { transition-delay: calc(var(--stagger-step) * 5); }
+[data-stagger].reveal-in > :nth-child(n + 7) { transition-delay: calc(var(--stagger-step) * 6); }
+
+/* ---- Links and disclosure -------------------------------------------- */
+/* An arrow moves the way it points. :where() keeps these rules weaker than
+   any component style, so a page with its own arrow behaviour keeps it. */
+
+:where(a, button) > :where(.lucide-arrow-right, .lucide-arrow-up-right, .lucide-arrow-down, .lucide-arrow-down-right, [data-arrow]) {
+  transition: transform var(--link-duration) var(--link-ease);
 }
 
-html[data-motion="ready"] [data-reveal][data-reveal-delay="2"].is-visible {
-  transition-delay: 120ms;
+:where(a, button):is(:hover, :focus-visible) > :where(.lucide-arrow-right, [data-arrow="right"]) { transform: translateX(3px); }
+:where(a, button):is(:hover, :focus-visible) > :where(.lucide-arrow-up-right, [data-arrow="up-right"]) { transform: translate(2px, -2px); }
+:where(a, button):is(:hover, :focus-visible) > :where(.lucide-arrow-down, [data-arrow="down"]) { transform: translateY(3px); }
+:where(a, button):is(:hover, :focus-visible) > :where(.lucide-arrow-down-right, [data-arrow="down-right"]) { transform: translate(2px, 2px); }
+
+/* Native disclosure: the revealed content settles in below its summary. */
+details[open] > :not(summary) {
+  animation: disclosure-in var(--reveal-duration) var(--reveal-ease) backwards;
 }
 
-html[data-motion="ready"] [data-reveal][data-reveal-delay="3"].is-visible {
-  transition-delay: 180ms;
+@keyframes disclosure-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
 }
 
-html[data-motion="ready"] [data-stagger] > * {
-  opacity: 0;
-  transform: translateY(0.75rem);
+/* ---- Home: headline sequence ----------------------------------------- */
+/* Runs once from first paint, in CSS, so it never waits for hydration and the
+   headline is still there if scripts fail. Order: the headline lines, the
+   summary beside them, one pass under the contact link, one nudge towards the
+   practices. Each animation fills backwards only: once it has finished, the
+   element carries no transform or clip at all. */
+
+.headline-line,
+.headline-line > span {
+  display: block;
 }
 
-html[data-motion="ready"] [data-stagger].is-visible > * {
-  opacity: 1;
-  transform: none;
-  transition:
-    opacity 0.45s cubic-bezier(0.22, 0.61, 0.36, 1),
-    transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+.headline-line:nth-child(2) { --line: 1; }
+.headline-line:nth-child(3) { --line: 2; }
+.headline-line:nth-child(4) { --line: 3; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .headline-line {
+    animation: headline-clip 760ms var(--ease-editorial) backwards;
+    animation-delay: calc(var(--line, 0) * 90ms);
+  }
+
+  .headline-line > span {
+    animation: headline-rise 760ms var(--ease-editorial) backwards;
+    animation-delay: calc(var(--line, 0) * 90ms);
+  }
+
+  .hero-follow {
+    animation: hero-follow 620ms var(--ease-editorial) 240ms backwards;
+  }
+
+  .hero-cue::after {
+    animation: hero-underline-pass 760ms cubic-bezier(0.65, 0, 0.35, 1) 820ms backwards;
+  }
+
+  .hero-arrow-cue {
+    animation: hero-arrow-nudge 520ms ease-in-out 1300ms backwards;
+  }
 }
 
-html[data-motion="ready"] [data-stagger].is-visible > :nth-child(2) {
-  transition-delay: 50ms;
+/* The clip follows the line box, then opens below it so descenders are not
+   cut as the line lands. */
+@keyframes headline-clip {
+  from { clip-path: inset(-0.12em -0.25em 0 -0.25em); }
+  to { clip-path: inset(-0.12em -0.25em -0.3em -0.25em); }
 }
 
-html[data-motion="ready"] [data-stagger].is-visible > :nth-child(3) {
-  transition-delay: 100ms;
+@keyframes headline-rise {
+  from { transform: translateY(105%); }
+  to { transform: none; }
 }
 
-html[data-motion="ready"] [data-stagger].is-visible > :nth-child(4) {
-  transition-delay: 150ms;
+@keyframes hero-follow {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
 }
 
-html[data-motion="ready"] [data-stagger].is-visible > :nth-child(5) {
-  transition-delay: 200ms;
+@keyframes hero-underline-pass {
+  0% { transform: scaleX(0); transform-origin: left center; }
+  55% { transform: scaleX(1); transform-origin: left center; }
+  56% { transform: scaleX(1); transform-origin: right center; }
+  100% { transform: scaleX(0); transform-origin: right center; }
 }
 
-html[data-motion="ready"] [data-stagger].is-visible > :nth-child(6) {
-  transition-delay: 250ms;
+@keyframes hero-arrow-nudge {
+  0%, 100% { transform: none; }
+  45% { transform: translateY(4px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -461,13 +620,22 @@ html[data-motion="ready"] [data-stagger].is-visible > :nth-child(6) {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
   }
 
-  [data-reveal],
-  [data-stagger] > *,
-  [data-development-reveal] {
+  .reveal-pending,
+  .reveal-pending > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media print {
+  .reveal-pending,
+  .reveal-pending > * {
     opacity: 1 !important;
     transform: none !important;
   }

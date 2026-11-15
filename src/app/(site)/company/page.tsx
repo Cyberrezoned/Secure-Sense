@@ -28,7 +28,7 @@ const brands = [
   {
     name: 'Sule Zeen',
     role: 'Company',
-    description: 'The Nigerian technology company working in supply-chain infrastructure and cybersecurity, and home to the ZeenTheCyber community.',
+    description: 'The Nigerian Web3 technology company bringing verifiable trust to agricultural trade, supported by supply-chain infrastructure, cybersecurity, and the ZeenTheCyber community.',
   },
   {
     name: 'ZeenTheCyber',
@@ -53,7 +53,7 @@ export default function CompanyPage() {
           <h1 className="editorial-title">Sule Zeen.</h1>
           <p className="max-w-xl text-xl leading-relaxed text-muted-foreground md:text-2xl">{COMPANY_DESCRIPTION}</p>
         </div>
-        <p className="mt-12 border-t border-hairline pt-6 text-sm text-muted-foreground">Trade infrastructure. Cybersecurity. Built in Nigeria.</p>
+        <p className="mt-12 border-t border-hairline pt-6 text-sm text-muted-foreground">Web3 at the core. Built in Nigeria.</p>
       </section>
 
       <section className="border-y border-hairline">
@@ -65,14 +65,14 @@ export default function CompanyPage() {
           <div className="max-w-2xl space-y-6 text-lg leading-relaxed text-muted-foreground">
             <p>A warehouse receipt records a delivery. An access log records an action. Both become useful when the people relying on them can establish who created the record, what changed and who had permission to act.</p>
             <p>That is the engineering concern linking our two practices: identity, authenticity, access controls and accountable records. In commodity trade, these questions sit behind custody and financing decisions. In cybersecurity, they shape prevention, investigation and evidence.</p>
-            <p>We approach each practice through its own operational requirements, with a shared emphasis on systems that can be examined and decisions that can be traced.</p>
+            <p>Web3 is central to that vision. Our agricultural marketplace direction brings dispatch, produce tracking and verified handover together, with Base as the intended network for on-chain milestones. Supply-chain engineering and cybersecurity support the integrity of the records and the systems around them.</p>
           </div>
         </div>
       </section>
 
       <section className="shell editorial-section">
         <p className="section-index">02 / Our two practices</p>
-        <div className="mt-10 border-t border-hairline">
+        <div data-stagger="fade" className="mt-10 border-t border-hairline">
           {practices.map((practice) => (
             <article key={practice.name} className="grid gap-6 border-b border-hairline py-10 md:grid-cols-[3rem_1fr_1.2fr] md:gap-8 lg:py-12">
               <span className="font-mono text-sm text-primary" aria-hidden="true">{practice.number}</span>
@@ -93,7 +93,7 @@ export default function CompanyPage() {
             <p className="section-index">03 / Company and brands</p>
             <h2 className="max-w-xl font-headline text-3xl font-semibold leading-tight md:text-4xl">A clear role for each name.</h2>
           </div>
-          <dl className="mt-12 border-t border-hairline">
+          <dl data-stagger="fade" className="mt-12 border-t border-hairline">
             {brands.map((brand) => (
               <div key={brand.name} className="grid gap-4 border-b border-hairline py-7 md:grid-cols-[1fr_1fr_2fr] md:gap-8">
                 <dt className="text-lg font-semibold">{brand.name}</dt>
@@ -108,7 +108,7 @@ export default function CompanyPage() {
         </div>
       </section>
 
-      <section className="shell editorial-section grid gap-8 md:grid-cols-[1.4fr_1fr] md:items-end">
+      <section data-reveal="fade" className="shell editorial-section grid gap-8 md:grid-cols-[1.4fr_1fr] md:items-end">
         <div>
           <p className="section-index">Work with Sule Zeen</p>
           <h2 className="mt-5 max-w-xl font-headline text-3xl font-semibold leading-tight md:text-4xl">Start with the system you need to build or secure.</h2>

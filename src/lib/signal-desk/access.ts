@@ -22,7 +22,7 @@ export type AccessDecision =
 
 /** The desk is opt-in. Without the flag the route behaves as if it were never built. */
 export function isDeskEnabled(env: Record<string, string | undefined>): boolean {
-  return env.SIGNAL_DESK_ENABLED === 'true';
+  return (env.SIGNAL_DESK_ENABLED ?? '').trim() === 'true';
 }
 
 /**
@@ -50,20 +50,22 @@ export async function timingSafeEqual(a: string, b: string): Promise<boolean> {
 }
 
 function ipToBytes(ip: string): number[] | null {
+  const normalized = ip.trim().replace(/^\[|\]$/g, '');
+
   // Checked before the IPv4 branch: the "::ffff:a.b.c.d" form proxies emit
   // contains dots, so it would otherwise be misparsed as a dotted quad.
-  const mapped = /^::ffff:(\d+\.\d+\.\d+\.\d+)$/i.exec(ip);
+  const mapped = /^::ffff:(\d+\.\d+\.\d+\.\d+)$/i.exec(normalized);
   if (mapped) return ipToBytes(mapped[1]);
 
-  if (ip.includes('.')) {
-    const parts = ip.split('.');
+  if (normalized.includes('.')) {
+    const parts = normalized.split('.');
     if (parts.length !== 4) return null;
 
     const bytes = parts.map((part) => (/^\d{1,3}$/.test(part) ? Number.parseInt(part, 10) : Number.NaN));
     return bytes.every((byte) => Number.isInteger(byte) && byte >= 0 && byte <= 255) ? bytes : null;
   }
 
-  const halves = ip.split('::');
+  const halves = normalized.split('::');
   if (halves.length > 2) return null;
 
   const head = halves[0] ? halves[0].split(':') : [];
@@ -109,10 +111,11 @@ export function ipMatches(ip: string, rule: string): boolean {
 
 /** Decode a `Basic base64(user:pass)` header into its parts. */
 export function parseBasicAuth(header: string | null): { user: string; password: string } | null {
-  if (!header?.toLowerCase().startsWith('basic ')) return null;
+  const normalized = header?.trim();
+  if (!normalized || !normalized.toLowerCase().startsWith('basic ')) return null;
 
   try {
-    const decoded = atob(header.slice(6).trim());
+    const decoded = atob(normalized.slice(6).trim());
     const separator = decoded.indexOf(':');
     if (separator < 0) return null;
 
@@ -148,8 +151,8 @@ export async function authorizeSignalDesk(options: {
     }
   }
 
-  const expectedUser = env.SIGNAL_DESK_USER;
-  const expectedPassword = env.SIGNAL_DESK_PASSWORD;
+  const expectedUser = env.SIGNAL_DESK_USER?.trim();
+  const expectedPassword = env.SIGNAL_DESK_PASSWORD?.trim();
 
   // Enabling the desk without credentials must not expose it. Fail closed.
   if (!expectedUser || !expectedPassword) {

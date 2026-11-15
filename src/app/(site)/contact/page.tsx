@@ -75,7 +75,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
           title="Choose how you want to reach us."
           description="Use your email app, start a WhatsApp conversation or send the details below."
         />
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div data-stagger className="mt-10 grid gap-5 md:grid-cols-3">
           {contactCards.map((card) => {
             const Icon = card.icon;
 

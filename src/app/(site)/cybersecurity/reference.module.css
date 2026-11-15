@@ -8,7 +8,7 @@
 .hero h1 { font-size: clamp(42px, 4.4vw, 66px); line-height: 1.04; letter-spacing: -.055em; margin-top: 28px; max-width: 580px; text-wrap: initial; }
 .intro { font-size: 21px; line-height: 1.5; max-width: 500px; margin-top: 30px; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
-.primary, .secondary { display: inline-flex; align-items: center; justify-content: center; gap: 18px; min-height: 56px; padding: 16px 24px; font-size: 15px; font-weight: 500; transition: background .2s, color .2s; }
+.primary, .secondary { display: inline-flex; align-items: center; justify-content: center; gap: 18px; min-height: 56px; padding: 16px 24px; font-size: 15px; font-weight: 500; transition: background var(--link-duration) var(--link-ease), color var(--link-duration) var(--link-ease); }
 .primary { background: #080808; color: #fff; border: 1px solid #080808; }
 .primary:hover { background: #333; }
 .secondary { background: #fff; color: #080808; border: 1px solid #aaa; }
@@ -34,7 +34,7 @@
 .number { font-size: 12px; color: #666; }
 .area h3 { margin-top: 28px; font-size: 25px; line-height: 1.2; letter-spacing: -.035em; }
 .area p { margin-block: 17px 28px; color: #666; font-size: 15px; line-height: 1.8; }
-.area a, .inlineLink { display: inline-flex; align-items: center; gap: 18px; font-size: 14px; font-weight: 500; border-bottom: 1px solid #999; padding-bottom: 6px; }
+.area a, .inlineLink { display: inline-flex; align-items: center; gap: 18px; font-size: 14px; font-weight: 500; border-bottom: 1px solid #999; padding-bottom: 6px; transition: border-color var(--link-duration) var(--link-ease); }
 .area a { margin-top: auto; }
 .area a:hover, .inlineLink:hover { border-color: #111; }
 .workflow { display: grid; grid-template-columns: 1fr 1fr; gap: 76px; align-items: center; padding-block: 110px; }
@@ -53,4 +53,4 @@
 .ctaActions { display: flex; flex-direction: column; align-items: flex-start; gap: 22px; flex-shrink: 0; }
 @media (max-width: 1023px) { .container { width: calc(100% - 48px); } .hero, .workflow { gap: 36px; } .hero h1 { font-size: 45px; } .intro { font-size: 18px; } .darkTile { font-size: 9px; } .tile { padding: 4px; } .areaGrid { gap: 24px; } .cta { padding: 32px; } }
 @media (max-width: 700px) { .hero { grid-template-columns: 1fr; padding-block: 44px; gap: 40px; } .hero h1 { font-size: clamp(40px, 10vw, 58px); max-width: 520px; } .heroNote { margin-top: 28px; } .mosaic { max-width: 540px; width: 100%; } .darkTile { font-size: clamp(9px, 2.1vw, 13px); } .brandTile { font-size: 10px; } .capabilities { display: grid; grid-template-columns: 1fr 1fr; padding-block: 8px 44px; gap: 22px; font-size: 16px; } .explore { padding-block: 54px; } .areaGrid { grid-template-columns: 1fr; gap: 36px; margin-top: 36px; } .area h3 { margin-top: 17px; } .workflow { grid-template-columns: 1fr; padding-block: 60px; } .workflowGraphic { aspect-ratio: 1.15; } .steps { font-size: 72px; } .cta { flex-direction: column; align-items: flex-start; padding: 28px; margin-bottom: 56px; } .cta h2 { font-size: 32px; } }
-@media (prefers-reduced-motion: reduce) { .primary, .secondary { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .primary, .secondary, .area a, .inlineLink { transition: none; } }

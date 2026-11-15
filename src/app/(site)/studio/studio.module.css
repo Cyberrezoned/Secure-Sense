@@ -72,22 +72,22 @@
 /* The Studio has its own art direction; all rules stay inside this CSS module. */
 .studio { --studio-lilac: #d8c8f5; --studio-peach: #ffba98; }
 .canvasWrap { position: relative; padding: 12px 12px 20px 0; min-width: 0; }
-.orbitStamp { position: absolute; z-index: 2; right: -5px; top: -24px; display: grid; place-content: center; width: 96px; height: 96px; border-radius: 50%; background: var(--studio-lilac); color: var(--studio-ink); font: 600 11px/1.3 monospace; text-align: center; transform: rotate(13deg); border: 1px solid var(--studio-ink); }
-.canvasSticker { position: absolute; right: 30px; bottom: 0; display: flex; align-items: center; gap: 10px; padding: 14px 20px; background: var(--studio-peach); color: var(--studio-ink); border: 1px solid var(--studio-ink); font-size: 12px; transform: rotate(-5deg); box-shadow: 4px 4px 0 hsl(var(--foreground) / .12); }
+.orbitStamp { position: absolute; z-index: 2; right: -5px; top: -24px; display: grid; place-content: center; width: 96px; height: 96px; border-radius: 50%; background: var(--studio-lilac); color: var(--studio-ink); font: 600 11px/1.3 monospace; text-align: center; border: 1px solid var(--studio-ink); }
+.canvasSticker { position: absolute; right: 30px; bottom: 0; display: flex; align-items: center; gap: 10px; padding: 14px 20px; background: var(--studio-peach); color: var(--studio-ink); border: 1px solid var(--studio-ink); font-size: 12px; box-shadow: 4px 4px 0 hsl(var(--foreground) / .12); }
 .storyFrame { overflow: hidden; transition: background-color 220ms ease; }
 .storyFrame[data-tone="lilac"] { background: var(--studio-lilac); }
 .storyFrame[data-tone="peach"] { background: var(--studio-peach); }
-.canvasHeadline { animation: ink-in 240ms ease both; }
+.canvasHeadline > span { display: block; transform-origin: left center; }
 .frameCross { position: absolute; top: 17px; right: 20px; font: 26px monospace; }
 .canvasControls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; }
 .canvasControls button { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 9px; min-height: 75px; padding: 12px 9px; background: #304637; color: #eff4ec; font-size: 11px; text-align: left; border-top: 2px solid transparent; transition: background 160ms, border-color 160ms; }
-.canvasControls button > span { font: 10px monospace; color: var(--studio-accent); }
-.canvasControls button > svg { position: absolute; top: 12px; right: 9px; }
-.canvasControls button[aria-pressed="true"] { background: #405a45; border-color: var(--studio-accent); }
+.canvasControls button > span:first-child { font: 10px monospace; color: var(--studio-accent); }
+/* The active marker: the accent line over the button's top border, with the play icon. One element, moved between buttons. */
+.controlMarker { position: absolute; inset: -2px 0 auto; height: 2px; background: var(--studio-accent); pointer-events: none; }
+.controlMarker > svg { position: absolute; top: 14px; right: 9px; }
+.canvasControls button[aria-pressed="true"] { background: #405a45; }
 .canvasControls button:hover { background: #4a6550; }
 .canvasControls button:focus-visible { outline-color: var(--studio-accent); }
-.primaryLink svg, .lightLink svg { transition: transform 180ms ease; }
-.primaryLink:hover svg, .lightLink:hover svg { transform: translate(3px, -3px); }
 .subjectStrip span { display: inline-flex; align-items: center; gap: 16px; }
 .subjectStrip span::before { content: '+'; color: hsl(var(--primary)); font-size: 18px; }
 .learningRow { transition: padding 180ms ease, background 180ms ease; }
@@ -97,30 +97,38 @@
 .learningRow:nth-child(3n) .number { background: var(--studio-peach); }
 .remix { border: 1px solid hsl(var(--foreground) / .3); box-shadow: 8px 8px 0 hsl(var(--foreground) / .04); }
 .formatButtons button { position: relative; transition: color 180ms, background 180ms; }
-.formatButtons button[aria-pressed="true"]::after { content: ''; position: absolute; bottom: -8px; left: 24px; width: 14px; height: 14px; background: var(--studio-ink); transform: rotate(45deg); }
+/* Points from the chosen format to its output. One element, moved between buttons. */
+.formatPointer { position: absolute; bottom: -8px; left: 24px; width: 14px; height: 14px; pointer-events: none; }
+.formatPointer::after { content: ''; position: absolute; inset: 0; background: var(--studio-ink); transform: rotate(45deg); }
 .remixOutput { grid-template-columns: .95fr 1.05fr; align-items: center; padding: 45px 35px; gap: 50px; }
-.mockupColumn { min-width: 0; }
-.contentMockup { position: relative; display: flex; flex-direction: column; padding: 24px; min-height: 320px; background: var(--studio-lilac); color: var(--studio-ink); border: 1px solid var(--studio-ink); transform: rotate(-2deg); box-shadow: 7px 7px 0 var(--studio-ink); animation: ink-in 240ms ease both; }
+.contentMockup { position: relative; display: flex; flex-direction: column; padding: 24px; min-height: 320px; background: var(--studio-lilac); color: var(--studio-ink); border: 1px solid var(--studio-ink); margin-inline: auto; box-shadow: 7px 7px 0 var(--studio-ink); transition: background-color 260ms ease, border-radius 260ms ease; }
 .mockupTop { display: flex; justify-content: space-between; align-items: center; font: 9px monospace; letter-spacing: .06em; }
 .contentMockup > p { margin-block: 30px; font-size: clamp(2.2rem, 4.2vw, 4rem); line-height: .98; letter-spacing: -.05em; font-weight: 600; }
 .contentMockup em { font-family: Georgia, serif; font-weight: 400; }
-.mockupSticker { align-self: flex-end; margin-top: 23px; padding: 8px 12px; background: var(--studio-peach); font: 10px monospace; border: 1px solid var(--studio-ink); transform: rotate(5deg); }
+.mockupSticker { align-self: flex-end; margin-top: 23px; padding: 8px 12px; background: var(--studio-peach); font: 10px monospace; border: 1px solid var(--studio-ink); }
 .mockupBottom { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: auto; padding-top: 17px; border-top: 1px solid #19282060; font: 10px/1.6 monospace; }
-.contentMockup[data-format="1"] { max-width: 280px; margin-inline: auto; min-height: 410px; background: var(--studio-peach); border-radius: 20px; transform: rotate(3deg); }
+.contentMockup[data-format="1"] { max-width: 280px; margin-inline: auto; min-height: 410px; background: var(--studio-peach); border-radius: 20px; }
 .contentMockup[data-format="1"] .mockupSticker { background: var(--studio-accent); font-size: 9px; }
 .contentMockup[data-format="1"] > p { font-size: 2.9rem; }
 .contentMockup[data-format="2"] { max-width: 350px; min-height: 355px; margin-inline: auto; background: var(--studio-accent); }
 .contentMockup[data-format="2"] .mockupSticker { background: var(--studio-lilac); }
-.contentMockup[data-format="3"] { background: var(--studio-paper); transform: rotate(1deg); }
+.contentMockup[data-format="3"] { background: var(--studio-paper); }
 .contentMockup[data-format="3"] > .kicker { margin-top: 20px; font-size: 9px; }
 .articleRule { height: 6px; margin-top: 16px; background: var(--studio-ink); }
 .waveform { font-size: 15px; letter-spacing: -1px; }
 .mockupCaption { margin-top: 23px; font: 10px/1.6 monospace; color: hsl(var(--muted-foreground)); text-align: center; }
-.remixDetails { animation: ink-in 240ms ease both; }
+/* Rotation of the cards, stickers and stamp is set by their components, which animate it. */
+/* Reserved space: every variant is laid out in one grid cell and only the live one is shown. */
+.reserve { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; }
+.reserve > * { grid-area: 1 / 1; min-width: 0; }
+.reserveSizer { visibility: hidden; pointer-events: none; }
+.remixOutput > .reserve > * { align-self: center; }
+.mockupFooter { display: flex; align-items: center; justify-content: space-between; gap: 14px; width: 100%; }
+/* While a card is re-shaping, its size is driven directly and the format's own limits are lifted. */
+.remix .contentMockup[data-arranging] { max-width: none; min-height: 0; }
 .remixDetails h3 { font-size: clamp(1.6rem, 2.4vw, 2.35rem); margin-top: 14px; }
 .remixDetails dl { margin-top: 26px; border-top: 1px solid hsl(var(--foreground) / .2); padding-top: 22px; }
 .remixDetails .remixHook { margin-top: 14px; }
-@keyframes ink-in { from { opacity: .3; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
 @media (max-width: 900px) { .orbitStamp { width: 76px; height: 76px; font-size: 9px; right: -3px; } .remixOutput { gap: 30px; padding: 35px 25px; } .contentMockup { padding: 20px; } .contentMockup > p { font-size: 2.8rem; } .contentMockup[data-format="1"] > p { font-size: 2.4rem; } }
 @media (max-width: 640px) { .canvasWrap { padding-right: 4px; margin-top: 12px; } .orbitStamp { right: -2px; top: -27px; } .canvasSticker { right: 15px; padding: 11px 15px; } .canvasControls button { font-size: 10px; min-height: 75px; } .subjectStrip span { gap: 7px; } .subjectStrip { gap: 9px 17px; } .number { width: 25px; height: 25px; font-size: 9px; } .learningRow:hover { padding-inline: 0; } .remixOutput { grid-template-columns: 1fr; padding: 35px 23px; gap: 35px; } .contentMockup { min-height: 300px; } .contentMockup > p { font-size: 3rem; } .contentMockup[data-format="2"] { min-height: 330px; } }
 @media (prefers-reduced-motion: reduce) { .studio *, .studio *::before, .studio *::after { animation: none !important; transition: none !important; } }

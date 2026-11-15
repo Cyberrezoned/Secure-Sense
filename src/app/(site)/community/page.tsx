@@ -69,7 +69,7 @@ export default function CommunityPage() {
           title="Organized around how people actually learn and browse."
           description="Browse security reading, plan your learning and review advisory text with the article analysis tool."
         />
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div data-stagger className="mt-10 grid gap-5 md:grid-cols-3">
           {resourceTracks.map((track) => {
             const Icon = track.icon;
 
@@ -121,7 +121,7 @@ export default function CommunityPage() {
           title="Research, explainers, and strategic security reading."
           description="Explainers, threat analysis, and security engineering write-ups from ZeenTheCyber, the cybersecurity community from Sule Zeen."
         />
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
+        <div data-stagger className="mt-10 grid gap-6 md:grid-cols-2">
           {recentPosts.map((post) => {
             const image = PlaceHolderImages.find((entry) => entry.id === post.imageId);
 

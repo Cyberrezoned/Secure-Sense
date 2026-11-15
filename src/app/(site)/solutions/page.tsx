@@ -99,7 +99,7 @@ export default function SolutionsPage() {
           title="Built around business context, not just tooling."
           description="Each industry card speaks to the pressure points that actually shape cybersecurity buying decisions."
         />
-        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div data-stagger className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {sectors.map((sector) => {
             const Icon = sector.icon;
 
@@ -122,7 +122,7 @@ export default function SolutionsPage() {
           title="Different teams come in with different urgency."
           description="These scenarios create a cleaner path from business problem to service, platform, and engagement route."
         />
-        <div className="mt-10 grid gap-5 md:grid-cols-2">
+        <div data-stagger="fade" className="mt-10 grid gap-5 md:grid-cols-2">
           {scenarioCards.map((scenario) => (
             <div key={scenario.title} className="surface p-6">
               <div className="flex items-start gap-4">

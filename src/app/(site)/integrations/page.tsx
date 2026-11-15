@@ -65,7 +65,7 @@ export default function IntegrationsPage() {
           title="Start with the handoff."
           description="Decide what needs to move between systems, who should receive it and what must happen next."
         />
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div data-stagger className="mt-10 grid gap-5 md:grid-cols-3">
           {integrations.map((integration) => {
             const Icon = integration.icon;
             return (

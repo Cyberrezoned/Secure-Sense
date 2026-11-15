@@ -17,11 +17,11 @@ function clientAddress(request: NextRequest): string | null {
   const forwarded = request.headers.get('x-forwarded-for');
   if (forwarded) {
     // Left-most entry is the originating client; the rest are proxy hops.
-    const first = forwarded.split(',')[0]?.trim();
+    const first = forwarded.split(',')[0]?.trim().replace(/^\[|\]$/g, '');
     if (first) return first;
   }
 
-  return request.headers.get('x-real-ip') ?? null;
+  return request.headers.get('x-real-ip')?.trim().replace(/^\[|\]$/g, '') ?? null;
 }
 
 export async function proxy(request: NextRequest) {

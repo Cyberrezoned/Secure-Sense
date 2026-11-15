@@ -1,5 +1,5 @@
 export const COMPANY_DESCRIPTION =
-  'Sule Zeen is a Nigerian technology company working in commodity supply-chain infrastructure and cybersecurity, and home to the ZeenTheCyber cybersecurity community.';
+  'Sule Zeen is a Nigerian Web3 technology company focused on verifiable trust in agricultural trade, supported by supply-chain infrastructure, cybersecurity, and the ZeenTheCyber community.';
 
 export const cybersecurityCommunity = {
   name: 'ZeenTheCyber',
@@ -10,8 +10,8 @@ export const cybersecurityCommunity = {
 export const COMPANY_NEXT_CHAPTER =
   'Sule Zeen Studio brings together content creation, social media management, AI-assisted production, and digital awareness for people building online.';
 
-export const COMPANY_TAGLINE = 'Trade infrastructure. Cybersecurity. Built in Nigeria.';
-export const COMPANY_TITLE = 'Sule Zeen | Trade Infrastructure and Cybersecurity';
+export const COMPANY_TAGLINE = 'Web3 at the core. Built in Nigeria.';
+export const COMPANY_TITLE = 'Sule Zeen | Web3, Trade Infrastructure and Cybersecurity';
 
 export const COMPANY_PURPOSE =
   'Sule Zeen secures the infrastructure that trade runs on — and builds the digital rails that Nigerian commerce moves across.';
@@ -36,12 +36,12 @@ export const practices = [
     name: 'Supply Chain',
     href: '/supply-chain',
     summary: 'Commodity receipts, trade coordination, and financing workflows.',
-    description: 'Sule Zeen runs a digital commodity platform that connects smallholder farmers, SEC-accredited warehouses, merchants, and financiers. Farmers deposit produce at NCX-framework warehouses; each delivery is graded, operator-signed, and converted into a cryptographically verified Electronic Warehouse Receipt (e-WR). Merchants place offtake orders against those receipts, financiers underwrite the invoices, and the platform disburses advances to farmers through escrow — all recorded on a tamper-evident, hash-chained ledger. It serves six roles across a mobile PWA and web console, built for low-connectivity Nigerian environments with no blockchain or app-store dependency.',
+    description: 'Sule Zeen puts Web3 at the core of its agricultural trade vision: dispatch, produce tracking, and verified handover for Nigerian marketplaces, with Base as the intended network for on-chain milestones. Commodity workflows connect smallholder farmers, warehouses, merchants, and financiers through signed delivery records, electronic warehouse receipts, offtake orders, and financing coordination. The current workflow illustration uses hash-chained records; it does not demonstrate a live Base transaction. Mobile PWA and web-console access are designed for low-connectivity Nigerian environments without an app-store installation.',
   },
   {
     name: cybersecurityCommunity.name,
     href: cybersecurityCommunity.href,
     summary: 'Cybersecurity research, learning, practical tools and expertise.',
-    description: 'ZeenTheCyber is Sule Zeen\'s cybersecurity community, bringing together research, practical tools, learning and awareness for people building their security knowledge. Alongside these resources, Sule Zeen offers penetration testing, detection and response, security engineering, and audit-readiness support. Its defensive stack uses Wazuh, Suricata and Sigma. Service hours and response commitments are agreed for each engagement.',
+    description: 'ZeenTheCyber is Sule Zeen\'s cybersecurity community, bringing together research, practical tools, learning and awareness for people building their security knowledge. Alongside these resources, Sule Zeen offers penetration testing, detection and response, security engineering, and audit-readiness support across commercial, open-source, and mixed environments. Open-source options include Wazuh, Suricata and Sigma. Service hours and response commitments are agreed for each engagement.',
   },
 ] as const;

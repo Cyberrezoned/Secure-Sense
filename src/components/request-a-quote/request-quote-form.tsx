@@ -31,16 +31,19 @@ const industries = ['Media / Creator Economy', 'Agriculture / Commodities', 'War
 function SubmitButton({ securityReview = false }: { securityReview?: boolean }) {
   const { pending } = useFormStatus();
 
+  // Both labels share one grid cell, so the button keeps its size while sending.
   return (
-    <Button type="submit" disabled={pending} className="h-12">
-      {pending ? (
-        <>
-          <Loader2 className="h-4 w-4 animate-spin" />
-          Sending Request...
-        </>
-      ) : (
-        securityReview ? 'Email my call request' : 'Send enquiry by email'
-      )}
+    <Button type="submit" disabled={pending} className="grid h-12">
+      <span className={pending ? 'invisible col-start-1 row-start-1' : 'col-start-1 row-start-1'}>
+        {securityReview ? 'Email my call request' : 'Send enquiry by email'}
+      </span>
+      <span
+        aria-hidden={!pending}
+        className={`col-start-1 row-start-1 flex items-center justify-center gap-2 ${pending ? '' : 'invisible'}`}
+      >
+        <Loader2 className="h-4 w-4 animate-spin" />
+        Sending Request...
+      </span>
     </Button>
   );
 }
@@ -70,7 +73,7 @@ export function RequestQuoteForm({ studioInterest, securityReview = false }: { s
 
   if (state.success) {
     return (
-      <Alert className="border-signal-ok/40 bg-signal-ok/10 text-foreground">
+      <Alert role="status" className="border-signal-ok/40 bg-signal-ok/10 text-foreground duration-300 animate-in fade-in-0 slide-in-from-bottom-1">
         <CheckCircle2 className="h-4 w-4 !text-signal-ok" />
         <AlertTitle>Request received</AlertTitle>
         <AlertDescription>{state.success}</AlertDescription>
@@ -184,7 +187,7 @@ export function RequestQuoteForm({ studioInterest, securityReview = false }: { s
                     Add this scope to the engagement request.
                   </p>
                 </div>
-                <div className="mt-1 h-4 w-4 rounded-full border border-input bg-background group-has-[:checked]:border-primary group-has-[:checked]:bg-primary" />
+                <div className="mt-1 h-4 w-4 rounded-full border border-input bg-background transition-colors duration-150 group-has-[:checked]:border-primary group-has-[:checked]:bg-primary" />
               </div>
             </label>
           ))}
@@ -192,7 +195,7 @@ export function RequestQuoteForm({ studioInterest, securityReview = false }: { s
       </fieldset>
 
       {state.error ? (
-        <Alert variant="destructive">
+        <Alert variant="destructive" className="duration-300 animate-in fade-in-0 slide-in-from-bottom-1">
           <XCircle className="h-4 w-4" />
           <AlertTitle>Submission error</AlertTitle>
           <AlertDescription>

@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { SecurityShowcase } from '@/components/cybersecurity/security-showcase';
+import { ComplianceFrameworks } from '@/components/cybersecurity/compliance-frameworks';
 import styles from './reference.module.css';
 import securityStyles from './cybersecurity.module.css';
 import { WorkflowExplorer } from '@/components/company/workflow-explorer';
 import { cybersecurityCommunity, practices } from '@/lib/company';
 import { pageMetadata } from '@/lib/page-metadata';
-import { GOOGLE_MEET_HREF, SECURITY_REVIEW_EMAIL_HREF, SECURITY_REVIEW_WHATSAPP_HREF } from '@/lib/contact';
+import { emailHref, GOOGLE_MEET_HREF, SECURITY_REVIEW_EMAIL_HREF, SECURITY_REVIEW_WHATSAPP_HREF } from '@/lib/contact';
 
 export const metadata = pageMetadata(
   cybersecurityCommunity.name,
@@ -44,13 +45,13 @@ const services = [
   },
   {
     title: 'Detection & response',
-    scope: 'Detection engineering, alert tuning, and incident workflows built on Wazuh, Suricata, and Sigma.',
+    scope: 'Detection engineering, alert tuning, and incident workflows across your SIEM, endpoint, and network security tools.',
     outputs: 'Detection rules, coverage reviews, triage procedures, and escalation paths for the monitored environment.',
     boundary: 'Monitoring hours, response commitments, and any 24/7 coverage are defined in the service agreement.',
   },
   {
     title: 'Compliance engineering',
-    scope: 'Readiness programmes for ISO 27001, SOC 2, PCI DSS, and NDPR requirements.',
+    scope: 'Readiness programmes for ISO/IEC 27001, SOC 2, PCI DSS, Nigeria Data Protection Act obligations, and applicable CBN and SEC requirements.',
     outputs: 'Control mappings, an evidence register, gap assessments, and a remediation plan with named responsibilities.',
     boundary: 'The engagement supports audit readiness. Formal certification or assurance is determined by the relevant independent assessor.',
   },
@@ -62,9 +63,36 @@ const services = [
   },
 ];
 
+const industryPractices = [
+  {
+    name: 'NIST CSF 2.0',
+    practice: 'Security strategy & governance',
+    description: 'Map current risks, agree target outcomes, and prioritise improvements against a shared cybersecurity framework.',
+    href: 'https://www.nist.gov/cyberframework',
+  },
+  {
+    name: 'ISO/IEC 27001',
+    practice: 'Information security management',
+    description: 'Prepare the risk assessments, control ownership, and evidence needed to build and improve an information security management system.',
+    href: 'https://www.iso.org/standard/27001',
+  },
+  {
+    name: 'CIS Controls',
+    practice: 'Hardening & operational security',
+    description: 'Prioritise safeguards for asset inventory, access, secure configuration, logging, and vulnerability management.',
+    href: 'https://www.cisecurity.org/controls/v8-1',
+  },
+  {
+    name: 'OWASP ASVS',
+    practice: 'Application security verification',
+    description: 'Turn web application and service security requirements into a repeatable assessment, remediation, and verification plan.',
+    href: 'https://asvs.owasp.org/',
+  },
+];
+
 export default function CybersecurityPage() {
   return (
-    <div className={`${styles.page} ${securityStyles.security}`}>
+    <div className={`${styles.page} ${securityStyles.security}`} data-motion-area="cyber">
       <section className={`${styles.container} ${styles.hero} ${securityStyles.heroWithMosaic}`} aria-labelledby="security-title">
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>Sule Zeen&apos;s cybersecurity community</p>
@@ -87,7 +115,7 @@ export default function CybersecurityPage() {
         <div className={styles.container}>
           <p className={styles.eyebrow}>01 / Inside ZeenTheCyber</p>
           <h2 id="community-resources-title">Explore. Learn.<br /><span>Put it into practice.</span></h2>
-          <div className={styles.areaGrid}>
+          <div className={styles.areaGrid} data-stagger>
             {communityAreas.map(area => <article key={area.name} className={styles.area}>
               <h3>{area.name}</h3>
               <p>{area.description}</p>
@@ -104,12 +132,13 @@ export default function CybersecurityPage() {
             <h2 className="display-2 max-w-2xl">A defined scope.<br />A usable handover.</h2>
             <p className="lede mt-5 max-w-2xl">
               For organisations that need hands-on support, Sule Zeen provides assessment,
-              implementation and ongoing security services. Scope and responsibilities are agreed at the start.
+              implementation and ongoing security services across commercial, open-source,
+              and mixed environments. Scope and responsibilities are agreed at the start.
             </p>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-foreground/30 md:mt-16">
+        <div className="mt-12 border-t border-foreground/30 md:mt-16" data-stagger="fade">
           {services.map((service, index) => (
             <article key={service.title} className="grid gap-7 border-b border-hairline py-9 lg:grid-cols-[0.75fr_1fr_0.85fr] lg:gap-12 lg:py-12">
               <div>
@@ -146,30 +175,64 @@ export default function CybersecurityPage() {
         </div>
       </section>
 
-      <section className="shell editorial-section">
+      <section className="shell editorial-section" aria-labelledby="enterprise-security-title">
         <div className="blueprint-panel grid gap-10 p-7 sm:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 lg:p-14">
           <div>
-            <p className="font-code text-xs uppercase tracking-[0.12em] text-white/70">04 / An inspectable defensive stack</p>
-            <h2 className="mt-7 font-headline text-3xl font-semibold leading-tight !text-white sm:text-4xl">
-              Open tools.<br />Visible engineering.
+            <p className="font-code text-xs uppercase tracking-[0.12em] text-white/70">04 / Enterprise security, your way</p>
+            <h2 id="enterprise-security-title" className="mt-7 font-headline text-3xl font-semibold leading-tight sm:text-4xl">
+              Your platforms.<br />Our engineering.
             </h2>
+            <p className="mt-7 max-w-md text-xl font-semibold leading-snug text-white">
+              Over 20 professional engineers.<br />Expertise across different practices.
+            </p>
             <p className="mt-6 max-w-md text-sm leading-7 text-white/80">
-              The defensive stack is open-source and independently auditable.
-              Your team can inspect the tools and the detection work behind them.
+              Prefer commercial security platforms? Bring the tools your organisation
+              already trusts. Sule Zeen brings together engineers across practices,
+              with the engagement shaped around your environment, priorities, and internal team.
             </p>
           </div>
-          <dl className="divide-y divide-white/20">
+          <div><ComplianceFrameworks /><dl className="mt-8 divide-y divide-white/20">
             {[
-              ['Wazuh', 'Endpoint telemetry and security monitoring.'],
-              ['Suricata', 'Network inspection and threat detection.'],
-              ['Sigma', 'Detection rules that can be reviewed and adapted.'],
+              ['Commercial platforms', 'Work within your licensed SIEM, endpoint protection, cloud, and identity platforms. Agree the integrations, access, and vendor support your environment needs.'],
+              ['Open-source stacks', 'Build on inspectable tooling such as Wazuh, Suricata, and Sigma for monitoring, network detection, and adaptable detection rules.'],
+              ['Mixed environments', 'Connect commercial and open-source systems through consistent alerts, incident workflows, control evidence, and a clear handover to your team.'],
             ].map(([name, description]) => (
-              <div key={name} className="grid gap-2 py-5 first:pt-0 sm:grid-cols-[7rem_1fr] sm:gap-6">
+              <div key={name} className="grid gap-2 py-5 first:pt-0 sm:grid-cols-[9rem_1fr] sm:gap-6">
                 <dt className="text-lg font-semibold text-white">{name}</dt>
                 <dd className="text-sm leading-7 text-white/80">{description}</dd>
               </div>
             ))}
-          </dl>
+          </dl></div>
+        </div>
+
+        <div className="mt-14 md:mt-20" aria-labelledby="industry-practices-title">
+          <div className="grid gap-6 md:grid-cols-[0.45fr_1fr] md:gap-16" data-reveal>
+            <p className="section-index">Recognised frameworks &amp; standards</p>
+            <div>
+              <h2 id="industry-practices-title" className="display-2 max-w-2xl">Enterprise rigour.<br />Evidence at every step.</h2>
+              <p className="lede mt-5 max-w-2xl">The tools can differ. The work still needs clear requirements,
+                tested controls, and evidence your team can use. We agree the relevant frameworks
+                and verification criteria for each engagement.</p>
+            </div>
+          </div>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+            {[
+              ['Scope & gap assessment', 'Define the environment, identify applicable requirements and record control gaps.'],
+              ['Remediation & controls', 'Assign owners, implement safeguards and verify corrective actions.'],
+              ['PCI DSS VAPT', 'Assess vulnerabilities and penetration-test agreed in-scope payment systems.'],
+              ['Documentation & evidence', 'Organise policies, procedures, test results and evidence for independent validation.'],
+              ['Ongoing support', 'Agree optional monitoring, advisory and recurring control reviews.'],
+            ].map(([title, copy], index) => <article key={title} className="border-t-2 border-foreground py-6"><p className="section-index">0{index + 1}</p><h3 className="mt-4 text-lg font-semibold">{title}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{copy}</p></article>)}
+          </div>
+          <div className="mt-10 grid gap-x-12 md:grid-cols-2" data-stagger="fade">
+            {industryPractices.map(item => <article key={item.name} className="border-t border-hairline py-8">
+              <p className="section-index">{item.practice}</p>
+              <h3 className="mt-3 text-2xl font-semibold leading-tight">{item.name}</h3>
+              <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground">{item.description}</p>
+              <a href={item.href} className={`${styles.inlineLink} mt-5`} aria-label={`Read the official ${item.name} reference`}>Official reference <ArrowUpRight size={16} aria-hidden="true" /></a>
+            </article>)}
+          </div>
+          <a href={emailHref('Enterprise security enquiry', 'Hello Sule Zeen,\n\nI would like to discuss security support for our organisation.\nOur current platforms:\nThe security practices we need help with:\nOur standards or audit requirements:\nOur timeline:')} className={`${styles.inlineLink} mt-6`}>Discuss your security requirements <ArrowRight size={17} aria-hidden="true" /></a>
         </div>
 
         <details className="mt-10 border-y border-hairline py-6">
