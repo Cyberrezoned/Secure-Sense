@@ -1,3 +1,4 @@
+import { CyberText } from '@/components/cybersecurity/cyber-logo';
 import type { ReactNode } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -32,13 +33,13 @@ export function PageHero({
         <div className={cn('grid gap-12', aside ? 'lg:grid-cols-[1.15fr_0.85fr] lg:items-start' : 'max-w-3xl')}>
           <div>
             <p className="eyebrow" data-reveal>
-              {eyebrow}
+              <CyberText>{eyebrow}</CyberText>
             </p>
             <h1 data-reveal data-reveal-delay="1" className="display-1 mt-5 max-w-3xl">
-              {title}
+              <CyberText>{title}</CyberText>
             </h1>
             <p data-reveal data-reveal-delay="2" className="lede mt-6 max-w-2xl">
-              {description}
+              <CyberText>{description}</CyberText>
             </p>
             {actions ? (
               <div data-reveal data-reveal-delay="3" className="mt-9 flex flex-wrap items-center gap-3">

@@ -1,3 +1,4 @@
+import { CyberLogo, CyberText } from '@/components/cybersecurity/cyber-logo';
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { SecurityShowcase } from '@/components/cybersecurity/security-showcase';
@@ -97,7 +98,7 @@ export default function CybersecurityPage() {
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>Secure today. Stronger tomorrow.</p>
           <div className={styles.status}><span /> Research. Tools. Practical learning.</div>
-          <h1 id="security-title">ZeenThe<span className={styles.brandBlue}>Cyber.</span><br />Cybersecurity,<br />put to work.</h1>
+          <h1 id="security-title"><CyberLogo variant="hero" /><br />Cybersecurity,<br />put to work.</h1>
           <p className={styles.intro}>For the people who build and defend digital systems. Read threat research, work with live vulnerability intelligence, and sharpen your security practice.</p>
           <div className={styles.actions}>
             <Link href="/community" className={styles.primary}>Explore the research <ArrowRight size={17} aria-hidden="true" /></Link>
@@ -113,7 +114,7 @@ export default function CybersecurityPage() {
 
       <section className={styles.explore} aria-labelledby="community-resources-title">
         <div className={styles.container}>
-          <p className={styles.eyebrow}>01 / Inside ZeenTheCyber</p>
+          <p className={styles.eyebrow}>01 / Inside <CyberLogo variant="inline" /></p>
           <h2 id="community-resources-title">Explore. Learn.<br /><span>Put it into practice.</span></h2>
           <div className={styles.areaGrid} data-stagger>
             {communityAreas.map(area => <article key={area.name} className={styles.area}>
@@ -236,8 +237,8 @@ export default function CybersecurityPage() {
         </div>
 
         <details className="mt-10 border-y border-hairline py-6">
-          <summary className="cursor-pointer text-sm font-semibold marker:text-primary">About ZeenTheCyber</summary>
-          <p className="mt-5 max-w-4xl text-sm leading-8 text-muted-foreground">{practices[1].description}</p>
+          <summary className="cursor-pointer text-sm font-semibold marker:text-primary">About <CyberLogo variant="inline" /></summary>
+          <p className="mt-5 max-w-4xl text-sm leading-8 text-muted-foreground"><CyberText>{practices[1].description}</CyberText></p>
           <p className="mt-4 max-w-4xl border-l-2 border-primary pl-4 text-sm leading-7">
             Service hours, including any 24/7 coverage, response commitments, and the
             systems covered are agreed in the engagement contract.

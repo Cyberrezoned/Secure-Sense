@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { brandForPath } from '@/lib/brand-scope';
-import cyberStyles from '@/components/cybersecurity/cyber-brand.module.css';
+import { CyberLogo } from '@/components/cybersecurity/cyber-logo';
 
 import { cn } from '@/lib/utils';
 
@@ -20,9 +20,8 @@ export function BrandLockup({
 }) {
   const brand = brandForPath(usePathname());
   if (brand === 'cyber') {
-    return <Link href="/cybersecurity" onClick={onNavigate} className={cn(cyberStyles.lockup, className)} aria-label="ZeenTheCyber home">
-      <Image src="/images/zeenthecyber/shield.svg" alt="" width={72} height={80} className={cyberStyles.shield} unoptimized />
-      <span><span className={cyberStyles.name}>ZeenThe<span className={cyberStyles.blue}>Cyber</span></span><span className={cyberStyles.tagline}>SECURE TODAY. STRONGER TOMORROW.</span></span>
+    return <Link href="/cybersecurity" onClick={onNavigate} className={cn('inline-flex shrink-0', className)} aria-label="ZeenTheCyber home">
+      <CyberLogo tagline />
     </Link>;
   }
   if (brand !== 'sulezeen') {

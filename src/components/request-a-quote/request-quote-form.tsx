@@ -1,4 +1,5 @@
 'use client';
+import { CyberText } from '@/components/cybersecurity/cyber-logo';
 
 import { useActionState, useState } from 'react';
 import { useFormStatus } from 'react-dom';
@@ -182,7 +183,7 @@ export function RequestQuoteForm({ studioInterest, securityReview = false }: { s
               <input id={service.id} name="services" type="checkbox" value={service.id} defaultChecked={!!studioInterest ? service.id === 'studio' : isSecurityReview && service.id === 'consulting'} className="sr-only" />
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="font-medium text-foreground">{service.label}</p>
+                  <p className="font-medium text-foreground"><CyberText>{service.label}</CyberText></p>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">
                     Add this scope to the engagement request.
                   </p>

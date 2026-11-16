@@ -1,3 +1,4 @@
+import { CyberText, CyberLogo } from '@/components/cybersecurity/cyber-logo';
 import Link from 'next/link';
 import { Github, Mail, MapPin, MessageCircle } from 'lucide-react';
 
@@ -44,7 +45,7 @@ export function SiteFooter() {
             <BrandLockup />
 
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-              Dispatch, tracking and verified handover for agricultural marketplaces. Built in Nigeria, with Web3 at the core. Home to the ZeenTheCyber cybersecurity community.
+              Dispatch, tracking and verified handover for agricultural marketplaces. Built in Nigeria, with Web3 at the core. Home to the <CyberLogo variant="inline" /> cybersecurity community.
             </p>
 
             <div className="mt-6 space-y-2.5 text-sm text-muted-foreground">
@@ -91,11 +92,11 @@ export function SiteFooter() {
                         rel="noreferrer noopener"
                         className="text-sm text-muted-foreground hover:text-foreground"
                       >
-                        {link.label}
+                        <CyberText>{link.label}</CyberText>
                       </a>
                     ) : (
                       <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
-                        {link.label}
+                        <CyberText>{link.label}</CyberText>
                       </Link>
                     )}
                   </li>

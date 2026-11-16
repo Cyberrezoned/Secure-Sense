@@ -1,3 +1,4 @@
+import { CyberText } from '@/components/cybersecurity/cyber-logo';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
@@ -43,7 +44,7 @@ export default function NotFound() {
                   href={item.href}
                   className="flex items-center justify-between gap-4 bg-card px-5 py-4 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
                 >
-                  {item.label}
+                  <CyberText>{item.label}</CyberText>
                   <ArrowRight className="h-4 w-4 text-primary" aria-hidden="true" />
                 </Link>
               </li>

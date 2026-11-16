@@ -1,3 +1,4 @@
+import { CyberLogo } from '@/components/cybersecurity/cyber-logo';
 import Link from 'next/link';
 import { ArrowDown, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { WorkflowExplorer } from '@/components/company/workflow-explorer';
@@ -46,10 +47,10 @@ export default function HomePage() {
             </article>
             <article>
               <p className="section-index">Cybersecurity community</p>
-              <h3 className="mt-4 text-3xl font-medium sm:text-4xl">ZeenTheCyber</h3>
+              <h3 className="mt-4 text-3xl font-medium sm:text-4xl"><CyberLogo variant="hero" /></h3>
               <p className="mt-5 max-w-xl text-base leading-8 text-muted-foreground">SuleZeen&apos;s cybersecurity community for people learning, building and working in security. Explore research, practical tools and awareness resources, alongside security expertise from SuleZeen.</p>
               <ul className="mt-6 divide-y divide-hairline border-y border-hairline text-sm"><li className="py-3">Research and practical security explainers</li><li className="py-3">Live vulnerability intelligence and article analysis</li><li className="py-3">Learning and cybersecurity awareness</li></ul>
-              <Link href="/cybersecurity" className="text-link mt-7">Explore ZeenTheCyber<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+              <Link href="/cybersecurity" className="text-link mt-7">Explore <CyberLogo variant="inline" /><ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
               <div className="mt-5 flex flex-wrap gap-x-7 gap-y-3 text-sm text-muted-foreground"><Link href="/platform" className="hover:text-foreground">Platform capabilities</Link><Link href="/integrations" className="hover:text-foreground">Integrations</Link><Link href="/community" className="hover:text-foreground">Research</Link></div>
             </article>
           </div>

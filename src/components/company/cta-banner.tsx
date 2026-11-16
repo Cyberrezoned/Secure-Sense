@@ -1,3 +1,4 @@
+import { CyberText } from '@/components/cybersecurity/cyber-logo';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
@@ -26,9 +27,9 @@ export function CtaBanner({
     <section data-reveal="fade" className="border-t-2 border-primary py-10 lg:py-14">
       <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl">
-          <p className="eyebrow">{eyebrow}</p>
-          <h2 className="display-2 mt-3">{title}</h2>
-          <p className="lede mt-4">{description}</p>
+          <p className="eyebrow"><CyberText>{eyebrow}</CyberText></p>
+          <h2 className="display-2 mt-3"><CyberText>{title}</CyberText></h2>
+          <p className="lede mt-4"><CyberText>{description}</CyberText></p>
         </div>
 
         <div className="flex flex-wrap gap-3">

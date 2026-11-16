@@ -1,5 +1,8 @@
 'use client';
 
+import { CyberText } from '@/components/cybersecurity/cyber-logo';
+
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -56,7 +59,7 @@ export function SiteHeader() {
                   data-active={active || undefined}
                   aria-current={active ? 'page' : undefined}
                 >
-                  {item.label}
+                  <CyberText>{item.label}</CyberText>
                   {/* One bar for the whole nav: it slides to the section being opened. */}
                   {active ? (
                     <motion.span
@@ -105,7 +108,7 @@ export function SiteHeader() {
                           : 'text-muted-foreground hover:text-foreground'
                       )}
                     >
-                      {item.label}
+                      <CyberText>{item.label}</CyberText>
                     </Link>
                   ))}
                 </nav>

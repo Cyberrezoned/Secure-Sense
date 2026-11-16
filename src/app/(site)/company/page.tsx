@@ -1,3 +1,4 @@
+import { CyberText } from '@/components/cybersecurity/cyber-logo';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
@@ -78,7 +79,7 @@ export default function CompanyPage() {
               <span className="font-mono text-sm text-primary" aria-hidden="true">{practice.number}</span>
               <h2 className="max-w-sm font-headline text-2xl font-semibold leading-tight md:text-3xl">{practice.name}</h2>
               <div>
-                <p className="text-base leading-7 text-muted-foreground">{practice.description}</p>
+                <p className="text-base leading-7 text-muted-foreground"><CyberText>{practice.description}</CyberText></p>
                 <p className="mt-5 text-xs leading-6 text-muted-foreground">{practice.detail}</p>
                 <Link href={practice.href} className="text-link mt-6">Explore {practice.name}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
               </div>
@@ -96,11 +97,11 @@ export default function CompanyPage() {
           <dl data-stagger="fade" className="mt-12 border-t border-hairline">
             {brands.map((brand) => (
               <div key={brand.name} className="grid gap-4 border-b border-hairline py-7 md:grid-cols-[1fr_1fr_2fr] md:gap-8">
-                <dt className="text-lg font-semibold">{brand.name}</dt>
+                <dt className="text-lg font-semibold"><CyberText>{brand.name}</CyberText></dt>
                 <dd className="text-sm text-muted-foreground">{brand.role}</dd>
                 <dd>
-                  <p className="text-sm leading-7 text-muted-foreground">{brand.description}</p>
-                  {brand.href ? <Link href={brand.href} className="text-link mt-4">Explore {brand.name}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link> : null}
+                  <p className="text-sm leading-7 text-muted-foreground"><CyberText>{brand.description}</CyberText></p>
+                  {brand.href ? <Link href={brand.href} className="text-link mt-4">Explore <CyberText>{brand.name}</CyberText><ArrowRight className="h-4 w-4" aria-hidden="true" /></Link> : null}
                 </dd>
               </div>
             ))}

@@ -3,4 +3,12 @@
 .name { display: block; font-family: var(--font-sans), sans-serif; font-size: 22px; font-weight: 750; letter-spacing: -.055em; line-height: 1.1; white-space: nowrap; }
 .blue { color: #008cff; }
 .tagline { display: block; margin-top: 6px; font-size: 6.1px; font-weight: 700; letter-spacing: .17em; line-height: 1.4; white-space: nowrap; }
+.compact { vertical-align: middle; }
+.inline { display: inline-flex; vertical-align: -.2em; gap: .2em; line-height: 1; }
+.inline .shield { width: 1em; height: 1.12em; }
+.inline .name { font-size: 1em; letter-spacing: -.045em; }
+.hero { max-width: 100%; gap: 12px; margin-bottom: 12px; }
+.hero .shield { width: clamp(38px, 5vw, 64px); height: auto; }
+.hero .name { font-size: clamp(26px, 3.3vw, 46px); }
+:global(.dark) .lockup { color: #edf5ff; }
 @media (max-width: 400px) { .shield { width: 28px; height: 32px; } .name { font-size: 18px; } .tagline { font-size: 5px; } .lockup { gap: 5px; } }
