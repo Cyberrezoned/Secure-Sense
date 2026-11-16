@@ -8,6 +8,7 @@ import { SITE_NAME, SITE_URL, SOCIAL_IMAGE } from '@/lib/site';
 import { COMPANY_DESCRIPTION, COMPANY_TITLE } from '@/lib/company';
 import { cn } from '@/lib/utils';
 import './globals.css';
+import './cyber-theme.css';
 
 /**
  * Document shell only.

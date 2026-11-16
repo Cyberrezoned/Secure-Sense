@@ -1,0 +1,20 @@
+/* ZeenTheCyber reference palette; applied only to routes owned by the product. */
+.cyber-theme {
+  --cyber-ink: #08233f; --cyber-blue: #008cff; --cyber-action: #0069cc;
+  --cyber-paper: #ffffff; --cyber-surface: #f2f7fd; --cyber-muted: #51667f; --cyber-line: #cad9eb;
+  --background: 0 0% 100%; --surface: 213 73% 97%; --foreground: 211 77% 14%;
+  --card: 0 0% 100%; --card-foreground: 211 77% 14%; --popover: 0 0% 100%; --popover-foreground: 211 77% 14%;
+  --primary: 209 100% 40%; --primary-foreground: 0 0% 100%; --ring: 209 100% 40%;
+  --secondary: 213 73% 95%; --secondary-foreground: 211 77% 14%; --muted: 213 73% 97%; --muted-foreground: 213 22% 41%;
+  --accent: 213 73% 95%; --accent-foreground: 211 77% 14%; --hairline: 214 45% 86%; --border: 214 45% 86%;
+}
+.dark .cyber-theme {
+  --cyber-ink: #edf5ff; --cyber-paper: #071426; --cyber-surface: #0d2038; --cyber-muted: #a8bbd2; --cyber-line: #26415f;
+  --background: 214 69% 9%; --surface: 214 62% 14%; --foreground: 214 100% 96%;
+  --card: 214 62% 14%; --card-foreground: 214 100% 96%; --popover: 214 62% 14%; --popover-foreground: 214 100% 96%;
+  --primary: 207 100% 68%; --primary-foreground: 214 69% 9%; --ring: 207 100% 68%;
+  --secondary: 214 43% 22%; --secondary-foreground: 214 100% 96%; --muted: 214 62% 14%; --muted-foreground: 213 32% 74%;
+  --accent: 214 43% 22%; --accent-foreground: 214 100% 96%; --hairline: 211 43% 26%; --border: 211 43% 26%;
+}
+.cyber-theme .blueprint-panel { background: #08233f; --workflow-ink: #08233f; }
+.cyber-theme header { border-bottom-color: var(--cyber-line); }

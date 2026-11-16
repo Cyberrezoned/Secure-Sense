@@ -95,9 +95,9 @@ export default function CybersecurityPage() {
     <div className={`${styles.page} ${securityStyles.security}`} data-motion-area="cyber">
       <section className={`${styles.container} ${styles.hero} ${securityStyles.heroWithMosaic}`} aria-labelledby="security-title">
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>SuleZeen&apos;s cybersecurity community</p>
+          <p className={styles.eyebrow}>Secure today. Stronger tomorrow.</p>
           <div className={styles.status}><span /> Research. Tools. Practical learning.</div>
-          <h1 id="security-title">ZeenTheCyber.<br />Cybersecurity,<br />put to work.</h1>
+          <h1 id="security-title">ZeenThe<span className={styles.brandBlue}>Cyber.</span><br />Cybersecurity,<br />put to work.</h1>
           <p className={styles.intro}>For the people who build and defend digital systems. Read threat research, work with live vulnerability intelligence, and sharpen your security practice.</p>
           <div className={styles.actions}>
             <Link href="/community" className={styles.primary}>Explore the research <ArrowRight size={17} aria-hidden="true" /></Link>
