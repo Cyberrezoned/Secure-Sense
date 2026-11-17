@@ -10,7 +10,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         // Internal surfaces. The real control is the gate in src/proxy.ts;
         // this only keeps well-behaved crawlers away.
-        disallow: ['/signal-desk', '/signal-desk/', '/api/'],
+        disallow: ['/signal-desk', '/signal-desk/', '/admin', '/admin/', '/api/'],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

@@ -1,16 +1,17 @@
 import { type NextRequest, NextResponse } from 'next/server';
 
 import { SIGNAL_DESK_REALM, authorizeSignalDesk } from '@/lib/signal-desk/access';
+import { ADMIN_REALM, authorizeAdmin } from '@/lib/admin/access';
 
 /**
- * Request gate for the internal Signal Desk.
+ * Request gates for the internal Signal Desk and document workspace.
  *
  * Both the page and its data route are matched, so the API cannot be read
  * directly even if someone knows the path. Named `proxy` per the Next 16
  * convention that replaced `middleware`.
  */
 export const config = {
-  matcher: ['/signal-desk', '/signal-desk/:path*', '/api/signal-desk/:path*'],
+  matcher: ['/signal-desk', '/signal-desk/:path*', '/api/signal-desk/:path*', '/admin/:path*', '/api/admin/:path*'],
 };
 
 function clientAddress(request: NextRequest): string | null {
@@ -25,6 +26,24 @@ function clientAddress(request: NextRequest): string | null {
 }
 
 export async function proxy(request: NextRequest) {
+  if (/^\/(?:api\/)?admin(?:\/|$)/.test(request.nextUrl.pathname)) {
+    const decision = await authorizeAdmin(process.env, request.headers.get('authorization'));
+    const privateHeaders = {
+      'cache-control': 'private, no-store, max-age=0',
+      'x-robots-tag': 'noindex, nofollow, noarchive',
+      'vary': 'Authorization',
+    };
+    if (decision.outcome === 'allow') {
+      const response = NextResponse.next();
+      for (const [key, value] of Object.entries(privateHeaders)) response.headers.set(key, value);
+      return response;
+    }
+    const status = decision.outcome === 'not-found' ? 404 : decision.outcome === 'forbidden' ? 403 : 401;
+    return new NextResponse(status === 404 ? 'Not Found' : status === 403 ? 'Forbidden' : 'Authentication required', {
+      status,
+      headers: { ...privateHeaders, ...(status === 401 ? { 'www-authenticate': `Basic realm="${ADMIN_REALM}", charset="UTF-8"` } : {}) },
+    });
+  }
   const decision = await authorizeSignalDesk({
     env: {
       SIGNAL_DESK_ENABLED: process.env.SIGNAL_DESK_ENABLED,

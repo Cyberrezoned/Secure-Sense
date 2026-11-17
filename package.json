@@ -11,6 +11,8 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "test:access": "tsx scripts/test-access-control.mts",
+    "test:documents": "tsx scripts/test-document-admin.mts",
+    "test:documents:http": "node scripts/test-document-http.mjs",
     "test:enquiry": "tsx scripts/test-enquiry-delivery.mts"
   },
   "dependencies": {
