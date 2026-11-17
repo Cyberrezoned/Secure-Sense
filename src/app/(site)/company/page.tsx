@@ -1,4 +1,6 @@
 import { CyberText } from '@/components/cybersecurity/cyber-logo';
+import { DeliveryAchievements } from '@/components/company/delivery-achievements';
+import { StandardsSlider } from '@/components/company/standards-slider';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
@@ -56,6 +58,8 @@ export default function CompanyPage() {
         </div>
         <p className="mt-12 border-t border-hairline pt-6 text-sm text-muted-foreground">See where it is. Know it arrived.</p>
       </section>
+
+      <DeliveryAchievements />
 
       <section className="border-y border-hairline">
         <div className="shell editorial-section grid gap-10 lg:grid-cols-[0.65fr_1.35fr] lg:gap-20">
@@ -118,6 +122,7 @@ export default function CompanyPage() {
           <Link href={CALL_HREF} className="text-link">Book a consultation<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
         </div>
       </section>
+      <StandardsSlider />
     </>
   );
 }

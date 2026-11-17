@@ -1,4 +1,6 @@
 import { CyberLogo } from '@/components/cybersecurity/cyber-logo';
+import { DeliveryAchievements } from '@/components/company/delivery-achievements';
+import { StandardsSlider } from '@/components/company/standards-slider';
 import Link from 'next/link';
 import { ArrowDown, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { WorkflowExplorer } from '@/components/company/workflow-explorer';
@@ -57,6 +59,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      <DeliveryAchievements />
       <div className="shell editorial-section"><WorkflowExplorer mode="supply" /></div>
 
       <section className="shell editorial-section">
@@ -73,6 +76,7 @@ export default function HomePage() {
       </section>
 
       <div className="shell pb-12"><CtaBanner eyebrow="Work with SuleZeen" title="Bring a specific problem." description="Tell us about your commodity workflow, security requirements, or a Studio content or learning project." primaryHref={CALL_HREF} primaryLabel="Book a consultation" /></div>
+      <StandardsSlider />
     </div>
   );
 }

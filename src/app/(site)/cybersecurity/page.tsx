@@ -1,4 +1,6 @@
 import { CyberLogo, CyberText } from '@/components/cybersecurity/cyber-logo';
+import { DeliveryAchievements } from '@/components/company/delivery-achievements';
+import { StandardsSlider } from '@/components/company/standards-slider';
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { SecurityShowcase } from '@/components/cybersecurity/security-showcase';
@@ -125,6 +127,8 @@ export default function CybersecurityPage() {
           </div>
         </div>
       </section>
+
+      <DeliveryAchievements securityOnly />
 
       <section id="security-scope" className="shell editorial-section scroll-mt-24">
         <div className="grid gap-6 md:grid-cols-[0.45fr_1fr] md:gap-16">
@@ -260,6 +264,7 @@ export default function CybersecurityPage() {
           </ul>
         </div>
       </section>
+      <StandardsSlider />
     </div>
   );
 }
