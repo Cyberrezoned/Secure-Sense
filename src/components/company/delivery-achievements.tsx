@@ -7,7 +7,7 @@ export function DeliveryAchievements({ securityOnly = false }: { securityOnly?: 
   return (
     <section id="delivery" className="shell editorial-section scroll-mt-24" aria-labelledby="delivery-title">
       <div className="grid gap-6 md:grid-cols-[0.45fr_1fr] md:gap-16">
-        <p className="section-index">Our delivery record</p>
+        <p className="section-index">2026 / Year-to-date achievements</p>
         <div>
           <h2 id="delivery-title" className="display-2 max-w-3xl">
             {securityOnly ? 'Security work. Delivered.' : 'Built to work. Delivered by our team.'}
@@ -17,6 +17,7 @@ export function DeliveryAchievements({ securityOnly = false }: { securityOnly?: 
               ? 'Completed assessments and hands-on ISMS implementation, backed by our engineers’ practical experience.'
               : 'From functional business software to security assessments and information security management systems.'}
           </p>
+          <p className="mt-4 text-xs text-muted-foreground">Reporting period: January–17 November 2026.</p>
         </div>
       </div>
       <dl className={`mt-12 grid gap-10 ${securityOnly ? 'md:grid-cols-2' : 'md:grid-cols-3'}`}>

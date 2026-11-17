@@ -1,6 +1,6 @@
 # Delivery achievements and standards references
 
-The figures in `src/lib/achievements.ts` were supplied by SuleZeen on 17 November 2026:
+The figures in `src/lib/achievements.ts` were supplied by SuleZeen on 17 November 2026 and cover January–17 November 2026 only. They are 2026 year-to-date achievements, not lifetime totals. Keep this reporting period fixed until updated figures are provided:
 
 - More than four functional business web applications and CRM tools built by the software team.
 - More than six VAPT engagements completed by its engineers.
