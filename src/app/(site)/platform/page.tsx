@@ -11,8 +11,8 @@ import { getKevSummary } from '@/lib/intel';
 import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata(
-  'Platform Tools / ZeenTheCyber',
-  "CISA exploitation intelligence, article analysis and integration planning through ZeenTheCyber, SuleZeen's cybersecurity community.",
+  'Security Tools',
+  'Explore CISA vulnerability data, analyse security articles, and plan integrations with ZeenTheCyber.',
   '/platform'
 );
 
@@ -49,7 +49,7 @@ export default async function PlatformPage() {
       <PageHero
         eyebrow="ZeenTheCyber / Community tools"
         title="Explore exploitation data. Review security content."
-        description="Use CISA exploitation intelligence and article analysis to inform your security decisions. Bring your workflow requirements to SuleZeen when you need help planning the next step."
+        description="Check which vulnerabilities CISA lists as exploited, analyse a security article, or explore how findings reach the teams responsible for fixing them."
         actions={
           <>
             <Button asChild size="lg">
@@ -67,7 +67,7 @@ export default async function PlatformPage() {
           { value: 'CISA KEV', label: 'Known exploited vulnerabilities' },
           { value: '30-day view', label: 'Recent catalogue additions' },
           { value: 'Article analysis', label: 'Summaries, tags and content review' },
-          { value: 'Planning', label: 'Scope workflows with SuleZeen' },
+          { value: 'Planning', label: 'Map security workflows' },
         ]}
       />
 

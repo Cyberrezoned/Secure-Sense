@@ -14,7 +14,7 @@ import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata(
   'Research',
-  "Threat analysis, explainers, and security engineering write-ups from ZeenTheCyber, SuleZeen's cybersecurity community.",
+  'Threat analysis, explainers, and security engineering articles from the ZeenTheCyber community.',
   '/community'
 );
 
@@ -47,7 +47,7 @@ export default function CommunityPage() {
       <PageHero
         eyebrow="ZeenTheCyber / Research and resources"
         title="Research and tools for practical cybersecurity."
-        description="Explore cybersecurity research, practical guidance, and analysis from ZeenTheCyber, the cybersecurity community from SuleZeen."
+        description="Explore cybersecurity research and practical guidance from ZeenTheCyber. Read about threats, learn how attacks affect everyday systems, and find steps you can take to protect them."
         actions={
           <Button asChild size="lg">
             <Link href="#analysis">
@@ -119,7 +119,7 @@ export default function CommunityPage() {
         <SectionHeading
           eyebrow="Security reading"
           title="Research, explainers, and strategic security reading."
-          description="Explainers, threat analysis, and security engineering write-ups from ZeenTheCyber, the cybersecurity community from SuleZeen."
+          description="Read about zero-day vulnerabilities and the warning signs of phishing."
         />
         <div data-stagger className="mt-10 grid gap-6 md:grid-cols-2">
           {recentPosts.map((post) => {

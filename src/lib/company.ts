@@ -4,7 +4,7 @@ export const COMPANY_DESCRIPTION =
 export const cybersecurityCommunity = {
   name: 'ZeenTheCyber',
   href: '/cybersecurity',
-  description: 'ZeenTheCyber is SuleZeen\'s cybersecurity community: a place to explore security research, practical tools, learning and expertise.',
+  description: 'ZeenTheCyber is a Nigerian cybersecurity community. Explore threat research, learn how to defend digital systems, and use practical security tools.',
 } as const;
 
 export const COMPANY_NEXT_CHAPTER =

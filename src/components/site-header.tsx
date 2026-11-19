@@ -15,29 +15,32 @@ import { BrandLockup } from '@/components/brand-lockup';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { cn } from '@/lib/utils';
 import { cybersecurityCommunity } from '@/lib/company';
+import { brandForPath } from '@/lib/brand-scope';
 import { CALL_HREF } from '@/lib/contact';
 import { usePrefersReducedMotion } from '@/hooks/use-prefers-reduced-motion';
 import { INSTANT, calmMotion } from '@/lib/motion-tokens';
 
-const navItems = [
+const companyNavItems = [
   { href: '/supply-chain', label: 'Supply Chain' },
   { href: cybersecurityCommunity.href, label: cybersecurityCommunity.name },
   { href: '/studio', label: 'Studio' },
   { href: '/company', label: 'Company' },
 ];
 
+const communityNavItems = [
+  { href: '/cybersecurity', label: 'Overview' },
+  { href: '/community', label: 'Research' },
+  { href: '/platform', label: 'Security tools' },
+  { href: '/integrations', label: 'Integrations' },
+];
+
 function isActive(pathname: string, href: string) {
-  if (href === '/') return pathname === '/';
-  if (href === cybersecurityCommunity.href) {
-    return [href, '/platform', '/integrations', '/community'].some(
-      (path) => pathname === path || pathname.startsWith(`${path}/`)
-    );
-  }
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const navItems = brandForPath(pathname) === 'cyber' ? communityNavItems : companyNavItems;
   const [open, setOpen] = useState(false);
   const reduced = usePrefersReducedMotion();
 

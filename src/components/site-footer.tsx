@@ -1,3 +1,7 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
+import { brandForPath } from '@/lib/brand-scope';
 import { CyberText, CyberLogo } from '@/components/cybersecurity/cyber-logo';
 import Link from 'next/link';
 import { ArrowUp, Github, Mail, MapPin, MessageCircle } from 'lucide-react';
@@ -36,7 +40,28 @@ const footerGroups = [
   },
 ];
 
+const cyberFooterGroups = [
+  {
+    title: 'Community resources',
+    links: [
+      { href: '/community', label: 'Research and explainers' },
+      { href: '/platform', label: 'Security tools' },
+      { href: '/integrations', label: 'Integration planning' },
+    ],
+  },
+  {
+    title: 'Security support',
+    links: [
+      { href: '/cybersecurity#security-scope', label: 'Security services' },
+      { href: '/solutions', label: 'Industry solutions' },
+      { href: '/contact?securityReview=1', label: 'Request a security review' },
+    ],
+  },
+  footerGroups[2],
+];
+
 export function SiteFooter() {
+  const cyber = brandForPath(usePathname()) === 'cyber';
   return (
     <footer className="border-t border-hairline bg-surface">
       <div className="shell py-14">
@@ -45,7 +70,7 @@ export function SiteFooter() {
             <BrandLockup />
 
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-              Dispatch, tracking and verified handover for agricultural marketplaces. Built in Nigeria, with Web3 at the core. Home to the <CyberLogo variant="inline" /> cybersecurity community.
+              {cyber ? 'A Nigerian cybersecurity community for people learning to defend digital systems. Read threat research, explore vulnerability data, and find practical guides to staying secure.' : <>Dispatch, tracking and verified handover for agricultural marketplaces. Built in Nigeria, with Web3 at the core. Home to the <CyberLogo variant="inline" /> cybersecurity community.</>}
             </p>
 
             <div className="mt-6 space-y-2.5 text-sm text-muted-foreground">
@@ -79,7 +104,7 @@ export function SiteFooter() {
             </div>
           </div>
 
-          {footerGroups.map((group) => (
+          {(cyber ? cyberFooterGroups : footerGroups).map((group) => (
             <div key={group.title} data-reveal>
               <p className="text-[0.8125rem] font-semibold text-foreground">{group.title}</p>
               <ul className="mt-4 flex flex-col gap-2.5">
@@ -110,7 +135,7 @@ export function SiteFooter() {
           <p>&copy; {new Date().getFullYear()} SuleZeen. All rights reserved.</p>
           <a className="footer-top" href="#main">Back to top <ArrowUp size={14} aria-hidden="true" /></a>
           <p>
-            Trade infrastructure. Cybersecurity. Built in Nigeria.
+            {cyber ? <Link href="/company" className="hover:text-foreground">About the parent company</Link> : 'Trade infrastructure. Cybersecurity. Built in Nigeria.'}
           </p>
         </div>
       </div>

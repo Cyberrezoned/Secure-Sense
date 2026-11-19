@@ -1,4 +1,4 @@
-import { CyberLogo, CyberText } from '@/components/cybersecurity/cyber-logo';
+import { CyberLogo } from '@/components/cybersecurity/cyber-logo';
 import { DeliveryAchievements } from '@/components/company/delivery-achievements';
 import { StandardsSlider } from '@/components/company/standards-slider';
 import Link from 'next/link';
@@ -8,7 +8,7 @@ import { ComplianceFrameworks } from '@/components/cybersecurity/compliance-fram
 import styles from './reference.module.css';
 import securityStyles from './cybersecurity.module.css';
 import { WorkflowExplorer } from '@/components/company/workflow-explorer';
-import { cybersecurityCommunity, practices } from '@/lib/company';
+import { cybersecurityCommunity } from '@/lib/company';
 import { pageMetadata } from '@/lib/page-metadata';
 import { emailHref, GOOGLE_MEET_HREF, SECURITY_REVIEW_EMAIL_HREF, SECURITY_REVIEW_WHATSAPP_HREF } from '@/lib/contact';
 
@@ -33,7 +33,7 @@ const communityAreas = [
   },
   {
     name: 'Integrations',
-    description: 'Plan how alerts, engineering tasks and reporting should fit your team\'s tools, and scope the implementation with SuleZeen.',
+    description: 'Trace a security alert from your team’s chat channel to an engineering ticket and the evidence used to close it.',
     href: '/integrations',
     action: 'Explore integrations',
   },
@@ -101,12 +101,12 @@ export default function CybersecurityPage() {
           <p className={styles.eyebrow}>Secure today. Stronger tomorrow.</p>
           <div className={styles.status}><span /> Research. Tools. Practical learning.</div>
           <h1 id="security-title"><CyberLogo variant="hero" /><br />Cybersecurity,<br />put to work.</h1>
-          <p className={styles.intro}>For the people who build and defend digital systems. Read threat research, work with live vulnerability intelligence, and sharpen your security practice.</p>
+          <p className={styles.intro}>We’re a Nigerian cybersecurity community for people learning, building, and working in security. Explore how phishing attacks work, see which vulnerabilities are being exploited, and learn how to protect the systems you use.</p>
           <div className={styles.actions}>
             <Link href="/community" className={styles.primary}>Explore the research <ArrowRight size={17} aria-hidden="true" /></Link>
             <Link href="/platform" className={styles.secondary}>Open security tools</Link>
           </div>
-          <div className={styles.heroNote}><p>Built in Nigeria. A community by SuleZeen.</p><span>Threat research <b>&middot;</b> Live intelligence <b>&middot;</b> Practical learning</span><a href="#security-scope" className={`${styles.inlineLink} mt-4`}>Security services from SuleZeen <ArrowRight size={16} aria-hidden="true" /></a></div>
+          <a href="#community-resources-title" className={`${styles.inlineLink} mt-4`}>Browse community resources <ArrowRight size={16} aria-hidden="true" /></a>
         </div>
         <SecurityShowcase />
       </section>
@@ -117,7 +117,7 @@ export default function CybersecurityPage() {
       <section className={styles.explore} aria-labelledby="community-resources-title">
         <div className={styles.container}>
           <p className={styles.eyebrow}>01 / Inside <CyberLogo variant="inline" /></p>
-          <h2 id="community-resources-title">Explore. Learn.<br /><span>Put it into practice.</span></h2>
+          <h2 id="community-resources-title" className="scroll-mt-24">Cybersecurity research<br /><span>and tools.</span></h2>
           <div className={styles.areaGrid} data-stagger>
             {communityAreas.map(area => <article key={area.name} className={styles.area}>
               <h3>{area.name}</h3>
@@ -185,7 +185,7 @@ export default function CybersecurityPage() {
           <div>
             <p className="font-code text-xs uppercase tracking-[0.12em] text-white/70">04 / Enterprise security, your way</p>
             <h2 id="enterprise-security-title" className="mt-7 font-headline text-3xl font-semibold leading-tight sm:text-4xl">
-              Your platforms.<br />Our engineering.
+              Security engineering<br />for enterprise teams.
             </h2>
             <p className="mt-7 max-w-md text-xl font-semibold leading-snug text-white">
               Over 20 professional engineers.<br />Expertise across different practices.
@@ -240,19 +240,11 @@ export default function CybersecurityPage() {
           <a href={emailHref('Enterprise security enquiry', 'Hello SuleZeen,\n\nI would like to discuss security support for our organisation.\nOur current platforms:\nThe security practices we need help with:\nOur standards or audit requirements:\nOur timeline:')} className={`${styles.inlineLink} mt-6`}>Discuss your security requirements <ArrowRight size={17} aria-hidden="true" /></a>
         </div>
 
-        <details className="mt-10 border-y border-hairline py-6">
-          <summary className="cursor-pointer text-sm font-semibold marker:text-primary">About <CyberLogo variant="inline" /></summary>
-          <p className="mt-5 max-w-4xl text-sm leading-8 text-muted-foreground"><CyberText>{practices[1].description}</CyberText></p>
-          <p className="mt-4 max-w-4xl border-l-2 border-primary pl-4 text-sm leading-7">
-            Service hours, including any 24/7 coverage, response commitments, and the
-            systems covered are agreed in the engagement contract.
-          </p>
-        </details>
       </section>
 
       <section className={securityStyles.reviewCta} aria-labelledby="security-review-title">
         <div className={securityStyles.reviewInner}>
-          <p className={securityStyles.reviewEyebrow}>SuleZeen / For founders</p>
+          <p className={securityStyles.reviewEyebrow}>Security reviews for founders</p>
           <h2 id="security-review-title">Security review slowing<br />your next deal?</h2>
           <p className={securityStyles.reviewCopy}>A buyer questionnaire. A pen test. An audit deadline. Bring what&apos;s blocking the deal&mdash;we&apos;ll help you scope the next step in a free 15-minute call. No obligation.</p>
           <div className={securityStyles.reviewActions}>

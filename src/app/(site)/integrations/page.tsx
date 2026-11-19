@@ -9,8 +9,8 @@ import { emailHref } from '@/lib/contact';
 import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata(
-  'Integration Planning / ZeenTheCyber',
-  'Scope collaboration, ticketing and reporting integrations with SuleZeen. Define systems, owners, permissions and delivery requirements before implementation.',
+  'Integration Planning',
+  'Plan how security alerts reach collaboration channels, engineering tickets, and reports. Identify the systems, permissions, and people each handoff needs.',
   '/integrations'
 );
 
