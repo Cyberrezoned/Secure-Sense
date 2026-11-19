@@ -2,14 +2,20 @@ import { CyberLogo } from '@/components/cybersecurity/cyber-logo';
 import { DeliveryAchievements } from '@/components/company/delivery-achievements';
 import { StandardsSlider } from '@/components/company/standards-slider';
 import Link from 'next/link';
-import { ArrowDown, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowDown, ArrowRight, ArrowUpRight, Clapperboard, Layers3, ShieldCheck } from 'lucide-react';
 import { WorkflowExplorer } from '@/components/company/workflow-explorer';
 import { CtaBanner } from '@/components/company/cta-banner';
-import { COMPANY_DESCRIPTION } from '@/lib/company';
+import { COMPANY_DESCRIPTION, practices } from '@/lib/company';
 import { CALL_HREF } from '@/lib/contact';
 import { pageMetadata } from '@/lib/page-metadata';
 
 export const metadata = pageMetadata('Dispatch, Tracking and Verified Handover', COMPANY_DESCRIPTION, '/');
+
+const destinations = [
+  { ...practices[0], icon: Layers3 },
+  { ...practices[1], icon: ShieldCheck },
+  { name: 'Creative Studio', href: '/studio', summary: 'Creator learning paths, channel planning, and content production.', icon: Clapperboard },
+];
 
 export default function HomePage() {
   return (
@@ -24,14 +30,30 @@ export default function HomePage() {
           <div className="hero-follow max-w-md lg:pb-1">
             <p className="text-xl leading-relaxed tracking-tight sm:text-2xl">SuleZeen helps Nigerian agricultural marketplaces dispatch vehicles, track produce in transit and confirm handover with the buyer.</p>
             <p className="mt-5 text-sm leading-7 text-muted-foreground">Built in Nigeria, with Base as the intended network for on-chain milestones. Supply-chain infrastructure and cybersecurity support that vision.</p>
-            <Link href={CALL_HREF} className="text-link hero-cue mt-8">Book a consultation<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+            <Link href={CALL_HREF} className="text-link mt-8">Book a consultation<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
           </div>
         </div>
-        <div className="mt-12 flex items-center justify-between border-t border-hairline pt-5 lg:mt-16">
+        <div className="home-hero-footer mt-12 flex items-center justify-between border-t border-hairline pt-5 lg:mt-16">
+          <span aria-hidden="true" className="home-hero-route" />
           <p className="font-code text-xs text-muted-foreground">Built in Nigeria.</p>
-          <a href="#practices" className="flex items-center gap-3 text-xs font-medium">Explore the practices<ArrowDown className="hero-arrow-cue h-4 w-4" aria-hidden="true" /></a>
+          <a href="#explore" className="flex items-center gap-3 text-xs font-medium">Explore SuleZeen<ArrowDown className="hero-arrow-cue h-4 w-4" aria-hidden="true" /></a>
         </div>
       </section>
+
+      <nav id="explore" aria-label="Explore SuleZeen" className="shell scroll-mt-24 pb-12">
+        <div className="practice-directory" data-stagger>
+          {destinations.map(({ name, href, summary, icon: Icon }) => (
+            <div key={href}>
+              <Link href={href} className="practice-entry">
+                <Icon className="practice-mark" aria-hidden="true" />
+                <span className="text-xl font-bold">{name}</span>
+                <span className="text-sm leading-6 text-muted-foreground">{summary}</span>
+                <ArrowUpRight className="practice-arrow" aria-hidden="true" />
+              </Link>
+            </div>
+          ))}
+        </div>
+      </nav>
 
       <section id="practices" className="scroll-mt-24 border-y border-hairline bg-surface">
         <div className="shell editorial-section">
@@ -39,15 +61,15 @@ export default function HomePage() {
             <p className="section-index">01 / Putting Web3 to work</p>
             <h2 className="max-w-3xl text-3xl font-medium leading-tight sm:text-4xl lg:text-5xl">A record that can be checked.<br /><span className="text-muted-foreground">A system that can be defended.</span></h2>
           </div>
-          <div data-stagger className="mt-12 grid gap-12 border-t border-foreground/20 pt-9 md:grid-cols-2 lg:mt-16 lg:gap-20">
-            <article>
+          <div className="home-practices mt-12 grid gap-12 border-t border-foreground/20 pt-9 md:grid-cols-2 lg:mt-16 lg:gap-20">
+            <article data-reveal>
               <p className="section-index">Practice 01</p>
               <h3 className="mt-4 text-3xl font-medium sm:text-4xl">Supply Chain</h3>
               <p className="mt-5 max-w-xl text-base leading-8 text-muted-foreground">A commodity platform connecting farmers, warehouses, merchants, and financiers. Graded deliveries become verified electronic warehouse receipts, linking offtake orders, invoices, and escrow advances.</p>
               <ul className="mt-6 divide-y divide-hairline border-y border-hairline text-sm"><li className="py-3">Operator-signed delivery records</li><li className="py-3">Electronic warehouse receipts and financing workflows</li><li className="py-3">Mobile PWA for low-connectivity environments</li></ul>
               <Link href="/supply-chain" className="text-link mt-7">The commodity platform<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
             </article>
-            <article>
+            <article data-reveal>
               <p className="section-index">Cybersecurity community</p>
               <h3 className="mt-4 text-3xl font-medium sm:text-4xl"><CyberLogo variant="hero" /></h3>
               <p className="mt-5 max-w-xl text-base leading-8 text-muted-foreground">SuleZeen&apos;s cybersecurity community for people learning, building and working in security. Explore research, practical tools and awareness resources, alongside security expertise from SuleZeen.</p>

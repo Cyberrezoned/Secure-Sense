@@ -95,7 +95,7 @@ export function SiteHeader() {
                 <SheetTitle className="sr-only">Navigation</SheetTitle>
                 <BrandLockup onNavigate={() => setOpen(false)} />
 
-                <nav aria-label="Main" className="mt-8 flex flex-col">
+                <nav aria-label="Main" className="public-menu mt-8 flex flex-col">
                   {navItems.map((item) => (
                     <Link
                       key={item.href}
@@ -130,6 +130,7 @@ export function SiteHeader() {
           </Sheet>
         </div>
       </div>
+      <span className="reading-progress" aria-hidden="true" />
     </header>
   );
 }

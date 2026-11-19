@@ -110,7 +110,7 @@ export default function SupplyChainPage() {
               Designed for the places where trade happens.
             </h2>
           </div>
-          <div className="space-y-6 text-sm leading-7 text-white/80">
+          <div data-stagger="fade" className="space-y-6 text-sm leading-7 text-white/80">
             <p>
               Six roles work across a mobile PWA and web console, designed for
               low-connectivity Nigerian environments. Browser access removes the

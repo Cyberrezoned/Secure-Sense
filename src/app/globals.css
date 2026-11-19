@@ -540,12 +540,43 @@ details[open] > :not(summary) {
   }
 }
 
-/* ---- Home: headline sequence ----------------------------------------- */
-/* Runs once from first paint, in CSS, so it never waits for hydration and the
-   headline is still there if scripts fail. Order: the headline lines, the
-   summary beside them, one pass under the contact link, one nudge towards the
-   practices. Each animation fills backwards only: once it has finished, the
-   element carries no transform or clip at all. */
+/* ---- Home: headline and route sequence ------------------------------- */
+
+.home-hero-footer {
+  position: relative;
+}
+
+.home-hero-route {
+  position: absolute;
+  inset: -1px 0 auto;
+  height: 1px;
+  background: hsl(var(--primary) / 0.55);
+  pointer-events: none;
+  transform-origin: left center;
+}
+
+.home-hero-route::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  translate: 0 -50%;
+}
+
+.home-practices > .reveal-pending:focus-within {
+  opacity: 1;
+  transform: none;
+}
+
+@media (min-width: 768px) {
+  .home-practices > :nth-child(2).reveal-in {
+    transition-delay: var(--stagger-step);
+  }
+}
 
 .headline-line,
 .headline-line > span {
@@ -567,16 +598,25 @@ details[open] > :not(summary) {
     animation-delay: calc(var(--line, 0) * 90ms);
   }
 
-  .hero-follow {
-    animation: hero-follow 620ms var(--ease-editorial) 240ms backwards;
+  .hero-follow > * {
+    animation: hero-follow 500ms var(--ease-editorial) backwards;
+    animation-delay: calc(160ms + var(--hero-beat, 0) * 70ms);
   }
 
-  .hero-cue::after {
-    animation: hero-underline-pass 760ms cubic-bezier(0.65, 0, 0.35, 1) 820ms backwards;
+  .hero-follow > :nth-child(2) { --hero-beat: 1; }
+  .hero-follow > :nth-child(3) { --hero-beat: 2; }
+  .hero-follow > :focus-visible { animation: none; }
+
+  .home-hero-route {
+    animation: home-route-draw 650ms var(--ease-editorial) 340ms backwards;
+  }
+
+  .home-hero-route::after {
+    animation: home-route-arrival 240ms var(--ease-editorial) 900ms backwards;
   }
 
   .hero-arrow-cue {
-    animation: hero-arrow-nudge 520ms ease-in-out 1300ms backwards;
+    animation: hero-arrow-nudge 400ms ease-in-out 1040ms backwards;
   }
 }
 
@@ -599,11 +639,12 @@ details[open] > :not(summary) {
   }
 }
 
-@keyframes hero-underline-pass {
-  0% { transform: scaleX(0); transform-origin: left center; }
-  55% { transform: scaleX(1); transform-origin: left center; }
-  56% { transform: scaleX(1); transform-origin: right center; }
-  100% { transform: scaleX(0); transform-origin: right center; }
+@keyframes home-route-draw {
+  from { transform: scaleX(0); }
+}
+
+@keyframes home-route-arrival {
+  from { opacity: 0; transform: scale(0.5); }
 }
 
 @keyframes hero-arrow-nudge {

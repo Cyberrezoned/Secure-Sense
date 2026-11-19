@@ -4,6 +4,7 @@ import { SiteFooter } from '@/components/site-footer';
 import { SITE_NAME, SITE_URL } from '@/lib/site';
 import { COMPANY_DESCRIPTION } from '@/lib/company';
 import { CONTACT_EMAIL } from '@/lib/contact';
+import './public-motion.css';
 
 /** Public marketing chrome. */
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
@@ -24,7 +25,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       </a>
       <BrandScope>
         <SiteHeader />
-        <main id="main" className="flex-1">
+        <main id="main" tabIndex={-1} className="flex-1">
           {children}
         </main>
         <SiteFooter />

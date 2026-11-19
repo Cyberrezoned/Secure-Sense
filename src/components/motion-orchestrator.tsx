@@ -82,9 +82,23 @@ export function MotionOrchestrator() {
       });
     };
 
+    // Reveal every pending ancestor of a keyboard target, including nested groups.
+    const showFocused = (event: FocusEvent) => {
+      if (!(event.target instanceof Element)) return;
+      let item = event.target.closest(`.${PENDING}`);
+      while (item) {
+        observer?.unobserve(item);
+        armed.delete(item);
+        item.classList.remove(PENDING);
+        item = item.parentElement?.closest(`.${PENDING}`) ?? null;
+      }
+    };
+
     start();
+    document.addEventListener('focusin', showFocused);
     preference.addEventListener('change', start);
     return () => {
+      document.removeEventListener('focusin', showFocused);
       preference.removeEventListener('change', start);
       stop();
     };

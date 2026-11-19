@@ -1,6 +1,6 @@
 import { CyberText, CyberLogo } from '@/components/cybersecurity/cyber-logo';
 import Link from 'next/link';
-import { Github, Mail, MapPin, MessageCircle } from 'lucide-react';
+import { ArrowUp, Github, Mail, MapPin, MessageCircle } from 'lucide-react';
 
 import { BrandLockup } from '@/components/brand-lockup';
 import { cybersecurityCommunity } from '@/lib/company';
@@ -41,7 +41,7 @@ export function SiteFooter() {
     <footer className="border-t border-hairline bg-surface">
       <div className="shell py-14">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
-          <div className="max-w-sm">
+          <div data-reveal className="max-w-sm">
             <BrandLockup />
 
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
@@ -80,7 +80,7 @@ export function SiteFooter() {
           </div>
 
           {footerGroups.map((group) => (
-            <div key={group.title}>
+            <div key={group.title} data-reveal>
               <p className="text-[0.8125rem] font-semibold text-foreground">{group.title}</p>
               <ul className="mt-4 flex flex-col gap-2.5">
                 {group.links.map((link) => (
@@ -108,6 +108,7 @@ export function SiteFooter() {
 
         <div className="mt-12 flex flex-col gap-2 border-t border-hairline pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {new Date().getFullYear()} SuleZeen. All rights reserved.</p>
+          <a className="footer-top" href="#main">Back to top <ArrowUp size={14} aria-hidden="true" /></a>
           <p>
             Trade infrastructure. Cybersecurity. Built in Nigeria.
           </p>

@@ -110,7 +110,7 @@ export default function CybersecurityPage() {
         </div>
         <SecurityShowcase />
       </section>
-      <div className={`${styles.container} ${styles.capabilities}`} aria-label="Community focus areas">
+      <div data-stagger="fade" className={`${styles.container} ${styles.capabilities}`} aria-label="Community focus areas">
         <span>Security research</span><span>Practical learning</span><span>Cyber awareness</span><span>Security tools</span>
       </div>
 
