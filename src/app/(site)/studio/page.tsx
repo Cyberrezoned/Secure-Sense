@@ -1,3 +1,4 @@
+import { NicheNews } from '@/components/news/niche-news';
 import { CyberLogo } from '@/components/cybersecurity/cyber-logo';
 import Link from 'next/link';
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
@@ -18,13 +19,15 @@ export default function StudioPage() {
     <div className={styles.studio} data-motion-area="studio">
       <section className="shell pb-14 pt-8 sm:pb-20 sm:pt-12">
         <div className={styles.masthead}><p>SuleZeen <strong>Creative Studio</strong></p><span>Ideas / Skills / Digital culture</span></div>
-        <nav className={styles.studioNav} aria-label="Studio sections"><a href="#earn">Ways to earn</a><a href="#channel-plan">Build your channel</a><a href="#offer">Price your offer</a><a href="#pathfinder">Find your path</a><a href="#planner">Content planner</a><a href="#work-with-us">Learn with us</a></nav>
+        <nav className={styles.studioNav} aria-label="Studio sections"><a href="#news">Creator news</a><a href="#earn">Ways to earn</a><a href="#channel-plan">Build your channel</a><a href="#offer">Price your offer</a><a href="#pathfinder">Find your path</a><a href="#planner">Content planner</a><a href="#work-with-us">Learn with us</a></nav>
         <div className={styles.hero}>
           <div><p className={styles.kicker}>Create a lifestyle. Build a skill. Explore an income.</p><h1 className={styles.title}>Create.<br />Build a channel.<br /><em>Learn to earn.</em></h1><p className={styles.intro}>Come and learn how to make money online through useful skills, original content, and a channel with purpose. We help young people and emerging creators learn to create, work online, and build income opportunities.</p><div className={styles.heroActions}><a href="#earn" className={styles.primaryLink}>Explore ways to earn <ArrowDown size={17} aria-hidden="true" /></a><Link href={studioContactHref('channel-launch')} className={styles.textCta}>Teach me how to start <ArrowUpRight size={17} aria-hidden="true" /></Link></div><p className={styles.smallNote}>Practical education and support. Earnings depend on your work, audience, costs, and demand.</p></div>
           <CreativeCanvas />
         </div>
         <div data-stagger className={styles.subjectStrip}><span>Learn a skill</span><span>Build a channel</span><span>Shape an offer</span><span>Earn online</span><span>Stay aware</span></div>
       </section>
+      <NicheNews topic="studio" />
+
       <section className={styles.creatorManifesto}><div className="shell"><p className={styles.kicker}>A creative life, with practical direction</p><p>For the young person with a phone and an idea. The creator finding a voice. The freelancer building a skill. <strong>Learn to create work that helps people, and learn how that work can earn.</strong></p><Link href={studioContactHref('youth-program')}>Explore youth and community training <ArrowUpRight size={17} aria-hidden="true" /></Link></div></section>
       <section id="earn" className="shell editorial-section scroll-mt-24"><div data-reveal className={styles.sectionHeading}><p className={styles.kicker}>01 / Ways to make money online</p><div><h2>Your creativity can<br />become an offer.</h2><p>Explore who pays, what you can offer, what to learn first, and how to test demand. Choose a route to see a practical starting plan and the support you can discuss with the Studio.</p></div></div><EarningExplorer /></section>
       <section id="channel-plan" className={`${styles.learning} scroll-mt-24`}><div className="shell editorial-section"><div className={styles.sectionHeading}><p className={styles.kicker}>02 / Build a channel that can earn</p><div><h2>From a first idea<br />to a channel with a plan.</h2><p>Work through six stages: choose an audience, produce original work, publish consistently, build an offer, test demand, and review the evidence. Personalise and download the full 12-week roadmap.</p></div></div><ChannelLaunchPlan /></div></section>

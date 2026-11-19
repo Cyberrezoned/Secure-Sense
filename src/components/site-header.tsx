@@ -29,6 +29,7 @@ const companyNavItems = [
 
 const communityNavItems = [
   { href: '/cybersecurity', label: 'Overview' },
+  { href: '/cybersecurity#news', label: 'News' },
   { href: '/community', label: 'Research' },
   { href: '/platform', label: 'Security tools' },
   { href: '/integrations', label: 'Integrations' },

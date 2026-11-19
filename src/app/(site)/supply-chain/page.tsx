@@ -1,3 +1,4 @@
+import { NicheNews } from '@/components/news/niche-news';
 import Link from 'next/link';
 import { WorkflowExplorer } from '@/components/company/workflow-explorer';
 import { Button } from '@/components/ui/button';
@@ -55,11 +56,16 @@ export default function SupplyChainPage() {
               </p>
             </div>
           </div>
-          <a href="#commodity-workflow" className="text-link mt-10">
-            Follow the commodity workflow <span aria-hidden="true" data-arrow="down-right">↘</span>
-          </a>
+          <div className="mt-10 flex flex-wrap items-baseline gap-x-8 gap-y-4">
+            <a href="#commodity-workflow" className="text-link">
+              Follow the commodity workflow <span aria-hidden="true" data-arrow="down-right">↘</span>
+            </a>
+            <a href="#news" className="text-link">Supply chain news</a>
+          </div>
         </div>
       </section>
+
+      <NicheNews topic="supply" />
 
       <section id="commodity-workflow" className="shell editorial-section scroll-mt-24">
         <div data-reveal className="grid gap-6 md:grid-cols-[0.45fr_1fr] md:gap-16">

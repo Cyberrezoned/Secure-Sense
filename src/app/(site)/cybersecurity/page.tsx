@@ -1,3 +1,4 @@
+import { NicheNews } from '@/components/news/niche-news';
 import { CyberLogo } from '@/components/cybersecurity/cyber-logo';
 import { DeliveryAchievements } from '@/components/company/delivery-achievements';
 import { StandardsSlider } from '@/components/company/standards-slider';
@@ -127,6 +128,8 @@ export default function CybersecurityPage() {
           </div>
         </div>
       </section>
+
+      <NicheNews topic="cyber" />
 
       <DeliveryAchievements securityOnly />
 

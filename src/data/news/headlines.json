@@ -1,0 +1,200 @@
+{
+  "cyber": [
+    {
+      "title": "Multiple Vulnerabilities in NGINX Could Allow for Remote Code Execution",
+      "url": "https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-nginx-could-allow-for-remote-code-execution_2026-136",
+      "date": "2026-11-19T16:55:05+00:00",
+      "publisher": "Center for Internet Security",
+      "excerpt": "Multiple vulnerabilities have been discovered in NGINX, the most severe of which could allow for remote code execution. NGINX is software used for web…",
+      "image": ""
+    },
+    {
+      "title": "Multiple Vulnerabilities in Oracle Products Could Allow for Remote Code Execution",
+      "url": "https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-oracle-products-could-allow-for-remote-code-execution_2026-135",
+      "date": "2026-11-18T02:37:59+00:00",
+      "publisher": "Center for Internet Security",
+      "excerpt": "Multiple vulnerabilities have been discovered in Oracle products, the most severe of which could allow for remote code execution. Depending on the privileges associated…",
+      "image": ""
+    },
+    {
+      "title": "Multiple Vulnerabilities in Microsoft Products Could Allow for Remote Code Execution",
+      "url": "https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-microsoft-products-could-allow-for-remote-code-execution_2026-134",
+      "date": "2026-11-17T01:07:49+00:00",
+      "publisher": "Center for Internet Security",
+      "excerpt": "Multiple vulnerabilities have been discovered in Microsoft products, the most severe of which could allow for remote code execution. Microsoft SharePoint Server is a…",
+      "image": ""
+    },
+    {
+      "title": "NCSC scheme will help critical organisations test their cyber defences",
+      "url": "https://www.ncsc.gov.uk/news/ncsc-scheme-help-critical-organisations-test-their-cyber-defences",
+      "date": "2026-11-11T12:00:00+00:00",
+      "publisher": "UK National Cyber Security Centre",
+      "excerpt": "New NCSC Cyber Adversary Simulation scheme will help critical organisations strengthen their resilience through rigorous, real-world testing by trusted providers.",
+      "image": ""
+    },
+    {
+      "title": "Multiple Vulnerabilities in Fortinet Products Could Allow for Arbitrary Code Execution",
+      "url": "https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-fortinet-products-could-allow-for-arbitrary-code-execution_2026-133",
+      "date": "2026-11-11T05:39:09+00:00",
+      "publisher": "Center for Internet Security",
+      "excerpt": "Multiple vulnerabilities have been discovered in Fortinet FortiOS, FortiManager, FortiAnalyzer, and other Fortinet products, the most severe of which could allow for arbitrary code…",
+      "image": ""
+    },
+    {
+      "title": "Cyber chief: UK facing AI-powered attacks on critical infrastructure within two years",
+      "url": "https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years",
+      "date": "2026-11-03T12:00:00+00:00",
+      "publisher": "UK National Cyber Security Centre",
+      "excerpt": "The NCSC warns that ‘tech on the cheap’ has left UK organisations exposed to AI uncovering and exploiting longstanding cyber security weaknesses and calls…",
+      "image": ""
+    },
+    {
+      "title": "Critical security issue affecting PHP",
+      "url": "https://www.ncsc.gov.uk/news/critical-security-issue-affecting-php",
+      "date": "2026-10-21T12:00:00+00:00",
+      "publisher": "UK National Cyber Security Centre",
+      "excerpt": "Updated: The NCSC is encouraging UK organisations to take immediate action to mitigate a security issue affecting PHP (CVE-2026-109618 and CVE-2026-109619).",
+      "image": ""
+    },
+    {
+      "title": "China-linked malicious actors called out by UK and international partners for targeting sensitive data globally",
+      "url": "https://www.ncsc.gov.uk/news/china-linked-actors-called-out-by-uk-and-international-partners-for-targeting-sensitive-data",
+      "date": "2026-10-08T12:00:00+00:00",
+      "publisher": "UK National Cyber Security Centre",
+      "excerpt": "Joint advisory with international partners highlights malicious targeting of organisations from a range of sectors across the globe.",
+      "image": ""
+    }
+  ],
+  "supply": [
+    {
+      "title": "Meta strikes deals to boost low-carbon materials production",
+      "url": "https://www.supplychaindive.com/news/meta-strikes-deals-to-boost-low-carbon-materials-production/875095/",
+      "date": "2026-11-19T17:30:00+00:00",
+      "publisher": "Supply Chain Dive",
+      "excerpt": "The multiyear agreements would cover concrete, plastics and steel and help offset emissions in Meta’s data center supply chain, the Facebook parent company said.",
+      "image": "https://imgproxy.divecdn.com/6gTMD9MlsGwSHHCF9s46CtCj2TNjw3fcdxEvQerJkjI/g:ce/rs:fill:1600:900:1/Z3M6Ly9kaXZlc2l0ZS1zdG9yYWdlL2RpdmVpbWFnZS9NZXRhXzd2bHNPcGcuanBn.webp"
+    },
+    {
+      "title": "Honda invests $462M in Alabama plant to boost production",
+      "url": "https://www.supplychaindive.com/news/honda-invests-462m-in-alabama-plant-to-boost-production/875189/",
+      "date": "2026-11-19T16:33:34+00:00",
+      "publisher": "Supply Chain Dive",
+      "excerpt": "The automaker will use the funds to increase production capacity of high-demand models.",
+      "image": "https://imgproxy.divecdn.com/Z0WSqmKYkwBgjEzF8LZ4_pj9rHj1rThcb7_ED41JBJc/g:ce/rs:fill:1600:900:1/Z3M6Ly9kaXZlc2l0ZS1zdG9yYWdlL2RpdmVpbWFnZS9wcmV2aWV3LTkyOHg1MjJfMV9GRzFGalFkLmpwZw==.webp"
+    },
+    {
+      "title": "How Home Depot built the missing logistics piece for its Pro business",
+      "url": "https://www.supplychaindive.com/news/how-home-depot-built-the-missing-logistics-piece-for-its-pro-business/874331/",
+      "date": "2026-11-19T15:58:00+00:00",
+      "publisher": "Supply Chain Dive",
+      "excerpt": "Through new flatbed distribution centers, acquisitions and technology, the home improvement retailer has enhanced its last-mile delivery capabilities to better serve contractor customers.",
+      "image": ""
+    },
+    {
+      "title": "How Brooks Running is using supplier data to address human rights risks",
+      "url": "https://www.supplychaindive.com/news/how-brooks-running-is-using-supplier-data-to-address-human-rights-risks/875090/",
+      "date": "2026-11-19T15:07:46+00:00",
+      "publisher": "Supply Chain Dive",
+      "excerpt": "The brand conducts an annual mock detention exercise with suppliers to improve visibility over a broader range of materials and downstream compliance.",
+      "image": "https://imgproxy.divecdn.com/hgSDgbfCfVPRovwWu1c2n5ip-mBINSqs9oPoPQBkLDQ/g:ce/rs:fill:1600:900:1/Z3M6Ly9kaXZlc2l0ZS1zdG9yYWdlL2RpdmVpbWFnZS9TMjNfQVBSX1RyYWlsTG9va2Jvb2tfSG9vZFJpdmVyX0ltYWdlXzEuanBn.webp"
+    },
+    {
+      "title": "Morocco warns it could become tomato importer within three years",
+      "url": "https://www.foodbusinessmea.com/morocco-warns-it-could-become-tomato-importer-within-three-years/",
+      "date": "2026-11-19T12:41:13+00:00",
+      "publisher": "Food Business Africa",
+      "excerpt": "Yields have fallen from 250 to 150 tons per hectare, while greenhouse cultivation in Chtouka Ait Baha has declined from 8,000 to 4,000 hectares.",
+      "image": ""
+    },
+    {
+      "title": "Kraft Heinz, Egypt launch three-year programme to train 3,900 tomato farmers",
+      "url": "https://www.foodbusinessmea.com/kraft-heinz-egypt-launch-three-year-programme-to-train-3900-tomato-farmers/",
+      "date": "2026-11-19T12:21:43+00:00",
+      "publisher": "Food Business Africa",
+      "excerpt": "The programme will establish field schools, each comprising about 20 farmers, and training-of-trainers initiatives to extend technical knowledge and improve pest management practices.",
+      "image": ""
+    },
+    {
+      "title": "Nigeria breaks ground on US$3.5B Bakassi deep-water port",
+      "url": "https://www.foodbusinessmea.com/nigeria-breaks-ground-on-us3-5b-bakassi-deep-water-port/",
+      "date": "2026-11-19T11:51:33+00:00",
+      "publisher": "Food Business Africa",
+      "excerpt": "The development includes a 260-kilometre highway connecting the port with inland markets.",
+      "image": ""
+    },
+    {
+      "title": "ICAR opens genome editing centre, farmer training hub in Bengaluru",
+      "url": "https://www.foodbusinessmea.com/icar-opens-genome-editing-centre-farmer-training-hub-in-bengaluru/",
+      "date": "2026-11-19T10:00:26+00:00",
+      "publisher": "Food Business Africa",
+      "excerpt": "The Centre of Excellence for Genome Editing, equipped with a Biosafety Level-II Laboratory, marks an important step towards strengthening advanced biotechnology research and genome-editing…",
+      "image": ""
+    }
+  ],
+  "studio": [
+    {
+      "title": "YouTube Creators Win Big at the Inaugural Clio Creator Awards",
+      "url": "https://blog.youtube/news-and-events/youtube-creators-clio-creator-awards-2026/",
+      "date": "2026-11-19T18:00:00+00:00",
+      "publisher": "YouTube Blog",
+      "excerpt": "Transformative YouTube creators like iShowSpeed and Michelle Khare took home Grand awards at the inaugural Clio Creator Awards.",
+      "image": ""
+    },
+    {
+      "title": "Twitter (X) Analytics: How to Find Them + Free Options",
+      "url": "https://buffer.com/resources/twitter-analytics/",
+      "date": "2026-11-19T06:00:00+00:00",
+      "publisher": "Buffer",
+      "excerpt": "Everything you need to know about Twitter analytics, including how to find key metrics and how to use them to make smarter decisions.",
+      "image": "https://storage.ghost.io/c/6d/21/6d217297-aa70-41fe-b68d-e29e411dd3ed/content/images/2026/11/X-Twitter-Analytics--1-.png"
+    },
+    {
+      "title": "11 Trending Songs on TikTok in November 2026 (+ How to Use Them)",
+      "url": "https://buffer.com/resources/trending-songs-tiktok/",
+      "date": "2026-11-18T09:00:00+00:00",
+      "publisher": "Buffer",
+      "excerpt": "An up-to-date list of the most viral songs and sounds on TikTok in November 2026 — and how to use them to boost your…",
+      "image": "https://storage.ghost.io/c/6d/21/6d217297-aa70-41fe-b68d-e29e411dd3ed/content/images/2025/11/TrendingSounds-Tiktok-1.png"
+    },
+    {
+      "title": "Coming soon to YouTube: A first look at the next wave of must-see creator-led entertainment",
+      "url": "https://blog.youtube/news-and-events/youtube-creator-premieres-slate-2026/",
+      "date": "2026-11-18T04:00:00+00:00",
+      "publisher": "YouTube Blog",
+      "excerpt": "",
+      "image": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/2305641442.max-600x600.format-webp.webp"
+    },
+    {
+      "title": "How to Schedule TikTok Posts on Desktop and Mobile (Free Guide)",
+      "url": "https://buffer.com/resources/how-to-schedule-tiktok-posts/",
+      "date": "2026-11-17T08:00:00+00:00",
+      "publisher": "Buffer",
+      "excerpt": "Yes, you can schedule TikTok posts. Here's how on desktop and mobile, TikTok's 10-day limit and account rules, and how to schedule further ahead…",
+      "image": "https://storage.ghost.io/c/6d/21/6d217297-aa70-41fe-b68d-e29e411dd3ed/content/images/2026/04/schedule-on-tiktok-with-buffer.png"
+    },
+    {
+      "title": "There from the start: YouTube Music celebrates Latin artists at Latin GRAMMY® 2026",
+      "url": "https://blog.youtube/news-and-events/youtube-latin-music-las-vegas-2026/",
+      "date": "2026-11-16T18:00:00+00:00",
+      "publisher": "YouTube Blog",
+      "excerpt": "Discover how YouTube celebrated Latin music week in Las Vegas, honoring Sandra Jimenez, hosting Daddy Yankee, and championing breakthrough artists worldwide.",
+      "image": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/MG_Youtube_LG_DY.max-600x600.format-webp.webp"
+    },
+    {
+      "title": "Paddy Galloway dives deep with us on Video A/B, Ask Studio, and evolving over time",
+      "url": "https://blog.youtube/creator-and-artist-stories/creator-insider-paddy-galloway-youtube-ab-testing-ask-studio/",
+      "date": "2026-11-16T17:30:00+00:00",
+      "publisher": "YouTube Blog",
+      "excerpt": "Paddy Galloway and YouTube's Amjad Hanif and Rene Ritchie explore how Dynamic Thumbnails and Video A/B testing help creators optimize retention.",
+      "image": ""
+    },
+    {
+      "title": "How Long Should Instagram Reels Be? We Analyzed 2.7 Million Reels",
+      "url": "https://buffer.com/resources/instagram-reels-length/",
+      "date": "2026-11-12T07:00:00+00:00",
+      "publisher": "Buffer",
+      "excerpt": "We analyzed 2.7 million Instagram Reels sent through Buffer. Reels between 90 seconds and three minutes reached 4–7% more people than each account's own…",
+      "image": "https://storage.ghost.io/c/6d/21/6d217297-aa70-41fe-b68d-e29e411dd3ed/content/images/2026/11/Instagram-Reels-Length-Study.png"
+    }
+  ]
+}
