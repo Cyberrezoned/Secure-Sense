@@ -1,17 +1,14 @@
 """Update the public headline index from publisher RSS feeds (standard library only)."""
 import html
 import json
-import sys
+from http.server import BaseHTTPRequestHandler
 import xml.etree.ElementTree as ET
-from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
-from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urlsplit
 from urllib.request import Request, urlopen
 
-SEED = Path(__file__).resolve().parents[1] / 'src/data/news/headlines.json'
 SOURCES = [
     ('cyber', 'UK National Cyber Security Centre', 'https://www.ncsc.gov.uk/api/1/services/v1/news-rss-feed.xml'),
     ('cyber', 'Center for Internet Security', 'https://www.cisecurity.org/feed/advisories'),
@@ -45,7 +42,7 @@ class FeedDescription(HTMLParser):
 def read_feed(source):
     _, name, url = source
     request = Request(url, headers={'User-Agent': 'Secure-Sense-News/1.0', 'Accept': 'application/rss+xml, application/xml, text/xml'})
-    with urlopen(request, timeout=20) as response:
+    with urlopen(request, timeout=7) as response:
         raw = response.read(4_000_001)
     if len(raw) > 4_000_000 or b'<!DOCTYPE' in raw.upper():
         raise ValueError('Unsupported feed document')
@@ -72,33 +69,25 @@ def read_feed(source):
                       'excerpt': excerpt, 'image': image})
     if not items:
         raise ValueError('No dated stories in feed')
-    return items
+    unique = {item['url']: item for item in items}
+    return sorted(unique.values(), key=lambda item: item['date'], reverse=True)[:4]
 
-
-def refresh(index):
-    baseline = index if index.exists() else SEED
-    previous = json.loads(baseline.read_text(encoding='utf-8')) if baseline.exists() else {}
-    updated = {}
-    failures = []
-    with ThreadPoolExecutor(max_workers=len(SOURCES)) as pool:
-        pending = [(source, pool.submit(read_feed, source)) for source in SOURCES]
-        for (topic, publisher, _), future in pending:
-            retained = [item for item in previous.get(topic, []) if item['publisher'] == publisher]
-            try:
-                stories = future.result()
-            except Exception as error:
-                failures.append(publisher)
-                print(f'{publisher}: {error}. Keeping previous headlines.', file=sys.stderr)
-                stories = []
-            unique = {item['url']: item for item in [*retained, *stories]}
-            updated.setdefault(topic, []).extend(sorted(unique.values(), key=lambda item: item['date'], reverse=True)[:4])
-    for topic, stories in updated.items():
-        unique = {item['url']: item for item in stories}
-        updated[topic] = sorted(unique.values(), key=lambda item: item['date'], reverse=True)
-    if updated != previous or not index.exists():
-        index.write_bytes((json.dumps(updated, indent=2, ensure_ascii=False) + '\n').encode('utf-8'))
-    return int(len(failures) == len(SOURCES))
-
-
-if __name__ == '__main__':
-    sys.exit(refresh(Path(sys.argv[1]) if len(sys.argv) > 1 else SEED))
+class handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        name = parse_qs(urlsplit(self.path).query).get('publisher', [''])[0]
+        source = next((source for source in SOURCES if source[1] == name), None)
+        if source is None:
+            self.send_error(404)
+            return
+        try:
+            items = read_feed(source)
+        except Exception as error:
+            print(f'{name}: {error}', flush=True)
+            self.send_error(503, 'Publisher temporarily unavailable')
+            return
+        body = json.dumps(items, ensure_ascii=False).encode('utf-8')
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json; charset=utf-8')
+        self.send_header('Cache-Control', 'public, max-age=60, s-maxage=900, stale-while-revalidate=86400')
+        self.end_headers()
+        self.wfile.write(body)
