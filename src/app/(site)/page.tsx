@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ArrowDown, ArrowRight, ArrowUpRight, Clapperboard, Layers3, ShieldCheck } from 'lucide-react';
 import { WorkflowExplorer } from '@/components/company/workflow-explorer';
 import { CtaBanner } from '@/components/company/cta-banner';
-import { COMPANY_DESCRIPTION, practices } from '@/lib/company';
+import { COMPANY_DESCRIPTION, practices, SULEZEEN_MVP_URL } from '@/lib/company';
 import { CALL_HREF } from '@/lib/contact';
 import { pageMetadata } from '@/lib/page-metadata';
 
@@ -29,8 +29,11 @@ export default function HomePage() {
           <h1 className="home-title"><span className="headline-line"><span>See where it is.</span></span><span className="headline-line text-primary"><span>Know it arrived.</span></span></h1>
           <div className="hero-follow max-w-md lg:pb-1">
             <p className="text-xl leading-relaxed tracking-tight sm:text-2xl">SuleZeen helps Nigerian agricultural marketplaces dispatch vehicles, track produce in transit and confirm handover with the buyer.</p>
-            <p className="mt-5 text-sm leading-7 text-muted-foreground">Built in Nigeria, with Base as the intended network for on-chain milestones. Supply-chain infrastructure and cybersecurity support that vision.</p>
-            <Link href={CALL_HREF} className="text-link mt-8">Book a consultation<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+            <p className="mt-5 text-sm leading-7 text-muted-foreground">We tested our Web3 approach to agricultural logistics with a truckload of dried maize from Nasarawa to Lagos. Our food technologist graded the maize as part of the pilot.</p>
+            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
+              <a href={SULEZEEN_MVP_URL} className="text-link">Explore the SuleZeen MVP<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>
+              <Link href="/supply-chain#maize-pilot" className="text-link">Read about the pilot<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+            </div>
           </div>
         </div>
         <div className="home-hero-footer mt-12 flex items-center justify-between border-t border-hairline pt-5 lg:mt-16">

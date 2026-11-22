@@ -1,3 +1,5 @@
+export const SULEZEEN_MVP_URL = 'https://sulezeen.zeenthecyber.online/';
+
 export const COMPANY_DESCRIPTION =
   'SuleZeen helps Nigerian agricultural marketplaces dispatch vehicles, track produce in transit and confirm handover with the buyer. Web3 and planned on-chain milestones on Base support its vision for verifiable trust.';
 

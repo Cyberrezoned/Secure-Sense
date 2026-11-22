@@ -1,8 +1,10 @@
 import { NicheNews } from '@/components/news/niche-news';
 import Link from 'next/link';
+import Image from 'next/image';
+import { ArrowUpRight } from 'lucide-react';
 import { WorkflowExplorer } from '@/components/company/workflow-explorer';
 import { Button } from '@/components/ui/button';
-import { practices } from '@/lib/company';
+import { practices, SULEZEEN_MVP_URL } from '@/lib/company';
 import { CALL_HREF } from '@/lib/contact';
 import { pageMetadata } from '@/lib/page-metadata';
 
@@ -62,6 +64,22 @@ export default function SupplyChainPage() {
             </a>
             <a href="#news" className="text-link">Supply chain news</a>
           </div>
+        </div>
+      </section>
+
+      <section id="maize-pilot" aria-labelledby="pilot-title" className="shell editorial-section scroll-mt-24">
+        <div className="grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+          <div>
+            <p className="section-index">SuleZeen field pilot</p>
+            <h2 id="pilot-title" className="mt-4 max-w-xl text-3xl leading-tight sm:text-4xl">A truckload of dried maize from Nasarawa to Lagos</h2>
+            <p className="mt-5 max-w-xl leading-7">We validated the idea behind the SuleZeen MVP with one truckload of dried maize. Our food technologist graded the maize, giving the shipment a quality assessment alongside its origin and destination.</p>
+            <p className="mt-4 max-w-xl leading-7 text-muted-foreground">The MVP brings that information into a shared delivery record. Our goal is to give aggregators and SEC-accredited warehouses a clearer view of the produce they handle and help producers gain fairer access to buyers.</p>
+            <a href={SULEZEEN_MVP_URL} className="text-link mt-7">Explore the SuleZeen MVP<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>
+          </div>
+          <figure>
+            <Image src="/images/brand/sulezeen-mvp-preview.jpg" width={1280} height={735} sizes="(min-width: 1024px) 50vw, 100vw" alt="SuleZeen MVP showing a graded maize deposit and a signed electronic warehouse receipt." className="h-auto w-full rounded-lg border border-hairline" />
+            <figcaption className="mt-3 text-xs leading-5 text-muted-foreground">Product preview with illustrative deposit and receipt details.</figcaption>
+          </figure>
         </div>
       </section>
 
